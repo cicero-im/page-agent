@@ -465,8 +465,8 @@ COMO INSTALAR O CICERO ENFERMEIRO DIGITAL (passo a passo)
     e aperte Enter.
 3.  No canto superior direito, ligue a chavinha "Modo do desenvolvedor".
 4.  Clique no botão "Carregar sem compactação" (canto superior esquerdo).
-5.  Escolha a pasta que você descompactou (a pasta que tem dentro a "chrome-mv3"),
-    ou a própria "chrome-mv3".
+5.  Escolha a pasta que você descompactou (a pasta que tem dentro a "cicero-agent"),
+    ou a própria "cicero-agent".
 6.  Pronto! Vai aparecer o cartão "Cicero Enfermeiro Digital".
 
 COMO DEIXAR FÁCIL DE USAR

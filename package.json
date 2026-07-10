@@ -13,12 +13,12 @@
     "packages/extension",
     "packages/website"
   ],
-  "description": "AI-powered UI agent for web applications",
-  "author": "Simon<gaomeng1900>",
+  "description": "Cicero Web Assistant",
+  "author": "Arthur Souza Rodrigues <arthrod@umich.edu>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alibaba/page-agent.git"
+    "url": "https://github.com/arthrod/page-agent.git"
   },
   "homepage": "https://arthrod.github.io/page-agent/",
   "engines": {

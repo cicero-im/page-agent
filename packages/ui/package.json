@@ -32,11 +32,11 @@
     "panel",
     "i18n"
   ],
-  "author": "Simon<gaomeng1900>",
+  "author": "Arthur Souza Rodrigues <arthrod@umich.edu>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alibaba/page-agent.git",
+    "url": "https://github.com/arthrod/page-agent.git",
     "directory": "packages/ui"
   },
   "homepage": "https://arthrod.github.io/page-agent/",

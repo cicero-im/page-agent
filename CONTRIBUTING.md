@@ -6,7 +6,7 @@ For local development workflows, setup, local LLM config, extension development,
 
 ## 🤝 How to Contribute
 
-> **[Maintainer's Note](https://github.com/alibaba/page-agent/issues/349)**
+> **[Maintainer's Note](https://github.com/arthrod/page-agent/issues/349)**
 
 ### Opening Issues
 

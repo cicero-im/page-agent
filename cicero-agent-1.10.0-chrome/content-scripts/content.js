@@ -1,18 +1,16 @@
-var content = (function () {
+var content = (function() {
 	var __vite_style__ = document.createElement("style");
-	__vite_style__.textContent =
-		"._wrapper_1ooyb_1 {\n	position: fixed;\n	inset: 0;\n	z-index: 2147483641; /* 确保在所有元素之上，除了 panel */\n	cursor: wait;\n	overflow: hidden;\n\n	display: none;\n}\n\n._wrapper_1ooyb_1._visible_1ooyb_11 {\n	display: block;\n}\n/* AI 光标样式 */\n._cursor_1dgwb_2 {\n	position: absolute;\n	width: var(--cursor-size, 75px);\n	height: var(--cursor-size, 75px);\n	pointer-events: none;\n	z-index: 10000;\n}\n\n._cursorBorder_1dgwb_10 {\n	position: absolute;\n	width: 100%;\n	height: 100%;\n	background: linear-gradient(45deg, rgb(57, 182, 255), rgb(189, 69, 251));\n	mask-image: url(\"data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%20fill='none'%3e%3cg%3e%3cpath%20d='M%2015%2042%20L%2015%2036.99%20Q%2015%2031.99%2023.7%2031.99%20L%2028.05%2031.99%20Q%2032.41%2031.99%2032.41%2021.99%20L%2032.41%2017%20Q%2032.41%2012%2041.09%2016.95%20L%2076.31%2037.05%20Q%2085%2042%2076.31%2046.95%20L%2041.09%2067.05%20Q%2032.41%2072%2032.41%2062.01%20L%2032.41%2057.01%20Q%2032.41%2052.01%2023.7%2052.01%20L%2019.35%2052.01%20Q%2015%2052.01%2015%2047.01%20Z'%20fill='none'%20stroke='%23000000'%20stroke-width='6'%20stroke-miterlimit='10'%20style='stroke:%20light-dark(rgb(0,%200,%200),%20rgb(255,%20255,%20255));'/%3e%3c/g%3e%3c/svg%3e\");\n	mask-size: 100% 100%;\n	mask-repeat: no-repeat;\n\n	transform-origin: center;\n	transform: rotate(-135deg) scale(1.2);\n	margin-left: -10px;\n	margin-top: -18px;\n}\n\n._cursorFilling_1dgwb_25 {\n	position: absolute;\n	width: 100%;\n	height: 100%;\n	background: url(\"data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3cdefs%3e%3c/defs%3e%3cg%20xmlns='http://www.w3.org/2000/svg'%20style='filter:%20drop-shadow(light-dark(rgba(0,%200,%200,%200.4),%20rgba(237,%20237,%20237,%200.4))%203px%204px%204px);'%3e%3cpath%20d='M%2015%2042%20L%2015%2036.99%20Q%2015%2031.99%2023.7%2031.99%20L%2028.05%2031.99%20Q%2032.41%2031.99%2032.41%2021.99%20L%2032.41%2017%20Q%2032.41%2012%2041.09%2016.95%20L%2076.31%2037.05%20Q%2085%2042%2076.31%2046.95%20L%2041.09%2067.05%20Q%2032.41%2072%2032.41%2062.01%20L%2032.41%2057.01%20Q%2032.41%2052.01%2023.7%2052.01%20L%2019.35%2052.01%20Q%2015%2052.01%2015%2047.01%20Z'%20fill='%23ffffff'%20stroke='none'%20style='fill:%20%23ffffff;'/%3e%3c/g%3e%3c/svg%3e\");\n	background-size: 100% 100%;\n	background-repeat: no-repeat;\n\n	transform-origin: center;\n	transform: rotate(-135deg) scale(1.2);\n	margin-left: -10px;\n	margin-top: -18px;\n}\n\n._cursorRipple_1dgwb_39 {\n	position: absolute;\n	width: 100%;\n	height: 100%;\n	pointer-events: none;\n	margin-left: -50%;\n	margin-top: -50%;\n\n	&::after {\n		content: '';\n		opacity: 0;\n		position: absolute;\n		inset: 0;\n		border: 4px solid rgba(57, 182, 255, 1);\n		border-radius: 50%;\n	}\n}\n\n._cursor_1dgwb_2._clicking_1dgwb_57 ._cursorRipple_1dgwb_39::after {\n	animation: _cursor-ripple_1dgwb_1 300ms ease-out forwards;\n}\n\n@keyframes _cursor-ripple_1dgwb_1 {\n	0% {\n		transform: scale(0);\n		opacity: 1;\n	}\n	100% {\n		transform: scale(2);\n		opacity: 0;\n	}\n}\n/*$vite$:1*/";
+	__vite_style__.textContent = "._wrapper_1ooyb_1 {\n	position: fixed;\n	inset: 0;\n	z-index: 2147483641; /* 确保在所有元素之上，除了 panel */\n	cursor: wait;\n	overflow: hidden;\n\n	display: none;\n}\n\n._wrapper_1ooyb_1._visible_1ooyb_11 {\n	display: block;\n}\n/* AI 光标样式 */\n._cursor_1dgwb_2 {\n	position: absolute;\n	width: var(--cursor-size, 75px);\n	height: var(--cursor-size, 75px);\n	pointer-events: none;\n	z-index: 10000;\n}\n\n._cursorBorder_1dgwb_10 {\n	position: absolute;\n	width: 100%;\n	height: 100%;\n	background: linear-gradient(45deg, rgb(57, 182, 255), rgb(189, 69, 251));\n	mask-image: url(\"data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%20fill='none'%3e%3cg%3e%3cpath%20d='M%2015%2042%20L%2015%2036.99%20Q%2015%2031.99%2023.7%2031.99%20L%2028.05%2031.99%20Q%2032.41%2031.99%2032.41%2021.99%20L%2032.41%2017%20Q%2032.41%2012%2041.09%2016.95%20L%2076.31%2037.05%20Q%2085%2042%2076.31%2046.95%20L%2041.09%2067.05%20Q%2032.41%2072%2032.41%2062.01%20L%2032.41%2057.01%20Q%2032.41%2052.01%2023.7%2052.01%20L%2019.35%2052.01%20Q%2015%2052.01%2015%2047.01%20Z'%20fill='none'%20stroke='%23000000'%20stroke-width='6'%20stroke-miterlimit='10'%20style='stroke:%20light-dark(rgb(0,%200,%200),%20rgb(255,%20255,%20255));'/%3e%3c/g%3e%3c/svg%3e\");\n	mask-size: 100% 100%;\n	mask-repeat: no-repeat;\n\n	transform-origin: center;\n	transform: rotate(-135deg) scale(1.2);\n	margin-left: -10px;\n	margin-top: -18px;\n}\n\n._cursorFilling_1dgwb_25 {\n	position: absolute;\n	width: 100%;\n	height: 100%;\n	background: url(\"data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3e%3cdefs%3e%3c/defs%3e%3cg%20xmlns='http://www.w3.org/2000/svg'%20style='filter:%20drop-shadow(light-dark(rgba(0,%200,%200,%200.4),%20rgba(237,%20237,%20237,%200.4))%203px%204px%204px);'%3e%3cpath%20d='M%2015%2042%20L%2015%2036.99%20Q%2015%2031.99%2023.7%2031.99%20L%2028.05%2031.99%20Q%2032.41%2031.99%2032.41%2021.99%20L%2032.41%2017%20Q%2032.41%2012%2041.09%2016.95%20L%2076.31%2037.05%20Q%2085%2042%2076.31%2046.95%20L%2041.09%2067.05%20Q%2032.41%2072%2032.41%2062.01%20L%2032.41%2057.01%20Q%2032.41%2052.01%2023.7%2052.01%20L%2019.35%2052.01%20Q%2015%2052.01%2015%2047.01%20Z'%20fill='%23ffffff'%20stroke='none'%20style='fill:%20%23ffffff;'/%3e%3c/g%3e%3c/svg%3e\");\n	background-size: 100% 100%;\n	background-repeat: no-repeat;\n\n	transform-origin: center;\n	transform: rotate(-135deg) scale(1.2);\n	margin-left: -10px;\n	margin-top: -18px;\n}\n\n._cursorRipple_1dgwb_39 {\n	position: absolute;\n	width: 100%;\n	height: 100%;\n	pointer-events: none;\n	margin-left: -50%;\n	margin-top: -50%;\n\n	&::after {\n		content: '';\n		opacity: 0;\n		position: absolute;\n		inset: 0;\n		border: 4px solid rgba(57, 182, 255, 1);\n		border-radius: 50%;\n	}\n}\n\n._cursor_1dgwb_2._clicking_1dgwb_57 ._cursorRipple_1dgwb_39::after {\n	animation: _cursor-ripple_1dgwb_1 300ms ease-out forwards;\n}\n\n@keyframes _cursor-ripple_1dgwb_1 {\n	0% {\n		transform: scale(0);\n		opacity: 1;\n	}\n	100% {\n		transform: scale(2);\n		opacity: 0;\n	}\n}\n/*$vite$:1*/";
 	document.head.appendChild(__vite_style__);
 	//#region \0rolldown/runtime.js
 	var __defProp = Object.defineProperty;
-	var __esmMin = (fn, res) => () => (fn && (res = fn((fn = 0))), res);
+	var __esmMin = (fn, res) => () => (fn && (res = fn(fn = 0)), res);
 	var __exportAll = (all, no_symbols) => {
 		let target = {};
-		for (var name in all)
-			__defProp(target, name, {
-				get: all[name],
-				enumerable: true,
-			});
+		for (var name in all) __defProp(target, name, {
+			get: all[name],
+			enumerable: true
+		});
 		if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
 		return target;
 	};
@@ -23,40 +21,38 @@ var content = (function () {
 	}
 	//#endregion
 	//#region ../../node_modules/@wxt-dev/browser/src/index.mjs
-	var browser$1 = globalThis.browser?.runtime?.id
-		? globalThis.browser
-		: globalThis.chrome;
+	var browser$1 = globalThis.browser?.runtime?.id ? globalThis.browser : globalThis.chrome;
 	//#endregion
 	//#region ../../node_modules/wxt/dist/browser.mjs
 	/**
-	 * Contains the `browser` export which you should use to access the extension
-	 * APIs in your project:
-	 *
-	 * ```ts
-	 * import { browser } from 'wxt/browser';
-	 *
-	 * browser.runtime.onInstalled.addListener(() => {
-	 *   // ...
-	 * });
-	 * ```
-	 *
-	 * @module wxt/browser
-	 */
+	* Contains the `browser` export which you should use to access the extension
+	* APIs in your project:
+	*
+	* ```ts
+	* import { browser } from 'wxt/browser';
+	*
+	* browser.runtime.onInstalled.addListener(() => {
+	*   // ...
+	* });
+	* ```
+	*
+	* @module wxt/browser
+	*/
 	var browser = browser$1;
 	//#endregion
 	//#region ../../node_modules/wxt/dist/utils/inject-script.mjs
 	/** @module wxt/utils/inject-script */
 	/**
-	 * This function can only be called inside content scripts.
-	 *
-	 * Inject an unlisted script into the page. Scripts are added to the `<head>`
-	 * element or `document.documentElement` if there is no head.
-	 *
-	 * Make sure to add the injected script to your manifest's
-	 * `web_accessible_resources`.
-	 *
-	 * @returns A result object containing the created script element.
-	 */
+	* This function can only be called inside content scripts.
+	*
+	* Inject an unlisted script into the page. Scripts are added to the `<head>`
+	* element or `document.documentElement` if there is no head.
+	*
+	* Make sure to add the injected script to your manifest's
+	* `web_accessible_resources`.
+	*
+	* @returns A result object containing the created script element.
+	*/
 	async function injectScript(path, options) {
 		const url = browser.runtime.getURL(path);
 		const script = document.createElement("script");
@@ -77,9 +73,7 @@ var content = (function () {
 				cleanup();
 			};
 			const onerror = () => {
-				reject(
-					/* @__PURE__ */ new Error(`Failed to load script: ${script.src}`),
-				);
+				reject(/* @__PURE__ */ new Error(`Failed to load script: ${script.src}`));
 				cleanup();
 			};
 			const cleanup = () => {
@@ -110,46 +104,38 @@ var content = (function () {
 	/** Iframe offset for translating element coordinates to top-frame viewport. */
 	function getIframeOffset(element) {
 		const frame = element.ownerDocument.defaultView?.frameElement;
-		if (!frame)
-			return {
-				x: 0,
-				y: 0,
-			};
+		if (!frame) return {
+			x: 0,
+			y: 0
+		};
 		const rect = frame.getBoundingClientRect();
 		return {
 			x: rect.left,
-			y: rect.top,
+			y: rect.top
 		};
 	}
 	/**
-	 * Get native value setter from the element's own prototype (iframe-safe).
-	 * @note for React
-	 */
+	* Get native value setter from the element's own prototype (iframe-safe).
+	* @note for React
+	*/
 	function getNativeValueSetter(element) {
-		return Object.getOwnPropertyDescriptor(
-			Object.getPrototypeOf(element),
-			"value",
-		).set;
+		return Object.getOwnPropertyDescriptor(Object.getPrototypeOf(element), "value").set;
 	}
 	async function waitFor$1(seconds) {
 		await new Promise((resolve) => setTimeout(resolve, seconds * 1e3));
 	}
 	/**
-	 * Move the visual pointer to a position within an element.
-	 * @param x - x coordinate in the element's document viewport
-	 * @param y - y coordinate in the element's document viewport
-	 */
+	* Move the visual pointer to a position within an element.
+	* @param x - x coordinate in the element's document viewport
+	* @param y - y coordinate in the element's document viewport
+	*/
 	async function movePointerToElement(element, x, y) {
 		const offset = getIframeOffset(element);
-		window.dispatchEvent(
-			new CustomEvent("PageAgent::MovePointerTo", {
-				detail: {
-					x: x + offset.x,
-					y: y + offset.y,
-				},
-			}),
-		);
-		await waitFor$1(0.3);
+		window.dispatchEvent(new CustomEvent("PageAgent::MovePointerTo", { detail: {
+			x: x + offset.x,
+			y: y + offset.y
+		} }));
+		await waitFor$1(.3);
 	}
 	async function clickPointer() {
 		window.dispatchEvent(new CustomEvent("PageAgent::ClickPointer"));
@@ -163,46 +149,35 @@ var content = (function () {
 	//#endregion
 	//#region ../page-controller/src/actions.ts
 	/**
-	 * Get the HTMLElement by index from a selectorMap.
-	 * @private Internal method, subject to change at any time.
-	 */
+	* Get the HTMLElement by index from a selectorMap.
+	* @private Internal method, subject to change at any time.
+	*/
 	function getElementByIndex(selectorMap, index) {
 		const interactiveNode = selectorMap.get(index);
-		if (!interactiveNode)
-			throw new Error(`No interactive element found at index ${index}`);
+		if (!interactiveNode) throw new Error(`No interactive element found at index ${index}`);
 		const element = interactiveNode.ref;
-		if (!element)
-			throw new Error(`Element at index ${index} does not have a reference`);
-		if (!isHTMLElement(element))
-			throw new Error(`Element at index ${index} is not an HTMLElement`);
+		if (!element) throw new Error(`Element at index ${index} does not have a reference`);
+		if (!isHTMLElement(element)) throw new Error(`Element at index ${index} is not an HTMLElement`);
 		return element;
 	}
 	var lastClickedElement = null;
 	function blurLastClickedElement() {
 		if (lastClickedElement) {
-			lastClickedElement.dispatchEvent(
-				new PointerEvent("pointerout", { bubbles: true }),
-			);
-			lastClickedElement.dispatchEvent(
-				new PointerEvent("pointerleave", { bubbles: false }),
-			);
-			lastClickedElement.dispatchEvent(
-				new MouseEvent("mouseout", { bubbles: true }),
-			);
-			lastClickedElement.dispatchEvent(
-				new MouseEvent("mouseleave", { bubbles: false }),
-			);
+			lastClickedElement.dispatchEvent(new PointerEvent("pointerout", { bubbles: true }));
+			lastClickedElement.dispatchEvent(new PointerEvent("pointerleave", { bubbles: false }));
+			lastClickedElement.dispatchEvent(new MouseEvent("mouseout", { bubbles: true }));
+			lastClickedElement.dispatchEvent(new MouseEvent("mouseleave", { bubbles: false }));
 			lastClickedElement.blur();
 			lastClickedElement = null;
 		}
 	}
 	/**
-	 * Simulate a full click following W3C Pointer Events + UI Events spec order:
-	 * pointerover/enter → mouseover/enter → pointerdown → mousedown → [focus] →
-	 * pointerup → mouseup → click
-	 *
-	 * @private Internal method, subject to change at any time.
-	 */
+	* Simulate a full click following W3C Pointer Events + UI Events spec order:
+	* pointerover/enter → mouseover/enter → pointerdown → mousedown → [focus] →
+	* pointerup → mouseup → click
+	*
+	* @private Internal method, subject to change at any time.
+	*/
 	async function clickElement(element) {
 		blurLastClickedElement();
 		lastClickedElement = element;
@@ -214,99 +189,75 @@ var content = (function () {
 		const y = rect.top + rect.height / 2;
 		await movePointerToElement(element, x, y);
 		await clickPointer();
-		await waitFor$1(0.1);
+		await waitFor$1(.1);
 		const doc = element.ownerDocument;
 		await enablePassThrough();
 		const hitTarget = doc.elementFromPoint(x, y);
 		await disablePassThrough();
-		const target =
-			hitTarget instanceof HTMLElement && element.contains(hitTarget)
-				? hitTarget
-				: element;
+		const target = hitTarget instanceof HTMLElement && element.contains(hitTarget) ? hitTarget : element;
 		const pointerOpts = {
 			bubbles: true,
 			cancelable: true,
 			clientX: x,
 			clientY: y,
-			pointerType: "mouse",
+			pointerType: "mouse"
 		};
 		const mouseOpts = {
 			bubbles: true,
 			cancelable: true,
 			clientX: x,
 			clientY: y,
-			button: 0,
+			button: 0
 		};
 		target.dispatchEvent(new PointerEvent("pointerover", pointerOpts));
-		target.dispatchEvent(
-			new PointerEvent("pointerenter", {
-				...pointerOpts,
-				bubbles: false,
-			}),
-		);
+		target.dispatchEvent(new PointerEvent("pointerenter", {
+			...pointerOpts,
+			bubbles: false
+		}));
 		target.dispatchEvent(new MouseEvent("mouseover", mouseOpts));
-		target.dispatchEvent(
-			new MouseEvent("mouseenter", {
-				...mouseOpts,
-				bubbles: false,
-			}),
-		);
+		target.dispatchEvent(new MouseEvent("mouseenter", {
+			...mouseOpts,
+			bubbles: false
+		}));
 		target.dispatchEvent(new PointerEvent("pointerdown", pointerOpts));
 		target.dispatchEvent(new MouseEvent("mousedown", mouseOpts));
 		element.focus({ preventScroll: true });
 		target.dispatchEvent(new PointerEvent("pointerup", pointerOpts));
 		target.dispatchEvent(new MouseEvent("mouseup", mouseOpts));
 		target.click();
-		await waitFor$1(0.2);
+		await waitFor$1(.2);
 	}
 	/**
-	 * @private Internal method, subject to change at any time.
-	 */
+	* @private Internal method, subject to change at any time.
+	*/
 	async function inputTextElement(element, text) {
 		const isContentEditable = element.isContentEditable;
-		if (
-			!isInputElement(element) &&
-			!isTextAreaElement(element) &&
-			!isContentEditable
-		)
-			throw new Error("Element is not an input, textarea, or contenteditable");
+		if (!isInputElement(element) && !isTextAreaElement(element) && !isContentEditable) throw new Error("Element is not an input, textarea, or contenteditable");
 		await clickElement(element);
 		if (isContentEditable) {
-			if (
-				element.dispatchEvent(
-					new InputEvent("beforeinput", {
-						bubbles: true,
-						cancelable: true,
-						inputType: "deleteContent",
-					}),
-				)
-			) {
+			if (element.dispatchEvent(new InputEvent("beforeinput", {
+				bubbles: true,
+				cancelable: true,
+				inputType: "deleteContent"
+			}))) {
 				element.innerText = "";
-				element.dispatchEvent(
-					new InputEvent("input", {
-						bubbles: true,
-						inputType: "deleteContent",
-					}),
-				);
+				element.dispatchEvent(new InputEvent("input", {
+					bubbles: true,
+					inputType: "deleteContent"
+				}));
 			}
-			if (
-				element.dispatchEvent(
-					new InputEvent("beforeinput", {
-						bubbles: true,
-						cancelable: true,
-						inputType: "insertText",
-						data: text,
-					}),
-				)
-			) {
+			if (element.dispatchEvent(new InputEvent("beforeinput", {
+				bubbles: true,
+				cancelable: true,
+				inputType: "insertText",
+				data: text
+			}))) {
 				element.innerText = text;
-				element.dispatchEvent(
-					new InputEvent("input", {
-						bubbles: true,
-						inputType: "insertText",
-						data: text,
-					}),
-				);
+				element.dispatchEvent(new InputEvent("input", {
+					bubbles: true,
+					inputType: "insertText",
+					data: text
+				}));
 			}
 			if (!(element.innerText.trim() === text.trim())) {
 				element.focus();
@@ -322,42 +273,33 @@ var content = (function () {
 			element.dispatchEvent(new Event("change", { bubbles: true }));
 			element.blur();
 		} else getNativeValueSetter(element).call(element, text);
-		if (!isContentEditable)
-			element.dispatchEvent(new Event("input", { bubbles: true }));
-		await waitFor$1(0.1);
+		if (!isContentEditable) element.dispatchEvent(new Event("input", { bubbles: true }));
+		await waitFor$1(.1);
 		blurLastClickedElement();
 	}
 	/**
-	 * @todo browser-use version is very complex and supports menu tags, need to follow up
-	 * @private Internal method, subject to change at any time.
-	 */
+	* @todo browser-use version is very complex and supports menu tags, need to follow up
+	* @private Internal method, subject to change at any time.
+	*/
 	async function selectOptionElement(selectElement, optionText) {
-		if (!isSelectElement(selectElement))
-			throw new Error("Element is not a select element");
-		const option = Array.from(selectElement.options).find(
-			(opt) => opt.textContent?.trim() === optionText.trim(),
-		);
-		if (!option)
-			throw new Error(
-				`Option with text "${optionText}" not found in select element`,
-			);
+		if (!isSelectElement(selectElement)) throw new Error("Element is not a select element");
+		const option = Array.from(selectElement.options).find((opt) => opt.textContent?.trim() === optionText.trim());
+		if (!option) throw new Error(`Option with text "${optionText}" not found in select element`);
 		selectElement.value = option.value;
 		selectElement.dispatchEvent(new Event("change", { bubbles: true }));
-		await waitFor$1(0.1);
+		await waitFor$1(.1);
 	}
 	/**
-	 * @private Internal method, subject to change at any time.
-	 */
+	* @private Internal method, subject to change at any time.
+	*/
 	async function scrollIntoViewIfNeeded(element) {
 		const el = element;
-		if (typeof el.scrollIntoViewIfNeeded === "function")
-			el.scrollIntoViewIfNeeded();
-		else
-			element.scrollIntoView({
-				behavior: "auto",
-				block: "center",
-				inline: "nearest",
-			});
+		if (typeof el.scrollIntoViewIfNeeded === "function") el.scrollIntoViewIfNeeded();
+		else element.scrollIntoView({
+			behavior: "auto",
+			block: "center",
+			inline: "nearest"
+		});
 	}
 	async function scrollVertically(scroll_amount, element) {
 		if (element) {
@@ -370,81 +312,47 @@ var content = (function () {
 			const dy = scroll_amount;
 			while (currentElement && attempts < 10) {
 				const computedStyle = window.getComputedStyle(currentElement);
-				const hasScrollableY =
-					/(auto|scroll|overlay)/.test(computedStyle.overflowY) ||
-					(computedStyle.scrollbarWidth &&
-						computedStyle.scrollbarWidth !== "auto") ||
-					(computedStyle.scrollbarGutter &&
-						computedStyle.scrollbarGutter !== "auto");
-				const canScrollVertically =
-					currentElement.scrollHeight > currentElement.clientHeight;
+				const hasScrollableY = /(auto|scroll|overlay)/.test(computedStyle.overflowY) || computedStyle.scrollbarWidth && computedStyle.scrollbarWidth !== "auto" || computedStyle.scrollbarGutter && computedStyle.scrollbarGutter !== "auto";
+				const canScrollVertically = currentElement.scrollHeight > currentElement.clientHeight;
 				if (hasScrollableY && canScrollVertically) {
 					const beforeScroll = currentElement.scrollTop;
-					const maxScroll =
-						currentElement.scrollHeight - currentElement.clientHeight;
+					const maxScroll = currentElement.scrollHeight - currentElement.clientHeight;
 					let scrollAmount = dy / 3;
-					if (scrollAmount > 0)
-						scrollAmount = Math.min(scrollAmount, maxScroll - beforeScroll);
+					if (scrollAmount > 0) scrollAmount = Math.min(scrollAmount, maxScroll - beforeScroll);
 					else scrollAmount = Math.max(scrollAmount, -beforeScroll);
 					currentElement.scrollTop = beforeScroll + scrollAmount;
 					const actualScrollDelta = currentElement.scrollTop - beforeScroll;
-					if (Math.abs(actualScrollDelta) > 0.5) {
+					if (Math.abs(actualScrollDelta) > .5) {
 						scrollSuccess = true;
 						scrolledElement = currentElement;
 						scrollDelta = actualScrollDelta;
 						break;
 					}
 				}
-				if (
-					currentElement === document.body ||
-					currentElement === document.documentElement
-				)
-					break;
+				if (currentElement === document.body || currentElement === document.documentElement) break;
 				currentElement = currentElement.parentElement;
 				attempts++;
 			}
-			if (scrollSuccess)
-				return `Scrolled container (${scrolledElement?.tagName}) by ${scrollDelta}px`;
-			else
-				return `No scrollable container found for element (${targetElement.tagName})`;
+			if (scrollSuccess) return `Scrolled container (${scrolledElement?.tagName}) by ${scrollDelta}px`;
+			else return `No scrollable container found for element (${targetElement.tagName})`;
 		}
 		const dy = scroll_amount;
-		const bigEnough = (el) => el.clientHeight >= window.innerHeight * 0.5;
-		const canScroll = (el) =>
-			Boolean(
-				el &&
-					/(auto|scroll|overlay)/.test(getComputedStyle(el).overflowY) &&
-					el.scrollHeight > el.clientHeight &&
-					bigEnough(el),
-			);
+		const bigEnough = (el) => el.clientHeight >= window.innerHeight * .5;
+		const canScroll = (el) => Boolean(el && /(auto|scroll|overlay)/.test(getComputedStyle(el).overflowY) && el.scrollHeight > el.clientHeight && bigEnough(el));
 		let el = document.activeElement;
 		while (el && !canScroll(el) && el !== document.body) el = el.parentElement;
-		el = canScroll(el)
-			? el
-			: Array.from(document.querySelectorAll("*")).find(canScroll) ||
-				document.scrollingElement ||
-				document.documentElement;
-		if (
-			el === document.scrollingElement ||
-			el === document.documentElement ||
-			el === document.body
-		) {
+		el = canScroll(el) ? el : Array.from(document.querySelectorAll("*")).find(canScroll) || document.scrollingElement || document.documentElement;
+		if (el === document.scrollingElement || el === document.documentElement || el === document.body) {
 			const scrollBefore = window.scrollY;
-			const scrollMax =
-				document.documentElement.scrollHeight - window.innerHeight;
+			const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
 			window.scrollBy(0, dy);
 			const scrollAfter = window.scrollY;
 			const scrolled = scrollAfter - scrollBefore;
-			if (Math.abs(scrolled) < 1)
-				return dy > 0
-					? `⚠️ Already at the bottom of the page, cannot scroll down further.`
-					: `⚠️ Already at the top of the page, cannot scroll up further.`;
+			if (Math.abs(scrolled) < 1) return dy > 0 ? `⚠️ Already at the bottom of the page, cannot scroll down further.` : `⚠️ Already at the top of the page, cannot scroll up further.`;
 			const reachedBottom = dy > 0 && scrollAfter >= scrollMax - 1;
 			const reachedTop = dy < 0 && scrollAfter <= 1;
-			if (reachedBottom)
-				return `✅ Scrolled page by ${scrolled}px. Reached the bottom of the page.`;
-			if (reachedTop)
-				return `✅ Scrolled page by ${scrolled}px. Reached the top of the page.`;
+			if (reachedBottom) return `✅ Scrolled page by ${scrolled}px. Reached the bottom of the page.`;
+			if (reachedTop) return `✅ Scrolled page by ${scrolled}px. Reached the top of the page.`;
 			return `✅ Scrolled page by ${scrolled}px.`;
 		} else {
 			const warningMsg = `The document is not scrollable. Falling back to container scroll.`;
@@ -453,21 +361,16 @@ var content = (function () {
 			const scrollMax = el.scrollHeight - el.clientHeight;
 			el.scrollBy({
 				top: dy,
-				behavior: "smooth",
+				behavior: "smooth"
 			});
-			await waitFor$1(0.1);
+			await waitFor$1(.1);
 			const scrollAfter = el.scrollTop;
 			const scrolled = scrollAfter - scrollBefore;
-			if (Math.abs(scrolled) < 1)
-				return dy > 0
-					? `⚠️ ${warningMsg} Already at the bottom of container (${el.tagName}), cannot scroll down further.`
-					: `⚠️ ${warningMsg} Already at the top of container (${el.tagName}), cannot scroll up further.`;
+			if (Math.abs(scrolled) < 1) return dy > 0 ? `⚠️ ${warningMsg} Already at the bottom of container (${el.tagName}), cannot scroll down further.` : `⚠️ ${warningMsg} Already at the top of container (${el.tagName}), cannot scroll up further.`;
 			const reachedBottom = dy > 0 && scrollAfter >= scrollMax - 1;
 			const reachedTop = dy < 0 && scrollAfter <= 1;
-			if (reachedBottom)
-				return `✅ ${warningMsg} Scrolled container (${el.tagName}) by ${scrolled}px. Reached the bottom.`;
-			if (reachedTop)
-				return `✅ ${warningMsg} Scrolled container (${el.tagName}) by ${scrolled}px. Reached the top.`;
+			if (reachedBottom) return `✅ ${warningMsg} Scrolled container (${el.tagName}) by ${scrolled}px. Reached the bottom.`;
+			if (reachedTop) return `✅ ${warningMsg} Scrolled container (${el.tagName}) by ${scrolled}px. Reached the top.`;
 			return `✅ ${warningMsg} Scrolled container (${el.tagName}) by ${scrolled}px.`;
 		}
 	}
@@ -482,81 +385,47 @@ var content = (function () {
 			const dx = scroll_amount;
 			while (currentElement && attempts < 10) {
 				const computedStyle = window.getComputedStyle(currentElement);
-				const hasScrollableX =
-					/(auto|scroll|overlay)/.test(computedStyle.overflowX) ||
-					(computedStyle.scrollbarWidth &&
-						computedStyle.scrollbarWidth !== "auto") ||
-					(computedStyle.scrollbarGutter &&
-						computedStyle.scrollbarGutter !== "auto");
-				const canScrollHorizontally =
-					currentElement.scrollWidth > currentElement.clientWidth;
+				const hasScrollableX = /(auto|scroll|overlay)/.test(computedStyle.overflowX) || computedStyle.scrollbarWidth && computedStyle.scrollbarWidth !== "auto" || computedStyle.scrollbarGutter && computedStyle.scrollbarGutter !== "auto";
+				const canScrollHorizontally = currentElement.scrollWidth > currentElement.clientWidth;
 				if (hasScrollableX && canScrollHorizontally) {
 					const beforeScroll = currentElement.scrollLeft;
-					const maxScroll =
-						currentElement.scrollWidth - currentElement.clientWidth;
+					const maxScroll = currentElement.scrollWidth - currentElement.clientWidth;
 					let scrollAmount = dx / 3;
-					if (scrollAmount > 0)
-						scrollAmount = Math.min(scrollAmount, maxScroll - beforeScroll);
+					if (scrollAmount > 0) scrollAmount = Math.min(scrollAmount, maxScroll - beforeScroll);
 					else scrollAmount = Math.max(scrollAmount, -beforeScroll);
 					currentElement.scrollLeft = beforeScroll + scrollAmount;
 					const actualScrollDelta = currentElement.scrollLeft - beforeScroll;
-					if (Math.abs(actualScrollDelta) > 0.5) {
+					if (Math.abs(actualScrollDelta) > .5) {
 						scrollSuccess = true;
 						scrolledElement = currentElement;
 						scrollDelta = actualScrollDelta;
 						break;
 					}
 				}
-				if (
-					currentElement === document.body ||
-					currentElement === document.documentElement
-				)
-					break;
+				if (currentElement === document.body || currentElement === document.documentElement) break;
 				currentElement = currentElement.parentElement;
 				attempts++;
 			}
-			if (scrollSuccess)
-				return `Scrolled container (${scrolledElement?.tagName}) horizontally by ${scrollDelta}px`;
-			else
-				return `No horizontally scrollable container found for element (${targetElement.tagName})`;
+			if (scrollSuccess) return `Scrolled container (${scrolledElement?.tagName}) horizontally by ${scrollDelta}px`;
+			else return `No horizontally scrollable container found for element (${targetElement.tagName})`;
 		}
 		const dx = scroll_amount;
-		const bigEnough = (el) => el.clientWidth >= window.innerWidth * 0.5;
-		const canScroll = (el) =>
-			Boolean(
-				el &&
-					/(auto|scroll|overlay)/.test(getComputedStyle(el).overflowX) &&
-					el.scrollWidth > el.clientWidth &&
-					bigEnough(el),
-			);
+		const bigEnough = (el) => el.clientWidth >= window.innerWidth * .5;
+		const canScroll = (el) => Boolean(el && /(auto|scroll|overlay)/.test(getComputedStyle(el).overflowX) && el.scrollWidth > el.clientWidth && bigEnough(el));
 		let el = document.activeElement;
 		while (el && !canScroll(el) && el !== document.body) el = el.parentElement;
-		el = canScroll(el)
-			? el
-			: Array.from(document.querySelectorAll("*")).find(canScroll) ||
-				document.scrollingElement ||
-				document.documentElement;
-		if (
-			el === document.scrollingElement ||
-			el === document.documentElement ||
-			el === document.body
-		) {
+		el = canScroll(el) ? el : Array.from(document.querySelectorAll("*")).find(canScroll) || document.scrollingElement || document.documentElement;
+		if (el === document.scrollingElement || el === document.documentElement || el === document.body) {
 			const scrollBefore = window.scrollX;
-			const scrollMax =
-				document.documentElement.scrollWidth - window.innerWidth;
+			const scrollMax = document.documentElement.scrollWidth - window.innerWidth;
 			window.scrollBy(dx, 0);
 			const scrollAfter = window.scrollX;
 			const scrolled = scrollAfter - scrollBefore;
-			if (Math.abs(scrolled) < 1)
-				return dx > 0
-					? `⚠️ Already at the right edge of the page, cannot scroll right further.`
-					: `⚠️ Already at the left edge of the page, cannot scroll left further.`;
+			if (Math.abs(scrolled) < 1) return dx > 0 ? `⚠️ Already at the right edge of the page, cannot scroll right further.` : `⚠️ Already at the left edge of the page, cannot scroll left further.`;
 			const reachedRight = dx > 0 && scrollAfter >= scrollMax - 1;
 			const reachedLeft = dx < 0 && scrollAfter <= 1;
-			if (reachedRight)
-				return `✅ Scrolled page by ${scrolled}px. Reached the right edge of the page.`;
-			if (reachedLeft)
-				return `✅ Scrolled page by ${scrolled}px. Reached the left edge of the page.`;
+			if (reachedRight) return `✅ Scrolled page by ${scrolled}px. Reached the right edge of the page.`;
+			if (reachedLeft) return `✅ Scrolled page by ${scrolled}px. Reached the left edge of the page.`;
 			return `✅ Scrolled page horizontally by ${scrolled}px.`;
 		} else {
 			const warningMsg = `The document is not scrollable. Falling back to container scroll.`;
@@ -565,90 +434,74 @@ var content = (function () {
 			const scrollMax = el.scrollWidth - el.clientWidth;
 			el.scrollBy({
 				left: dx,
-				behavior: "smooth",
+				behavior: "smooth"
 			});
-			await waitFor$1(0.1);
+			await waitFor$1(.1);
 			const scrollAfter = el.scrollLeft;
 			const scrolled = scrollAfter - scrollBefore;
-			if (Math.abs(scrolled) < 1)
-				return dx > 0
-					? `⚠️ ${warningMsg} Already at the right edge of container (${el.tagName}), cannot scroll right further.`
-					: `⚠️ ${warningMsg} Already at the left edge of container (${el.tagName}), cannot scroll left further.`;
+			if (Math.abs(scrolled) < 1) return dx > 0 ? `⚠️ ${warningMsg} Already at the right edge of container (${el.tagName}), cannot scroll right further.` : `⚠️ ${warningMsg} Already at the left edge of container (${el.tagName}), cannot scroll left further.`;
 			const reachedRight = dx > 0 && scrollAfter >= scrollMax - 1;
 			const reachedLeft = dx < 0 && scrollAfter <= 1;
-			if (reachedRight)
-				return `✅ ${warningMsg} Scrolled container (${el.tagName}) by ${scrolled}px. Reached the right edge.`;
-			if (reachedLeft)
-				return `✅ ${warningMsg} Scrolled container (${el.tagName}) by ${scrolled}px. Reached the left edge.`;
+			if (reachedRight) return `✅ ${warningMsg} Scrolled container (${el.tagName}) by ${scrolled}px. Reached the right edge.`;
+			if (reachedLeft) return `✅ ${warningMsg} Scrolled container (${el.tagName}) by ${scrolled}px. Reached the left edge.`;
 			return `✅ ${warningMsg} Scrolled container (${el.tagName}) horizontally by ${scrolled}px.`;
 		}
 	}
 	//#endregion
 	//#region ../page-controller/src/dom/dom_tree/index.js
 	/**
-	 * @file port from browser-use
-	 * @see https://github.com/browser-use/browser-use/commits/main/browser_use/dom/dom_tree/index.js
-	 * @match 0.5.9 d51b6e73daff7165fdd3e44debd667e7f5f7fdc5
-	 *
-	 * search @edit for all the changed lines.
-	 *
-	 * @edit export
-	 * @edit add interactiveBlacklist interactiveWhitelist
-	 * @edit adjustable opacity
-	 * @edit direct dom ref
-	 * @edit @workaround input.checked
-	 * @edit smaller zIndex for highlight
-	 * @edit no need for xpath
-	 * @edit add `extra` field for extra data
-	 * @edit scrollable element detection
-	 * @edit add `data-browser-use-ignore` attribute
-	 * @edit improve `sampleRect`, filter out rects with 0 area
-	 * @edit exclude aria-hidden elements
-	 * @edit make sure attributes exist for interactive candidates.
-	 * @edit fix "aria-*" attributes check
-	 */
-	var dom_tree_default = (
-		args = {
-			doHighlightElements: true,
-			focusHighlightIndex: -1,
-			viewportExpansion: 0,
-			debugMode: false,
-			/**
-			 * @edit
-			 */
-			/** @type {Element[]} */
-			interactiveBlacklist: [],
-			/** @type {Element[]} */
-			interactiveWhitelist: [],
-			highlightOpacity: 0.1,
-			highlightLabelOpacity: 0.5,
-		},
-	) => {
+	* @file port from browser-use
+	* @see https://github.com/browser-use/browser-use/commits/main/browser_use/dom/dom_tree/index.js
+	* @match 0.5.9 d51b6e73daff7165fdd3e44debd667e7f5f7fdc5
+	*
+	* search @edit for all the changed lines.
+	*
+	* @edit export
+	* @edit add interactiveBlacklist interactiveWhitelist
+	* @edit adjustable opacity
+	* @edit direct dom ref
+	* @edit @workaround input.checked
+	* @edit smaller zIndex for highlight
+	* @edit no need for xpath
+	* @edit add `extra` field for extra data
+	* @edit scrollable element detection
+	* @edit add `data-browser-use-ignore` attribute
+	* @edit improve `sampleRect`, filter out rects with 0 area
+	* @edit exclude aria-hidden elements
+	* @edit make sure attributes exist for interactive candidates.
+	* @edit fix "aria-*" attributes check
+	* @edit quiet cross-origin iframe SecurityError (skip silently, warn on real errors)
+	*/
+	var dom_tree_default = (args = {
+		doHighlightElements: true,
+		focusHighlightIndex: -1,
+		viewportExpansion: 0,
+		debugMode: false,
 		/**
-		 * @edit
-		 */
-		const {
-			interactiveBlacklist,
-			interactiveWhitelist,
-			highlightOpacity,
-			highlightLabelOpacity,
-		} = args;
-		const {
-			doHighlightElements,
-			focusHighlightIndex,
-			viewportExpansion,
-			debugMode,
-		} = args;
+		* @edit
+		*/
+		/** @type {Element[]} */
+		interactiveBlacklist: [],
+		/** @type {Element[]} */
+		interactiveWhitelist: [],
+		highlightOpacity: .1,
+		highlightLabelOpacity: .5
+	}) => {
+		/**
+		* @edit
+		*/
+		const { interactiveBlacklist, interactiveWhitelist, highlightOpacity, highlightLabelOpacity } = args;
+		const { doHighlightElements, focusHighlightIndex, viewportExpansion, debugMode } = args;
 		let highlightIndex = 0;
 		/**
-		 * @edit add `extra` field for extra data
-		 */
+		* @edit add `extra` field for extra data
+		*/
 		const extraData = /* @__PURE__ */ new WeakMap();
 		function addExtraData(element, data) {
 			if (!element || element.nodeType !== Node.ELEMENT_NODE) return;
 			extraData.set(element, {
 				...extraData.get(element),
-				...data,
+				...data
 			});
 		}
 		const DOM_CACHE = {
@@ -659,72 +512,69 @@ var content = (function () {
 				DOM_CACHE.boundingRects = /* @__PURE__ */ new WeakMap();
 				DOM_CACHE.clientRects = /* @__PURE__ */ new WeakMap();
 				DOM_CACHE.computedStyles = /* @__PURE__ */ new WeakMap();
-			},
+			}
 		};
 		/**
-		 * Gets the cached bounding rect for an element.
-		 *
-		 * @param {HTMLElement} element - The element to get the bounding rect for.
-		 * @returns {DOMRect | null} The cached bounding rect, or null if the element is not found.
-		 */
+		* Gets the cached bounding rect for an element.
+		*
+		* @param {HTMLElement} element - The element to get the bounding rect for.
+		* @returns {DOMRect | null} The cached bounding rect, or null if the element is not found.
+		*/
 		function getCachedBoundingRect(element) {
 			if (!element) return null;
-			if (DOM_CACHE.boundingRects.has(element))
-				return DOM_CACHE.boundingRects.get(element);
+			if (DOM_CACHE.boundingRects.has(element)) return DOM_CACHE.boundingRects.get(element);
 			const rect = element.getBoundingClientRect();
 			if (rect) DOM_CACHE.boundingRects.set(element, rect);
 			return rect;
 		}
 		/**
-		 * Gets the cached computed style for an element.
-		 *
-		 * @param {HTMLElement} element - The element to get the computed style for.
-		 * @returns {CSSStyleDeclaration | null} The cached computed style, or null if the element is not found.
-		 */
+		* Gets the cached computed style for an element.
+		*
+		* @param {HTMLElement} element - The element to get the computed style for.
+		* @returns {CSSStyleDeclaration | null} The cached computed style, or null if the element is not found.
+		*/
 		function getCachedComputedStyle(element) {
 			if (!element) return null;
-			if (DOM_CACHE.computedStyles.has(element))
-				return DOM_CACHE.computedStyles.get(element);
+			if (DOM_CACHE.computedStyles.has(element)) return DOM_CACHE.computedStyles.get(element);
 			const style = window.getComputedStyle(element);
 			if (style) DOM_CACHE.computedStyles.set(element, style);
 			return style;
 		}
 		/**
-		 * Gets the cached client rects for an element.
-		 *
-		 * @param {HTMLElement} element - The element to get the client rects for.
-		 * @returns {DOMRectList | null} The cached client rects, or null if the element is not found.
-		 */
+		* Gets the cached client rects for an element.
+		*
+		* @param {HTMLElement} element - The element to get the client rects for.
+		* @returns {DOMRectList | null} The cached client rects, or null if the element is not found.
+		*/
 		function getCachedClientRects(element) {
 			if (!element) return null;
-			if (DOM_CACHE.clientRects.has(element))
-				return DOM_CACHE.clientRects.get(element);
+			if (DOM_CACHE.clientRects.has(element)) return DOM_CACHE.clientRects.get(element);
 			const rects = element.getClientRects();
 			if (rects) DOM_CACHE.clientRects.set(element, rects);
 			return rects;
 		}
 		/**
-		 * Hash map of DOM nodes indexed by their highlight index.
-		 *
-		 * @type {Object<string, any>}
-		 */
+		* Hash map of DOM nodes indexed by their highlight index.
+		*
+		* @type {Object<string, any>}
+		*/
 		const DOM_HASH_MAP = {};
 		const ID = { current: 0 };
 		const HIGHLIGHT_CONTAINER_ID = "playwright-highlight-container";
 		/**
-		 * Highlights an element in the DOM and returns the index of the next element.
-		 *
-		 * @param {HTMLElement} element - The element to highlight.
-		 * @param {number} index - The index of the element.
-		 * @param {HTMLElement | null} parentIframe - The parent iframe node.
-		 * @returns {number} The index of the next element.
-		 */
+		* Highlights an element in the DOM and returns the index of the next element.
+		*
+		* @param {HTMLElement} element - The element to highlight.
+		* @param {number} index - The index of the element.
+		* @param {HTMLElement | null} parentIframe - The parent iframe node.
+		* @returns {number} The index of the next element.
+		*/
 		function highlightElement(element, index, parentIframe = null) {
 			if (!element) return index;
 			const overlays = [];
 			/**
-			 * @type {HTMLElement | null}
-			 */
+			* @type {HTMLElement | null}
+			*/
 			let label = null;
 			let labelWidth = 20;
 			let labelHeight = 16;
@@ -741,8 +591,8 @@ var content = (function () {
 					container.style.width = "100%";
 					container.style.height = "100%";
 					/**
-					 * @edit smaller zIndex for highlight
-					 */
+					* @edit smaller zIndex for highlight
+					*/
 					container.style.zIndex = "2147483640";
 					container.style.backgroundColor = "transparent";
 					document.body.appendChild(container);
@@ -761,25 +611,17 @@ var content = (function () {
 					"#FF4500",
 					"#2E8B57",
 					"#DC143C",
-					"#4682B4",
+					"#4682B4"
 				];
 				let baseColor = colors[index % colors.length];
 				/**
-				 * @edit adjustable opacity
-				 */
-				const backgroundColor =
-					baseColor +
-					Math.floor(highlightOpacity * 255)
-						.toString(16)
-						.padStart(2, "0");
-				baseColor =
-					baseColor +
-					Math.floor(highlightLabelOpacity * 255)
-						.toString(16)
-						.padStart(2, "0");
+				* @edit adjustable opacity
+				*/
+				const backgroundColor = baseColor + Math.floor(highlightOpacity * 255).toString(16).padStart(2, "0");
+				baseColor = baseColor + Math.floor(highlightLabelOpacity * 255).toString(16).padStart(2, "0");
 				let iframeOffset = {
 					x: 0,
-					y: 0,
+					y: 0
 				};
 				if (parentIframe) {
 					const iframeRect = parentIframe.getBoundingClientRect();
@@ -804,7 +646,7 @@ var content = (function () {
 					fragment.appendChild(overlay);
 					overlays.push({
 						element: overlay,
-						initialRect: rect,
+						initialRect: rect
 					});
 				}
 				const firstRect = rects[0];
@@ -823,22 +665,13 @@ var content = (function () {
 				const firstRectLeft = firstRect.left + iframeOffset.x;
 				let labelTop = firstRectTop + 2;
 				let labelLeft = firstRectLeft + firstRect.width - labelWidth - 2;
-				if (
-					firstRect.width < labelWidth + 4 ||
-					firstRect.height < labelHeight + 4
-				) {
+				if (firstRect.width < labelWidth + 4 || firstRect.height < labelHeight + 4) {
 					labelTop = firstRectTop - labelHeight - 2;
 					labelLeft = firstRectLeft + firstRect.width - labelWidth;
 					if (labelLeft < iframeOffset.x) labelLeft = firstRectLeft;
 				}
-				labelTop = Math.max(
-					0,
-					Math.min(labelTop, window.innerHeight - labelHeight),
-				);
-				labelLeft = Math.max(
-					0,
-					Math.min(labelLeft, window.innerWidth - labelWidth),
-				);
+				labelTop = Math.max(0, Math.min(labelTop, window.innerHeight - labelHeight));
+				labelLeft = Math.max(0, Math.min(labelLeft, window.innerWidth - labelWidth));
 				label.style.top = `${labelTop}px`;
 				label.style.left = `${labelLeft}px`;
 				fragment.appendChild(label);
@@ -846,7 +679,7 @@ var content = (function () {
 					const newRects = element.getClientRects();
 					let newIframeOffset = {
 						x: 0,
-						y: 0,
+						y: 0
 					};
 					if (parentIframe) {
 						const iframeRect = parentIframe.getBoundingClientRect();
@@ -862,37 +695,23 @@ var content = (function () {
 							overlayData.element.style.left = `${newLeft}px`;
 							overlayData.element.style.width = `${newRect.width}px`;
 							overlayData.element.style.height = `${newRect.height}px`;
-							overlayData.element.style.display =
-								newRect.width === 0 || newRect.height === 0 ? "none" : "block";
+							overlayData.element.style.display = newRect.width === 0 || newRect.height === 0 ? "none" : "block";
 						} else overlayData.element.style.display = "none";
 					});
-					if (newRects.length < overlays.length)
-						for (let i = newRects.length; i < overlays.length; i++)
-							overlays[i].element.style.display = "none";
+					if (newRects.length < overlays.length) for (let i = newRects.length; i < overlays.length; i++) overlays[i].element.style.display = "none";
 					if (label && newRects.length > 0) {
 						const firstNewRect = newRects[0];
 						const firstNewRectTop = firstNewRect.top + newIframeOffset.y;
 						const firstNewRectLeft = firstNewRect.left + newIframeOffset.x;
 						let newLabelTop = firstNewRectTop + 2;
-						let newLabelLeft =
-							firstNewRectLeft + firstNewRect.width - labelWidth - 2;
-						if (
-							firstNewRect.width < labelWidth + 4 ||
-							firstNewRect.height < labelHeight + 4
-						) {
+						let newLabelLeft = firstNewRectLeft + firstNewRect.width - labelWidth - 2;
+						if (firstNewRect.width < labelWidth + 4 || firstNewRect.height < labelHeight + 4) {
 							newLabelTop = firstNewRectTop - labelHeight - 2;
 							newLabelLeft = firstNewRectLeft + firstNewRect.width - labelWidth;
-							if (newLabelLeft < newIframeOffset.x)
-								newLabelLeft = firstNewRectLeft;
+							if (newLabelLeft < newIframeOffset.x) newLabelLeft = firstNewRectLeft;
 						}
-						newLabelTop = Math.max(
-							0,
-							Math.min(newLabelTop, window.innerHeight - labelHeight),
-						);
-						newLabelLeft = Math.max(
-							0,
-							Math.min(newLabelLeft, window.innerWidth - labelWidth),
-						);
+						newLabelTop = Math.max(0, Math.min(newLabelTop, window.innerHeight - labelHeight));
+						newLabelLeft = Math.max(0, Math.min(newLabelLeft, window.innerWidth - labelWidth));
 						label.style.top = `${newLabelTop}px`;
 						label.style.left = `${newLabelLeft}px`;
 						label.style.display = "block";
@@ -919,17 +738,15 @@ var content = (function () {
 				container.appendChild(fragment);
 				return index + 1;
 			} finally {
-				if (cleanupFn)
-					(window._highlightCleanupFunctions =
-						window._highlightCleanupFunctions || []).push(cleanupFn);
+				if (cleanupFn) (window._highlightCleanupFunctions = window._highlightCleanupFunctions || []).push(cleanupFn);
 			}
 		}
 		/**
-		 * @edit scrollable element detection
-		 * Checks if an element is scrollable. if so, return the scrollable distance on each direction (left right top bottom). if not return null.
-		 * @note distance smaller than 4 will be considered as not scrollable.
-		 * @note only check block elements, not inline elements.
-		 */
+		* @edit scrollable element detection
+		* Checks if an element is scrollable. if so, return the scrollable distance on each direction (left right top bottom). if not return null.
+		* @note distance smaller than 4 will be considered as not scrollable.
+		* @note only check block elements, not inline elements.
+		*/
 		function isScrollableElement(element) {
 			if (!element || element.nodeType !== Node.ELEMENT_NODE) return null;
 			const style = getCachedComputedStyle(element);
@@ -938,9 +755,7 @@ var content = (function () {
 			if (display === "inline" || display === "inline-block") return null;
 			const overflowX = style.overflowX;
 			const overflowY = style.overflowY;
-			const hasScrollbarSignal =
-				(style.scrollbarWidth && style.scrollbarWidth !== "auto") ||
-				(style.scrollbarGutter && style.scrollbarGutter !== "auto");
+			const hasScrollbarSignal = style.scrollbarWidth && style.scrollbarWidth !== "auto" || style.scrollbarGutter && style.scrollbarGutter !== "auto";
 			const scrollableX = overflowX === "auto" || overflowX === "scroll";
 			const scrollableY = overflowY === "auto" || overflowY === "scroll";
 			if (!scrollableX && !scrollableY && !hasScrollbarSignal) return null;
@@ -948,30 +763,28 @@ var content = (function () {
 			const scrollHeight = element.scrollHeight - element.clientHeight;
 			const threshold = 4;
 			if (scrollWidth < threshold && scrollHeight < threshold) return null;
-			if (!scrollableY && !hasScrollbarSignal && scrollWidth < threshold)
-				return null;
-			if (!scrollableX && !hasScrollbarSignal && scrollHeight < threshold)
-				return null;
+			if (!scrollableY && !hasScrollbarSignal && scrollWidth < threshold) return null;
+			if (!scrollableX && !hasScrollbarSignal && scrollHeight < threshold) return null;
 			const distanceToTop = element.scrollTop;
 			const distanceToLeft = element.scrollLeft;
 			const scrollData = {
 				top: distanceToTop,
 				right: element.scrollWidth - element.clientWidth - element.scrollLeft,
 				bottom: element.scrollHeight - element.clientHeight - element.scrollTop,
-				left: distanceToLeft,
+				left: distanceToLeft
 			};
 			addExtraData(element, {
 				scrollable: true,
-				scrollData,
+				scrollData
 			});
 			return scrollData;
 		}
 		/**
-		 * Checks if a text node is visible.
-		 *
-		 * @param {Text} textNode - The text node to check.
-		 * @returns {boolean} Whether the text node is visible.
-		 */
+		* Checks if a text node is visible.
+		*
+		* @param {Text} textNode - The text node to check.
+		* @returns {boolean} Whether the text node is visible.
+		*/
 		function isTextNodeVisible(textNode) {
 			try {
 				if (viewportExpansion === -1) {
@@ -980,15 +793,11 @@ var content = (function () {
 					try {
 						return parentElement.checkVisibility({
 							checkOpacity: true,
-							checkVisibilityCSS: true,
+							checkVisibilityCSS: true
 						});
 					} catch (e) {
 						const style = window.getComputedStyle(parentElement);
-						return (
-							style.display !== "none" &&
-							style.visibility !== "hidden" &&
-							style.opacity !== "0"
-						);
+						return style.display !== "none" && style.visibility !== "hidden" && style.opacity !== "0";
 					}
 				}
 				const range = document.createRange();
@@ -997,36 +806,24 @@ var content = (function () {
 				if (!rects || rects.length === 0) return false;
 				let isAnyRectVisible = false;
 				let isAnyRectInViewport = false;
-				for (const rect of rects)
-					if (rect.width > 0 && rect.height > 0) {
-						isAnyRectVisible = true;
-						if (
-							!(
-								rect.bottom < -viewportExpansion ||
-								rect.top > window.innerHeight + viewportExpansion ||
-								rect.right < -viewportExpansion ||
-								rect.left > window.innerWidth + viewportExpansion
-							)
-						) {
-							isAnyRectInViewport = true;
-							break;
-						}
+				for (const rect of rects) if (rect.width > 0 && rect.height > 0) {
+					isAnyRectVisible = true;
+					if (!(rect.bottom < -viewportExpansion || rect.top > window.innerHeight + viewportExpansion || rect.right < -viewportExpansion || rect.left > window.innerWidth + viewportExpansion)) {
+						isAnyRectInViewport = true;
+						break;
 					}
+				}
 				if (!isAnyRectVisible || !isAnyRectInViewport) return false;
 				const parentElement = textNode.parentElement;
 				if (!parentElement) return false;
 				try {
 					return parentElement.checkVisibility({
 						checkOpacity: true,
-						checkVisibilityCSS: true,
+						checkVisibilityCSS: true
 					});
 				} catch (e) {
 					const style = window.getComputedStyle(parentElement);
-					return (
-						style.display !== "none" &&
-						style.visibility !== "hidden" &&
-						style.opacity !== "0"
-					);
+					return style.display !== "none" && style.visibility !== "hidden" && style.opacity !== "0";
 				}
 			} catch (e) {
 				console.warn("Error checking text node visibility:", e);
@@ -1034,11 +831,11 @@ var content = (function () {
 			}
 		}
 		/**
-		 * Checks if an element is accepted.
-		 *
-		 * @param {HTMLElement} element - The element to check.
-		 * @returns {boolean} Whether the element is accepted.
-		 */
+		* Checks if an element is accepted.
+		*
+		* @param {HTMLElement} element - The element to check.
+		* @returns {boolean} Whether the element is accepted.
+		*/
 		function isElementAccepted(element) {
 			if (!element || !element.tagName) return false;
 			const alwaysAccept = new Set([
@@ -1049,7 +846,7 @@ var content = (function () {
 				"section",
 				"nav",
 				"header",
-				"footer",
+				"footer"
 			]);
 			const tagName = element.tagName.toLowerCase();
 			if (alwaysAccept.has(tagName)) return true;
@@ -1060,38 +857,33 @@ var content = (function () {
 				"link",
 				"meta",
 				"noscript",
-				"template",
+				"template"
 			]).has(tagName);
 		}
 		/**
-		 * Checks if an element is visible.
-		 *
-		 * @param {HTMLElement} element - The element to check.
-		 * @returns {boolean} Whether the element is visible.
-		 */
+		* Checks if an element is visible.
+		*
+		* @param {HTMLElement} element - The element to check.
+		* @returns {boolean} Whether the element is visible.
+		*/
 		function isElementVisible(element) {
 			const style = getCachedComputedStyle(element);
-			return (
-				element.offsetWidth > 0 &&
-				element.offsetHeight > 0 &&
-				style?.visibility !== "hidden" &&
-				style?.display !== "none"
-			);
+			return element.offsetWidth > 0 && element.offsetHeight > 0 && style?.visibility !== "hidden" && style?.display !== "none";
 		}
 		/**
-		 * Checks if an element is interactive.
-		 *
-		 * lots of comments, and uncommented code - to show the logic of what we already tried
-		 *
-		 * One of the things we tried at the beginning was also to use event listeners, and other fancy class, style stuff -> what actually worked best was just combining most things with computed cursor style :)
-		 *
-		 * @param {HTMLElement} element - The element to check.
-		 */
+		* Checks if an element is interactive.
+		*
+		* lots of comments, and uncommented code - to show the logic of what we already tried
+		*
+		* One of the things we tried at the beginning was also to use event listeners, and other fancy class, style stuff -> what actually worked best was just combining most things with computed cursor style :)
+		*
+		* @param {HTMLElement} element - The element to check.
+		*/
 		function isInteractiveElement(element) {
 			if (!element || element.nodeType !== Node.ELEMENT_NODE) return false;
 			/**
-			 * @edit add interactiveBlacklist interactiveWhitelist
-			 */
+			* @edit add interactiveBlacklist interactiveWhitelist
+			*/
 			if (interactiveBlacklist.includes(element)) return false;
 			if (interactiveWhitelist.includes(element)) return true;
 			const tagName = element.tagName.toLowerCase();
@@ -1125,7 +917,7 @@ var content = (function () {
 				"vertical-text",
 				"w-resize",
 				"zoom-in",
-				"zoom-out",
+				"zoom-out"
 			]);
 			const nonInteractiveCursors = new Set([
 				"not-allowed",
@@ -1133,14 +925,14 @@ var content = (function () {
 				"wait",
 				"progress",
 				"initial",
-				"inherit",
+				"inherit"
 			]);
 			/**
-			 * Checks if an element has an interactive pointer.
-			 *
-			 * @param {HTMLElement} element - The element to check.
-			 * @returns {boolean} Whether the element has an interactive pointer.
-			 */
+			* Checks if an element has an interactive pointer.
+			*
+			* @param {HTMLElement} element - The element to check.
+			* @returns {boolean} Whether the element has an interactive pointer.
+			*/
 			function doesElementHaveInteractivePointer(element) {
 				if (element.tagName.toLowerCase() === "html") return false;
 				if (style?.cursor && interactiveCursors.has(style.cursor)) return true;
@@ -1159,19 +951,12 @@ var content = (function () {
 				"option",
 				"optgroup",
 				"fieldset",
-				"legend",
+				"legend"
 			]);
 			const explicitDisableTags = new Set(["disabled", "readonly"]);
 			if (interactiveElements.has(tagName)) {
-				if (style?.cursor && nonInteractiveCursors.has(style.cursor))
-					return false;
-				for (const disableTag of explicitDisableTags)
-					if (
-						element.hasAttribute(disableTag) ||
-						element.getAttribute(disableTag) === "true" ||
-						element.getAttribute(disableTag) === ""
-					)
-						return false;
+				if (style?.cursor && nonInteractiveCursors.has(style.cursor)) return false;
+				for (const disableTag of explicitDisableTags) if (element.hasAttribute(disableTag) || element.getAttribute(disableTag) === "true" || element.getAttribute(disableTag) === "") return false;
 				if (element.disabled) return false;
 				if (element.readOnly) return false;
 				if (element.inert) return false;
@@ -1179,20 +964,8 @@ var content = (function () {
 			}
 			const role = element.getAttribute("role");
 			const ariaRole = element.getAttribute("aria-role");
-			if (
-				element.getAttribute("contenteditable") === "true" ||
-				element.isContentEditable
-			)
-				return true;
-			if (
-				element.classList &&
-				(element.classList.contains("button") ||
-					element.classList.contains("dropdown-toggle") ||
-					element.getAttribute("data-index") ||
-					element.getAttribute("data-toggle") === "dropdown" ||
-					element.getAttribute("aria-haspopup") === "true")
-			)
-				return true;
+			if (element.getAttribute("contenteditable") === "true" || element.isContentEditable) return true;
+			if (element.classList && (element.classList.contains("button") || element.classList.contains("dropdown-toggle") || element.getAttribute("data-index") || element.getAttribute("data-toggle") === "dropdown" || element.getAttribute("aria-haspopup") === "true")) return true;
 			const interactiveRoles = new Set([
 				"button",
 				"menu",
@@ -1211,24 +984,20 @@ var content = (function () {
 				"textbox",
 				"listbox",
 				"option",
-				"scrollbar",
+				"scrollbar"
 			]);
-			if (
-				interactiveElements.has(tagName) ||
-				(role && interactiveRoles.has(role)) ||
-				(ariaRole && interactiveRoles.has(ariaRole))
-			)
-				return true;
+			if (interactiveElements.has(tagName) || role && interactiveRoles.has(role) || ariaRole && interactiveRoles.has(ariaRole)) return true;
 			try {
 				if (typeof getEventListeners === "function") {
 					const listeners = getEventListeners(element);
-					for (const eventType of ["click", "mousedown", "mouseup", "dblclick"])
-						if (listeners[eventType] && listeners[eventType].length > 0)
-							return true;
+					for (const eventType of [
+						"click",
+						"mousedown",
+						"mouseup",
+						"dblclick"
+					]) if (listeners[eventType] && listeners[eventType].length > 0) return true;
 				}
-				const getEventListenersForNode =
-					element?.ownerDocument?.defaultView?.getEventListenersForNode ||
-					window.getEventListenersForNode;
+				const getEventListenersForNode = element?.ownerDocument?.defaultView?.getEventListenersForNode || window.getEventListenersForNode;
 				if (typeof getEventListenersForNode === "function") {
 					const listeners = getEventListenersForNode(element);
 					for (const eventType of [
@@ -1241,56 +1010,42 @@ var content = (function () {
 						"change",
 						"input",
 						"focus",
-						"blur",
-					])
-						for (const listener of listeners)
-							if (listener.type === eventType) return true;
+						"blur"
+					]) for (const listener of listeners) if (listener.type === eventType) return true;
 				}
 				for (const attr of [
 					"onclick",
 					"onmousedown",
 					"onmouseup",
-					"ondblclick",
-				])
-					if (element.hasAttribute(attr) || typeof element[attr] === "function")
-						return true;
+					"ondblclick"
+				]) if (element.hasAttribute(attr) || typeof element[attr] === "function") return true;
 			} catch (e) {}
 			/**
-			 * @edit scrollable element detection
-			 */
+			* @edit scrollable element detection
+			*/
 			if (isScrollableElement(element)) return true;
 			return false;
 		}
 		/**
-		 * Checks if an element is the topmost element at its position.
-		 *
-		 * @param {HTMLElement} element - The element to check.
-		 * @returns {boolean} Whether the element is the topmost element at its position.
-		 */
+		* Checks if an element is the topmost element at its position.
+		*
+		* @param {HTMLElement} element - The element to check.
+		* @returns {boolean} Whether the element is the topmost element at its position.
+		*/
 		function isTopElement(element) {
 			if (viewportExpansion === -1) return true;
 			const rects = getCachedClientRects(element);
 			if (!rects || rects.length === 0) return false;
 			let isAnyRectInViewport = false;
-			for (const rect of rects)
-				if (
-					rect.width > 0 &&
-					rect.height > 0 &&
-					!(
-						rect.bottom < -viewportExpansion ||
-						rect.top > window.innerHeight + viewportExpansion ||
-						rect.right < -viewportExpansion ||
-						rect.left > window.innerWidth + viewportExpansion
-					)
-				) {
-					isAnyRectInViewport = true;
-					break;
-				}
+			for (const rect of rects) if (rect.width > 0 && rect.height > 0 && !(rect.bottom < -viewportExpansion || rect.top > window.innerHeight + viewportExpansion || rect.right < -viewportExpansion || rect.left > window.innerWidth + viewportExpansion)) {
+				isAnyRectInViewport = true;
+				break;
+			}
 			if (!isAnyRectInViewport) return false;
 			if (element.ownerDocument !== window.document) return true;
 			/**
-			 * @edit improve `sampleRect`, filter out rects with 0 area
-			 */
+			* @edit improve `sampleRect`, filter out rects with 0 area
+			*/
 			let rect = Array.from(rects).find((r) => r.width > 0 && r.height > 0);
 			if (!rect) return false;
 			const shadowRoot = element.getRootNode();
@@ -1314,16 +1069,16 @@ var content = (function () {
 			return [
 				{
 					x: rect.left + rect.width / 2,
-					y: rect.top + rect.height / 2,
+					y: rect.top + rect.height / 2
 				},
 				{
 					x: rect.left + margin,
-					y: rect.top + margin,
+					y: rect.top + margin
 				},
 				{
 					x: rect.right - margin,
-					y: rect.bottom - margin,
-				},
+					y: rect.bottom - margin
+				}
 			].some(({ x, y }) => {
 				try {
 					const topEl = document.elementFromPoint(x, y);
@@ -1340,50 +1095,32 @@ var content = (function () {
 			});
 		}
 		/**
-		 * Checks if an element is within the expanded viewport.
-		 *
-		 * @param {HTMLElement} element - The element to check.
-		 * @param {number} viewportExpansion - The viewport expansion.
-		 * @returns {boolean} Whether the element is within the expanded viewport.
-		 */
+		* Checks if an element is within the expanded viewport.
+		*
+		* @param {HTMLElement} element - The element to check.
+		* @param {number} viewportExpansion - The viewport expansion.
+		* @returns {boolean} Whether the element is within the expanded viewport.
+		*/
 		function isInExpandedViewport(element, viewportExpansion) {
 			if (viewportExpansion === -1) return true;
 			const rects = element.getClientRects();
 			if (!rects || rects.length === 0) {
 				const boundingRect = getCachedBoundingRect(element);
-				if (
-					!boundingRect ||
-					boundingRect.width === 0 ||
-					boundingRect.height === 0
-				)
-					return false;
-				return !(
-					boundingRect.bottom < -viewportExpansion ||
-					boundingRect.top > window.innerHeight + viewportExpansion ||
-					boundingRect.right < -viewportExpansion ||
-					boundingRect.left > window.innerWidth + viewportExpansion
-				);
+				if (!boundingRect || boundingRect.width === 0 || boundingRect.height === 0) return false;
+				return !(boundingRect.bottom < -viewportExpansion || boundingRect.top > window.innerHeight + viewportExpansion || boundingRect.right < -viewportExpansion || boundingRect.left > window.innerWidth + viewportExpansion);
 			}
 			for (const rect of rects) {
 				if (rect.width === 0 || rect.height === 0) continue;
-				if (
-					!(
-						rect.bottom < -viewportExpansion ||
-						rect.top > window.innerHeight + viewportExpansion ||
-						rect.right < -viewportExpansion ||
-						rect.left > window.innerWidth + viewportExpansion
-					)
-				)
-					return true;
+				if (!(rect.bottom < -viewportExpansion || rect.top > window.innerHeight + viewportExpansion || rect.right < -viewportExpansion || rect.left > window.innerWidth + viewportExpansion)) return true;
 			}
 			return false;
 		}
 		/**
-		 * Checks if an element is an interactive candidate.
-		 *
-		 * @param {HTMLElement} element - The element to check.
-		 * @returns {boolean} Whether the element is an interactive candidate.
-		 */
+		* Checks if an element is an interactive candidate.
+		*
+		* @param {HTMLElement} element - The element to check.
+		* @returns {boolean} Whether the element is an interactive candidate.
+		*/
 		const INTERACTIVE_ARIA_ATTRS = [
 			"aria-expanded",
 			"aria-checked",
@@ -1397,37 +1134,26 @@ var content = (function () {
 			"aria-valuetext",
 			"aria-valuemax",
 			"aria-valuemin",
-			"aria-autocomplete",
+			"aria-autocomplete"
 		];
 		function hasInteractiveAria(el) {
-			for (let i = 0; i < INTERACTIVE_ARIA_ATTRS.length; i++)
-				if (el.hasAttribute(INTERACTIVE_ARIA_ATTRS[i])) return true;
+			for (let i = 0; i < INTERACTIVE_ARIA_ATTRS.length; i++) if (el.hasAttribute(INTERACTIVE_ARIA_ATTRS[i])) return true;
 			return false;
 		}
 		function isInteractiveCandidate(element) {
 			if (!element || element.nodeType !== Node.ELEMENT_NODE) return false;
 			const tagName = element.tagName.toLowerCase();
-			if (
-				new Set([
-					"a",
-					"button",
-					"input",
-					"select",
-					"textarea",
-					"details",
-					"summary",
-					"label",
-				]).has(tagName)
-			)
-				return true;
-			return (
-				element.hasAttribute("onclick") ||
-				element.hasAttribute("role") ||
-				element.hasAttribute("tabindex") ||
-				hasInteractiveAria(element) ||
-				element.hasAttribute("data-action") ||
-				element.getAttribute("contenteditable") === "true"
-			);
+			if (new Set([
+				"a",
+				"button",
+				"input",
+				"select",
+				"textarea",
+				"details",
+				"summary",
+				"label"
+			]).has(tagName)) return true;
+			return element.hasAttribute("onclick") || element.hasAttribute("role") || element.hasAttribute("tabindex") || hasInteractiveAria(element) || element.hasAttribute("data-action") || element.getAttribute("contenteditable") === "true";
 		}
 		const DISTINCT_INTERACTIVE_TAGS = new Set([
 			"a",
@@ -1439,7 +1165,7 @@ var content = (function () {
 			"details",
 			"label",
 			"option",
-			"li",
+			"li"
 		]);
 		const DISTINCT_INTERACTIVE_ROLES = new Set([
 			"button",
@@ -1461,55 +1187,35 @@ var content = (function () {
 			"treeitem",
 			"row",
 			"option",
-			"scrollbar",
+			"scrollbar"
 		]);
 		/**
-		 * Heuristically determines if an element should be considered as independently interactive,
-		 * even if it's nested inside another interactive container.
-		 *
-		 * This function helps detect deeply nested actionable elements (e.g., menu items within a button)
-		 * that may not be picked up by strict interactivity checks.
-		 *
-		 * @param {HTMLElement} element - The element to check.
-		 * @returns {boolean} Whether the element is heuristically interactive.
-		 */
+		* Heuristically determines if an element should be considered as independently interactive,
+		* even if it's nested inside another interactive container.
+		*
+		* This function helps detect deeply nested actionable elements (e.g., menu items within a button)
+		* that may not be picked up by strict interactivity checks.
+		*
+		* @param {HTMLElement} element - The element to check.
+		* @returns {boolean} Whether the element is heuristically interactive.
+		*/
 		function isHeuristicallyInteractive(element) {
 			if (!element || element.nodeType !== Node.ELEMENT_NODE) return false;
 			if (!isElementVisible(element)) return false;
-			const hasInteractiveAttributes =
-				element.hasAttribute("role") ||
-				element.hasAttribute("tabindex") ||
-				element.hasAttribute("onclick") ||
-				typeof element.onclick === "function";
-			const hasInteractiveClass =
-				/\b(btn|clickable|menu|item|entry|link)\b/i.test(
-					element.className || "",
-				);
-			const isInKnownContainer = Boolean(
-				element.closest(
-					'button,a,[role="button"],.menu,.dropdown,.list,.toolbar',
-				),
-			);
+			const hasInteractiveAttributes = element.hasAttribute("role") || element.hasAttribute("tabindex") || element.hasAttribute("onclick") || typeof element.onclick === "function";
+			const hasInteractiveClass = /\b(btn|clickable|menu|item|entry|link)\b/i.test(element.className || "");
+			const isInKnownContainer = Boolean(element.closest("button,a,[role=\"button\"],.menu,.dropdown,.list,.toolbar"));
 			const hasVisibleChildren = [...element.children].some(isElementVisible);
-			const isParentBody =
-				element.parentElement &&
-				element.parentElement.isSameNode(document.body);
-			return (
-				(isInteractiveElement(element) ||
-					hasInteractiveAttributes ||
-					hasInteractiveClass) &&
-				hasVisibleChildren &&
-				isInKnownContainer &&
-				!isParentBody
-			);
+			const isParentBody = element.parentElement && element.parentElement.isSameNode(document.body);
+			return (isInteractiveElement(element) || hasInteractiveAttributes || hasInteractiveClass) && hasVisibleChildren && isInKnownContainer && !isParentBody;
 		}
 		/**
-		 * Checks if an element likely represents a distinct interaction
-		 * separate from its parent (if the parent is also interactive).
-		 *
-		 * @param {HTMLElement} element - The element to check.
-		 * @returns {boolean} Whether the element is a distinct interaction.
-		 */
+		* Checks if an element likely represents a distinct interaction
+		* separate from its parent (if the parent is also interactive).
+		*
+		* @param {HTMLElement} element - The element to check.
+		* @returns {boolean} Whether the element is a distinct interaction.
+		*/
 		function isElementDistinctInteraction(element) {
 			if (!element || element.nodeType !== Node.ELEMENT_NODE) return false;
 			const tagName = element.tagName.toLowerCase();
@@ -1517,27 +1223,12 @@ var content = (function () {
 			if (tagName === "iframe") return true;
 			if (DISTINCT_INTERACTIVE_TAGS.has(tagName)) return true;
 			if (role && DISTINCT_INTERACTIVE_ROLES.has(role)) return true;
-			if (
-				element.isContentEditable ||
-				element.getAttribute("contenteditable") === "true"
-			)
-				return true;
-			if (
-				element.hasAttribute("data-testid") ||
-				element.hasAttribute("data-cy") ||
-				element.hasAttribute("data-test")
-			)
-				return true;
-			if (
-				element.hasAttribute("onclick") ||
-				typeof element.onclick === "function"
-			)
-				return true;
+			if (element.isContentEditable || element.getAttribute("contenteditable") === "true") return true;
+			if (element.hasAttribute("data-testid") || element.hasAttribute("data-cy") || element.hasAttribute("data-test")) return true;
+			if (element.hasAttribute("onclick") || typeof element.onclick === "function") return true;
 			if (hasInteractiveAria(element)) return true;
 			try {
-				const getEventListenersForNode =
-					element?.ownerDocument?.defaultView?.getEventListenersForNode ||
-					window.getEventListenersForNode;
+				const getEventListenersForNode = element?.ownerDocument?.defaultView?.getEventListenersForNode || window.getEventListenersForNode;
 				if (typeof getEventListenersForNode === "function") {
 					const listeners = getEventListenersForNode(element);
 					for (const eventType of [
@@ -1550,25 +1241,20 @@ var content = (function () {
 						"change",
 						"input",
 						"focus",
-						"blur",
-					])
-						for (const listener of listeners)
-							if (listener.type === eventType) return true;
+						"blur"
+					]) for (const listener of listeners) if (listener.type === eventType) return true;
 				}
-				if (
-					[
-						"onmousedown",
-						"onmouseup",
-						"onkeydown",
-						"onkeyup",
-						"onsubmit",
-						"onchange",
-						"oninput",
-						"onfocus",
-						"onblur",
-					].some((attr) => element.hasAttribute(attr))
-				)
-					return true;
+				if ([
+					"onmousedown",
+					"onmouseup",
+					"onkeydown",
+					"onkeyup",
+					"onsubmit",
+					"onchange",
+					"oninput",
+					"onfocus",
+					"onblur"
+				].some((attr) => element.hasAttribute(attr))) return true;
 			} catch (e) {}
 			if (isHeuristicallyInteractive(element)) return true;
 			if (extraData.get(element)?.scrollable) return true;
@@ -1594,12 +1280,7 @@ var content = (function () {
 		* @param {boolean} isParentHighlighted - Whether the parent node is highlighted.
 		* @returns {boolean} Whether the element was highlighted.
 		*/
-		function handleHighlighting(
-			nodeData,
-			node,
-			parentIframe,
-			isParentHighlighted,
-		) {
+		function handleHighlighting(nodeData, node, parentIframe, isParentHighlighted) {
 			if (!nodeData.isInteractive) return false;
 			let shouldHighlight = false;
 			if (!isParentHighlighted) shouldHighlight = true;
@@ -1611,10 +1292,8 @@ var content = (function () {
 					nodeData.highlightIndex = highlightIndex++;
 					if (doHighlightElements) {
 						if (focusHighlightIndex >= 0) {
-							if (focusHighlightIndex === nodeData.highlightIndex)
-								highlightElement(node, nodeData.highlightIndex, parentIframe);
-						} else
-							highlightElement(node, nodeData.highlightIndex, parentIframe);
+							if (focusHighlightIndex === nodeData.highlightIndex) highlightElement(node, nodeData.highlightIndex, parentIframe);
+						} else highlightElement(node, nodeData.highlightIndex, parentIframe);
 						return true;
 					}
 				}
@@ -1622,45 +1301,30 @@ var content = (function () {
 			return false;
 		}
 		/**
-		 * Creates a node data object for a given node and its descendants.
-		 *
-		 * @param {HTMLElement} node - The node to process.
-		 * @param {HTMLElement | null} parentIframe - The parent iframe node.
-		 * @param {boolean} isParentHighlighted - Whether the parent node is highlighted.
-		 * @returns {string | null} The ID of the node data object, or null if the node is not processed.
-		 */
-		function buildDomTree(
-			node,
-			parentIframe = null,
-			isParentHighlighted = false,
-		) {
-			if (
-				!node ||
-				node.id === HIGHLIGHT_CONTAINER_ID ||
-				(node.nodeType !== Node.ELEMENT_NODE &&
-					node.nodeType !== Node.TEXT_NODE)
-			)
-				return null;
+		* Creates a node data object for a given node and its descendants.
+		*
+		* @param {HTMLElement} node - The node to process.
+		* @param {HTMLElement | null} parentIframe - The parent iframe node.
+		* @param {boolean} isParentHighlighted - Whether the parent node is highlighted.
+		* @returns {string | null} The ID of the node data object, or null if the node is not processed.
+		*/
+		function buildDomTree(node, parentIframe = null, isParentHighlighted = false) {
+			if (!node || node.id === HIGHLIGHT_CONTAINER_ID || node.nodeType !== Node.ELEMENT_NODE && node.nodeType !== Node.TEXT_NODE) return null;
 			if (!node || node.id === HIGHLIGHT_CONTAINER_ID) return null;
 			/**
-			 * @edit add `data-browser-use-ignore` attribute
-			 */
-			if (
-				node.dataset?.browserUseIgnore === "true" ||
-				node.dataset?.pageAgentIgnore === "true"
-			)
-				return null;
+			* @edit add `data-browser-use-ignore` attribute
+			*/
+			if (node.dataset?.browserUseIgnore === "true" || node.dataset?.pageAgentIgnore === "true") return null;
 			/**
-			 * @edit exclude aria-hidden elements
-			 */
-			if (node.getAttribute && node.getAttribute("aria-hidden") === "true")
-				return null;
+			* @edit exclude aria-hidden elements
+			*/
+			if (node.getAttribute && node.getAttribute("aria-hidden") === "true") return null;
 			if (node === document.body) {
 				const nodeData = {
 					tagName: "body",
 					attributes: {},
 					xpath: "/body",
-					children: [],
+					children: []
 				};
 				for (const child of node.childNodes) {
 					const domElement = buildDomTree(child, parentIframe, false);
@@ -1670,43 +1334,27 @@ var content = (function () {
 				DOM_HASH_MAP[id] = nodeData;
 				return id;
 			}
-			if (
-				node.nodeType !== Node.ELEMENT_NODE &&
-				node.nodeType !== Node.TEXT_NODE
-			)
-				return null;
+			if (node.nodeType !== Node.ELEMENT_NODE && node.nodeType !== Node.TEXT_NODE) return null;
 			if (node.nodeType === Node.TEXT_NODE) {
 				const textContent = node.textContent?.trim();
 				if (!textContent) return null;
 				const parentElement = node.parentElement;
-				if (!parentElement || parentElement.tagName.toLowerCase() === "script")
-					return null;
+				if (!parentElement || parentElement.tagName.toLowerCase() === "script") return null;
 				const id = `${ID.current++}`;
 				DOM_HASH_MAP[id] = {
 					type: "TEXT_NODE",
 					text: textContent,
-					isVisible: isTextNodeVisible(node),
+					isVisible: isTextNodeVisible(node)
 				};
 				return id;
 			}
-			if (node.nodeType === Node.ELEMENT_NODE && !isElementAccepted(node))
-				return null;
+			if (node.nodeType === Node.ELEMENT_NODE && !isElementAccepted(node)) return null;
 			if (viewportExpansion !== -1 && !node.shadowRoot) {
 				const rect = getCachedBoundingRect(node);
 				const style = getCachedComputedStyle(node);
-				const isFixedOrSticky =
-					style && (style.position === "fixed" || style.position === "sticky");
+				const isFixedOrSticky = style && (style.position === "fixed" || style.position === "sticky");
 				const hasSize = node.offsetWidth > 0 || node.offsetHeight > 0;
-				if (
-					!rect ||
-					(!isFixedOrSticky &&
-						!hasSize &&
-						(rect.bottom < -viewportExpansion ||
-							rect.top > window.innerHeight + viewportExpansion ||
-							rect.right < -viewportExpansion ||
-							rect.left > window.innerWidth + viewportExpansion))
-				)
-					return null;
+				if (!rect || !isFixedOrSticky && !hasSize && (rect.bottom < -viewportExpansion || rect.top > window.innerHeight + viewportExpansion || rect.right < -viewportExpansion || rect.left > window.innerWidth + viewportExpansion)) return null;
 			}
 			/**
 			* @type {
@@ -1728,28 +1376,20 @@ var content = (function () {
 				tagName: node.tagName.toLowerCase(),
 				attributes: {},
 				/**
-				 * @edit no need for xpath
-				 */
-				children: [],
+				* @edit no need for xpath
+				*/
+				children: []
 			};
-			if (
-				isInteractiveCandidate(node) ||
-				node.tagName.toLowerCase() === "iframe" ||
-				node.tagName.toLowerCase() === "body"
-			) {
+			if (isInteractiveCandidate(node) || node.tagName.toLowerCase() === "iframe" || node.tagName.toLowerCase() === "body") {
 				const attributeNames = node.getAttributeNames?.() || [];
 				for (const name of attributeNames) {
 					const value = node.getAttribute(name);
 					nodeData.attributes[name] = value;
 				}
 				/**
-				 * @edit @workaround input.checked
-				 */
-				if (
-					node.tagName.toLowerCase() === "input" &&
-					(node.type === "checkbox" || node.type === "radio")
-				)
-					nodeData.attributes.checked = node.checked ? "true" : "false";
+				* @edit @workaround input.checked
+				*/
+				if (node.tagName.toLowerCase() === "input" && (node.type === "checkbox" || node.type === "radio")) nodeData.attributes.checked = node.checked ? "true" : "false";
 			}
 			let nodeWasHighlighted = false;
 			if (node.nodeType === Node.ELEMENT_NODE) {
@@ -1757,28 +1397,19 @@ var content = (function () {
 				if (nodeData.isVisible) {
 					nodeData.isTopElement = isTopElement(node);
 					const role = node.getAttribute("role");
-					const isMenuContainer =
-						role === "menu" || role === "menubar" || role === "listbox";
+					const isMenuContainer = role === "menu" || role === "menubar" || role === "listbox";
 					if (nodeData.isTopElement || isMenuContainer) {
 						nodeData.isInteractive = isInteractiveElement(node);
-						nodeWasHighlighted = handleHighlighting(
-							nodeData,
-							node,
-							parentIframe,
-							isParentHighlighted,
-						);
+						nodeWasHighlighted = handleHighlighting(nodeData, node, parentIframe, isParentHighlighted);
 						/**
-						 * @edit direct dom ref
-						 */
+						* @edit direct dom ref
+						*/
 						nodeData.ref = node;
 						/**
-						 * @edit make sure attributes exist for interactive candidates.
-						 * @note if the element failed the isInteractiveCandidate, attributes would be empty.
-						 */
-						if (
-							nodeData.isInteractive &&
-							Object.keys(nodeData.attributes).length === 0
-						) {
+						* @edit make sure attributes exist for interactive candidates.
+						* @note if the element failed the isInteractiveCandidate, attributes would be empty.
+						*/
+						if (nodeData.isInteractive && Object.keys(nodeData.attributes).length === 0) {
 							const attributeNames = node.getAttributeNames?.() || [];
 							for (const name of attributeNames) {
 								const value = node.getAttribute(name);
@@ -1790,74 +1421,50 @@ var content = (function () {
 			}
 			if (node.tagName) {
 				const tagName = node.tagName.toLowerCase();
-				if (tagName === "iframe")
-					try {
-						const iframeDoc =
-							node.contentDocument || node.contentWindow?.document;
-						if (iframeDoc)
-							for (const child of iframeDoc.childNodes) {
-								const domElement = buildDomTree(child, node, false);
-								if (domElement) nodeData.children.push(domElement);
-							}
-					} catch (e) {
-						console.warn("Unable to access iframe:", e);
-					}
-				else if (
-					node.isContentEditable ||
-					node.getAttribute("contenteditable") === "true" ||
-					node.id === "tinymce" ||
-					node.classList.contains("mce-content-body") ||
-					(tagName === "body" &&
-						node.getAttribute("data-id")?.startsWith("mce_"))
-				)
-					for (const child of node.childNodes) {
-						const domElement = buildDomTree(
-							child,
-							parentIframe,
-							nodeWasHighlighted,
-						);
+				if (tagName === "iframe") try {
+					const iframeDoc = node.contentDocument || node.contentWindow?.document;
+					if (iframeDoc) for (const child of iframeDoc.childNodes) {
+						const domElement = buildDomTree(child, node, false);
 						if (domElement) nodeData.children.push(domElement);
 					}
+				} catch (e) {
+					/**
+					* @edit quiet cross-origin iframe SecurityError
+					* Cross-origin iframes (ads, embeds, social widgets, captchas) are
+					* sandboxed by the browser's Same-Origin Policy and cannot be read —
+					* this is EXPECTED, not a bug. Skip them silently; otherwise an
+					* ad-heavy page (Google results, news sites) floods the console with
+					* dozens of identical SecurityError stacks. Match by `name` (not
+					* `instanceof DOMException`) so it holds even across realms. Still
+					* surface any OTHER, genuinely unexpected failure.
+					*/
+					if (e?.name !== "SecurityError") console.warn("Unable to access iframe:", e);
+				}
+				else if (node.isContentEditable || node.getAttribute("contenteditable") === "true" || node.id === "tinymce" || node.classList.contains("mce-content-body") || tagName === "body" && node.getAttribute("data-id")?.startsWith("mce_")) for (const child of node.childNodes) {
+					const domElement = buildDomTree(child, parentIframe, nodeWasHighlighted);
+					if (domElement) nodeData.children.push(domElement);
+				}
 				else {
 					if (node.shadowRoot) {
 						nodeData.shadowRoot = true;
 						for (const child of node.shadowRoot.childNodes) {
-							const domElement = buildDomTree(
-								child,
-								parentIframe,
-								nodeWasHighlighted,
-							);
+							const domElement = buildDomTree(child, parentIframe, nodeWasHighlighted);
 							if (domElement) nodeData.children.push(domElement);
 						}
 					}
 					for (const child of node.childNodes) {
-						const domElement = buildDomTree(
-							child,
-							parentIframe,
-							nodeWasHighlighted || isParentHighlighted,
-						);
+						const domElement = buildDomTree(child, parentIframe, nodeWasHighlighted || isParentHighlighted);
 						if (domElement) nodeData.children.push(domElement);
 					}
 				}
 			}
-			if (
-				nodeData.tagName === "a" &&
-				nodeData.children.length === 0 &&
-				!nodeData.attributes.href
-			) {
+			if (nodeData.tagName === "a" && nodeData.children.length === 0 && !nodeData.attributes.href) {
 				const rect = getCachedBoundingRect(node);
-				if (
-					!(
-						(rect && rect.width > 0 && rect.height > 0) ||
-						node.offsetWidth > 0 ||
-						node.offsetHeight > 0
-					)
-				)
-					return null;
+				if (!(rect && rect.width > 0 && rect.height > 0 || node.offsetWidth > 0 || node.offsetHeight > 0)) return null;
 			}
 			/**
-			 * @edit add `extra` field for extra data
-			 */
+			* @edit add `extra` field for extra data
+			*/
 			nodeData.extra = extraData.get(node) || null;
 			const id = `${ID.current++}`;
 			DOM_HASH_MAP[id] = nodeData;
@@ -1867,7 +1474,7 @@ var content = (function () {
 		DOM_CACHE.clearCache();
 		return {
 			rootId,
-			map: DOM_HASH_MAP,
+			map: DOM_HASH_MAP
 		};
 	};
 	//#endregion
@@ -1875,22 +1482,21 @@ var content = (function () {
 	var dom_exports = /* @__PURE__ */ __exportAll({
 		cleanUpHighlights: () => cleanUpHighlights,
 		flatTreeToString: () => flatTreeToString,
-		getAllTextTillNextClickableElement: () =>
-			getAllTextTillNextClickableElement,
+		getAllTextTillNextClickableElement: () => getAllTextTillNextClickableElement,
 		getElementTextMap: () => getElementTextMap,
 		getFlatTree: () => getFlatTree,
 		getSelectorMap: () => getSelectorMap,
-		resolveViewportExpansion: () => resolveViewportExpansion,
+		resolveViewportExpansion: () => resolveViewportExpansion
 	});
 	/**
-	 * Viewport expansion for DOM tree extraction.
-	 * -1 means full page (no viewport restriction)
-	 * 0 means viewport only
-	 * positive values expand the viewport by that many pixels
-	 *
-	 * @note Since isTopElement depends on elementFromPoint,
-	 * it returns null when out of viewport, this feature has no practical use, only differ between -1 and 0
-	 */
+	* Viewport expansion for DOM tree extraction.
+	* -1 means full page (no viewport restriction)
+	* 0 means viewport only
+	* positive values expand the viewport by that many pixels
+	*
+	* @note Since isTopElement depends on elementFromPoint,
+	* it returns null when out of viewport, this feature has no practical use, only differ between -1 and 0
+	*/
 	var DEFAULT_VIEWPORT_EXPANSION = -1;
 	function resolveViewportExpansion(viewportExpansion) {
 		return viewportExpansion ?? DEFAULT_VIEWPORT_EXPANSION;
@@ -1901,24 +1507,20 @@ var content = (function () {
 		"header",
 		"footer",
 		"aside",
-		"dialog",
+		"dialog"
 	]);
 	/**
-	 * 用于检测可交互元素是否是新出现的。
-	 */
+	* 用于检测可交互元素是否是新出现的。
+	*/
 	var newElementsCache = /* @__PURE__ */ new WeakMap();
 	function getFlatTree(config) {
-		const viewportExpansion = resolveViewportExpansion(
-			config.viewportExpansion,
-		);
+		const viewportExpansion = resolveViewportExpansion(config.viewportExpansion);
 		const interactiveBlacklist = [];
-		for (const item of config.interactiveBlacklist || [])
-			if (typeof item === "function") interactiveBlacklist.push(item());
-			else interactiveBlacklist.push(item);
+		for (const item of config.interactiveBlacklist || []) if (typeof item === "function") interactiveBlacklist.push(item());
+		else interactiveBlacklist.push(item);
 		const interactiveWhitelist = [];
-		for (const item of config.interactiveWhitelist || [])
-			if (typeof item === "function") interactiveWhitelist.push(item());
-			else interactiveWhitelist.push(item);
+		for (const item of config.interactiveWhitelist || []) if (typeof item === "function") interactiveWhitelist.push(item());
+		else interactiveWhitelist.push(item);
 		const elements = dom_tree_default({
 			doHighlightElements: true,
 			debugMode: true,
@@ -1927,15 +1529,15 @@ var content = (function () {
 			interactiveBlacklist,
 			interactiveWhitelist,
 			highlightOpacity: config.highlightOpacity ?? 0,
-			highlightLabelOpacity: config.highlightLabelOpacity ?? 0.1,
+			highlightLabelOpacity: config.highlightLabelOpacity ?? .1
 		});
 		const currentUrl = window.location.href;
 		/**
-		 * 标记新出现的元素
-		 * @todo browser-use 使用 hash(位置，属性等信息) 来判断是否同一个元素，
-		 *       能够解决 1. 元素被删除后重新添加 2. 页面卸载 等问题。
-		 *       这里先简单做.
-		 */
+		* 标记新出现的元素
+		* @todo browser-use 使用 hash(位置，属性等信息) 来判断是否同一个元素，
+		*       能够解决 1. 元素被删除后重新添加 2. 页面卸载 等问题。
+		*       这里先简单做.
+		*/
 		for (const nodeId in elements.map) {
 			const node = elements.map[nodeId];
 			if (node.isInteractive && node.ref) {
@@ -1960,46 +1562,39 @@ var content = (function () {
 	}
 	function matchAttributes(attrs, patterns) {
 		const result = {};
-		for (const pattern of patterns)
-			if (pattern.includes("*")) {
-				const regex = globToRegex(pattern);
-				for (const key of Object.keys(attrs))
-					if (regex.test(key) && attrs[key].trim())
-						result[key] = attrs[key].trim();
-			} else {
-				const value = attrs[pattern];
-				if (value && value.trim()) result[pattern] = value.trim();
-			}
+		for (const pattern of patterns) if (pattern.includes("*")) {
+			const regex = globToRegex(pattern);
+			for (const key of Object.keys(attrs)) if (regex.test(key) && attrs[key].trim()) result[key] = attrs[key].trim();
+		} else {
+			const value = attrs[pattern];
+			if (value && value.trim()) result[pattern] = value.trim();
+		}
 		return result;
 	}
 	/**
-	 * 对应 python 中的 views::clickable_elements_to_string,
-	 * 将 dom 信息处理成适合 llm 阅读的文本格式
-	 * @形如
-	 * ``` text
-	 * [0]<a aria-label=page-agent.js 首页 />
-	 * [1]<div >P />
-	 * [2]<div >page-agent.js
-	 * UI Agent in your webpage />
-	 * [3]<a >文档 />
-	 * [4]<a aria-label=查看源码（在新窗口打开）>源码 />
-	 * UI Agent in your webpage
-	 * 用户输入需求，AI 理解页面并自动操作。
-	 * [5]<a role=button>快速开始 />
-	 * [6]<a role=button>查看文档 />
-	 * 无需后端
-	 * ```
-	 * 其中可交互元素用序号标出，提示llm可以用序号操作。
-	 * 缩进代表父子关系。
-	 * 普通文本则直接列出来。
-	 *
-	 * @todo 数据脱敏过滤器
-	 */
-	function flatTreeToString(
-		flatTree,
-		includeAttributes = [],
-		keepSemanticTags = false,
-	) {
+	* 对应 python 中的 views::clickable_elements_to_string,
+	* 将 dom 信息处理成适合 llm 阅读的文本格式
+	* @形如
+	* ``` text
+	* [0]<a aria-label=page-agent.js 首页 />
+	* [1]<div >P />
+	* [2]<div >page-agent.js
+	* UI Agent in your webpage />
+	* [3]<a >文档 />
+	* [4]<a aria-label=查看源码（在新窗口打开）>源码 />
+	* UI Agent in your webpage
+	* 用户输入需求，AI 理解页面并自动操作。
+	* [5]<a role=button>快速开始 />
+	* [6]<a role=button>查看文档 />
+	* 无需后端
+	* ```
+	* 其中可交互元素用序号标出，提示llm可以用序号操作。
+	* 缩进代表父子关系。
+	* 普通文本则直接列出来。
+	*
+	* @todo 数据脱敏过滤器
+	*/
+	function flatTreeToString(flatTree, includeAttributes = [], keepSemanticTags = false) {
 		const DEFAULT_INCLUDE_ATTRIBUTES = [
 			"title",
 			"type",
@@ -2020,7 +1615,7 @@ var content = (function () {
 			"aria-haspopup",
 			"aria-controls",
 			"aria-owns",
-			"contenteditable",
+			"contenteditable"
 		];
 		const includeAttrs = [...includeAttributes, ...DEFAULT_INCLUDE_ATTRIBUTES];
 		const capTextLength = (text, maxLength) => {
@@ -2037,19 +1632,18 @@ var content = (function () {
 					text: textNode.text,
 					isVisible: textNode.isVisible,
 					parent: null,
-					children: [],
+					children: []
 				};
 			} else {
 				const elementNode = node;
 				const children = [];
-				if (elementNode.children)
-					for (const childId of elementNode.children) {
-						const child = buildTreeNode(childId);
-						if (child) {
-							child.parent = null;
-							children.push(child);
-						}
+				if (elementNode.children) for (const childId of elementNode.children) {
+					const child = buildTreeNode(childId);
+					if (child) {
+						child.parent = null;
+						children.push(child);
 					}
+				}
 				return {
 					type: "element",
 					tagName: elementNode.tagName,
@@ -2061,7 +1655,7 @@ var content = (function () {
 					highlightIndex: elementNode.highlightIndex,
 					parent: null,
 					children,
-					extra: elementNode.extra ?? {},
+					extra: elementNode.extra ?? {}
 				};
 			}
 		};
@@ -2075,8 +1669,7 @@ var content = (function () {
 		const hasParentWithHighlightIndex = (node) => {
 			let current = node.parent;
 			while (current) {
-				if (current.type === "element" && current.highlightIndex !== void 0)
-					return true;
+				if (current.type === "element" && current.highlightIndex !== void 0) return true;
 				current = current.parent;
 			}
 			return false;
@@ -2085,59 +1678,44 @@ var content = (function () {
 			let nextDepth = depth;
 			const depthStr = "	".repeat(depth);
 			if (node.type === "element") {
-				const isSemantic =
-					keepSemanticTags && node.tagName && SEMANTIC_TAGS.has(node.tagName);
+				const isSemantic = keepSemanticTags && node.tagName && SEMANTIC_TAGS.has(node.tagName);
 				if (node.highlightIndex !== void 0) {
 					nextDepth += 1;
 					const text = getAllTextTillNextClickableElement(node);
 					let attributesHtmlStr = "";
 					if (includeAttrs.length > 0 && node.attributes) {
-						const attributesToInclude = matchAttributes(
-							node.attributes,
-							includeAttrs,
-						);
+						const attributesToInclude = matchAttributes(node.attributes, includeAttrs);
 						const keys = Object.keys(attributesToInclude);
 						if (keys.length > 1) {
 							const keysToRemove = /* @__PURE__ */ new Set();
 							const seenValues = {};
 							for (const key of keys) {
 								const value = attributesToInclude[key];
-								if (value.length > 5)
-									if (value in seenValues) keysToRemove.add(key);
-									else seenValues[value] = key;
+								if (value.length > 5) if (value in seenValues) keysToRemove.add(key);
+								else seenValues[value] = key;
 							}
 							for (const key of keysToRemove) delete attributesToInclude[key];
 						}
-						if (attributesToInclude.role === node.tagName)
-							delete attributesToInclude.role;
-						for (const attr of ["aria-label", "placeholder", "title"])
-							if (
-								attributesToInclude[attr] &&
-								attributesToInclude[attr].toLowerCase().trim() ===
-									text.toLowerCase().trim()
-							)
-								delete attributesToInclude[attr];
-						if (Object.keys(attributesToInclude).length > 0)
-							attributesHtmlStr = Object.entries(attributesToInclude)
-								.map(([key, value]) => `${key}=${capTextLength(value, 20)}`)
-								.join(" ");
+						if (attributesToInclude.role === node.tagName) delete attributesToInclude.role;
+						for (const attr of [
+							"aria-label",
+							"placeholder",
+							"title"
+						]) if (attributesToInclude[attr] && attributesToInclude[attr].toLowerCase().trim() === text.toLowerCase().trim()) delete attributesToInclude[attr];
+						if (Object.keys(attributesToInclude).length > 0) attributesHtmlStr = Object.entries(attributesToInclude).map(([key, value]) => `${key}=${capTextLength(value, 20)}`).join(" ");
 					}
 					let line = `${depthStr}${node.isNew ? `*[${node.highlightIndex}]` : `[${node.highlightIndex}]`}<${node.tagName ?? ""}`;
 					if (attributesHtmlStr) line += ` ${attributesHtmlStr}`;
 					/**
-					 * @edit scrollable 数据
-					 */
+					* @edit scrollable 数据
+					*/
 					if (node.extra) {
 						if (node.extra.scrollable) {
 							let scrollDataText = "";
-							if (node.extra.scrollData?.left)
-								scrollDataText += `left=${node.extra.scrollData.left}, `;
-							if (node.extra.scrollData?.top)
-								scrollDataText += `top=${node.extra.scrollData.top}, `;
-							if (node.extra.scrollData?.right)
-								scrollDataText += `right=${node.extra.scrollData.right}, `;
-							if (node.extra.scrollData?.bottom)
-								scrollDataText += `bottom=${node.extra.scrollData.bottom}`;
+							if (node.extra.scrollData?.left) scrollDataText += `left=${node.extra.scrollData.left}, `;
+							if (node.extra.scrollData?.top) scrollDataText += `top=${node.extra.scrollData.top}, `;
+							if (node.extra.scrollData?.right) scrollDataText += `right=${node.extra.scrollData.right}, `;
+							if (node.extra.scrollData?.bottom) scrollDataText += `bottom=${node.extra.scrollData.bottom}`;
 							line += ` data-scrollable="${scrollDataText}"`;
 						}
 					}
@@ -2155,20 +1733,12 @@ var content = (function () {
 					result.push(`${depthStr}<${node.tagName}>`);
 					nextDepth += 1;
 				}
-				for (const child of node.children)
-					processNode(child, nextDepth, result);
-				if (emitSemantic)
-					if (result.length === mark + 1) result.pop();
-					else result.push(`${depthStr}</${node.tagName}>`);
+				for (const child of node.children) processNode(child, nextDepth, result);
+				if (emitSemantic) if (result.length === mark + 1) result.pop();
+				else result.push(`${depthStr}</${node.tagName}>`);
 			} else if (node.type === "text") {
 				if (hasParentWithHighlightIndex(node)) return;
-				if (
-					node.parent &&
-					node.parent.type === "element" &&
-					node.parent.isVisible &&
-					node.parent.isTopElement
-				)
-					result.push(`${depthStr}${node.text ?? ""}`);
+				if (node.parent && node.parent.type === "element" && node.parent.isVisible && node.parent.isTopElement) result.push(`${depthStr}${node.text ?? ""}`);
 			}
 		};
 		const result = [];
@@ -2179,17 +1749,9 @@ var content = (function () {
 		const textParts = [];
 		const collectText = (currentNode, currentDepth) => {
 			if (maxDepth !== -1 && currentDepth > maxDepth) return;
-			if (
-				currentNode.type === "element" &&
-				currentNode !== node &&
-				currentNode.highlightIndex !== void 0
-			)
-				return;
-			if (currentNode.type === "text" && currentNode.text)
-				textParts.push(currentNode.text);
-			else if (currentNode.type === "element")
-				for (const child of currentNode.children)
-					collectText(child, currentDepth + 1);
+			if (currentNode.type === "element" && currentNode !== node && currentNode.highlightIndex !== void 0) return;
+			if (currentNode.type === "text" && currentNode.text) textParts.push(currentNode.text);
+			else if (currentNode.type === "element") for (const child of currentNode.children) collectText(child, currentDepth + 1);
 		};
 		collectText(node, 0);
 		return textParts.join("\n").trim();
@@ -2199,16 +1761,12 @@ var content = (function () {
 		const keys = Object.keys(flatTree.map);
 		for (const key of keys) {
 			const node = flatTree.map[key];
-			if (node.isInteractive && typeof node.highlightIndex === "number")
-				selectorMap.set(node.highlightIndex, node);
+			if (node.isInteractive && typeof node.highlightIndex === "number") selectorMap.set(node.highlightIndex, node);
 		}
 		return selectorMap;
 	}
 	function getElementTextMap(simplifiedHTML) {
-		const lines = simplifiedHTML
-			.split("\n")
-			.map((line) => line.trim())
-			.filter((line) => line.length > 0);
+		const lines = simplifiedHTML.split("\n").map((line) => line.trim()).filter((line) => line.length > 0);
 		const elementTextMap = /* @__PURE__ */ new Map();
 		for (const line of lines) {
 			const match = /^\[(\d+)\]<[^>]+>([^<]*)/.exec(line);
@@ -2221,8 +1779,7 @@ var content = (function () {
 	}
 	function cleanUpHighlights() {
 		const cleanupFunctions = window._highlightCleanupFunctions || [];
-		for (const cleanup of cleanupFunctions)
-			if (typeof cleanup === "function") cleanup();
+		for (const cleanup of cleanupFunctions) if (typeof cleanup === "function") cleanup();
 		window._highlightCleanupFunctions = [];
 	}
 	window.addEventListener("popstate", () => {
@@ -2235,10 +1792,9 @@ var content = (function () {
 		cleanUpHighlights();
 	});
 	var navigation = window.navigation;
-	if (navigation && typeof navigation.addEventListener === "function")
-		navigation.addEventListener("navigate", () => {
-			cleanUpHighlights();
-		});
+	if (navigation && typeof navigation.addEventListener === "function") navigation.addEventListener("navigate", () => {
+		cleanUpHighlights();
+	});
 	else {
 		let currentUrl = window.location.href;
 		setInterval(() => {
@@ -2253,32 +1809,12 @@ var content = (function () {
 	function getPageInfo() {
 		const viewport_width = window.innerWidth;
 		const viewport_height = window.innerHeight;
-		const page_width = Math.max(
-			document.documentElement.scrollWidth,
-			document.body.scrollWidth || 0,
-		);
-		const page_height = Math.max(
-			document.documentElement.scrollHeight,
-			document.body.scrollHeight || 0,
-		);
-		const scroll_x =
-			window.scrollX ||
-			window.pageXOffset ||
-			document.documentElement.scrollLeft ||
-			0;
-		const scroll_y =
-			window.scrollY ||
-			window.pageYOffset ||
-			document.documentElement.scrollTop ||
-			0;
-		const pixels_below = Math.max(
-			0,
-			page_height - (window.innerHeight + scroll_y),
-		);
-		const pixels_right = Math.max(
-			0,
-			page_width - (window.innerWidth + scroll_x),
-		);
+		const page_width = Math.max(document.documentElement.scrollWidth, document.body.scrollWidth || 0);
+		const page_height = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight || 0);
+		const scroll_x = window.scrollX || window.pageXOffset || document.documentElement.scrollLeft || 0;
+		const scroll_y = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+		const pixels_below = Math.max(0, page_height - (window.innerHeight + scroll_y));
+		const pixels_right = Math.max(0, page_width - (window.innerWidth + scroll_x));
 		return {
 			viewport_width,
 			viewport_height,
@@ -2291,48 +1827,36 @@ var content = (function () {
 			pages_above: viewport_height > 0 ? scroll_y / viewport_height : 0,
 			pages_below: viewport_height > 0 ? pixels_below / viewport_height : 0,
 			total_pages: viewport_height > 0 ? page_height / viewport_height : 0,
-			current_page_position:
-				scroll_y / Math.max(1, page_height - viewport_height),
+			current_page_position: scroll_y / Math.max(1, page_height - viewport_height),
 			pixels_left: scroll_x,
-			pixels_right,
+			pixels_right
 		};
 	}
 	//#endregion
 	//#region ../page-controller/src/patches/react.ts
 	function patchReact(pageController) {
-		const reactRootElements = document.querySelectorAll(
-			'[data-reactroot], [data-reactid], [data-react-checksum], #root, #app, [id^="root-"], [id^="app-"], #adex-wrapper, #adex-root',
-		);
-		for (const element of reactRootElements)
-			element.setAttribute("data-page-agent-not-interactive", "true");
+		const reactRootElements = document.querySelectorAll("[data-reactroot], [data-reactid], [data-react-checksum], #root, #app, [id^=\"root-\"], [id^=\"app-\"], #adex-wrapper, #adex-root");
+		for (const element of reactRootElements) element.setAttribute("data-page-agent-not-interactive", "true");
 	}
 	/**
-	 * @todo (Heavy, might have false negatives) Interaction detection, if element width/height equals body offsetWidth/Height, consider it root element and non-interactive (React often attaches many events to root elements, causing false positives)
-	 */
+	* @todo (Heavy, might have false negatives) Interaction detection, if element width/height equals body offsetWidth/Height, consider it root element and non-interactive (React often attaches many events to root elements, causing false positives)
+	*/
 	//#endregion
 	//#region ../../node_modules/ai-motion/build/Motion.js
 	/**
-	 * AI Motion - WebGL2 animated border with AI-style glow effects
-	 *
-	 * @author Simon<gaomeng1900@gmail.com>
-	 * @license MIT
-	 * @repository https://github.com/gaomeng1900/ai-motion
-	 */
-	function computeBorderGeometry(
-		pixelWidth,
-		pixelHeight,
-		borderWidth,
-		glowWidth,
-	) {
+	* AI Motion - WebGL2 animated border with AI-style glow effects
+	*
+	* @author Simon<gaomeng1900@gmail.com>
+	* @license MIT
+	* @repository https://github.com/gaomeng1900/ai-motion
+	*/
+	function computeBorderGeometry(pixelWidth, pixelHeight, borderWidth, glowWidth) {
 		const shortSide = Math.max(1, Math.min(pixelWidth, pixelHeight));
-		const totalThick = Math.min(
-			Math.min(borderWidth, 20) + glowWidth,
-			shortSide,
-		);
+		const totalThick = Math.min(Math.min(borderWidth, 20) + glowWidth, shortSide);
 		const insetX = Math.min(totalThick, Math.floor(pixelWidth / 2));
 		const insetY = Math.min(totalThick, Math.floor(pixelHeight / 2));
-		const toClipX = (x) => (x / pixelWidth) * 2 - 1;
-		const toClipY = (y) => (y / pixelHeight) * 2 - 1;
+		const toClipX = (x) => x / pixelWidth * 2 - 1;
+		const toClipY = (y) => y / pixelHeight * 2 - 1;
 		const x0 = 0;
 		const x1 = pixelWidth;
 		const y0 = 0;
@@ -2406,7 +1930,7 @@ var content = (function () {
 				X1,
 				Yi0,
 				X1,
-				Yi1,
+				Yi1
 			]),
 			uvs: new Float32Array([
 				u0,
@@ -2456,17 +1980,17 @@ var content = (function () {
 				u1,
 				vi0,
 				u1,
-				vi1,
-			]),
+				vi1
+			])
 		};
 	}
 	/**
-	 * AI Motion - WebGL2 animated border with AI-style glow effects
-	 *
-	 * @author Simon<gaomeng1900@gmail.com>
-	 * @license MIT
-	 * @repository https://github.com/gaomeng1900/ai-motion
-	 */
+	* AI Motion - WebGL2 animated border with AI-style glow effects
+	*
+	* @author Simon<gaomeng1900@gmail.com>
+	* @license MIT
+	* @repository https://github.com/gaomeng1900/ai-motion
+	*/
 	function compileShader(gl, type, source) {
 		const shader = gl.createShader(type);
 		if (!shader) throw new Error("Failed to create shader");
@@ -2499,20 +2023,24 @@ var content = (function () {
 		return program;
 	}
 	/**
-	 * AI Motion - WebGL2 animated border with AI-style glow effects
-	 *
-	 * @author Simon<gaomeng1900@gmail.com>
-	 * @license MIT
-	 * @repository https://github.com/gaomeng1900/ai-motion
-	 */
+	* AI Motion - WebGL2 animated border with AI-style glow effects
+	*
+	* @author Simon<gaomeng1900@gmail.com>
+	* @license MIT
+	* @repository https://github.com/gaomeng1900/ai-motion
+	*/
 	function parseColor(colorStr) {
 		const match = colorStr.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
 		if (!match) throw new Error(`Invalid color format: ${colorStr}`);
 		const [, r, g, b] = match;
-		return [parseInt(r) / 255, parseInt(g) / 255, parseInt(b) / 255];
+		return [
+			parseInt(r) / 255,
+			parseInt(g) / 255,
+			parseInt(b) / 255
+		];
 	}
 	var fragmentShaderSource, vertexShaderSource, DEFAULT_COLORS, Motion;
-	var init_Motion = __esmMin(() => {
+	var init_Motion = __esmMin((() => {
 		fragmentShaderSource = `#version 300 es
 precision lowp float;
 in vec2 vUV;
@@ -2629,7 +2157,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			"rgb(57, 182, 255)",
 			"rgb(189, 69, 251)",
 			"rgb(255, 87, 51)",
-			"rgb(255, 214, 0)",
+			"rgb(255, 214, 0)"
 		];
 		Motion = class {
 			element;
@@ -2651,13 +2179,11 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 					glowWidth: options.glowWidth ?? 200,
 					borderRadius: options.borderRadius ?? 8,
 					mode: options.mode ?? "light",
-					...options,
+					...options
 				};
 				this.canvas = document.createElement("canvas");
-				if (this.options.classNames)
-					this.canvas.className = this.options.classNames;
-				if (this.options.styles)
-					Object.assign(this.canvas.style, this.options.styles);
+				if (this.options.classNames) this.canvas.className = this.options.classNames;
+				if (this.options.styles) Object.assign(this.canvas.style, this.options.styles);
 				this.canvas.style.display = "block";
 				this.canvas.style.transformOrigin = "center";
 				this.canvas.style.pointerEvents = "none";
@@ -2666,8 +2192,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				if (!this.options.skipGreeting) this.greet();
 			}
 			start() {
-				if (this.disposed)
-					throw new Error("Motion instance has been disposed.");
+				if (this.disposed) throw new Error("Motion instance has been disposed.");
 				if (this.running) return;
 				if (!this.glr) {
 					console.error("WebGL resources are not initialized.");
@@ -2675,18 +2200,10 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				}
 				this.running = true;
 				this.startTime = performance.now();
-				this.resize(
-					this.options.width ?? 600,
-					this.options.height ?? 600,
-					this.options.ratio,
-				);
+				this.resize(this.options.width ?? 600, this.options.height ?? 600, this.options.ratio);
 				this.glr.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
 				this.glr.gl.useProgram(this.glr.program);
-				this.glr.gl.uniform2f(
-					this.glr.uResolution,
-					this.canvas.width,
-					this.canvas.height,
-				);
+				this.glr.gl.uniform2f(this.glr.uResolution, this.canvas.width, this.canvas.height);
 				this.checkGLError(this.glr.gl, "start: after initial setup");
 				const loop = () => {
 					if (!this.running || !this.glr) return;
@@ -2694,14 +2211,13 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 					const now = performance.now();
 					if (now - this.lastTime < 1e3 / 32) return;
 					this.lastTime = now;
-					const t = (now - this.startTime) * 0.001;
+					const t = (now - this.startTime) * .001;
 					this.render(t);
 				};
 				this.rafId = requestAnimationFrame(loop);
 			}
 			pause() {
-				if (this.disposed)
-					throw new Error("Motion instance has been disposed.");
+				if (this.disposed) throw new Error("Motion instance has been disposed.");
 				this.running = false;
 				if (this.rafId !== null) cancelAnimationFrame(this.rafId);
 			}
@@ -2719,34 +2235,24 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				this.canvas.remove();
 			}
 			resize(width, height, ratio) {
-				if (this.disposed)
-					throw new Error("Motion instance has been disposed.");
+				if (this.disposed) throw new Error("Motion instance has been disposed.");
 				this.options.width = width;
 				this.options.height = height;
 				if (ratio) this.options.ratio = ratio;
 				if (!this.running) return;
-				const { gl, program, vao, positionBuffer, uvBuffer, uResolution } =
-					this.glr;
+				const { gl, program, vao, positionBuffer, uvBuffer, uResolution } = this.glr;
 				const dpr = ratio ?? this.options.ratio ?? window.devicePixelRatio ?? 1;
 				const desiredWidth = Math.max(1, Math.floor(width * dpr));
 				const desiredHeight = Math.max(1, Math.floor(height * dpr));
 				this.canvas.style.width = `${width}px`;
 				this.canvas.style.height = `${height}px`;
-				if (
-					this.canvas.width !== desiredWidth ||
-					this.canvas.height !== desiredHeight
-				) {
+				if (this.canvas.width !== desiredWidth || this.canvas.height !== desiredHeight) {
 					this.canvas.width = desiredWidth;
 					this.canvas.height = desiredHeight;
 				}
 				gl.viewport(0, 0, this.canvas.width, this.canvas.height);
 				this.checkGLError(gl, "resize: after viewport setup");
-				const { positions, uvs } = computeBorderGeometry(
-					this.canvas.width,
-					this.canvas.height,
-					this.options.borderWidth * dpr,
-					this.options.glowWidth * dpr,
-				);
+				const { positions, uvs } = computeBorderGeometry(this.canvas.width, this.canvas.height, this.options.borderWidth * dpr, this.options.glowWidth * dpr);
 				gl.bindVertexArray(vao);
 				gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 				gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
@@ -2768,13 +2274,13 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				this.checkGLError(gl, "resize: after uniform updates");
 				const now = performance.now();
 				this.lastTime = now;
-				const t = (now - this.startTime) * 0.001;
+				const t = (now - this.startTime) * .001;
 				this.render(t);
 			}
 			/**
-			 * Automatically resizes the canvas to match the dimensions of the given element.
-			 * @note using ResizeObserver
-			 */
+			* Automatically resizes the canvas to match the dimensions of the given element.
+			* @note using ResizeObserver
+			*/
 			autoResize(sourceElement) {
 				if (this.observer) this.observer.disconnect();
 				this.observer = new ResizeObserver(() => {
@@ -2784,51 +2290,37 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				this.observer.observe(sourceElement);
 			}
 			fadeIn() {
-				if (this.disposed)
-					throw new Error("Motion instance has been disposed.");
+				if (this.disposed) throw new Error("Motion instance has been disposed.");
 				return new Promise((resolve, reject) => {
-					const animation = this.canvas.animate(
-						[
-							{
-								opacity: 0,
-								transform: "scale(1.2)",
-							},
-							{
-								opacity: 1,
-								transform: "scale(1)",
-							},
-						],
-						{
-							duration: 300,
-							easing: "ease-out",
-							fill: "forwards",
-						},
-					);
+					const animation = this.canvas.animate([{
+						opacity: 0,
+						transform: "scale(1.2)"
+					}, {
+						opacity: 1,
+						transform: "scale(1)"
+					}], {
+						duration: 300,
+						easing: "ease-out",
+						fill: "forwards"
+					});
 					animation.onfinish = () => resolve();
 					animation.oncancel = () => reject("canceled");
 				});
 			}
 			fadeOut() {
-				if (this.disposed)
-					throw new Error("Motion instance has been disposed.");
+				if (this.disposed) throw new Error("Motion instance has been disposed.");
 				return new Promise((resolve, reject) => {
-					const animation = this.canvas.animate(
-						[
-							{
-								opacity: 1,
-								transform: "scale(1)",
-							},
-							{
-								opacity: 0,
-								transform: "scale(1.2)",
-							},
-						],
-						{
-							duration: 300,
-							easing: "ease-in",
-							fill: "forwards",
-						},
-					);
+					const animation = this.canvas.animate([{
+						opacity: 1,
+						transform: "scale(1)"
+					}, {
+						opacity: 0,
+						transform: "scale(1.2)"
+					}], {
+						duration: 300,
+						easing: "ease-in",
+						fill: "forwards"
+					});
 					animation.onfinish = () => resolve();
 					animation.oncancel = () => reject("canceled");
 				});
@@ -2847,43 +2339,27 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			}
 			getGLErrorName(gl, error) {
 				switch (error) {
-					case gl.INVALID_ENUM:
-						return "INVALID_ENUM";
-					case gl.INVALID_VALUE:
-						return "INVALID_VALUE";
-					case gl.INVALID_OPERATION:
-						return "INVALID_OPERATION";
-					case gl.INVALID_FRAMEBUFFER_OPERATION:
-						return "INVALID_FRAMEBUFFER_OPERATION";
-					case gl.OUT_OF_MEMORY:
-						return "OUT_OF_MEMORY";
-					case gl.CONTEXT_LOST_WEBGL:
-						return "CONTEXT_LOST_WEBGL";
-					default:
-						return "UNKNOWN_ERROR";
+					case gl.INVALID_ENUM: return "INVALID_ENUM";
+					case gl.INVALID_VALUE: return "INVALID_VALUE";
+					case gl.INVALID_OPERATION: return "INVALID_OPERATION";
+					case gl.INVALID_FRAMEBUFFER_OPERATION: return "INVALID_FRAMEBUFFER_OPERATION";
+					case gl.OUT_OF_MEMORY: return "OUT_OF_MEMORY";
+					case gl.CONTEXT_LOST_WEBGL: return "CONTEXT_LOST_WEBGL";
+					default: return "UNKNOWN_ERROR";
 				}
 			}
 			setupGL() {
 				const gl = this.canvas.getContext("webgl2", {
 					antialias: false,
-					alpha: true,
+					alpha: true
 				});
 				if (!gl) throw new Error("WebGL2 is required but not available.");
-				const program = createProgram(
-					gl,
-					vertexShaderSource,
-					fragmentShaderSource,
-				);
+				const program = createProgram(gl, vertexShaderSource, fragmentShaderSource);
 				this.checkGLError(gl, "setupGL: after createProgram");
 				const vao = gl.createVertexArray();
 				gl.bindVertexArray(vao);
 				this.checkGLError(gl, "setupGL: after VAO creation");
-				const { positions, uvs } = computeBorderGeometry(
-					this.canvas.width || 2,
-					this.canvas.height || 2,
-					this.options.borderWidth,
-					this.options.glowWidth,
-				);
+				const { positions, uvs } = computeBorderGeometry(this.canvas.width || 2, this.canvas.height || 2, this.options.borderWidth, this.options.glowWidth);
 				const positionBuffer = gl.createBuffer();
 				gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 				gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
@@ -2917,14 +2393,8 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 					gl.uniform1f(uGlowExponent, 1);
 					gl.uniform1f(uGlowFactor, 1);
 				}
-				const colorVecs = (this.options.colors || DEFAULT_COLORS).map(
-					parseColor,
-				);
-				for (let i = 0; i < colorVecs.length; i++)
-					gl.uniform3f(
-						gl.getUniformLocation(program, `uColors[${i}]`),
-						...colorVecs[i],
-					);
+				const colorVecs = (this.options.colors || DEFAULT_COLORS).map(parseColor);
+				for (let i = 0; i < colorVecs.length; i++) gl.uniform3f(gl.getUniformLocation(program, `uColors[${i}]`), ...colorVecs[i]);
 				this.checkGLError(gl, "setupGL: after uniform setup");
 				gl.bindVertexArray(null);
 				gl.bindBuffer(gl.ARRAY_BUFFER, null);
@@ -2939,7 +2409,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 					uBorderWidth,
 					uGlowWidth,
 					uBorderRadius,
-					uColors,
+					uColors
 				};
 			}
 			render(t) {
@@ -2958,19 +2428,16 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				gl.bindVertexArray(null);
 			}
 			greet() {
-				console.log(
-					`%c🌈 ai-motion 0.4.8 🌈`,
-					"background: linear-gradient(90deg, #39b6ff, #bd45fb, #ff5733, #ffd600); color: white; text-shadow: 0 0 2px rgba(0, 0, 0, 0.2); font-weight: bold; font-size: 1em; padding: 2px 12px; border-radius: 6px;",
-				);
+				console.log(`%c🌈 ai-motion 0.4.8 🌈`, "background: linear-gradient(90deg, #39b6ff, #bd45fb, #ff5733, #ffd600); color: white; text-shadow: 0 0 2px rgba(0, 0, 0, 0.2); font-weight: bold; font-size: 1em; padding: 2px 12px; border-radius: 6px;");
 			}
 		};
-	});
+	}));
 	//#endregion
 	//#region ../page-controller/src/mask/checkDarkMode.ts
 	/**
-	 * A comprehensive function to determine if the page is currently in a dark theme.
-	 * Heuristic check. Only work for common patterns. Return false by default.
-	 */
+	* A comprehensive function to determine if the page is currently in a dark theme.
+	* Heuristic check. Only work for common patterns. Return false by default.
+	*/
 	function isPageDark() {
 		try {
 			if (hasDarkModeClass()) return true;
@@ -2986,29 +2453,24 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		}
 	}
 	/**
-	 * Checks for common dark mode CSS classes on the html or body elements.
-	 */
+	* Checks for common dark mode CSS classes on the html or body elements.
+	*/
 	function hasDarkModeClass() {
 		const DEFAULT_DARK_MODE_CLASSES = [
 			"dark",
 			"dark-mode",
 			"theme-dark",
 			"night",
-			"night-mode",
+			"night-mode"
 		];
 		const htmlElement = document.documentElement;
 		const bodyElement = document.body || document.documentElement;
-		for (const className of DEFAULT_DARK_MODE_CLASSES)
-			if (
-				htmlElement.classList.contains(className) ||
-				bodyElement?.classList.contains(className)
-			)
-				return true;
+		for (const className of DEFAULT_DARK_MODE_CLASSES) if (htmlElement.classList.contains(className) || bodyElement?.classList.contains(className)) return true;
 		return false;
 	}
 	/**
-	 * Some UI frameworks use data attributes to indicate theme
-	 */
+	* Some UI frameworks use data attributes to indicate theme
+	*/
 	function hasDarkModeDataAttribute() {
 		const htmlElement = document.documentElement;
 		const bodyElement = document.body || document.documentElement;
@@ -3016,72 +2478,58 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			"data-theme",
 			"data-color-mode",
 			"data-bs-theme",
-			"data-mui-color-scheme",
+			"data-mui-color-scheme"
 		]) {
 			const bodyValue = bodyElement?.getAttribute(attr);
 			const htmlValue = htmlElement.getAttribute(attr);
-			if (
-				bodyValue?.toLowerCase() === "dark" ||
-				htmlValue?.toLowerCase() === "dark"
-			)
-				return true;
+			if (bodyValue?.toLowerCase() === "dark" || htmlValue?.toLowerCase() === "dark") return true;
 		}
 		return false;
 	}
 	/**
-	 * Checks the CSS `color-scheme` property and `<meta name="color-scheme">` tag.
-	 * Only "dark"/"only dark" counts as dark; "light dark" is ambiguous and ignored.
-	 */
+	* Checks the CSS `color-scheme` property and `<meta name="color-scheme">` tag.
+	* Only "dark"/"only dark" counts as dark; "light dark" is ambiguous and ignored.
+	*/
 	function isColorSchemeDark() {
-		const metaContent = document
-			.querySelector('meta[name="color-scheme"]')
-			?.content.toLowerCase();
+		const metaContent = document.querySelector("meta[name=\"color-scheme\"]")?.content.toLowerCase();
 		if (metaContent === "dark" || metaContent === "only dark") return true;
-		const colorScheme = window
-			.getComputedStyle(document.documentElement)
-			.getPropertyValue("color-scheme")
-			.trim()
-			.toLowerCase();
+		const colorScheme = window.getComputedStyle(document.documentElement).getPropertyValue("color-scheme").trim().toLowerCase();
 		return colorScheme === "dark" || colorScheme === "only dark";
 	}
 	/**
-	 * Checks the background color of the body element to determine if the page is dark.
-	 */
+	* Checks the background color of the body element to determine if the page is dark.
+	*/
 	function isBackgroundDark() {
 		const htmlStyle = window.getComputedStyle(document.documentElement);
-		const bodyStyle = window.getComputedStyle(
-			document.body || document.documentElement,
-		);
+		const bodyStyle = window.getComputedStyle(document.body || document.documentElement);
 		const htmlBgColor = htmlStyle.backgroundColor;
 		const bodyBgColor = bodyStyle.backgroundColor;
 		if (isColorDark(bodyBgColor)) return true;
-		else if (
-			bodyBgColor === "transparent" ||
-			bodyBgColor.startsWith("rgba(0, 0, 0, 0)")
-		)
-			return isColorDark(htmlBgColor);
+		else if (bodyBgColor === "transparent" || bodyBgColor.startsWith("rgba(0, 0, 0, 0)")) return isColorDark(htmlBgColor);
 		return false;
 	}
 	/**
-	 * Checks if the text color on the body is light, which implies a dark background.
-	 */
+	* Checks if the text color on the body is light, which implies a dark background.
+	*/
 	function isTextColorLight() {
 		/** Luminance (0-255) above which body text is considered light */
 		const LIGHT_TEXT_LUMINANCE = 200;
-		const luminance = getLuminance(
-			window.getComputedStyle(document.body || document.documentElement).color,
-		);
+		const luminance = getLuminance(window.getComputedStyle(document.body || document.documentElement).color);
 		return luminance !== null && luminance > LIGHT_TEXT_LUMINANCE;
 	}
 	/**
-	 * Checks the background color of major layout elements (#app, #root, etc.).
-	 * Many SPAs render into a container that may have its own dark background while
-	 * <body> remains transparent.
-	 */
+	* Checks the background color of major layout elements (#app, #root, etc.).
+	* Many SPAs render into a container that may have its own dark background while
+	* <body> remains transparent.
+	*/
 	function isMainContentBackgroundDark() {
 		const { innerWidth: vw, innerHeight: vh } = window;
-		const minArea = vw * vh * 0.5;
-		for (const selector of ["#app", "#root", "#__next"]) {
+		const minArea = vw * vh * .5;
+		for (const selector of [
+			"#app",
+			"#root",
+			"#__next"
+		]) {
 			const el = document.querySelector(selector);
 			if (!el) continue;
 			const rect = el.getBoundingClientRect();
@@ -3091,65 +2539,55 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		return false;
 	}
 	/**
-	 * Parses an RGB or RGBA color string and returns an object with r, g, b properties.
-	 * @param {string} colorString - e.g., "rgb(34, 34, 34)" or "rgba(0, 0, 0, 0.5)"
-	 * @returns {{r: number, g: number, b: number}|null}
-	 */
+	* Parses an RGB or RGBA color string and returns an object with r, g, b properties.
+	* @param {string} colorString - e.g., "rgb(34, 34, 34)" or "rgba(0, 0, 0, 0.5)"
+	* @returns {{r: number, g: number, b: number}|null}
+	*/
 	function parseRgbColor(colorString) {
 		const rgbMatch = /rgba?\((\d+),\s*(\d+),\s*(\d+)/.exec(colorString);
 		if (!rgbMatch) return null;
 		return {
 			r: parseInt(rgbMatch[1]),
 			g: parseInt(rgbMatch[2]),
-			b: parseInt(rgbMatch[3]),
+			b: parseInt(rgbMatch[3])
 		};
 	}
 	/**
-	 * Calculates the perceived luminance (0-255) of a CSS color string.
-	 * @param {string} colorString - e.g., "rgb(50, 50, 50)" or "rgba(0, 0, 0, 0.5)"
-	 * @returns {number|null} - The luminance, or null if the color is transparent or unparseable.
-	 */
+	* Calculates the perceived luminance (0-255) of a CSS color string.
+	* @param {string} colorString - e.g., "rgb(50, 50, 50)" or "rgba(0, 0, 0, 0.5)"
+	* @returns {number|null} - The luminance, or null if the color is transparent or unparseable.
+	*/
 	function getLuminance(colorString) {
-		if (
-			!colorString ||
-			colorString === "transparent" ||
-			colorString.startsWith("rgba(0, 0, 0, 0)")
-		)
-			return null;
+		if (!colorString || colorString === "transparent" || colorString.startsWith("rgba(0, 0, 0, 0)")) return null;
 		const rgb = parseRgbColor(colorString);
 		if (!rgb) return null;
-		return 0.299 * rgb.r + 0.587 * rgb.g + 0.114 * rgb.b;
+		return .299 * rgb.r + .587 * rgb.g + .114 * rgb.b;
 	}
 	/**
-	 * Determines if a color is "dark" based on its calculated luminance.
-	 * @param {string} colorString - The CSS color string (e.g., "rgb(50, 50, 50)").
-	 * @param {number} threshold - A value between 0 and 255. Colors with luminance below this will be considered dark. Default is 128.
-	 */
+	* Determines if a color is "dark" based on its calculated luminance.
+	* @param {string} colorString - The CSS color string (e.g., "rgb(50, 50, 50)").
+	* @param {number} threshold - A value between 0 and 255. Colors with luminance below this will be considered dark. Default is 128.
+	*/
 	function isColorDark(colorString, threshold = 128) {
 		const luminance = getLuminance(colorString);
 		return luminance !== null && luminance < threshold;
 	}
-	var init_checkDarkMode = __esmMin(() => {});
+	var init_checkDarkMode = __esmMin((() => {}));
 	//#endregion
 	//#region ../page-controller/src/mask/SimulatorMask.module.css
 	var wrapper, visible, SimulatorMask_module_default;
-	var init_SimulatorMask_module = __esmMin(() => {
+	var init_SimulatorMask_module = __esmMin((() => {
 		wrapper = "_wrapper_1ooyb_1";
 		visible = "_visible_1ooyb_11";
 		SimulatorMask_module_default = {
 			wrapper,
-			visible,
+			visible
 		};
-	});
+	}));
 	//#endregion
 	//#region ../page-controller/src/mask/cursor.module.css
-	var cursor,
-		cursorBorder,
-		cursorFilling,
-		cursorRipple,
-		clicking,
-		cursor_module_default;
-	var init_cursor_module = __esmMin(() => {
+	var cursor, cursorBorder, cursorFilling, cursorRipple, clicking, cursor_module_default;
+	var init_cursor_module = __esmMin((() => {
 		cursor = "_cursor_1dgwb_2";
 		cursorBorder = "_cursorBorder_1dgwb_10";
 		cursorFilling = "_cursorFilling_1dgwb_25";
@@ -3161,16 +2599,14 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			cursorFilling,
 			cursorRipple,
 			clicking,
-			"cursor-ripple": "_cursor-ripple_1dgwb_1",
+			"cursor-ripple": "_cursor-ripple_1dgwb_1"
 		};
-	});
+	}));
 	//#endregion
 	//#region ../page-controller/src/mask/SimulatorMask.ts
-	var SimulatorMask_exports = /* @__PURE__ */ __exportAll({
-		SimulatorMask: () => SimulatorMask,
-	});
+	var SimulatorMask_exports = /* @__PURE__ */ __exportAll({ SimulatorMask: () => SimulatorMask });
 	var SimulatorMask;
-	var init_SimulatorMask = __esmMin(() => {
+	var init_SimulatorMask = __esmMin((() => {
 		init_Motion();
 		init_checkDarkMode();
 		init_SimulatorMask_module();
@@ -3196,8 +2632,8 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 						mode: isPageDark() ? "dark" : "light",
 						styles: {
 							position: "absolute",
-							inset: "0",
-						},
+							inset: "0"
+						}
 					});
 					this.motion = motion;
 					this.wrapper.appendChild(motion.element);
@@ -3249,39 +2685,15 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				const disablePassThroughListener = () => {
 					this.wrapper.style.pointerEvents = "auto";
 				};
-				window.addEventListener(
-					"PageAgent::MovePointerTo",
-					movePointerToListener,
-				);
-				window.addEventListener(
-					"PageAgent::ClickPointer",
-					clickPointerListener,
-				);
-				window.addEventListener(
-					"PageAgent::EnablePassThrough",
-					enablePassThroughListener,
-				);
-				window.addEventListener(
-					"PageAgent::DisablePassThrough",
-					disablePassThroughListener,
-				);
+				window.addEventListener("PageAgent::MovePointerTo", movePointerToListener);
+				window.addEventListener("PageAgent::ClickPointer", clickPointerListener);
+				window.addEventListener("PageAgent::EnablePassThrough", enablePassThroughListener);
+				window.addEventListener("PageAgent::DisablePassThrough", disablePassThroughListener);
 				this.addEventListener("dispose", () => {
-					window.removeEventListener(
-						"PageAgent::MovePointerTo",
-						movePointerToListener,
-					);
-					window.removeEventListener(
-						"PageAgent::ClickPointer",
-						clickPointerListener,
-					);
-					window.removeEventListener(
-						"PageAgent::EnablePassThrough",
-						enablePassThroughListener,
-					);
-					window.removeEventListener(
-						"PageAgent::DisablePassThrough",
-						disablePassThroughListener,
-					);
+					window.removeEventListener("PageAgent::MovePointerTo", movePointerToListener);
+					window.removeEventListener("PageAgent::ClickPointer", clickPointerListener);
+					window.removeEventListener("PageAgent::EnablePassThrough", enablePassThroughListener);
+					window.removeEventListener("PageAgent::DisablePassThrough", disablePassThroughListener);
 				});
 			}
 			#createCursor() {
@@ -3299,12 +2711,8 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			}
 			#moveCursorToTarget() {
 				if (this.#disposed) return;
-				const newX =
-					this.#currentCursorX +
-					(this.#targetCursorX - this.#currentCursorX) * 0.2;
-				const newY =
-					this.#currentCursorY +
-					(this.#targetCursorY - this.#currentCursorY) * 0.2;
+				const newX = this.#currentCursorX + (this.#targetCursorX - this.#currentCursorX) * .2;
+				const newY = this.#currentCursorY + (this.#targetCursorY - this.#currentCursorY) * .2;
 				const xDistance = Math.abs(newX - this.#targetCursorX);
 				if (xDistance > 0) {
 					if (xDistance < 2) this.#currentCursorX = this.#targetCursorX;
@@ -3360,40 +2768,40 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				this.dispatchEvent(new Event("dispose"));
 			}
 		};
-	});
+	}));
 	//#endregion
 	//#region ../page-controller/src/PageController.ts
 	/**
-	 * Copyright (C) 2025 Alibaba Group Holding Limited
-	 * All rights reserved.
-	 *
-	 * PageController - Manages DOM operations and element interactions.
-	 * Designed to be independent of LLM and can be tested in unit tests.
-	 * All public methods are async for potential remote calling support.
-	 */
+	* Copyright (C) 2025 Alibaba Group Holding Limited
+	* All rights reserved.
+	*
+	* PageController - Manages DOM operations and element interactions.
+	* Designed to be independent of LLM and can be tested in unit tests.
+	* All public methods are async for potential remote calling support.
+	*/
 	/**
-	 * PageController manages DOM state and element interactions.
-	 * It provides async methods for all DOM operations, keeping state isolated.
-	 *
-	 * @lifecycle
-	 * - beforeUpdate: Emitted before the DOM tree is updated.
-	 * - afterUpdate: Emitted after the DOM tree is updated.
-	 */
+	* PageController manages DOM state and element interactions.
+	* It provides async methods for all DOM operations, keeping state isolated.
+	*
+	* @lifecycle
+	* - beforeUpdate: Emitted before the DOM tree is updated.
+	* - afterUpdate: Emitted after the DOM tree is updated.
+	*/
 	var PageController = class extends EventTarget {
 		config;
 		/** Corresponds to eval_page in browser-use */
 		flatTree = null;
 		/**
-		 * All highlighted index-mapped interactive elements
-		 * Corresponds to DOMState.selector_map in browser-use
-		 */
+		* All highlighted index-mapped interactive elements
+		* Corresponds to DOMState.selector_map in browser-use
+		*/
 		selectorMap = /* @__PURE__ */ new Map();
 		/** Index -> element text description mapping */
 		elementTextMap = /* @__PURE__ */ new Map();
 		/**
-		 * Simplified HTML for LLM consumption.
-		 * Corresponds to clickable_elements_to_string in browser-use
-		 */
+		* Simplified HTML for LLM consumption.
+		* Corresponds to clickable_elements_to_string in browser-use
+		*/
 		simplifiedHTML = "<EMPTY>";
 		/** last time the tree was updated */
 		lastTimeUpdate = 0;
@@ -3409,54 +2817,50 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			if (config.enableMask) this.initMask();
 		}
 		/**
-		 * Initialize mask asynchronously (dynamic import to avoid CSS loading in Node)
-		 */
+		* Initialize mask asynchronously (dynamic import to avoid CSS loading in Node)
+		*/
 		initMask() {
 			if (this.maskReady !== null) return;
 			this.maskReady = (async () => {
-				const { SimulatorMask } = await Promise.resolve().then(
-					() => (init_SimulatorMask(), SimulatorMask_exports),
-				);
+				const { SimulatorMask } = await Promise.resolve().then(() => (init_SimulatorMask(), SimulatorMask_exports));
 				this.mask = new SimulatorMask();
 			})();
 		}
 		/**
-		 * Get current page URL
-		 */
+		* Get current page URL
+		*/
 		async getCurrentUrl() {
 			return window.location.href;
 		}
 		/**
-		 * Get last tree update timestamp
-		 */
+		* Get last tree update timestamp
+		*/
 		async getLastUpdateTime() {
 			return this.lastTimeUpdate;
 		}
 		/**
-		 * Capture a screenshot of the current viewport as a `data:` URL.
-		 *
-		 * @remarks
-		 * The in-page controller cannot capture the rendered viewport (no extension
-		 * API is available in page context), so this always resolves to `null`.
-		 * Screenshots require the extension's `RemotePageController`, which forwards
-		 * the request to the background and uses `chrome.tabs.captureVisibleTab`.
-		 *
-		 * @returns A screenshot `data:` URL, or `null` when capture is unsupported.
-		 */
+		* Capture a screenshot of the current viewport as a `data:` URL.
+		*
+		* @remarks
+		* The in-page controller cannot capture the rendered viewport (no extension
+		* API is available in page context), so this always resolves to `null`.
+		* Screenshots require the extension's `RemotePageController`, which forwards
+		* the request to the background and uses `chrome.tabs.captureVisibleTab`.
+		*
+		* @returns A screenshot `data:` URL, or `null` when capture is unsupported.
+		*/
 		async captureScreenshot() {
 			return null;
 		}
 		/**
-		 * Get structured browser state for LLM consumption.
-		 * Automatically calls updateTree() to refresh the DOM state.
-		 */
+		* Get structured browser state for LLM consumption.
+		* Automatically calls updateTree() to refresh the DOM state.
+		*/
 		async getBrowserState() {
 			const url = window.location.href;
 			const title = document.title;
 			const pi = getPageInfo();
-			const viewportExpansion = resolveViewportExpansion(
-				this.config.viewportExpansion,
-			);
+			const viewportExpansion = resolveViewportExpansion(this.config.viewportExpansion);
 			await this.updateTree();
 			const content = this.simplifiedHTML;
 			return {
@@ -3464,37 +2868,25 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				title,
 				header: `${`Current Page: [${title}](${url})`}\n${`Page info: ${pi.viewport_width}x${pi.viewport_height}px viewport, ${pi.page_width}x${pi.page_height}px total page size, ${pi.pages_above.toFixed(1)} pages above, ${pi.pages_below.toFixed(1)} pages below, ${pi.total_pages.toFixed(1)} total pages, at ${(pi.current_page_position * 100).toFixed(0)}% of page`}\n\n${viewportExpansion === -1 ? "Interactive elements from top layer of the current page (full page):" : "Interactive elements from top layer of the current page inside the viewport:"}\n\n${pi.pixels_above > 4 && viewportExpansion !== -1 ? `... ${pi.pixels_above} pixels above (${pi.pages_above.toFixed(1)} pages) - scroll to see more ...` : "[Start of page]"}`,
 				content,
-				footer:
-					pi.pixels_below > 4 && viewportExpansion !== -1
-						? `... ${pi.pixels_below} pixels below (${pi.pages_below.toFixed(1)} pages) - scroll to see more ...`
-						: "[End of page]",
+				footer: pi.pixels_below > 4 && viewportExpansion !== -1 ? `... ${pi.pixels_below} pixels below (${pi.pages_below.toFixed(1)} pages) - scroll to see more ...` : "[End of page]"
 			};
 		}
 		/**
-		 * Update DOM tree, returns simplified HTML for LLM.
-		 * This is the main method to refresh the page state.
-		 * Automatically bypasses mask during DOM extraction if enabled.
-		 */
+		* Update DOM tree, returns simplified HTML for LLM.
+		* This is the main method to refresh the page state.
+		* Automatically bypasses mask during DOM extraction if enabled.
+		*/
 		async updateTree() {
 			this.dispatchEvent(new Event("beforeUpdate"));
 			this.lastTimeUpdate = Date.now();
 			if (this.mask) this.mask.wrapper.style.pointerEvents = "none";
 			cleanUpHighlights();
-			const blacklist = [
-				...(this.config.interactiveBlacklist || []),
-				...Array.from(
-					document.querySelectorAll("[data-page-agent-not-interactive]"),
-				),
-			];
+			const blacklist = [...this.config.interactiveBlacklist || [], ...Array.from(document.querySelectorAll("[data-page-agent-not-interactive]"))];
 			this.flatTree = getFlatTree({
 				...this.config,
-				interactiveBlacklist: blacklist,
+				interactiveBlacklist: blacklist
 			});
-			this.simplifiedHTML = flatTreeToString(
-				this.flatTree,
-				this.config.includeAttributes,
-				this.config.keepSemanticTags,
-			);
+			this.simplifiedHTML = flatTreeToString(this.flatTree, this.config.includeAttributes, this.config.keepSemanticTags);
 			this.selectorMap.clear();
 			this.selectorMap = getSelectorMap(this.flatTree);
 			this.elementTextMap.clear();
@@ -3505,50 +2897,46 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			return this.simplifiedHTML;
 		}
 		/**
-		 * Clean up all element highlights
-		 */
+		* Clean up all element highlights
+		*/
 		async cleanUpHighlights() {
 			console.log("[PageController] cleanUpHighlights");
 			cleanUpHighlights();
 		}
 		/**
-		 * Ensure the tree has been indexed before any index-based operation.
-		 * Throws if updateTree() hasn't been called yet.
-		 */
+		* Ensure the tree has been indexed before any index-based operation.
+		* Throws if updateTree() hasn't been called yet.
+		*/
 		assertIndexed() {
-			if (!this.isIndexed)
-				throw new Error(
-					"DOM tree not indexed yet. Can not perform actions on elements.",
-				);
+			if (!this.isIndexed) throw new Error("DOM tree not indexed yet. Can not perform actions on elements.");
 		}
 		/**
-		 * Click element by index
-		 */
+		* Click element by index
+		*/
 		async clickElement(index) {
 			try {
 				this.assertIndexed();
 				const element = getElementByIndex(this.selectorMap, index);
 				const elemText = this.elementTextMap.get(index);
 				await clickElement(element);
-				if (isAnchorElement(element) && element.target === "_blank")
-					return {
-						success: true,
-						message: `✅ Clicked element (${elemText ?? index}). ⚠️ Link opened in a new tab.`,
-					};
+				if (isAnchorElement(element) && element.target === "_blank") return {
+					success: true,
+					message: `✅ Clicked element (${elemText ?? index}). ⚠️ Link opened in a new tab.`
+				};
 				return {
 					success: true,
-					message: `✅ Clicked element (${elemText ?? index}).`,
+					message: `✅ Clicked element (${elemText ?? index}).`
 				};
 			} catch (error) {
 				return {
 					success: false,
-					message: `❌ Failed to click element: ${error}`,
+					message: `❌ Failed to click element: ${error}`
 				};
 			}
 		}
 		/**
-		 * Input text into element by index
-		 */
+		* Input text into element by index
+		*/
 		async inputText(index, text) {
 			try {
 				this.assertIndexed();
@@ -3557,18 +2945,18 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				await inputTextElement(element, text);
 				return {
 					success: true,
-					message: `✅ Input text (${text}) into element (${elemText ?? index}).`,
+					message: `✅ Input text (${text}) into element (${elemText ?? index}).`
 				};
 			} catch (error) {
 				return {
 					success: false,
-					message: `❌ Failed to input text: ${error}`,
+					message: `❌ Failed to input text: ${error}`
 				};
 			}
 		}
 		/**
-		 * Select dropdown option by index and option text
-		 */
+		* Select dropdown option by index and option text
+		*/
 		async selectOption(index, optionText) {
 			try {
 				this.assertIndexed();
@@ -3577,100 +2965,90 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				await selectOptionElement(element, optionText);
 				return {
 					success: true,
-					message: `✅ Selected option (${optionText}) in element (${elemText ?? index}).`,
+					message: `✅ Selected option (${optionText}) in element (${elemText ?? index}).`
 				};
 			} catch (error) {
 				return {
 					success: false,
-					message: `❌ Failed to select option: ${error}`,
+					message: `❌ Failed to select option: ${error}`
 				};
 			}
 		}
 		/**
-		 * Scroll vertically
-		 */
+		* Scroll vertically
+		*/
 		async scroll(options) {
 			try {
 				const { down, numPages, pixels, index } = options;
 				this.assertIndexed();
 				return {
 					success: true,
-					message: await scrollVertically(
-						(pixels ?? numPages * window.innerHeight) * (down ? 1 : -1),
-						index !== void 0
-							? getElementByIndex(this.selectorMap, index)
-							: null,
-					),
+					message: await scrollVertically((pixels ?? numPages * window.innerHeight) * (down ? 1 : -1), index !== void 0 ? getElementByIndex(this.selectorMap, index) : null)
 				};
 			} catch (error) {
 				return {
 					success: false,
-					message: `❌ Failed to scroll: ${error}`,
+					message: `❌ Failed to scroll: ${error}`
 				};
 			}
 		}
 		/**
-		 * Scroll horizontally
-		 */
+		* Scroll horizontally
+		*/
 		async scrollHorizontally(options) {
 			try {
 				const { right, pixels, index } = options;
 				this.assertIndexed();
 				return {
 					success: true,
-					message: await scrollHorizontally(
-						pixels * (right ? 1 : -1),
-						index !== void 0
-							? getElementByIndex(this.selectorMap, index)
-							: null,
-					),
+					message: await scrollHorizontally(pixels * (right ? 1 : -1), index !== void 0 ? getElementByIndex(this.selectorMap, index) : null)
 				};
 			} catch (error) {
 				return {
 					success: false,
-					message: `❌ Failed to scroll horizontally: ${error}`,
+					message: `❌ Failed to scroll horizontally: ${error}`
 				};
 			}
 		}
 		/**
-		 * Execute arbitrary JavaScript on the page.
-		 * The optional `signal` is exposed to the script scope so cooperative code
-		 * can abort promptly when the task is stopped.
-		 */
+		* Execute arbitrary JavaScript on the page.
+		* The optional `signal` is exposed to the script scope so cooperative code
+		* can abort promptly when the task is stopped.
+		*/
 		async executeJavascript(script, signal) {
 			try {
 				const asyncFunction = eval(`(async (signal) => { ${script} })`);
 				const result = await asyncFunction(signal);
 				return {
 					success: true,
-					message: `✅ Executed JavaScript. Result: ${result}`,
+					message: `✅ Executed JavaScript. Result: ${result}`
 				};
 			} catch (error) {
 				return {
 					success: false,
-					message: `❌ Error executing JavaScript: ${error}`,
+					message: `❌ Error executing JavaScript: ${error}`
 				};
 			}
 		}
 		/**
-		 * Show the visual mask overlay.
-		 * Only works after mask is setup.
-		 */
+		* Show the visual mask overlay.
+		* Only works after mask is setup.
+		*/
 		async showMask() {
 			await this.maskReady;
 			this.mask?.show();
 		}
 		/**
-		 * Hide the visual mask overlay.
-		 * Only works after mask is setup.
-		 */
+		* Hide the visual mask overlay.
+		* Only works after mask is setup.
+		*/
 		async hideMask() {
 			await this.maskReady;
 			this.mask?.hide();
 		}
 		/**
-		 * Dispose and clean up resources
-		 */
+		* Dispose and clean up resources
+		*/
 		dispose() {
 			cleanUpHighlights();
 			this.flatTree = null;
@@ -3685,32 +3063,25 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 	//#endregion
 	//#region src/agent/RemotePageController.content.ts
 	/**
-	 * content script for RemotePageController
-	 */
+	* content script for RemotePageController
+	*/
 	function initPageController() {
 		let pageController = null;
 		let intervalID = null;
-		const myTabIdPromise = chrome.runtime
-			.sendMessage({
-				type: "PAGE_CONTROL",
-				action: "get_my_tab_id",
-			})
-			.then((response) => {
-				return response.tabId;
-			})
-			.catch((error) => {
-				console.error(
-					"[RemotePageController.ContentScript]: Failed to get my tab id",
-					error,
-				);
-				return null;
-			});
+		const myTabIdPromise = chrome.runtime.sendMessage({
+			type: "PAGE_CONTROL",
+			action: "get_my_tab_id"
+		}).then((response) => {
+			return response.tabId;
+		}).catch((error) => {
+			console.error("[RemotePageController.ContentScript]: Failed to get my tab id", error);
+			return null;
+		});
 		function getPC() {
-			if (!pageController)
-				pageController = new PageController({
-					enableMask: false,
-					viewportExpansion: 400,
-				});
+			if (!pageController) pageController = new PageController({
+				enableMask: false,
+				viewportExpansion: 400
+			});
 			return pageController;
 		}
 		const stopPolling = () => {
@@ -3723,22 +3094,11 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				return;
 			}
 			try {
-				const agentHeartbeat = (
-					await chrome.storage.local.get("agentHeartbeat")
-				).agentHeartbeat;
-				const agentInTouch =
-					typeof agentHeartbeat === "number" &&
-					Date.now() - agentHeartbeat < 2e3;
-				const isAgentRunning = (
-					await chrome.storage.local.get("isAgentRunning")
-				).isAgentRunning;
-				const currentTabId = (await chrome.storage.local.get("currentTabId"))
-					.currentTabId;
-				if (
-					isAgentRunning &&
-					agentInTouch &&
-					currentTabId === (await myTabIdPromise)
-				) {
+				const agentHeartbeat = (await chrome.storage.local.get("agentHeartbeat")).agentHeartbeat;
+				const agentInTouch = typeof agentHeartbeat === "number" && Date.now() - agentHeartbeat < 2e3;
+				const isAgentRunning = (await chrome.storage.local.get("isAgentRunning")).isAgentRunning;
+				const currentTabId = (await chrome.storage.local.get("currentTabId")).currentTabId;
+				if (isAgentRunning && agentInTouch && currentTabId === await myTabIdPromise) {
 					const pc = getPC();
 					pc.initMask();
 					await pc.showMask();
@@ -3772,63 +3132,46 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				case "scroll":
 				case "scroll_horizontally":
 				case "execute_javascript":
-					pc[methodName](...(payload || []))
-						.then((result) => sendResponse(result))
-						.catch((error) =>
-							sendResponse({
-								success: false,
-								error: error instanceof Error ? error.message : String(error),
-							}),
-						);
-					break;
-				default:
-					sendResponse({
+					pc[methodName](...payload || []).then((result) => sendResponse(result)).catch((error) => sendResponse({
 						success: false,
-						error: `Unknown PAGE_CONTROL action: ${action}`,
-					});
+						error: error instanceof Error ? error.message : String(error)
+					}));
+					break;
+				default: sendResponse({
+					success: false,
+					error: `Unknown PAGE_CONTROL action: ${action}`
+				});
 			}
 			return true;
 		});
 	}
 	function getMethodName(action) {
 		switch (action) {
-			case "get_last_update_time":
-				return "getLastUpdateTime";
-			case "get_browser_state":
-				return "getBrowserState";
-			case "update_tree":
-				return "updateTree";
-			case "clean_up_highlights":
-				return "cleanUpHighlights";
-			case "click_element":
-				return "clickElement";
-			case "input_text":
-				return "inputText";
-			case "select_option":
-				return "selectOption";
-			case "scroll":
-				return "scroll";
-			case "scroll_horizontally":
-				return "scrollHorizontally";
-			case "execute_javascript":
-				return "executeJavascript";
-			default:
-				return action;
+			case "get_last_update_time": return "getLastUpdateTime";
+			case "get_browser_state": return "getBrowserState";
+			case "update_tree": return "updateTree";
+			case "clean_up_highlights": return "cleanUpHighlights";
+			case "click_element": return "clickElement";
+			case "input_text": return "inputText";
+			case "select_option": return "selectOption";
+			case "scroll": return "scroll";
+			case "scroll_horizontally": return "scrollHorizontally";
+			case "execute_javascript": return "executeJavascript";
+			default: return action;
 		}
 	}
 	//#endregion
 	//#region ../../node_modules/zod/v4/core/core.js
 	function $constructor(name, initializer, params) {
 		function init(inst, def) {
-			if (!inst._zod)
-				Object.defineProperty(inst, "_zod", {
-					value: {
-						def,
-						constr: _,
-						traits: /* @__PURE__ */ new Set(),
-					},
-					enumerable: false,
-				});
+			if (!inst._zod) Object.defineProperty(inst, "_zod", {
+				value: {
+					def,
+					constr: _,
+					traits: /* @__PURE__ */ new Set()
+				},
+				enumerable: false
+			});
 			if (inst._zod.traits.has(name)) return;
 			inst._zod.traits.add(name);
 			initializer(inst, def);
@@ -3851,12 +3194,10 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			return inst;
 		}
 		Object.defineProperty(_, "init", { value: init });
-		Object.defineProperty(_, Symbol.hasInstance, {
-			value: (inst) => {
-				if (params?.Parent && inst instanceof params.Parent) return true;
-				return inst?._zod?.traits?.has(name);
-			},
-		});
+		Object.defineProperty(_, Symbol.hasInstance, { value: (inst) => {
+			if (params?.Parent && inst instanceof params.Parent) return true;
+			return inst?._zod?.traits?.has(name);
+		} });
 		Object.defineProperty(_, "name", { value: name });
 		return _;
 	}
@@ -3865,12 +3206,10 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		return globalConfig;
 	}
 	var _a$1, $ZodAsyncError, $ZodEncodeError, globalConfig;
-	var init_core$1 = __esmMin(() => {
+	var init_core$1 = __esmMin((() => {
 		$ZodAsyncError = class extends Error {
 			constructor() {
-				super(
-					`Encountered Promise during synchronous parse. Use .parseAsync() instead.`,
-				);
+				super(`Encountered Promise during synchronous parse. Use .parseAsync() instead.`);
 			}
 		};
 		$ZodEncodeError = class extends Error {
@@ -3881,16 +3220,12 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		};
 		(_a$1 = globalThis).__zod_globalConfig ?? (_a$1.__zod_globalConfig = {});
 		globalConfig = globalThis.__zod_globalConfig;
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/core/util.js
 	function getEnumValues(entries) {
-		const numericValues = Object.values(entries).filter(
-			(v) => typeof v === "number",
-		);
-		return Object.entries(entries)
-			.filter(([k, _]) => numericValues.indexOf(+k) === -1)
-			.map(([_, v]) => v);
+		const numericValues = Object.values(entries).filter((v) => typeof v === "number");
+		return Object.entries(entries).filter(([k, _]) => numericValues.indexOf(+k) === -1).map(([_, v]) => v);
 	}
 	function joinValues(array, separator = "|") {
 		return array.map((val) => stringifyPrimitive(val)).join(separator);
@@ -3900,16 +3235,14 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		return value;
 	}
 	function cached(getter) {
-		return {
-			get value() {
-				{
-					const value = getter();
-					Object.defineProperty(this, "value", { value });
-					return value;
-				}
-				throw new Error("cached value already set");
-			},
-		};
+		return { get value() {
+			{
+				const value = getter();
+				Object.defineProperty(this, "value", { value });
+				return value;
+			}
+			throw new Error("cached value already set");
+		} };
 	}
 	function nullish(input) {
 		return input === null || input === void 0;
@@ -3940,7 +3273,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			set(v) {
 				Object.defineProperty(object, key, { value: v });
 			},
-			configurable: true,
+			configurable: true
 		});
 	}
 	function assignProp(target, prop, value) {
@@ -3948,25 +3281,19 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			value,
 			writable: true,
 			enumerable: true,
-			configurable: true,
+			configurable: true
 		});
 	}
 	function mergeDefs(...defs) {
 		const mergedDescriptors = {};
-		for (const def of defs)
-			Object.assign(mergedDescriptors, Object.getOwnPropertyDescriptors(def));
+		for (const def of defs) Object.assign(mergedDescriptors, Object.getOwnPropertyDescriptors(def));
 		return Object.defineProperties({}, mergedDescriptors);
 	}
 	function esc(str) {
 		return JSON.stringify(str);
 	}
 	function slugify(input) {
-		return input
-			.toLowerCase()
-			.trim()
-			.replace(/[^\w\s-]/g, "")
-			.replace(/[\s_-]+/g, "-")
-			.replace(/^-+|-+$/g, "");
+		return input.toLowerCase().trim().replace(/[^\w\s-]/g, "").replace(/[\s_-]+/g, "-").replace(/^-+|-+$/g, "");
 	}
 	function isObject(data) {
 		return typeof data === "object" && data !== null && !Array.isArray(data);
@@ -3978,8 +3305,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		if (typeof ctor !== "function") return true;
 		const prot = ctor.prototype;
 		if (isObject(prot) === false) return false;
-		if (Object.prototype.hasOwnProperty.call(prot, "isPrototypeOf") === false)
-			return false;
+		if (Object.prototype.hasOwnProperty.call(prot, "isPrototypeOf") === false) return false;
 		return true;
 	}
 	function shallowClone(o) {
@@ -4002,16 +3328,14 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		if (!params) return {};
 		if (typeof params === "string") return { error: () => params };
 		if (params?.message !== void 0) {
-			if (params?.error !== void 0)
-				throw new Error("Cannot specify both `message` and `error` params");
+			if (params?.error !== void 0) throw new Error("Cannot specify both `message` and `error` params");
 			params.error = params.message;
 		}
 		delete params.message;
-		if (typeof params.error === "string")
-			return {
-				...params,
-				error: () => params.error,
-			};
+		if (typeof params.error === "string") return {
+			...params,
+			error: () => params.error
+		};
 		return params;
 	}
 	function stringifyPrimitive(value) {
@@ -4021,206 +3345,142 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 	}
 	function optionalKeys(shape) {
 		return Object.keys(shape).filter((k) => {
-			return (
-				shape[k]._zod.optin === "optional" &&
-				shape[k]._zod.optout === "optional"
-			);
+			return shape[k]._zod.optin === "optional" && shape[k]._zod.optout === "optional";
 		});
 	}
 	function pick(schema, mask) {
 		const currDef = schema._zod.def;
 		const checks = currDef.checks;
-		if (checks && checks.length > 0)
-			throw new Error(
-				".pick() cannot be used on object schemas containing refinements",
-			);
-		return clone(
-			schema,
-			mergeDefs(schema._zod.def, {
-				get shape() {
-					const newShape = {};
-					for (const key in mask) {
-						if (!(key in currDef.shape))
-							throw new Error(`Unrecognized key: "${key}"`);
-						if (!mask[key]) continue;
-						newShape[key] = currDef.shape[key];
-					}
-					assignProp(this, "shape", newShape);
-					return newShape;
-				},
-				checks: [],
-			}),
-		);
+		if (checks && checks.length > 0) throw new Error(".pick() cannot be used on object schemas containing refinements");
+		return clone(schema, mergeDefs(schema._zod.def, {
+			get shape() {
+				const newShape = {};
+				for (const key in mask) {
+					if (!(key in currDef.shape)) throw new Error(`Unrecognized key: "${key}"`);
+					if (!mask[key]) continue;
+					newShape[key] = currDef.shape[key];
+				}
+				assignProp(this, "shape", newShape);
+				return newShape;
+			},
+			checks: []
+		}));
 	}
 	function omit(schema, mask) {
 		const currDef = schema._zod.def;
 		const checks = currDef.checks;
-		if (checks && checks.length > 0)
-			throw new Error(
-				".omit() cannot be used on object schemas containing refinements",
-			);
-		return clone(
-			schema,
-			mergeDefs(schema._zod.def, {
-				get shape() {
-					const newShape = { ...schema._zod.def.shape };
-					for (const key in mask) {
-						if (!(key in currDef.shape))
-							throw new Error(`Unrecognized key: "${key}"`);
-						if (!mask[key]) continue;
-						delete newShape[key];
-					}
-					assignProp(this, "shape", newShape);
-					return newShape;
-				},
-				checks: [],
-			}),
-		);
+		if (checks && checks.length > 0) throw new Error(".omit() cannot be used on object schemas containing refinements");
+		return clone(schema, mergeDefs(schema._zod.def, {
+			get shape() {
+				const newShape = { ...schema._zod.def.shape };
+				for (const key in mask) {
+					if (!(key in currDef.shape)) throw new Error(`Unrecognized key: "${key}"`);
+					if (!mask[key]) continue;
+					delete newShape[key];
+				}
+				assignProp(this, "shape", newShape);
+				return newShape;
+			},
+			checks: []
+		}));
 	}
 	function extend(schema, shape) {
-		if (!isPlainObject(shape))
-			throw new Error("Invalid input to extend: expected a plain object");
+		if (!isPlainObject(shape)) throw new Error("Invalid input to extend: expected a plain object");
 		const checks = schema._zod.def.checks;
 		if (checks && checks.length > 0) {
 			const existingShape = schema._zod.def.shape;
-			for (const key in shape)
-				if (Object.getOwnPropertyDescriptor(existingShape, key) !== void 0)
-					throw new Error(
-						"Cannot overwrite keys on object schemas containing refinements. Use `.safeExtend()` instead.",
-					);
+			for (const key in shape) if (Object.getOwnPropertyDescriptor(existingShape, key) !== void 0) throw new Error("Cannot overwrite keys on object schemas containing refinements. Use `.safeExtend()` instead.");
 		}
-		return clone(
-			schema,
-			mergeDefs(schema._zod.def, {
-				get shape() {
-					const _shape = {
-						...schema._zod.def.shape,
-						...shape,
-					};
-					assignProp(this, "shape", _shape);
-					return _shape;
-				},
-			}),
-		);
+		return clone(schema, mergeDefs(schema._zod.def, { get shape() {
+			const _shape = {
+				...schema._zod.def.shape,
+				...shape
+			};
+			assignProp(this, "shape", _shape);
+			return _shape;
+		} }));
 	}
 	function safeExtend(schema, shape) {
-		if (!isPlainObject(shape))
-			throw new Error("Invalid input to safeExtend: expected a plain object");
-		return clone(
-			schema,
-			mergeDefs(schema._zod.def, {
-				get shape() {
-					const _shape = {
-						...schema._zod.def.shape,
-						...shape,
-					};
-					assignProp(this, "shape", _shape);
-					return _shape;
-				},
-			}),
-		);
+		if (!isPlainObject(shape)) throw new Error("Invalid input to safeExtend: expected a plain object");
+		return clone(schema, mergeDefs(schema._zod.def, { get shape() {
+			const _shape = {
+				...schema._zod.def.shape,
+				...shape
+			};
+			assignProp(this, "shape", _shape);
+			return _shape;
+		} }));
 	}
 	function merge(a, b) {
-		if (a._zod.def.checks?.length)
-			throw new Error(
-				".merge() cannot be used on object schemas containing refinements. Use .safeExtend() instead.",
-			);
-		return clone(
-			a,
-			mergeDefs(a._zod.def, {
-				get shape() {
-					const _shape = {
-						...a._zod.def.shape,
-						...b._zod.def.shape,
-					};
-					assignProp(this, "shape", _shape);
-					return _shape;
-				},
-				get catchall() {
-					return b._zod.def.catchall;
-				},
-				checks: b._zod.def.checks ?? [],
-			}),
-		);
+		if (a._zod.def.checks?.length) throw new Error(".merge() cannot be used on object schemas containing refinements. Use .safeExtend() instead.");
+		return clone(a, mergeDefs(a._zod.def, {
+			get shape() {
+				const _shape = {
+					...a._zod.def.shape,
+					...b._zod.def.shape
+				};
+				assignProp(this, "shape", _shape);
+				return _shape;
+			},
+			get catchall() {
+				return b._zod.def.catchall;
+			},
+			checks: b._zod.def.checks ?? []
+		}));
 	}
 	function partial(Class, schema, mask) {
 		const checks = schema._zod.def.checks;
-		if (checks && checks.length > 0)
-			throw new Error(
-				".partial() cannot be used on object schemas containing refinements",
-			);
-		return clone(
-			schema,
-			mergeDefs(schema._zod.def, {
-				get shape() {
-					const oldShape = schema._zod.def.shape;
-					const shape = { ...oldShape };
-					if (mask)
-						for (const key in mask) {
-							if (!(key in oldShape))
-								throw new Error(`Unrecognized key: "${key}"`);
-							if (!mask[key]) continue;
-							shape[key] = Class
-								? new Class({
-										type: "optional",
-										innerType: oldShape[key],
-									})
-								: oldShape[key];
-						}
-					else
-						for (const key in oldShape)
-							shape[key] = Class
-								? new Class({
-										type: "optional",
-										innerType: oldShape[key],
-									})
-								: oldShape[key];
-					assignProp(this, "shape", shape);
-					return shape;
-				},
-				checks: [],
-			}),
-		);
+		if (checks && checks.length > 0) throw new Error(".partial() cannot be used on object schemas containing refinements");
+		return clone(schema, mergeDefs(schema._zod.def, {
+			get shape() {
+				const oldShape = schema._zod.def.shape;
+				const shape = { ...oldShape };
+				if (mask) for (const key in mask) {
+					if (!(key in oldShape)) throw new Error(`Unrecognized key: "${key}"`);
+					if (!mask[key]) continue;
+					shape[key] = Class ? new Class({
+						type: "optional",
+						innerType: oldShape[key]
+					}) : oldShape[key];
+				}
+				else for (const key in oldShape) shape[key] = Class ? new Class({
+					type: "optional",
+					innerType: oldShape[key]
+				}) : oldShape[key];
+				assignProp(this, "shape", shape);
+				return shape;
+			},
+			checks: []
+		}));
 	}
 	function required(Class, schema, mask) {
-		return clone(
-			schema,
-			mergeDefs(schema._zod.def, {
-				get shape() {
-					const oldShape = schema._zod.def.shape;
-					const shape = { ...oldShape };
-					if (mask)
-						for (const key in mask) {
-							if (!(key in shape))
-								throw new Error(`Unrecognized key: "${key}"`);
-							if (!mask[key]) continue;
-							shape[key] = new Class({
-								type: "nonoptional",
-								innerType: oldShape[key],
-							});
-						}
-					else
-						for (const key in oldShape)
-							shape[key] = new Class({
-								type: "nonoptional",
-								innerType: oldShape[key],
-							});
-					assignProp(this, "shape", shape);
-					return shape;
-				},
-			}),
-		);
+		return clone(schema, mergeDefs(schema._zod.def, { get shape() {
+			const oldShape = schema._zod.def.shape;
+			const shape = { ...oldShape };
+			if (mask) for (const key in mask) {
+				if (!(key in shape)) throw new Error(`Unrecognized key: "${key}"`);
+				if (!mask[key]) continue;
+				shape[key] = new Class({
+					type: "nonoptional",
+					innerType: oldShape[key]
+				});
+			}
+			else for (const key in oldShape) shape[key] = new Class({
+				type: "nonoptional",
+				innerType: oldShape[key]
+			});
+			assignProp(this, "shape", shape);
+			return shape;
+		} }));
 	}
 	function aborted(x, startIndex = 0) {
 		if (x.aborted === true) return true;
-		for (let i = startIndex; i < x.issues.length; i++)
-			if (x.issues[i]?.continue !== true) return true;
+		for (let i = startIndex; i < x.issues.length; i++) if (x.issues[i]?.continue !== true) return true;
 		return false;
 	}
 	function explicitlyAborted(x, startIndex = 0) {
 		if (x.aborted === true) return true;
-		for (let i = startIndex; i < x.issues.length; i++)
-			if (x.issues[i]?.continue === false) return true;
+		for (let i = startIndex; i < x.issues.length; i++) if (x.issues[i]?.continue === false) return true;
 		return false;
 	}
 	function prefixIssues(path, issues) {
@@ -4235,13 +3495,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		return typeof message === "string" ? message : message?.message;
 	}
 	function finalizeIssue(iss, ctx, config) {
-		const message = iss.message
-			? iss.message
-			: (unwrapMessage(iss.inst?._zod.def?.error?.(iss)) ??
-				unwrapMessage(ctx?.error?.(iss)) ??
-				unwrapMessage(config.customError?.(iss)) ??
-				unwrapMessage(config.localeError?.(iss)) ??
-				"Invalid input");
+		const message = iss.message ? iss.message : unwrapMessage(iss.inst?._zod.def?.error?.(iss)) ?? unwrapMessage(ctx?.error?.(iss)) ?? unwrapMessage(config.customError?.(iss)) ?? unwrapMessage(config.localeError?.(iss)) ?? "Invalid input";
 		const { inst: _inst, continue: _continue, input: _input, ...rest } = iss;
 		rest.path ?? (rest.path = []);
 		rest.message = message;
@@ -4256,51 +3510,34 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 	function parsedType(data) {
 		const t = typeof data;
 		switch (t) {
-			case "number":
-				return Number.isNaN(data) ? "nan" : "number";
+			case "number": return Number.isNaN(data) ? "nan" : "number";
 			case "object": {
 				if (data === null) return "null";
 				if (Array.isArray(data)) return "array";
 				const obj = data;
-				if (
-					obj &&
-					Object.getPrototypeOf(obj) !== Object.prototype &&
-					"constructor" in obj &&
-					obj.constructor
-				)
-					return obj.constructor.name;
+				if (obj && Object.getPrototypeOf(obj) !== Object.prototype && "constructor" in obj && obj.constructor) return obj.constructor.name;
 			}
 		}
 		return t;
 	}
 	function issue(...args) {
 		const [iss, input, inst] = args;
-		if (typeof iss === "string")
-			return {
-				message: iss,
-				code: "custom",
-				input,
-				inst,
-			};
+		if (typeof iss === "string") return {
+			message: iss,
+			code: "custom",
+			input,
+			inst
+		};
 		return { ...iss };
 	}
-	var EVALUATING,
-		captureStackTrace,
-		allowsEval,
-		propertyKeyTypes,
-		NUMBER_FORMAT_RANGES;
-	var init_util = __esmMin(() => {
+	var EVALUATING, captureStackTrace, allowsEval, propertyKeyTypes, NUMBER_FORMAT_RANGES;
+	var init_util = __esmMin((() => {
 		init_core$1();
 		EVALUATING = /* @__PURE__*/ Symbol("evaluating");
-		captureStackTrace =
-			"captureStackTrace" in Error ? Error.captureStackTrace : (..._args) => {};
+		captureStackTrace = "captureStackTrace" in Error ? Error.captureStackTrace : (..._args) => {};
 		allowsEval = /* @__PURE__*/ cached(() => {
 			if (globalConfig.jitless) return false;
-			if (
-				typeof navigator !== "undefined" &&
-				navigator?.userAgent?.includes("Cloudflare")
-			)
-				return false;
+			if (typeof navigator !== "undefined" && navigator?.userAgent?.includes("Cloudflare")) return false;
 			try {
 				new Function("");
 				return true;
@@ -4308,116 +3545,108 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				return false;
 			}
 		});
-		propertyKeyTypes = /* @__PURE__*/ new Set(["string", "number", "symbol"]);
+		propertyKeyTypes = /* @__PURE__*/ new Set([
+			"string",
+			"number",
+			"symbol"
+		]);
 		NUMBER_FORMAT_RANGES = {
 			safeint: [Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER],
 			int32: [-2147483648, 2147483647],
 			uint32: [0, 4294967295],
 			float32: [-34028234663852886e22, 34028234663852886e22],
-			float64: [-Number.MAX_VALUE, Number.MAX_VALUE],
+			float64: [-Number.MAX_VALUE, Number.MAX_VALUE]
 		};
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/core/errors.js
 	function flattenError(error, mapper = (issue) => issue.message) {
 		const fieldErrors = {};
 		const formErrors = [];
-		for (const sub of error.issues)
-			if (sub.path.length > 0) {
-				fieldErrors[sub.path[0]] = fieldErrors[sub.path[0]] || [];
-				fieldErrors[sub.path[0]].push(mapper(sub));
-			} else formErrors.push(mapper(sub));
+		for (const sub of error.issues) if (sub.path.length > 0) {
+			fieldErrors[sub.path[0]] = fieldErrors[sub.path[0]] || [];
+			fieldErrors[sub.path[0]].push(mapper(sub));
+		} else formErrors.push(mapper(sub));
 		return {
 			formErrors,
-			fieldErrors,
+			fieldErrors
 		};
 	}
 	function formatError(error, mapper = (issue) => issue.message) {
 		const fieldErrors = { _errors: [] };
 		const processError = (error, path = []) => {
-			for (const issue of error.issues)
-				if (issue.code === "invalid_union" && issue.errors.length)
-					issue.errors.map((issues) =>
-						processError({ issues }, [...path, ...issue.path]),
-					);
-				else if (issue.code === "invalid_key")
-					processError({ issues: issue.issues }, [...path, ...issue.path]);
-				else if (issue.code === "invalid_element")
-					processError({ issues: issue.issues }, [...path, ...issue.path]);
+			for (const issue of error.issues) if (issue.code === "invalid_union" && issue.errors.length) issue.errors.map((issues) => processError({ issues }, [...path, ...issue.path]));
+			else if (issue.code === "invalid_key") processError({ issues: issue.issues }, [...path, ...issue.path]);
+			else if (issue.code === "invalid_element") processError({ issues: issue.issues }, [...path, ...issue.path]);
+			else {
+				const fullpath = [...path, ...issue.path];
+				if (fullpath.length === 0) fieldErrors._errors.push(mapper(issue));
 				else {
-					const fullpath = [...path, ...issue.path];
-					if (fullpath.length === 0) fieldErrors._errors.push(mapper(issue));
-					else {
-						let curr = fieldErrors;
-						let i = 0;
-						while (i < fullpath.length) {
-							const el = fullpath[i];
-							if (!(i === fullpath.length - 1))
-								curr[el] = curr[el] || { _errors: [] };
-							else {
-								curr[el] = curr[el] || { _errors: [] };
-								curr[el]._errors.push(mapper(issue));
-							}
-							curr = curr[el];
-							i++;
+					let curr = fieldErrors;
+					let i = 0;
+					while (i < fullpath.length) {
+						const el = fullpath[i];
+						if (!(i === fullpath.length - 1)) curr[el] = curr[el] || { _errors: [] };
+						else {
+							curr[el] = curr[el] || { _errors: [] };
+							curr[el]._errors.push(mapper(issue));
 						}
+						curr = curr[el];
+						i++;
 					}
 				}
+			}
 		};
 		processError(error);
 		return fieldErrors;
 	}
 	/** Format a ZodError as a human-readable string in the following form.
-	 *
-	 * From
-	 *
-	 * ```ts
-	 * ZodError {
-	 *   issues: [
-	 *     {
-	 *       expected: 'string',
-	 *       code: 'invalid_type',
-	 *       path: [ 'username' ],
-	 *       message: 'Invalid input: expected string'
-	 *     },
-	 *     {
-	 *       expected: 'number',
-	 *       code: 'invalid_type',
-	 *       path: [ 'favoriteNumbers', 1 ],
-	 *       message: 'Invalid input: expected number'
-	 *     }
-	 *   ];
-	 * }
-	 * ```
-	 *
-	 * to
-	 *
-	 * ```
-	 * username
-	 *   ✖ Expected number, received string at "username
-	 * favoriteNumbers[0]
-	 *   ✖ Invalid input: expected number
-	 * ```
-	 */
+	*
+	* From
+	*
+	* ```ts
+	* ZodError {
+	*   issues: [
+	*     {
+	*       expected: 'string',
+	*       code: 'invalid_type',
+	*       path: [ 'username' ],
+	*       message: 'Invalid input: expected string'
+	*     },
+	*     {
+	*       expected: 'number',
+	*       code: 'invalid_type',
+	*       path: [ 'favoriteNumbers', 1 ],
+	*       message: 'Invalid input: expected number'
+	*     }
+	*   ];
+	* }
+	* ```
+	*
+	* to
+	*
+	* ```
+	* username
+	*   ✖ Expected number, received string at "username
+	* favoriteNumbers[0]
+	*   ✖ Invalid input: expected number
+	* ```
+	*/
 	function toDotPath(_path) {
 		const segs = [];
-		const path = _path.map((seg) => (typeof seg === "object" ? seg.key : seg));
-		for (const seg of path)
-			if (typeof seg === "number") segs.push(`[${seg}]`);
-			else if (typeof seg === "symbol")
-				segs.push(`[${JSON.stringify(String(seg))}]`);
-			else if (/[^\w$]/.test(seg)) segs.push(`[${JSON.stringify(seg)}]`);
-			else {
-				if (segs.length) segs.push(".");
-				segs.push(seg);
-			}
+		const path = _path.map((seg) => typeof seg === "object" ? seg.key : seg);
+		for (const seg of path) if (typeof seg === "number") segs.push(`[${seg}]`);
+		else if (typeof seg === "symbol") segs.push(`[${JSON.stringify(String(seg))}]`);
+		else if (/[^\w$]/.test(seg)) segs.push(`[${JSON.stringify(seg)}]`);
+		else {
+			if (segs.length) segs.push(".");
+			segs.push(seg);
+		}
 		return segs.join("");
 	}
 	function prettifyError(error) {
 		const lines = [];
-		const issues = [...error.issues].sort(
-			(a, b) => (a.path ?? []).length - (b.path ?? []).length,
-		);
+		const issues = [...error.issues].sort((a, b) => (a.path ?? []).length - (b.path ?? []).length);
 		for (const issue of issues) {
 			lines.push(`✖ ${issue.message}`);
 			if (issue.path?.length) lines.push(`  → at ${toDotPath(issue.path)}`);
@@ -4425,201 +3654,148 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		return lines.join("\n");
 	}
 	var initializer$1, $ZodError, $ZodRealError;
-	var init_errors$2 = __esmMin(() => {
+	var init_errors$2 = __esmMin((() => {
 		init_core$1();
 		init_util();
 		initializer$1 = (inst, def) => {
 			inst.name = "$ZodError";
 			Object.defineProperty(inst, "_zod", {
 				value: inst._zod,
-				enumerable: false,
+				enumerable: false
 			});
 			Object.defineProperty(inst, "issues", {
 				value: def,
-				enumerable: false,
+				enumerable: false
 			});
 			inst.message = JSON.stringify(def, jsonStringifyReplacer, 2);
 			Object.defineProperty(inst, "toString", {
 				value: () => inst.message,
-				enumerable: false,
+				enumerable: false
 			});
 		};
 		$ZodError = $constructor("$ZodError", initializer$1);
 		$ZodRealError = $constructor("$ZodError", initializer$1, { Parent: Error });
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/core/parse.js
-	var _parse,
-		_parseAsync,
-		_safeParse,
-		safeParse$1,
-		_safeParseAsync,
-		safeParseAsync$1,
-		_encode,
-		_decode,
-		_encodeAsync,
-		_decodeAsync,
-		_safeEncode,
-		_safeDecode,
-		_safeEncodeAsync,
-		_safeDecodeAsync;
-	var init_parse$1 = __esmMin(() => {
+	var _parse, _parseAsync, _safeParse, safeParse$1, _safeParseAsync, safeParseAsync$1, _encode, _decode, _encodeAsync, _decodeAsync, _safeEncode, _safeDecode, _safeEncodeAsync, _safeDecodeAsync;
+	var init_parse$1 = __esmMin((() => {
 		init_core$1();
 		init_errors$2();
 		init_util();
 		_parse = (_Err) => (schema, value, _ctx, _params) => {
-			const ctx = _ctx
-				? {
-						..._ctx,
-						async: false,
-					}
-				: { async: false };
-			const result = schema._zod.run(
-				{
-					value,
-					issues: [],
-				},
-				ctx,
-			);
+			const ctx = _ctx ? {
+				..._ctx,
+				async: false
+			} : { async: false };
+			const result = schema._zod.run({
+				value,
+				issues: []
+			}, ctx);
 			if (result instanceof Promise) throw new $ZodAsyncError();
 			if (result.issues.length) {
-				const e = new (_params?.Err ?? _Err)(
-					result.issues.map((iss) => finalizeIssue(iss, ctx, config())),
-				);
+				const e = new (_params?.Err ?? _Err)(result.issues.map((iss) => finalizeIssue(iss, ctx, config())));
 				captureStackTrace(e, _params?.callee);
 				throw e;
 			}
 			return result.value;
 		};
 		_parseAsync = (_Err) => async (schema, value, _ctx, params) => {
-			const ctx = _ctx
-				? {
-						..._ctx,
-						async: true,
-					}
-				: { async: true };
-			let result = schema._zod.run(
-				{
-					value,
-					issues: [],
-				},
-				ctx,
-			);
+			const ctx = _ctx ? {
+				..._ctx,
+				async: true
+			} : { async: true };
+			let result = schema._zod.run({
+				value,
+				issues: []
+			}, ctx);
 			if (result instanceof Promise) result = await result;
 			if (result.issues.length) {
-				const e = new (params?.Err ?? _Err)(
-					result.issues.map((iss) => finalizeIssue(iss, ctx, config())),
-				);
+				const e = new (params?.Err ?? _Err)(result.issues.map((iss) => finalizeIssue(iss, ctx, config())));
 				captureStackTrace(e, params?.callee);
 				throw e;
 			}
 			return result.value;
 		};
 		_safeParse = (_Err) => (schema, value, _ctx) => {
-			const ctx = _ctx
-				? {
-						..._ctx,
-						async: false,
-					}
-				: { async: false };
-			const result = schema._zod.run(
-				{
-					value,
-					issues: [],
-				},
-				ctx,
-			);
+			const ctx = _ctx ? {
+				..._ctx,
+				async: false
+			} : { async: false };
+			const result = schema._zod.run({
+				value,
+				issues: []
+			}, ctx);
 			if (result instanceof Promise) throw new $ZodAsyncError();
-			return result.issues.length
-				? {
-						success: false,
-						error: new (_Err ?? $ZodError)(
-							result.issues.map((iss) => finalizeIssue(iss, ctx, config())),
-						),
-					}
-				: {
-						success: true,
-						data: result.value,
-					};
+			return result.issues.length ? {
+				success: false,
+				error: new (_Err ?? $ZodError)(result.issues.map((iss) => finalizeIssue(iss, ctx, config())))
+			} : {
+				success: true,
+				data: result.value
+			};
 		};
 		safeParse$1 = /* @__PURE__*/ _safeParse($ZodRealError);
 		_safeParseAsync = (_Err) => async (schema, value, _ctx) => {
-			const ctx = _ctx
-				? {
-						..._ctx,
-						async: true,
-					}
-				: { async: true };
-			let result = schema._zod.run(
-				{
-					value,
-					issues: [],
-				},
-				ctx,
-			);
+			const ctx = _ctx ? {
+				..._ctx,
+				async: true
+			} : { async: true };
+			let result = schema._zod.run({
+				value,
+				issues: []
+			}, ctx);
 			if (result instanceof Promise) result = await result;
-			return result.issues.length
-				? {
-						success: false,
-						error: new _Err(
-							result.issues.map((iss) => finalizeIssue(iss, ctx, config())),
-						),
-					}
-				: {
-						success: true,
-						data: result.value,
-					};
+			return result.issues.length ? {
+				success: false,
+				error: new _Err(result.issues.map((iss) => finalizeIssue(iss, ctx, config())))
+			} : {
+				success: true,
+				data: result.value
+			};
 		};
 		safeParseAsync$1 = /* @__PURE__*/ _safeParseAsync($ZodRealError);
 		_encode = (_Err) => (schema, value, _ctx) => {
-			const ctx = _ctx
-				? {
-						..._ctx,
-						direction: "backward",
-					}
-				: { direction: "backward" };
+			const ctx = _ctx ? {
+				..._ctx,
+				direction: "backward"
+			} : { direction: "backward" };
 			return _parse(_Err)(schema, value, ctx);
 		};
 		_decode = (_Err) => (schema, value, _ctx) => {
 			return _parse(_Err)(schema, value, _ctx);
 		};
 		_encodeAsync = (_Err) => async (schema, value, _ctx) => {
-			const ctx = _ctx
-				? {
-						..._ctx,
-						direction: "backward",
-					}
-				: { direction: "backward" };
+			const ctx = _ctx ? {
+				..._ctx,
+				direction: "backward"
+			} : { direction: "backward" };
 			return _parseAsync(_Err)(schema, value, ctx);
 		};
 		_decodeAsync = (_Err) => async (schema, value, _ctx) => {
 			return _parseAsync(_Err)(schema, value, _ctx);
 		};
 		_safeEncode = (_Err) => (schema, value, _ctx) => {
-			const ctx = _ctx
-				? {
-						..._ctx,
-						direction: "backward",
-					}
-				: { direction: "backward" };
+			const ctx = _ctx ? {
+				..._ctx,
+				direction: "backward"
+			} : { direction: "backward" };
 			return _safeParse(_Err)(schema, value, ctx);
 		};
 		_safeDecode = (_Err) => (schema, value, _ctx) => {
 			return _safeParse(_Err)(schema, value, _ctx);
 		};
 		_safeEncodeAsync = (_Err) => async (schema, value, _ctx) => {
-			const ctx = _ctx
-				? {
-						..._ctx,
-						direction: "backward",
-					}
-				: { direction: "backward" };
+			const ctx = _ctx ? {
+				..._ctx,
+				direction: "backward"
+			} : { direction: "backward" };
 			return _safeParseAsync(_Err)(schema, value, ctx);
 		};
 		_safeDecodeAsync = (_Err) => async (schema, value, _ctx) => {
 			return _safeParseAsync(_Err)(schema, value, _ctx);
 		};
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/core/regexes.js
 	function emoji() {
@@ -4627,13 +3803,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 	}
 	function timeSource(args) {
 		const hhmm = `(?:[01]\\d|2[0-3]):[0-5]\\d`;
-		return typeof args.precision === "number"
-			? args.precision === -1
-				? `${hhmm}`
-				: args.precision === 0
-					? `${hhmm}:[0-5]\\d`
-					: `${hhmm}:[0-5]\\d\\.\\d{${args.precision}}`
-			: `${hhmm}(?::[0-5]\\d(?:\\.\\d+)?)?`;
+		return typeof args.precision === "number" ? args.precision === -1 ? `${hhmm}` : args.precision === 0 ? `${hhmm}:[0-5]\\d` : `${hhmm}:[0-5]\\d\\.\\d{${args.precision}}` : `${hhmm}(?::[0-5]\\d(?:\\.\\d+)?)?`;
 	}
 	function time$1(args) {
 		return new RegExp(`^${timeSource(args)}$`);
@@ -4646,73 +3816,34 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		const timeRegex = `${time}(?:${opts.join("|")})`;
 		return new RegExp(`^${dateSource}T(?:${timeRegex})$`);
 	}
-	var cuid,
-		cuid2,
-		ulid,
-		xid,
-		ksuid,
-		nanoid,
-		duration$1,
-		guid,
-		uuid,
-		email,
-		_emoji$1,
-		ipv4,
-		ipv6,
-		cidrv4,
-		cidrv6,
-		base64,
-		base64url,
-		httpProtocol,
-		e164,
-		dateSource,
-		date$1,
-		string$1,
-		integer,
-		number$1,
-		boolean$1,
-		lowercase,
-		uppercase;
-	var init_regexes = __esmMin(() => {
+	var cuid, cuid2, ulid, xid, ksuid, nanoid, duration$1, guid, uuid, email, _emoji$1, ipv4, ipv6, cidrv4, cidrv6, base64, base64url, httpProtocol, e164, dateSource, date$1, string$1, integer, number$1, boolean$1, lowercase, uppercase;
+	var init_regexes = __esmMin((() => {
 		cuid = /^[cC][0-9a-z]{6,}$/;
 		cuid2 = /^[0-9a-z]+$/;
 		ulid = /^[0-9A-HJKMNP-TV-Za-hjkmnp-tv-z]{26}$/;
 		xid = /^[0-9a-vA-V]{20}$/;
 		ksuid = /^[A-Za-z0-9]{27}$/;
 		nanoid = /^[a-zA-Z0-9_-]{21}$/;
-		duration$1 =
-			/^P(?:(\d+W)|(?!.*W)(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(?=\d)(\d+H)?(\d+M)?(\d+([.,]\d+)?S)?)?)$/;
-		guid =
-			/^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$/;
+		duration$1 = /^P(?:(\d+W)|(?!.*W)(?=\d|T\d)(\d+Y)?(\d+M)?(\d+D)?(T(?=\d)(\d+H)?(\d+M)?(\d+([.,]\d+)?S)?)?)$/;
+		guid = /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$/;
 		uuid = (version) => {
-			if (!version)
-				return /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/;
-			return new RegExp(
-				`^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-${version}[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$`,
-			);
+			if (!version) return /^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/;
+			return new RegExp(`^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-${version}[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})$`);
 		};
-		email =
-			/^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$/;
+		email = /^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$/;
 		_emoji$1 = `^(\\p{Extended_Pictographic}|\\p{Emoji_Component})+$`;
-		ipv4 =
-			/^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/;
-		ipv6 =
-			/^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$/;
-		cidrv4 =
-			/^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\/([0-9]|[1-2][0-9]|3[0-2])$/;
-		cidrv6 =
-			/^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|::|([0-9a-fA-F]{1,4})?::([0-9a-fA-F]{1,4}:?){0,6})\/(12[0-8]|1[01][0-9]|[1-9]?[0-9])$/;
-		base64 =
-			/^$|^(?:[0-9a-zA-Z+/]{4})*(?:(?:[0-9a-zA-Z+/]{2}==)|(?:[0-9a-zA-Z+/]{3}=))?$/;
+		ipv4 = /^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/;
+		ipv6 = /^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$/;
+		cidrv4 = /^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\/([0-9]|[1-2][0-9]|3[0-2])$/;
+		cidrv6 = /^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|::|([0-9a-fA-F]{1,4})?::([0-9a-fA-F]{1,4}:?){0,6})\/(12[0-8]|1[01][0-9]|[1-9]?[0-9])$/;
+		base64 = /^$|^(?:[0-9a-zA-Z+/]{4})*(?:(?:[0-9a-zA-Z+/]{2}==)|(?:[0-9a-zA-Z+/]{3}=))?$/;
 		base64url = /^[A-Za-z0-9_-]*$/;
 		httpProtocol = /^https?$/;
 		e164 = /^\+[1-9]\d{6,14}$/;
 		dateSource = `(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))`;
 		date$1 = /*@__PURE__*/ new RegExp(`^${dateSource}$`);
 		string$1 = (params) => {
-			const regex = params
-				? `[\\s\\S]{${params?.minimum ?? 0},${params?.maximum ?? ""}}`
-				: `[\\s\\S]*`;
+			const regex = params ? `[\\s\\S]{${params?.minimum ?? 0},${params?.maximum ?? ""}}` : `[\\s\\S]*`;
 			return new RegExp(`^${regex}$`);
 		};
 		integer = /^-?\d+$/;
@@ -4720,27 +3851,11 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		boolean$1 = /^(?:true|false)$/i;
 		lowercase = /^[^A-Z]*$/;
 		uppercase = /^[^a-z]*$/;
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/core/checks.js
-	var $ZodCheck,
-		numericOriginMap,
-		$ZodCheckLessThan,
-		$ZodCheckGreaterThan,
-		$ZodCheckMultipleOf,
-		$ZodCheckNumberFormat,
-		$ZodCheckMaxLength,
-		$ZodCheckMinLength,
-		$ZodCheckLengthEquals,
-		$ZodCheckStringFormat,
-		$ZodCheckRegex,
-		$ZodCheckLowerCase,
-		$ZodCheckUpperCase,
-		$ZodCheckIncludes,
-		$ZodCheckStartsWith,
-		$ZodCheckEndsWith,
-		$ZodCheckOverwrite;
-	var init_checks$1 = __esmMin(() => {
+	var $ZodCheck, numericOriginMap, $ZodCheckLessThan, $ZodCheckGreaterThan, $ZodCheckMultipleOf, $ZodCheckNumberFormat, $ZodCheckMaxLength, $ZodCheckMinLength, $ZodCheckLengthEquals, $ZodCheckStringFormat, $ZodCheckRegex, $ZodCheckLowerCase, $ZodCheckUpperCase, $ZodCheckIncludes, $ZodCheckStartsWith, $ZodCheckEndsWith, $ZodCheckOverwrite;
+	var init_checks$1 = __esmMin((() => {
 		init_core$1();
 		init_regexes();
 		init_util();
@@ -4753,444 +3868,358 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		numericOriginMap = {
 			number: "number",
 			bigint: "bigint",
-			object: "date",
+			object: "date"
 		};
-		$ZodCheckLessThan = /*@__PURE__*/ $constructor(
-			"$ZodCheckLessThan",
-			(inst, def) => {
-				$ZodCheck.init(inst, def);
-				const origin = numericOriginMap[typeof def.value];
-				inst._zod.onattach.push((inst) => {
-					const bag = inst._zod.bag;
-					const curr =
-						(def.inclusive ? bag.maximum : bag.exclusiveMaximum) ??
-						Number.POSITIVE_INFINITY;
-					if (def.value < curr)
-						if (def.inclusive) bag.maximum = def.value;
-						else bag.exclusiveMaximum = def.value;
+		$ZodCheckLessThan = /*@__PURE__*/ $constructor("$ZodCheckLessThan", (inst, def) => {
+			$ZodCheck.init(inst, def);
+			const origin = numericOriginMap[typeof def.value];
+			inst._zod.onattach.push((inst) => {
+				const bag = inst._zod.bag;
+				const curr = (def.inclusive ? bag.maximum : bag.exclusiveMaximum) ?? Number.POSITIVE_INFINITY;
+				if (def.value < curr) if (def.inclusive) bag.maximum = def.value;
+				else bag.exclusiveMaximum = def.value;
+			});
+			inst._zod.check = (payload) => {
+				if (def.inclusive ? payload.value <= def.value : payload.value < def.value) return;
+				payload.issues.push({
+					origin,
+					code: "too_big",
+					maximum: typeof def.value === "object" ? def.value.getTime() : def.value,
+					input: payload.value,
+					inclusive: def.inclusive,
+					inst,
+					continue: !def.abort
 				});
-				inst._zod.check = (payload) => {
-					if (
-						def.inclusive
-							? payload.value <= def.value
-							: payload.value < def.value
-					)
-						return;
-					payload.issues.push({
-						origin,
-						code: "too_big",
-						maximum:
-							typeof def.value === "object" ? def.value.getTime() : def.value,
-						input: payload.value,
-						inclusive: def.inclusive,
-						inst,
-						continue: !def.abort,
-					});
-				};
-			},
-		);
-		$ZodCheckGreaterThan = /*@__PURE__*/ $constructor(
-			"$ZodCheckGreaterThan",
-			(inst, def) => {
-				$ZodCheck.init(inst, def);
-				const origin = numericOriginMap[typeof def.value];
-				inst._zod.onattach.push((inst) => {
-					const bag = inst._zod.bag;
-					const curr =
-						(def.inclusive ? bag.minimum : bag.exclusiveMinimum) ??
-						Number.NEGATIVE_INFINITY;
-					if (def.value > curr)
-						if (def.inclusive) bag.minimum = def.value;
-						else bag.exclusiveMinimum = def.value;
+			};
+		});
+		$ZodCheckGreaterThan = /*@__PURE__*/ $constructor("$ZodCheckGreaterThan", (inst, def) => {
+			$ZodCheck.init(inst, def);
+			const origin = numericOriginMap[typeof def.value];
+			inst._zod.onattach.push((inst) => {
+				const bag = inst._zod.bag;
+				const curr = (def.inclusive ? bag.minimum : bag.exclusiveMinimum) ?? Number.NEGATIVE_INFINITY;
+				if (def.value > curr) if (def.inclusive) bag.minimum = def.value;
+				else bag.exclusiveMinimum = def.value;
+			});
+			inst._zod.check = (payload) => {
+				if (def.inclusive ? payload.value >= def.value : payload.value > def.value) return;
+				payload.issues.push({
+					origin,
+					code: "too_small",
+					minimum: typeof def.value === "object" ? def.value.getTime() : def.value,
+					input: payload.value,
+					inclusive: def.inclusive,
+					inst,
+					continue: !def.abort
 				});
-				inst._zod.check = (payload) => {
-					if (
-						def.inclusive
-							? payload.value >= def.value
-							: payload.value > def.value
-					)
-						return;
-					payload.issues.push({
-						origin,
-						code: "too_small",
-						minimum:
-							typeof def.value === "object" ? def.value.getTime() : def.value,
-						input: payload.value,
-						inclusive: def.inclusive,
-						inst,
-						continue: !def.abort,
-					});
-				};
-			},
-		);
-		$ZodCheckMultipleOf = /*@__PURE__*/ $constructor(
-			"$ZodCheckMultipleOf",
-			(inst, def) => {
-				$ZodCheck.init(inst, def);
-				inst._zod.onattach.push((inst) => {
-					var _a;
-					(_a = inst._zod.bag).multipleOf ?? (_a.multipleOf = def.value);
+			};
+		});
+		$ZodCheckMultipleOf = /*@__PURE__*/ $constructor("$ZodCheckMultipleOf", (inst, def) => {
+			$ZodCheck.init(inst, def);
+			inst._zod.onattach.push((inst) => {
+				var _a;
+				(_a = inst._zod.bag).multipleOf ?? (_a.multipleOf = def.value);
+			});
+			inst._zod.check = (payload) => {
+				if (typeof payload.value !== typeof def.value) throw new Error("Cannot mix number and bigint in multiple_of check.");
+				if (typeof payload.value === "bigint" ? payload.value % def.value === BigInt(0) : floatSafeRemainder(payload.value, def.value) === 0) return;
+				payload.issues.push({
+					origin: typeof payload.value,
+					code: "not_multiple_of",
+					divisor: def.value,
+					input: payload.value,
+					inst,
+					continue: !def.abort
 				});
-				inst._zod.check = (payload) => {
-					if (typeof payload.value !== typeof def.value)
-						throw new Error(
-							"Cannot mix number and bigint in multiple_of check.",
-						);
-					if (
-						typeof payload.value === "bigint"
-							? payload.value % def.value === BigInt(0)
-							: floatSafeRemainder(payload.value, def.value) === 0
-					)
-						return;
-					payload.issues.push({
-						origin: typeof payload.value,
-						code: "not_multiple_of",
-						divisor: def.value,
-						input: payload.value,
-						inst,
-						continue: !def.abort,
-					});
-				};
-			},
-		);
-		$ZodCheckNumberFormat = /*@__PURE__*/ $constructor(
-			"$ZodCheckNumberFormat",
-			(inst, def) => {
-				$ZodCheck.init(inst, def);
-				def.format = def.format || "float64";
-				const isInt = def.format?.includes("int");
-				const origin = isInt ? "int" : "number";
-				const [minimum, maximum] = NUMBER_FORMAT_RANGES[def.format];
-				inst._zod.onattach.push((inst) => {
-					const bag = inst._zod.bag;
-					bag.format = def.format;
-					bag.minimum = minimum;
-					bag.maximum = maximum;
-					if (isInt) bag.pattern = integer;
-				});
-				inst._zod.check = (payload) => {
-					const input = payload.value;
-					if (isInt) {
-						if (!Number.isInteger(input)) {
-							payload.issues.push({
-								expected: origin,
-								format: def.format,
-								code: "invalid_type",
-								continue: false,
-								input,
-								inst,
-							});
-							return;
-						}
-						if (!Number.isSafeInteger(input)) {
-							if (input > 0)
-								payload.issues.push({
-									input,
-									code: "too_big",
-									maximum: Number.MAX_SAFE_INTEGER,
-									note: "Integers must be within the safe integer range.",
-									inst,
-									origin,
-									inclusive: true,
-									continue: !def.abort,
-								});
-							else
-								payload.issues.push({
-									input,
-									code: "too_small",
-									minimum: Number.MIN_SAFE_INTEGER,
-									note: "Integers must be within the safe integer range.",
-									inst,
-									origin,
-									inclusive: true,
-									continue: !def.abort,
-								});
-							return;
-						}
-					}
-					if (input < minimum)
+			};
+		});
+		$ZodCheckNumberFormat = /*@__PURE__*/ $constructor("$ZodCheckNumberFormat", (inst, def) => {
+			$ZodCheck.init(inst, def);
+			def.format = def.format || "float64";
+			const isInt = def.format?.includes("int");
+			const origin = isInt ? "int" : "number";
+			const [minimum, maximum] = NUMBER_FORMAT_RANGES[def.format];
+			inst._zod.onattach.push((inst) => {
+				const bag = inst._zod.bag;
+				bag.format = def.format;
+				bag.minimum = minimum;
+				bag.maximum = maximum;
+				if (isInt) bag.pattern = integer;
+			});
+			inst._zod.check = (payload) => {
+				const input = payload.value;
+				if (isInt) {
+					if (!Number.isInteger(input)) {
 						payload.issues.push({
-							origin: "number",
+							expected: origin,
+							format: def.format,
+							code: "invalid_type",
+							continue: false,
 							input,
-							code: "too_small",
-							minimum,
-							inclusive: true,
-							inst,
-							continue: !def.abort,
+							inst
 						});
-					if (input > maximum)
-						payload.issues.push({
-							origin: "number",
+						return;
+					}
+					if (!Number.isSafeInteger(input)) {
+						if (input > 0) payload.issues.push({
 							input,
 							code: "too_big",
-							maximum,
-							inclusive: true,
+							maximum: Number.MAX_SAFE_INTEGER,
+							note: "Integers must be within the safe integer range.",
 							inst,
-							continue: !def.abort,
+							origin,
+							inclusive: true,
+							continue: !def.abort
 						});
-				};
-			},
-		);
-		$ZodCheckMaxLength = /*@__PURE__*/ $constructor(
-			"$ZodCheckMaxLength",
-			(inst, def) => {
-				var _a;
-				$ZodCheck.init(inst, def);
-				(_a = inst._zod.def).when ??
-					(_a.when = (payload) => {
-						const val = payload.value;
-						return !nullish(val) && val.length !== void 0;
-					});
-				inst._zod.onattach.push((inst) => {
-					const curr = inst._zod.bag.maximum ?? Number.POSITIVE_INFINITY;
-					if (def.maximum < curr) inst._zod.bag.maximum = def.maximum;
-				});
-				inst._zod.check = (payload) => {
-					const input = payload.value;
-					if (input.length <= def.maximum) return;
-					const origin = getLengthableOrigin(input);
-					payload.issues.push({
-						origin,
-						code: "too_big",
-						maximum: def.maximum,
-						inclusive: true,
-						input,
-						inst,
-						continue: !def.abort,
-					});
-				};
-			},
-		);
-		$ZodCheckMinLength = /*@__PURE__*/ $constructor(
-			"$ZodCheckMinLength",
-			(inst, def) => {
-				var _a;
-				$ZodCheck.init(inst, def);
-				(_a = inst._zod.def).when ??
-					(_a.when = (payload) => {
-						const val = payload.value;
-						return !nullish(val) && val.length !== void 0;
-					});
-				inst._zod.onattach.push((inst) => {
-					const curr = inst._zod.bag.minimum ?? Number.NEGATIVE_INFINITY;
-					if (def.minimum > curr) inst._zod.bag.minimum = def.minimum;
-				});
-				inst._zod.check = (payload) => {
-					const input = payload.value;
-					if (input.length >= def.minimum) return;
-					const origin = getLengthableOrigin(input);
-					payload.issues.push({
-						origin,
-						code: "too_small",
-						minimum: def.minimum,
-						inclusive: true,
-						input,
-						inst,
-						continue: !def.abort,
-					});
-				};
-			},
-		);
-		$ZodCheckLengthEquals = /*@__PURE__*/ $constructor(
-			"$ZodCheckLengthEquals",
-			(inst, def) => {
-				var _a;
-				$ZodCheck.init(inst, def);
-				(_a = inst._zod.def).when ??
-					(_a.when = (payload) => {
-						const val = payload.value;
-						return !nullish(val) && val.length !== void 0;
-					});
-				inst._zod.onattach.push((inst) => {
-					const bag = inst._zod.bag;
-					bag.minimum = def.length;
-					bag.maximum = def.length;
-					bag.length = def.length;
-				});
-				inst._zod.check = (payload) => {
-					const input = payload.value;
-					const length = input.length;
-					if (length === def.length) return;
-					const origin = getLengthableOrigin(input);
-					const tooBig = length > def.length;
-					payload.issues.push({
-						origin,
-						...(tooBig
-							? {
-									code: "too_big",
-									maximum: def.length,
-								}
-							: {
-									code: "too_small",
-									minimum: def.length,
-								}),
-						inclusive: true,
-						exact: true,
-						input: payload.value,
-						inst,
-						continue: !def.abort,
-					});
-				};
-			},
-		);
-		$ZodCheckStringFormat = /*@__PURE__*/ $constructor(
-			"$ZodCheckStringFormat",
-			(inst, def) => {
-				var _a, _b;
-				$ZodCheck.init(inst, def);
-				inst._zod.onattach.push((inst) => {
-					const bag = inst._zod.bag;
-					bag.format = def.format;
-					if (def.pattern) {
-						bag.patterns ?? (bag.patterns = /* @__PURE__ */ new Set());
-						bag.patterns.add(def.pattern);
+						else payload.issues.push({
+							input,
+							code: "too_small",
+							minimum: Number.MIN_SAFE_INTEGER,
+							note: "Integers must be within the safe integer range.",
+							inst,
+							origin,
+							inclusive: true,
+							continue: !def.abort
+						});
+						return;
 					}
+				}
+				if (input < minimum) payload.issues.push({
+					origin: "number",
+					input,
+					code: "too_small",
+					minimum,
+					inclusive: true,
+					inst,
+					continue: !def.abort
 				});
-				if (def.pattern)
-					(_a = inst._zod).check ??
-						(_a.check = (payload) => {
-							def.pattern.lastIndex = 0;
-							if (def.pattern.test(payload.value)) return;
-							payload.issues.push({
-								origin: "string",
-								code: "invalid_format",
-								format: def.format,
-								input: payload.value,
-								...(def.pattern ? { pattern: def.pattern.toString() } : {}),
-								inst,
-								continue: !def.abort,
-							});
-						});
-				else (_b = inst._zod).check ?? (_b.check = () => {});
-			},
-		);
-		$ZodCheckRegex = /*@__PURE__*/ $constructor(
-			"$ZodCheckRegex",
-			(inst, def) => {
-				$ZodCheckStringFormat.init(inst, def);
-				inst._zod.check = (payload) => {
-					def.pattern.lastIndex = 0;
-					if (def.pattern.test(payload.value)) return;
-					payload.issues.push({
-						origin: "string",
-						code: "invalid_format",
-						format: "regex",
-						input: payload.value,
-						pattern: def.pattern.toString(),
-						inst,
-						continue: !def.abort,
-					});
-				};
-			},
-		);
-		$ZodCheckLowerCase = /*@__PURE__*/ $constructor(
-			"$ZodCheckLowerCase",
-			(inst, def) => {
-				def.pattern ?? (def.pattern = lowercase);
-				$ZodCheckStringFormat.init(inst, def);
-			},
-		);
-		$ZodCheckUpperCase = /*@__PURE__*/ $constructor(
-			"$ZodCheckUpperCase",
-			(inst, def) => {
-				def.pattern ?? (def.pattern = uppercase);
-				$ZodCheckStringFormat.init(inst, def);
-			},
-		);
-		$ZodCheckIncludes = /*@__PURE__*/ $constructor(
-			"$ZodCheckIncludes",
-			(inst, def) => {
-				$ZodCheck.init(inst, def);
-				const escapedRegex = escapeRegex(def.includes);
-				const pattern = new RegExp(
-					typeof def.position === "number"
-						? `^.{${def.position}}${escapedRegex}`
-						: escapedRegex,
-				);
-				def.pattern = pattern;
-				inst._zod.onattach.push((inst) => {
-					const bag = inst._zod.bag;
+				if (input > maximum) payload.issues.push({
+					origin: "number",
+					input,
+					code: "too_big",
+					maximum,
+					inclusive: true,
+					inst,
+					continue: !def.abort
+				});
+			};
+		});
+		$ZodCheckMaxLength = /*@__PURE__*/ $constructor("$ZodCheckMaxLength", (inst, def) => {
+			var _a;
+			$ZodCheck.init(inst, def);
+			(_a = inst._zod.def).when ?? (_a.when = (payload) => {
+				const val = payload.value;
+				return !nullish(val) && val.length !== void 0;
+			});
+			inst._zod.onattach.push((inst) => {
+				const curr = inst._zod.bag.maximum ?? Number.POSITIVE_INFINITY;
+				if (def.maximum < curr) inst._zod.bag.maximum = def.maximum;
+			});
+			inst._zod.check = (payload) => {
+				const input = payload.value;
+				if (input.length <= def.maximum) return;
+				const origin = getLengthableOrigin(input);
+				payload.issues.push({
+					origin,
+					code: "too_big",
+					maximum: def.maximum,
+					inclusive: true,
+					input,
+					inst,
+					continue: !def.abort
+				});
+			};
+		});
+		$ZodCheckMinLength = /*@__PURE__*/ $constructor("$ZodCheckMinLength", (inst, def) => {
+			var _a;
+			$ZodCheck.init(inst, def);
+			(_a = inst._zod.def).when ?? (_a.when = (payload) => {
+				const val = payload.value;
+				return !nullish(val) && val.length !== void 0;
+			});
+			inst._zod.onattach.push((inst) => {
+				const curr = inst._zod.bag.minimum ?? Number.NEGATIVE_INFINITY;
+				if (def.minimum > curr) inst._zod.bag.minimum = def.minimum;
+			});
+			inst._zod.check = (payload) => {
+				const input = payload.value;
+				if (input.length >= def.minimum) return;
+				const origin = getLengthableOrigin(input);
+				payload.issues.push({
+					origin,
+					code: "too_small",
+					minimum: def.minimum,
+					inclusive: true,
+					input,
+					inst,
+					continue: !def.abort
+				});
+			};
+		});
+		$ZodCheckLengthEquals = /*@__PURE__*/ $constructor("$ZodCheckLengthEquals", (inst, def) => {
+			var _a;
+			$ZodCheck.init(inst, def);
+			(_a = inst._zod.def).when ?? (_a.when = (payload) => {
+				const val = payload.value;
+				return !nullish(val) && val.length !== void 0;
+			});
+			inst._zod.onattach.push((inst) => {
+				const bag = inst._zod.bag;
+				bag.minimum = def.length;
+				bag.maximum = def.length;
+				bag.length = def.length;
+			});
+			inst._zod.check = (payload) => {
+				const input = payload.value;
+				const length = input.length;
+				if (length === def.length) return;
+				const origin = getLengthableOrigin(input);
+				const tooBig = length > def.length;
+				payload.issues.push({
+					origin,
+					...tooBig ? {
+						code: "too_big",
+						maximum: def.length
+					} : {
+						code: "too_small",
+						minimum: def.length
+					},
+					inclusive: true,
+					exact: true,
+					input: payload.value,
+					inst,
+					continue: !def.abort
+				});
+			};
+		});
+		$ZodCheckStringFormat = /*@__PURE__*/ $constructor("$ZodCheckStringFormat", (inst, def) => {
+			var _a, _b;
+			$ZodCheck.init(inst, def);
+			inst._zod.onattach.push((inst) => {
+				const bag = inst._zod.bag;
+				bag.format = def.format;
+				if (def.pattern) {
 					bag.patterns ?? (bag.patterns = /* @__PURE__ */ new Set());
-					bag.patterns.add(pattern);
+					bag.patterns.add(def.pattern);
+				}
+			});
+			if (def.pattern) (_a = inst._zod).check ?? (_a.check = (payload) => {
+				def.pattern.lastIndex = 0;
+				if (def.pattern.test(payload.value)) return;
+				payload.issues.push({
+					origin: "string",
+					code: "invalid_format",
+					format: def.format,
+					input: payload.value,
+					...def.pattern ? { pattern: def.pattern.toString() } : {},
+					inst,
+					continue: !def.abort
 				});
-				inst._zod.check = (payload) => {
-					if (payload.value.includes(def.includes, def.position)) return;
-					payload.issues.push({
-						origin: "string",
-						code: "invalid_format",
-						format: "includes",
-						includes: def.includes,
-						input: payload.value,
-						inst,
-						continue: !def.abort,
-					});
-				};
-			},
-		);
-		$ZodCheckStartsWith = /*@__PURE__*/ $constructor(
-			"$ZodCheckStartsWith",
-			(inst, def) => {
-				$ZodCheck.init(inst, def);
-				const pattern = new RegExp(`^${escapeRegex(def.prefix)}.*`);
-				def.pattern ?? (def.pattern = pattern);
-				inst._zod.onattach.push((inst) => {
-					const bag = inst._zod.bag;
-					bag.patterns ?? (bag.patterns = /* @__PURE__ */ new Set());
-					bag.patterns.add(pattern);
+			});
+			else (_b = inst._zod).check ?? (_b.check = () => {});
+		});
+		$ZodCheckRegex = /*@__PURE__*/ $constructor("$ZodCheckRegex", (inst, def) => {
+			$ZodCheckStringFormat.init(inst, def);
+			inst._zod.check = (payload) => {
+				def.pattern.lastIndex = 0;
+				if (def.pattern.test(payload.value)) return;
+				payload.issues.push({
+					origin: "string",
+					code: "invalid_format",
+					format: "regex",
+					input: payload.value,
+					pattern: def.pattern.toString(),
+					inst,
+					continue: !def.abort
 				});
-				inst._zod.check = (payload) => {
-					if (payload.value.startsWith(def.prefix)) return;
-					payload.issues.push({
-						origin: "string",
-						code: "invalid_format",
-						format: "starts_with",
-						prefix: def.prefix,
-						input: payload.value,
-						inst,
-						continue: !def.abort,
-					});
-				};
-			},
-		);
-		$ZodCheckEndsWith = /*@__PURE__*/ $constructor(
-			"$ZodCheckEndsWith",
-			(inst, def) => {
-				$ZodCheck.init(inst, def);
-				const pattern = new RegExp(`.*${escapeRegex(def.suffix)}$`);
-				def.pattern ?? (def.pattern = pattern);
-				inst._zod.onattach.push((inst) => {
-					const bag = inst._zod.bag;
-					bag.patterns ?? (bag.patterns = /* @__PURE__ */ new Set());
-					bag.patterns.add(pattern);
+			};
+		});
+		$ZodCheckLowerCase = /*@__PURE__*/ $constructor("$ZodCheckLowerCase", (inst, def) => {
+			def.pattern ?? (def.pattern = lowercase);
+			$ZodCheckStringFormat.init(inst, def);
+		});
+		$ZodCheckUpperCase = /*@__PURE__*/ $constructor("$ZodCheckUpperCase", (inst, def) => {
+			def.pattern ?? (def.pattern = uppercase);
+			$ZodCheckStringFormat.init(inst, def);
+		});
+		$ZodCheckIncludes = /*@__PURE__*/ $constructor("$ZodCheckIncludes", (inst, def) => {
+			$ZodCheck.init(inst, def);
+			const escapedRegex = escapeRegex(def.includes);
+			const pattern = new RegExp(typeof def.position === "number" ? `^.{${def.position}}${escapedRegex}` : escapedRegex);
+			def.pattern = pattern;
+			inst._zod.onattach.push((inst) => {
+				const bag = inst._zod.bag;
+				bag.patterns ?? (bag.patterns = /* @__PURE__ */ new Set());
+				bag.patterns.add(pattern);
+			});
+			inst._zod.check = (payload) => {
+				if (payload.value.includes(def.includes, def.position)) return;
+				payload.issues.push({
+					origin: "string",
+					code: "invalid_format",
+					format: "includes",
+					includes: def.includes,
+					input: payload.value,
+					inst,
+					continue: !def.abort
 				});
-				inst._zod.check = (payload) => {
-					if (payload.value.endsWith(def.suffix)) return;
-					payload.issues.push({
-						origin: "string",
-						code: "invalid_format",
-						format: "ends_with",
-						suffix: def.suffix,
-						input: payload.value,
-						inst,
-						continue: !def.abort,
-					});
-				};
-			},
-		);
-		$ZodCheckOverwrite = /*@__PURE__*/ $constructor(
-			"$ZodCheckOverwrite",
-			(inst, def) => {
-				$ZodCheck.init(inst, def);
-				inst._zod.check = (payload) => {
-					payload.value = def.tx(payload.value);
-				};
-			},
-		);
-	});
+			};
+		});
+		$ZodCheckStartsWith = /*@__PURE__*/ $constructor("$ZodCheckStartsWith", (inst, def) => {
+			$ZodCheck.init(inst, def);
+			const pattern = new RegExp(`^${escapeRegex(def.prefix)}.*`);
+			def.pattern ?? (def.pattern = pattern);
+			inst._zod.onattach.push((inst) => {
+				const bag = inst._zod.bag;
+				bag.patterns ?? (bag.patterns = /* @__PURE__ */ new Set());
+				bag.patterns.add(pattern);
+			});
+			inst._zod.check = (payload) => {
+				if (payload.value.startsWith(def.prefix)) return;
+				payload.issues.push({
+					origin: "string",
+					code: "invalid_format",
+					format: "starts_with",
+					prefix: def.prefix,
+					input: payload.value,
+					inst,
+					continue: !def.abort
+				});
+			};
+		});
+		$ZodCheckEndsWith = /*@__PURE__*/ $constructor("$ZodCheckEndsWith", (inst, def) => {
+			$ZodCheck.init(inst, def);
+			const pattern = new RegExp(`.*${escapeRegex(def.suffix)}$`);
+			def.pattern ?? (def.pattern = pattern);
+			inst._zod.onattach.push((inst) => {
+				const bag = inst._zod.bag;
+				bag.patterns ?? (bag.patterns = /* @__PURE__ */ new Set());
+				bag.patterns.add(pattern);
+			});
+			inst._zod.check = (payload) => {
+				if (payload.value.endsWith(def.suffix)) return;
+				payload.issues.push({
+					origin: "string",
+					code: "invalid_format",
+					format: "ends_with",
+					suffix: def.suffix,
+					input: payload.value,
+					inst,
+					continue: !def.abort
+				});
+			};
+		});
+		$ZodCheckOverwrite = /*@__PURE__*/ $constructor("$ZodCheckOverwrite", (inst, def) => {
+			$ZodCheck.init(inst, def);
+			inst._zod.check = (payload) => {
+				payload.value = def.tx(payload.value);
+			};
+		});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/core/doc.js
 	var Doc;
-	var init_doc = __esmMin(() => {
+	var init_doc = __esmMin((() => {
 		Doc = class {
 			constructor(args = []) {
 				this.content = [];
@@ -5209,12 +4238,8 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 					return;
 				}
 				const lines = arg.split("\n").filter((x) => x);
-				const minIndent = Math.min(
-					...lines.map((x) => x.length - x.trimStart().length),
-				);
-				const dedented = lines
-					.map((x) => x.slice(minIndent))
-					.map((x) => " ".repeat(this.indent * 2) + x);
+				const minIndent = Math.min(...lines.map((x) => x.length - x.trimStart().length));
+				const dedented = lines.map((x) => x.slice(minIndent)).map((x) => " ".repeat(this.indent * 2) + x);
 				for (const line of dedented) this.content.push(line);
 			}
 			compile() {
@@ -5224,17 +4249,17 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				return new F(...args, lines.join("\n"));
 			}
 		};
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/core/versions.js
 	var version;
-	var init_versions = __esmMin(() => {
+	var init_versions = __esmMin((() => {
 		version = {
 			major: 4,
 			minor: 4,
-			patch: 3,
+			patch: 3
 		};
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/core/schemas.js
 	function isValidBase64(data) {
@@ -5250,7 +4275,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 	}
 	function isValidBase64URL(data) {
 		if (!base64url.test(data)) return false;
-		const base64 = data.replace(/[-_]/g, (c) => (c === "-" ? "+" : "/"));
+		const base64 = data.replace(/[-_]/g, (c) => c === "-" ? "+" : "/");
 		return isValidBase64(base64.padEnd(Math.ceil(base64.length / 4) * 4, "="));
 	}
 	function isValidJWT(token, algorithm = null) {
@@ -5262,42 +4287,29 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			const parsedHeader = JSON.parse(atob(header));
 			if ("typ" in parsedHeader && parsedHeader?.typ !== "JWT") return false;
 			if (!parsedHeader.alg) return false;
-			if (
-				algorithm &&
-				(!("alg" in parsedHeader) || parsedHeader.alg !== algorithm)
-			)
-				return false;
+			if (algorithm && (!("alg" in parsedHeader) || parsedHeader.alg !== algorithm)) return false;
 			return true;
 		} catch {
 			return false;
 		}
 	}
 	function handleArrayResult(result, final, index) {
-		if (result.issues.length)
-			final.issues.push(...prefixIssues(index, result.issues));
+		if (result.issues.length) final.issues.push(...prefixIssues(index, result.issues));
 		final.value[index] = result.value;
 	}
-	function handlePropertyResult(
-		result,
-		final,
-		key,
-		input,
-		isOptionalIn,
-		isOptionalOut,
-	) {
+	function handlePropertyResult(result, final, key, input, isOptionalIn, isOptionalOut) {
 		const isPresent = key in input;
 		if (result.issues.length) {
 			if (isOptionalIn && isOptionalOut && !isPresent) return;
 			final.issues.push(...prefixIssues(key, result.issues));
 		}
 		if (!isPresent && !isOptionalIn) {
-			if (!result.issues.length)
-				final.issues.push({
-					code: "invalid_type",
-					expected: "nonoptional",
-					input: void 0,
-					path: [key],
-				});
+			if (!result.issues.length) final.issues.push({
+				code: "invalid_type",
+				expected: "nonoptional",
+				input: void 0,
+				path: [key]
+			});
 			return;
 		}
 		if (result.value === void 0) {
@@ -5306,16 +4318,14 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 	}
 	function normalizeDef(def) {
 		const keys = Object.keys(def.shape);
-		for (const k of keys)
-			if (!def.shape?.[k]?._zod?.traits?.has("$ZodType"))
-				throw new Error(`Invalid element at key "${k}": expected a Zod schema`);
+		for (const k of keys) if (!def.shape?.[k]?._zod?.traits?.has("$ZodType")) throw new Error(`Invalid element at key "${k}": expected a Zod schema`);
 		const okeys = optionalKeys(def.shape);
 		return {
 			...def,
 			keys,
 			keySet: new Set(keys),
 			numKeys: keys.length,
-			optionalKeys: new Set(okeys),
+			optionalKeys: new Set(okeys)
 		};
 	}
 	function handleCatchall(proms, input, payload, ctx, def, inst) {
@@ -5332,54 +4342,29 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				unrecognized.push(key);
 				continue;
 			}
-			const r = _catchall.run(
-				{
-					value: input[key],
-					issues: [],
-				},
-				ctx,
-			);
-			if (r instanceof Promise)
-				proms.push(
-					r.then((r) =>
-						handlePropertyResult(
-							r,
-							payload,
-							key,
-							input,
-							isOptionalIn,
-							isOptionalOut,
-						),
-					),
-				);
-			else
-				handlePropertyResult(
-					r,
-					payload,
-					key,
-					input,
-					isOptionalIn,
-					isOptionalOut,
-				);
+			const r = _catchall.run({
+				value: input[key],
+				issues: []
+			}, ctx);
+			if (r instanceof Promise) proms.push(r.then((r) => handlePropertyResult(r, payload, key, input, isOptionalIn, isOptionalOut)));
+			else handlePropertyResult(r, payload, key, input, isOptionalIn, isOptionalOut);
 		}
-		if (unrecognized.length)
-			payload.issues.push({
-				code: "unrecognized_keys",
-				keys: unrecognized,
-				input,
-				inst,
-			});
+		if (unrecognized.length) payload.issues.push({
+			code: "unrecognized_keys",
+			keys: unrecognized,
+			input,
+			inst
+		});
 		if (!proms.length) return payload;
 		return Promise.all(proms).then(() => {
 			return payload;
 		});
 	}
 	function handleUnionResults(results, final, inst, ctx) {
-		for (const result of results)
-			if (result.issues.length === 0) {
-				final.value = result.value;
-				return final;
-			}
+		for (const result of results) if (result.issues.length === 0) {
+			final.value = result.value;
+			return final;
+		}
 		const nonaborted = results.filter((r) => !aborted(r));
 		if (nonaborted.length === 1) {
 			final.value = nonaborted[0].value;
@@ -5389,115 +4374,96 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			code: "invalid_union",
 			input: final.value,
 			inst,
-			errors: results.map((result) =>
-				result.issues.map((iss) => finalizeIssue(iss, ctx, config())),
-			),
+			errors: results.map((result) => result.issues.map((iss) => finalizeIssue(iss, ctx, config())))
 		});
 		return final;
 	}
 	function mergeValues(a, b) {
-		if (a === b)
-			return {
-				valid: true,
-				data: a,
-			};
-		if (a instanceof Date && b instanceof Date && +a === +b)
-			return {
-				valid: true,
-				data: a,
-			};
+		if (a === b) return {
+			valid: true,
+			data: a
+		};
+		if (a instanceof Date && b instanceof Date && +a === +b) return {
+			valid: true,
+			data: a
+		};
 		if (isPlainObject(a) && isPlainObject(b)) {
 			const bKeys = Object.keys(b);
-			const sharedKeys = Object.keys(a).filter(
-				(key) => bKeys.indexOf(key) !== -1,
-			);
+			const sharedKeys = Object.keys(a).filter((key) => bKeys.indexOf(key) !== -1);
 			const newObj = {
 				...a,
-				...b,
+				...b
 			};
 			for (const key of sharedKeys) {
 				const sharedValue = mergeValues(a[key], b[key]);
-				if (!sharedValue.valid)
-					return {
-						valid: false,
-						mergeErrorPath: [key, ...sharedValue.mergeErrorPath],
-					};
+				if (!sharedValue.valid) return {
+					valid: false,
+					mergeErrorPath: [key, ...sharedValue.mergeErrorPath]
+				};
 				newObj[key] = sharedValue.data;
 			}
 			return {
 				valid: true,
-				data: newObj,
+				data: newObj
 			};
 		}
 		if (Array.isArray(a) && Array.isArray(b)) {
-			if (a.length !== b.length)
-				return {
-					valid: false,
-					mergeErrorPath: [],
-				};
+			if (a.length !== b.length) return {
+				valid: false,
+				mergeErrorPath: []
+			};
 			const newArray = [];
 			for (let index = 0; index < a.length; index++) {
 				const itemA = a[index];
 				const itemB = b[index];
 				const sharedValue = mergeValues(itemA, itemB);
-				if (!sharedValue.valid)
-					return {
-						valid: false,
-						mergeErrorPath: [index, ...sharedValue.mergeErrorPath],
-					};
+				if (!sharedValue.valid) return {
+					valid: false,
+					mergeErrorPath: [index, ...sharedValue.mergeErrorPath]
+				};
 				newArray.push(sharedValue.data);
 			}
 			return {
 				valid: true,
-				data: newArray,
+				data: newArray
 			};
 		}
 		return {
 			valid: false,
-			mergeErrorPath: [],
+			mergeErrorPath: []
 		};
 	}
 	function handleIntersectionResults(result, left, right) {
 		const unrecKeys = /* @__PURE__ */ new Map();
 		let unrecIssue;
-		for (const iss of left.issues)
-			if (iss.code === "unrecognized_keys") {
-				unrecIssue ?? (unrecIssue = iss);
-				for (const k of iss.keys) {
-					if (!unrecKeys.has(k)) unrecKeys.set(k, {});
-					unrecKeys.get(k).l = true;
-				}
-			} else result.issues.push(iss);
-		for (const iss of right.issues)
-			if (iss.code === "unrecognized_keys")
-				for (const k of iss.keys) {
-					if (!unrecKeys.has(k)) unrecKeys.set(k, {});
-					unrecKeys.get(k).r = true;
-				}
-			else result.issues.push(iss);
-		const bothKeys = [...unrecKeys]
-			.filter(([, f]) => f.l && f.r)
-			.map(([k]) => k);
-		if (bothKeys.length && unrecIssue)
-			result.issues.push({
-				...unrecIssue,
-				keys: bothKeys,
-			});
+		for (const iss of left.issues) if (iss.code === "unrecognized_keys") {
+			unrecIssue ?? (unrecIssue = iss);
+			for (const k of iss.keys) {
+				if (!unrecKeys.has(k)) unrecKeys.set(k, {});
+				unrecKeys.get(k).l = true;
+			}
+		} else result.issues.push(iss);
+		for (const iss of right.issues) if (iss.code === "unrecognized_keys") for (const k of iss.keys) {
+			if (!unrecKeys.has(k)) unrecKeys.set(k, {});
+			unrecKeys.get(k).r = true;
+		}
+		else result.issues.push(iss);
+		const bothKeys = [...unrecKeys].filter(([, f]) => f.l && f.r).map(([k]) => k);
+		if (bothKeys.length && unrecIssue) result.issues.push({
+			...unrecIssue,
+			keys: bothKeys
+		});
 		if (aborted(result)) return result;
 		const merged = mergeValues(left.value, right.value);
-		if (!merged.valid)
-			throw new Error(
-				`Unmergable intersection. Error path: ${JSON.stringify(merged.mergeErrorPath)}`,
-			);
+		if (!merged.valid) throw new Error(`Unmergable intersection. Error path: ${JSON.stringify(merged.mergeErrorPath)}`);
 		result.value = merged.data;
 		return result;
 	}
 	function handleOptionalResult(result, input) {
-		if (input === void 0 && (result.issues.length || result.fallback))
-			return {
-				issues: [],
-				value: void 0,
-			};
+		if (input === void 0 && (result.issues.length || result.fallback)) return {
+			issues: [],
+			value: void 0
+		};
 		return result;
 	}
 	function handleDefaultResult(payload, def) {
@@ -5505,13 +4471,12 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		return payload;
 	}
 	function handleNonOptionalResult(payload, inst) {
-		if (!payload.issues.length && payload.value === void 0)
-			payload.issues.push({
-				code: "invalid_type",
-				expected: "nonoptional",
-				input: payload.value,
-				inst,
-			});
+		if (!payload.issues.length && payload.value === void 0) payload.issues.push({
+			code: "invalid_type",
+			expected: "nonoptional",
+			input: payload.value,
+			inst
+		});
 		return payload;
 	}
 	function handlePipeResult(left, next, ctx) {
@@ -5519,14 +4484,11 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			left.aborted = true;
 			return left;
 		}
-		return next._zod.run(
-			{
-				value: left.value,
-				issues: left.issues,
-				fallback: left.fallback,
-			},
-			ctx,
-		);
+		return next._zod.run({
+			value: left.value,
+			issues: left.issues,
+			fallback: left.fallback
+		}, ctx);
 	}
 	function handleReadonlyResult(payload) {
 		payload.value = Object.freeze(payload.value);
@@ -5538,62 +4500,15 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				code: "custom",
 				input,
 				inst,
-				path: [...(inst._zod.def.path ?? [])],
-				continue: !inst._zod.def.abort,
+				path: [...inst._zod.def.path ?? []],
+				continue: !inst._zod.def.abort
 			};
 			if (inst._zod.def.params) _iss.params = inst._zod.def.params;
 			payload.issues.push(issue(_iss));
 		}
 	}
-	var $ZodType,
-		$ZodString,
-		$ZodStringFormat,
-		$ZodGUID,
-		$ZodUUID,
-		$ZodEmail,
-		$ZodURL,
-		$ZodEmoji,
-		$ZodNanoID,
-		$ZodCUID,
-		$ZodCUID2,
-		$ZodULID,
-		$ZodXID,
-		$ZodKSUID,
-		$ZodISODateTime,
-		$ZodISODate,
-		$ZodISOTime,
-		$ZodISODuration,
-		$ZodIPv4,
-		$ZodIPv6,
-		$ZodCIDRv4,
-		$ZodCIDRv6,
-		$ZodBase64,
-		$ZodBase64URL,
-		$ZodE164,
-		$ZodJWT,
-		$ZodNumber,
-		$ZodNumberFormat,
-		$ZodBoolean,
-		$ZodUnknown,
-		$ZodNever,
-		$ZodArray,
-		$ZodObject,
-		$ZodObjectJIT,
-		$ZodUnion,
-		$ZodIntersection,
-		$ZodEnum,
-		$ZodTransform,
-		$ZodOptional,
-		$ZodExactOptional,
-		$ZodNullable,
-		$ZodDefault,
-		$ZodPrefault,
-		$ZodNonOptional,
-		$ZodCatch,
-		$ZodPipe,
-		$ZodReadonly,
-		$ZodCustom;
-	var init_schemas$1 = __esmMin(() => {
+	var $ZodType, $ZodString, $ZodStringFormat, $ZodGUID, $ZodUUID, $ZodEmail, $ZodURL, $ZodEmoji, $ZodNanoID, $ZodCUID, $ZodCUID2, $ZodULID, $ZodXID, $ZodKSUID, $ZodISODateTime, $ZodISODate, $ZodISOTime, $ZodISODuration, $ZodIPv4, $ZodIPv6, $ZodCIDRv4, $ZodCIDRv6, $ZodBase64, $ZodBase64URL, $ZodE164, $ZodJWT, $ZodNumber, $ZodNumberFormat, $ZodBoolean, $ZodUnknown, $ZodNever, $ZodArray, $ZodObject, $ZodObjectJIT, $ZodUnion, $ZodIntersection, $ZodEnum, $ZodTransform, $ZodOptional, $ZodExactOptional, $ZodNullable, $ZodDefault, $ZodPrefault, $ZodNonOptional, $ZodCatch, $ZodPipe, $ZodReadonly, $ZodCustom;
+	var init_schemas$1 = __esmMin((() => {
 		init_checks$1();
 		init_core$1();
 		init_doc();
@@ -5607,7 +4522,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			inst._zod.def = def;
 			inst._zod.bag = inst._zod.bag || {};
 			inst._zod.version = version;
-			const checks = [...(inst._zod.def.checks ?? [])];
+			const checks = [...inst._zod.def.checks ?? []];
 			if (inst._zod.traits.has("$ZodCheck")) checks.unshift(inst);
 			for (const ch of checks) for (const fn of ch._zod.onattach) fn(inst);
 			if (checks.length === 0) {
@@ -5626,25 +4541,20 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 						} else if (isAborted) continue;
 						const currLen = payload.issues.length;
 						const _ = ch._zod.check(payload);
-						if (_ instanceof Promise && ctx?.async === false)
-							throw new $ZodAsyncError();
-						if (asyncResult || _ instanceof Promise)
-							asyncResult = (asyncResult ?? Promise.resolve()).then(
-								async () => {
-									await _;
-									if (payload.issues.length === currLen) return;
-									if (!isAborted) isAborted = aborted(payload, currLen);
-								},
-							);
+						if (_ instanceof Promise && ctx?.async === false) throw new $ZodAsyncError();
+						if (asyncResult || _ instanceof Promise) asyncResult = (asyncResult ?? Promise.resolve()).then(async () => {
+							await _;
+							if (payload.issues.length === currLen) return;
+							if (!isAborted) isAborted = aborted(payload, currLen);
+						});
 						else {
 							if (payload.issues.length === currLen) continue;
 							if (!isAborted) isAborted = aborted(payload, currLen);
 						}
 					}
-					if (asyncResult)
-						return asyncResult.then(() => {
-							return payload;
-						});
+					if (asyncResult) return asyncResult.then(() => {
+						return payload;
+					});
 					return payload;
 				};
 				const handleCanaryResult = (canary, payload, ctx) => {
@@ -5655,29 +4565,23 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 					const checkResult = runChecks(payload, checks, ctx);
 					if (checkResult instanceof Promise) {
 						if (ctx.async === false) throw new $ZodAsyncError();
-						return checkResult.then((checkResult) =>
-							inst._zod.parse(checkResult, ctx),
-						);
+						return checkResult.then((checkResult) => inst._zod.parse(checkResult, ctx));
 					}
 					return inst._zod.parse(checkResult, ctx);
 				};
 				inst._zod.run = (payload, ctx) => {
 					if (ctx.skipChecks) return inst._zod.parse(payload, ctx);
 					if (ctx.direction === "backward") {
-						const canary = inst._zod.parse(
-							{
-								value: payload.value,
-								issues: [],
-							},
-							{
-								...ctx,
-								skipChecks: true,
-							},
-						);
-						if (canary instanceof Promise)
-							return canary.then((canary) => {
-								return handleCanaryResult(canary, payload, ctx);
-							});
+						const canary = inst._zod.parse({
+							value: payload.value,
+							issues: []
+						}, {
+							...ctx,
+							skipChecks: true
+						});
+						if (canary instanceof Promise) return canary.then((canary) => {
+							return handleCanaryResult(canary, payload, ctx);
+						});
 						return handleCanaryResult(canary, payload, ctx);
 					}
 					const result = inst._zod.parse(payload, ctx);
@@ -5694,41 +4598,34 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 						const r = safeParse$1(inst, value);
 						return r.success ? { value: r.data } : { issues: r.error?.issues };
 					} catch (_) {
-						return safeParseAsync$1(inst, value).then((r) =>
-							r.success ? { value: r.data } : { issues: r.error?.issues },
-						);
+						return safeParseAsync$1(inst, value).then((r) => r.success ? { value: r.data } : { issues: r.error?.issues });
 					}
 				},
 				vendor: "zod",
-				version: 1,
+				version: 1
 			}));
 		});
 		$ZodString = /*@__PURE__*/ $constructor("$ZodString", (inst, def) => {
 			$ZodType.init(inst, def);
-			inst._zod.pattern =
-				[...(inst?._zod.bag?.patterns ?? [])].pop() ?? string$1(inst._zod.bag);
+			inst._zod.pattern = [...inst?._zod.bag?.patterns ?? []].pop() ?? string$1(inst._zod.bag);
 			inst._zod.parse = (payload, _) => {
-				if (def.coerce)
-					try {
-						payload.value = String(payload.value);
-					} catch (_) {}
+				if (def.coerce) try {
+					payload.value = String(payload.value);
+				} catch (_) {}
 				if (typeof payload.value === "string") return payload;
 				payload.issues.push({
 					expected: "string",
 					code: "invalid_type",
 					input: payload.value,
-					inst,
+					inst
 				});
 				return payload;
 			};
 		});
-		$ZodStringFormat = /*@__PURE__*/ $constructor(
-			"$ZodStringFormat",
-			(inst, def) => {
-				$ZodCheckStringFormat.init(inst, def);
-				$ZodString.init(inst, def);
-			},
-		);
+		$ZodStringFormat = /*@__PURE__*/ $constructor("$ZodStringFormat", (inst, def) => {
+			$ZodCheckStringFormat.init(inst, def);
+			$ZodString.init(inst, def);
+		});
 		$ZodGUID = /*@__PURE__*/ $constructor("$ZodGUID", (inst, def) => {
 			def.pattern ?? (def.pattern = guid);
 			$ZodStringFormat.init(inst, def);
@@ -5743,10 +4640,9 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 					v5: 5,
 					v6: 6,
 					v7: 7,
-					v8: 8,
+					v8: 8
 				}[def.version];
-				if (v === void 0)
-					throw new Error(`Invalid UUID version: "${def.version}"`);
+				if (v === void 0) throw new Error(`Invalid UUID version: "${def.version}"`);
 				def.pattern ?? (def.pattern = uuid(v));
 			} else def.pattern ?? (def.pattern = uuid());
 			$ZodStringFormat.init(inst, def);
@@ -5768,7 +4664,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 								note: "Invalid URL format",
 								input: payload.value,
 								inst,
-								continue: !def.abort,
+								continue: !def.abort
 							});
 							return;
 						}
@@ -5776,35 +4672,27 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 					const url = new URL(trimmed);
 					if (def.hostname) {
 						def.hostname.lastIndex = 0;
-						if (!def.hostname.test(url.hostname))
-							payload.issues.push({
-								code: "invalid_format",
-								format: "url",
-								note: "Invalid hostname",
-								pattern: def.hostname.source,
-								input: payload.value,
-								inst,
-								continue: !def.abort,
-							});
+						if (!def.hostname.test(url.hostname)) payload.issues.push({
+							code: "invalid_format",
+							format: "url",
+							note: "Invalid hostname",
+							pattern: def.hostname.source,
+							input: payload.value,
+							inst,
+							continue: !def.abort
+						});
 					}
 					if (def.protocol) {
 						def.protocol.lastIndex = 0;
-						if (
-							!def.protocol.test(
-								url.protocol.endsWith(":")
-									? url.protocol.slice(0, -1)
-									: url.protocol,
-							)
-						)
-							payload.issues.push({
-								code: "invalid_format",
-								format: "url",
-								note: "Invalid protocol",
-								pattern: def.protocol.source,
-								input: payload.value,
-								inst,
-								continue: !def.abort,
-							});
+						if (!def.protocol.test(url.protocol.endsWith(":") ? url.protocol.slice(0, -1) : url.protocol)) payload.issues.push({
+							code: "invalid_format",
+							format: "url",
+							note: "Invalid protocol",
+							pattern: def.protocol.source,
+							input: payload.value,
+							inst,
+							continue: !def.abort
+						});
 					}
 					if (def.normalize) payload.value = url.href;
 					else payload.value = trimmed;
@@ -5815,7 +4703,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 						format: "url",
 						input: payload.value,
 						inst,
-						continue: !def.abort,
+						continue: !def.abort
 					});
 				}
 			};
@@ -5848,13 +4736,10 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			def.pattern ?? (def.pattern = ksuid);
 			$ZodStringFormat.init(inst, def);
 		});
-		$ZodISODateTime = /*@__PURE__*/ $constructor(
-			"$ZodISODateTime",
-			(inst, def) => {
-				def.pattern ?? (def.pattern = datetime$1(def));
-				$ZodStringFormat.init(inst, def);
-			},
-		);
+		$ZodISODateTime = /*@__PURE__*/ $constructor("$ZodISODateTime", (inst, def) => {
+			def.pattern ?? (def.pattern = datetime$1(def));
+			$ZodStringFormat.init(inst, def);
+		});
 		$ZodISODate = /*@__PURE__*/ $constructor("$ZodISODate", (inst, def) => {
 			def.pattern ?? (def.pattern = date$1);
 			$ZodStringFormat.init(inst, def);
@@ -5863,13 +4748,10 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			def.pattern ?? (def.pattern = time$1(def));
 			$ZodStringFormat.init(inst, def);
 		});
-		$ZodISODuration = /*@__PURE__*/ $constructor(
-			"$ZodISODuration",
-			(inst, def) => {
-				def.pattern ?? (def.pattern = duration$1);
-				$ZodStringFormat.init(inst, def);
-			},
-		);
+		$ZodISODuration = /*@__PURE__*/ $constructor("$ZodISODuration", (inst, def) => {
+			def.pattern ?? (def.pattern = duration$1);
+			$ZodStringFormat.init(inst, def);
+		});
 		$ZodIPv4 = /*@__PURE__*/ $constructor("$ZodIPv4", (inst, def) => {
 			def.pattern ?? (def.pattern = ipv4);
 			$ZodStringFormat.init(inst, def);
@@ -5888,7 +4770,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 						format: "ipv6",
 						input: payload.value,
 						inst,
-						continue: !def.abort,
+						continue: !def.abort
 					});
 				}
 			};
@@ -5916,7 +4798,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 						format: "cidrv6",
 						input: payload.value,
 						inst,
-						continue: !def.abort,
+						continue: !def.abort
 					});
 				}
 			};
@@ -5932,7 +4814,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 					format: "base64",
 					input: payload.value,
 					inst,
-					continue: !def.abort,
+					continue: !def.abort
 				});
 			};
 		});
@@ -5947,7 +4829,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 					format: "base64url",
 					input: payload.value,
 					inst,
-					continue: !def.abort,
+					continue: !def.abort
 				});
 			};
 		});
@@ -5964,7 +4846,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 					format: "jwt",
 					input: payload.value,
 					inst,
-					continue: !def.abort,
+					continue: !def.abort
 				});
 			};
 		});
@@ -5972,57 +4854,40 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			$ZodType.init(inst, def);
 			inst._zod.pattern = inst._zod.bag.pattern ?? number$1;
 			inst._zod.parse = (payload, _ctx) => {
-				if (def.coerce)
-					try {
-						payload.value = Number(payload.value);
-					} catch (_) {}
+				if (def.coerce) try {
+					payload.value = Number(payload.value);
+				} catch (_) {}
 				const input = payload.value;
-				if (
-					typeof input === "number" &&
-					!Number.isNaN(input) &&
-					Number.isFinite(input)
-				)
-					return payload;
-				const received =
-					typeof input === "number"
-						? Number.isNaN(input)
-							? "NaN"
-							: !Number.isFinite(input)
-								? "Infinity"
-								: void 0
-						: void 0;
+				if (typeof input === "number" && !Number.isNaN(input) && Number.isFinite(input)) return payload;
+				const received = typeof input === "number" ? Number.isNaN(input) ? "NaN" : !Number.isFinite(input) ? "Infinity" : void 0 : void 0;
 				payload.issues.push({
 					expected: "number",
 					code: "invalid_type",
 					input,
 					inst,
-					...(received ? { received } : {}),
+					...received ? { received } : {}
 				});
 				return payload;
 			};
 		});
-		$ZodNumberFormat = /*@__PURE__*/ $constructor(
-			"$ZodNumberFormat",
-			(inst, def) => {
-				$ZodCheckNumberFormat.init(inst, def);
-				$ZodNumber.init(inst, def);
-			},
-		);
+		$ZodNumberFormat = /*@__PURE__*/ $constructor("$ZodNumberFormat", (inst, def) => {
+			$ZodCheckNumberFormat.init(inst, def);
+			$ZodNumber.init(inst, def);
+		});
 		$ZodBoolean = /*@__PURE__*/ $constructor("$ZodBoolean", (inst, def) => {
 			$ZodType.init(inst, def);
 			inst._zod.pattern = boolean$1;
 			inst._zod.parse = (payload, _ctx) => {
-				if (def.coerce)
-					try {
-						payload.value = Boolean(payload.value);
-					} catch (_) {}
+				if (def.coerce) try {
+					payload.value = Boolean(payload.value);
+				} catch (_) {}
 				const input = payload.value;
 				if (typeof input === "boolean") return payload;
 				payload.issues.push({
 					expected: "boolean",
 					code: "invalid_type",
 					input,
-					inst,
+					inst
 				});
 				return payload;
 			};
@@ -6038,7 +4903,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 					expected: "never",
 					code: "invalid_type",
 					input: payload.value,
-					inst,
+					inst
 				});
 				return payload;
 			};
@@ -6052,7 +4917,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 						expected: "array",
 						code: "invalid_type",
 						input,
-						inst,
+						inst
 					});
 					return payload;
 				}
@@ -6060,17 +4925,11 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				const proms = [];
 				for (let i = 0; i < input.length; i++) {
 					const item = input[i];
-					const result = def.element._zod.run(
-						{
-							value: item,
-							issues: [],
-						},
-						ctx,
-					);
-					if (result instanceof Promise)
-						proms.push(
-							result.then((result) => handleArrayResult(result, payload, i)),
-						);
+					const result = def.element._zod.run({
+						value: item,
+						issues: []
+					}, ctx);
+					if (result instanceof Promise) proms.push(result.then((result) => handleArrayResult(result, payload, i)));
 					else handleArrayResult(result, payload, i);
 				}
 				if (proms.length) return Promise.all(proms).then(() => payload);
@@ -6081,13 +4940,11 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			$ZodType.init(inst, def);
 			if (!Object.getOwnPropertyDescriptor(def, "shape")?.get) {
 				const sh = def.shape;
-				Object.defineProperty(def, "shape", {
-					get: () => {
-						const newSh = { ...sh };
-						Object.defineProperty(def, "shape", { value: newSh });
-						return newSh;
-					},
-				});
+				Object.defineProperty(def, "shape", { get: () => {
+					const newSh = { ...sh };
+					Object.defineProperty(def, "shape", { value: newSh });
+					return newSh;
+				} });
 			}
 			const _normalized = cached(() => normalizeDef(def));
 			defineLazy(inst._zod, "propValues", () => {
@@ -6113,7 +4970,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 						expected: "object",
 						code: "invalid_type",
 						input,
-						inst,
+						inst
 					});
 					return payload;
 				}
@@ -6124,48 +4981,15 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 					const el = shape[key];
 					const isOptionalIn = el._zod.optin === "optional";
 					const isOptionalOut = el._zod.optout === "optional";
-					const r = el._zod.run(
-						{
-							value: input[key],
-							issues: [],
-						},
-						ctx,
-					);
-					if (r instanceof Promise)
-						proms.push(
-							r.then((r) =>
-								handlePropertyResult(
-									r,
-									payload,
-									key,
-									input,
-									isOptionalIn,
-									isOptionalOut,
-								),
-							),
-						);
-					else
-						handlePropertyResult(
-							r,
-							payload,
-							key,
-							input,
-							isOptionalIn,
-							isOptionalOut,
-						);
+					const r = el._zod.run({
+						value: input[key],
+						issues: []
+					}, ctx);
+					if (r instanceof Promise) proms.push(r.then((r) => handlePropertyResult(r, payload, key, input, isOptionalIn, isOptionalOut)));
+					else handlePropertyResult(r, payload, key, input, isOptionalIn, isOptionalOut);
 				}
-				if (!catchall)
-					return proms.length
-						? Promise.all(proms).then(() => payload)
-						: payload;
-				return handleCatchall(
-					proms,
-					input,
-					payload,
-					ctx,
-					_normalized.value,
-					inst,
-				);
+				if (!catchall) return proms.length ? Promise.all(proms).then(() => payload) : payload;
+				return handleCatchall(proms, input, payload, ctx, _normalized.value, inst);
 			};
 		});
 		$ZodObjectJIT = /*@__PURE__*/ $constructor("$ZodObjectJIT", (inst, def) => {
@@ -6173,7 +4997,11 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			const superParse = inst._zod.parse;
 			const _normalized = cached(() => normalizeDef(def));
 			const generateFastpass = (shape) => {
-				const doc = new Doc(["shape", "payload", "ctx"]);
+				const doc = new Doc([
+					"shape",
+					"payload",
+					"ctx"
+				]);
 				const normalized = _normalized.value;
 				const parseStr = (key) => {
 					const k = esc(key);
@@ -6191,8 +5019,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 					const isOptionalIn = schema?._zod?.optin === "optional";
 					const isOptionalOut = schema?._zod?.optout === "optional";
 					doc.write(`const ${id} = ${parseStr(key)};`);
-					if (isOptionalIn && isOptionalOut)
-						doc.write(`
+					if (isOptionalIn && isOptionalOut) doc.write(`
         if (${id}.issues.length) {
           if (${k} in input) {
             payload.issues = payload.issues.concat(${id}.issues.map(iss => ({
@@ -6201,7 +5028,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
             })));
           }
         }
-
+        
         if (${id}.value === undefined) {
           if (${k} in input) {
             newResult[${k}] = undefined;
@@ -6209,10 +5036,9 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
         } else {
           newResult[${k}] = ${id}.value;
         }
-
+        
       `);
-					else if (!isOptionalIn)
-						doc.write(`
+					else if (!isOptionalIn) doc.write(`
         const ${id}_present = ${k} in input;
         if (${id}.issues.length) {
           payload.issues = payload.issues.concat(${id}.issues.map(iss => ({
@@ -6238,15 +5064,14 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
         }
 
       `);
-					else
-						doc.write(`
+					else doc.write(`
         if (${id}.issues.length) {
           payload.issues = payload.issues.concat(${id}.issues.map(iss => ({
             ...iss,
             path: iss.path ? [${k}, ...iss.path] : [${k}]
           })));
         }
-
+        
         if (${id}.value === undefined) {
           if (${k} in input) {
             newResult[${k}] = undefined;
@@ -6254,7 +5079,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
         } else {
           newResult[${k}] = ${id}.value;
         }
-
+        
       `);
 				}
 				doc.write(`payload.value = newResult;`);
@@ -6276,16 +5101,11 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 						expected: "object",
 						code: "invalid_type",
 						input,
-						inst,
+						inst
 					});
 					return payload;
 				}
-				if (
-					jit &&
-					fastEnabled &&
-					ctx?.async === false &&
-					ctx.jitless !== true
-				) {
+				if (jit && fastEnabled && ctx?.async === false && ctx.jitless !== true) {
 					if (!fastpass) fastpass = generateFastpass(def.shape);
 					payload = fastpass(payload, ctx);
 					if (!catchall) return payload;
@@ -6296,28 +5116,15 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		});
 		$ZodUnion = /*@__PURE__*/ $constructor("$ZodUnion", (inst, def) => {
 			$ZodType.init(inst, def);
-			defineLazy(inst._zod, "optin", () =>
-				def.options.some((o) => o._zod.optin === "optional")
-					? "optional"
-					: void 0,
-			);
-			defineLazy(inst._zod, "optout", () =>
-				def.options.some((o) => o._zod.optout === "optional")
-					? "optional"
-					: void 0,
-			);
+			defineLazy(inst._zod, "optin", () => def.options.some((o) => o._zod.optin === "optional") ? "optional" : void 0);
+			defineLazy(inst._zod, "optout", () => def.options.some((o) => o._zod.optout === "optional") ? "optional" : void 0);
 			defineLazy(inst._zod, "values", () => {
-				if (def.options.every((o) => o._zod.values))
-					return new Set(
-						def.options.flatMap((option) => Array.from(option._zod.values)),
-					);
+				if (def.options.every((o) => o._zod.values)) return new Set(def.options.flatMap((option) => Array.from(option._zod.values)));
 			});
 			defineLazy(inst._zod, "pattern", () => {
 				if (def.options.every((o) => o._zod.pattern)) {
 					const patterns = def.options.map((o) => o._zod.pattern);
-					return new RegExp(
-						`^(${patterns.map((p) => cleanRegex(p.source)).join("|")})$`,
-					);
+					return new RegExp(`^(${patterns.map((p) => cleanRegex(p.source)).join("|")})$`);
 				}
 			});
 			const first = def.options.length === 1 ? def.options[0]._zod.run : null;
@@ -6326,13 +5133,10 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				let async = false;
 				const results = [];
 				for (const option of def.options) {
-					const result = option._zod.run(
-						{
-							value: payload.value,
-							issues: [],
-						},
-						ctx,
-					);
+					const result = option._zod.run({
+						value: payload.value,
+						issues: []
+					}, ctx);
 					if (result instanceof Promise) {
 						results.push(result);
 						async = true;
@@ -6347,45 +5151,30 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				});
 			};
 		});
-		$ZodIntersection = /*@__PURE__*/ $constructor(
-			"$ZodIntersection",
-			(inst, def) => {
-				$ZodType.init(inst, def);
-				inst._zod.parse = (payload, ctx) => {
-					const input = payload.value;
-					const left = def.left._zod.run(
-						{
-							value: input,
-							issues: [],
-						},
-						ctx,
-					);
-					const right = def.right._zod.run(
-						{
-							value: input,
-							issues: [],
-						},
-						ctx,
-					);
-					if (left instanceof Promise || right instanceof Promise)
-						return Promise.all([left, right]).then(([left, right]) => {
-							return handleIntersectionResults(payload, left, right);
-						});
+		$ZodIntersection = /*@__PURE__*/ $constructor("$ZodIntersection", (inst, def) => {
+			$ZodType.init(inst, def);
+			inst._zod.parse = (payload, ctx) => {
+				const input = payload.value;
+				const left = def.left._zod.run({
+					value: input,
+					issues: []
+				}, ctx);
+				const right = def.right._zod.run({
+					value: input,
+					issues: []
+				}, ctx);
+				if (left instanceof Promise || right instanceof Promise) return Promise.all([left, right]).then(([left, right]) => {
 					return handleIntersectionResults(payload, left, right);
-				};
-			},
-		);
+				});
+				return handleIntersectionResults(payload, left, right);
+			};
+		});
 		$ZodEnum = /*@__PURE__*/ $constructor("$ZodEnum", (inst, def) => {
 			$ZodType.init(inst, def);
 			const values = getEnumValues(def.entries);
 			const valuesSet = new Set(values);
 			inst._zod.values = valuesSet;
-			inst._zod.pattern = new RegExp(
-				`^(${values
-					.filter((k) => propertyKeyTypes.has(typeof k))
-					.map((o) => (typeof o === "string" ? escapeRegex(o) : o.toString()))
-					.join("|")})$`,
-			);
+			inst._zod.pattern = new RegExp(`^(${values.filter((k) => propertyKeyTypes.has(typeof k)).map((o) => typeof o === "string" ? escapeRegex(o) : o.toString()).join("|")})$`);
 			inst._zod.parse = (payload, _ctx) => {
 				const input = payload.value;
 				if (valuesSet.has(input)) return payload;
@@ -6393,7 +5182,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 					code: "invalid_value",
 					values,
 					input,
-					inst,
+					inst
 				});
 				return payload;
 			};
@@ -6402,17 +5191,13 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			$ZodType.init(inst, def);
 			inst._zod.optin = "optional";
 			inst._zod.parse = (payload, ctx) => {
-				if (ctx.direction === "backward")
-					throw new $ZodEncodeError(inst.constructor.name);
+				if (ctx.direction === "backward") throw new $ZodEncodeError(inst.constructor.name);
 				const _out = def.transform(payload.value, payload);
-				if (ctx.async)
-					return (_out instanceof Promise ? _out : Promise.resolve(_out)).then(
-						(output) => {
-							payload.value = output;
-							payload.fallback = true;
-							return payload;
-						},
-					);
+				if (ctx.async) return (_out instanceof Promise ? _out : Promise.resolve(_out)).then((output) => {
+					payload.value = output;
+					payload.fallback = true;
+					return payload;
+				});
 				if (_out instanceof Promise) throw new $ZodAsyncError();
 				payload.value = _out;
 				payload.fallback = true;
@@ -6424,53 +5209,41 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			inst._zod.optin = "optional";
 			inst._zod.optout = "optional";
 			defineLazy(inst._zod, "values", () => {
-				return def.innerType._zod.values
-					? new Set([...def.innerType._zod.values, void 0])
-					: void 0;
+				return def.innerType._zod.values ? new Set([...def.innerType._zod.values, void 0]) : void 0;
 			});
 			defineLazy(inst._zod, "pattern", () => {
 				const pattern = def.innerType._zod.pattern;
-				return pattern
-					? new RegExp(`^(${cleanRegex(pattern.source)})?$`)
-					: void 0;
+				return pattern ? new RegExp(`^(${cleanRegex(pattern.source)})?$`) : void 0;
 			});
 			inst._zod.parse = (payload, ctx) => {
 				if (def.innerType._zod.optin === "optional") {
 					const input = payload.value;
 					const result = def.innerType._zod.run(payload, ctx);
-					if (result instanceof Promise)
-						return result.then((r) => handleOptionalResult(r, input));
+					if (result instanceof Promise) return result.then((r) => handleOptionalResult(r, input));
 					return handleOptionalResult(result, input);
 				}
 				if (payload.value === void 0) return payload;
 				return def.innerType._zod.run(payload, ctx);
 			};
 		});
-		$ZodExactOptional = /*@__PURE__*/ $constructor(
-			"$ZodExactOptional",
-			(inst, def) => {
-				$ZodOptional.init(inst, def);
-				defineLazy(inst._zod, "values", () => def.innerType._zod.values);
-				defineLazy(inst._zod, "pattern", () => def.innerType._zod.pattern);
-				inst._zod.parse = (payload, ctx) => {
-					return def.innerType._zod.run(payload, ctx);
-				};
-			},
-		);
+		$ZodExactOptional = /*@__PURE__*/ $constructor("$ZodExactOptional", (inst, def) => {
+			$ZodOptional.init(inst, def);
+			defineLazy(inst._zod, "values", () => def.innerType._zod.values);
+			defineLazy(inst._zod, "pattern", () => def.innerType._zod.pattern);
+			inst._zod.parse = (payload, ctx) => {
+				return def.innerType._zod.run(payload, ctx);
+			};
+		});
 		$ZodNullable = /*@__PURE__*/ $constructor("$ZodNullable", (inst, def) => {
 			$ZodType.init(inst, def);
 			defineLazy(inst._zod, "optin", () => def.innerType._zod.optin);
 			defineLazy(inst._zod, "optout", () => def.innerType._zod.optout);
 			defineLazy(inst._zod, "pattern", () => {
 				const pattern = def.innerType._zod.pattern;
-				return pattern
-					? new RegExp(`^(${cleanRegex(pattern.source)}|null)$`)
-					: void 0;
+				return pattern ? new RegExp(`^(${cleanRegex(pattern.source)}|null)$`) : void 0;
 			});
 			defineLazy(inst._zod, "values", () => {
-				return def.innerType._zod.values
-					? new Set([...def.innerType._zod.values, null])
-					: void 0;
+				return def.innerType._zod.values ? new Set([...def.innerType._zod.values, null]) : void 0;
 			});
 			inst._zod.parse = (payload, ctx) => {
 				if (payload.value === null) return payload;
@@ -6482,18 +5255,16 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			inst._zod.optin = "optional";
 			defineLazy(inst._zod, "values", () => def.innerType._zod.values);
 			inst._zod.parse = (payload, ctx) => {
-				if (ctx.direction === "backward")
-					return def.innerType._zod.run(payload, ctx);
+				if (ctx.direction === "backward") return def.innerType._zod.run(payload, ctx);
 				if (payload.value === void 0) {
 					payload.value = def.defaultValue;
 					/**
-					 * $ZodDefault returns the default value immediately in forward direction.
-					 * It doesn't pass the default value into the validator ("prefault"). There's no reason to pass the default value through validation. The validity of the default is enforced by TypeScript statically. Otherwise, it's the responsibility of the user to ensure the default is valid. In the case of pipes with divergent in/out types, you can specify the default on the `in` schema of your ZodPipe to set a "prefault" for the pipe.   */
+					* $ZodDefault returns the default value immediately in forward direction.
+					* It doesn't pass the default value into the validator ("prefault"). There's no reason to pass the default value through validation. The validity of the default is enforced by TypeScript statically. Otherwise, it's the responsibility of the user to ensure the default is valid. In the case of pipes with divergent in/out types, you can specify the default on the `in` schema of your ZodPipe to set a "prefault" for the pipe.   */
 					return payload;
 				}
 				const result = def.innerType._zod.run(payload, ctx);
-				if (result instanceof Promise)
-					return result.then((result) => handleDefaultResult(result, def));
+				if (result instanceof Promise) return result.then((result) => handleDefaultResult(result, def));
 				return handleDefaultResult(result, def);
 			};
 		});
@@ -6502,67 +5273,50 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			inst._zod.optin = "optional";
 			defineLazy(inst._zod, "values", () => def.innerType._zod.values);
 			inst._zod.parse = (payload, ctx) => {
-				if (ctx.direction === "backward")
-					return def.innerType._zod.run(payload, ctx);
+				if (ctx.direction === "backward") return def.innerType._zod.run(payload, ctx);
 				if (payload.value === void 0) payload.value = def.defaultValue;
 				return def.innerType._zod.run(payload, ctx);
 			};
 		});
-		$ZodNonOptional = /*@__PURE__*/ $constructor(
-			"$ZodNonOptional",
-			(inst, def) => {
-				$ZodType.init(inst, def);
-				defineLazy(inst._zod, "values", () => {
-					const v = def.innerType._zod.values;
-					return v ? new Set([...v].filter((x) => x !== void 0)) : void 0;
-				});
-				inst._zod.parse = (payload, ctx) => {
-					const result = def.innerType._zod.run(payload, ctx);
-					if (result instanceof Promise)
-						return result.then((result) =>
-							handleNonOptionalResult(result, inst),
-						);
-					return handleNonOptionalResult(result, inst);
-				};
-			},
-		);
+		$ZodNonOptional = /*@__PURE__*/ $constructor("$ZodNonOptional", (inst, def) => {
+			$ZodType.init(inst, def);
+			defineLazy(inst._zod, "values", () => {
+				const v = def.innerType._zod.values;
+				return v ? new Set([...v].filter((x) => x !== void 0)) : void 0;
+			});
+			inst._zod.parse = (payload, ctx) => {
+				const result = def.innerType._zod.run(payload, ctx);
+				if (result instanceof Promise) return result.then((result) => handleNonOptionalResult(result, inst));
+				return handleNonOptionalResult(result, inst);
+			};
+		});
 		$ZodCatch = /*@__PURE__*/ $constructor("$ZodCatch", (inst, def) => {
 			$ZodType.init(inst, def);
 			inst._zod.optin = "optional";
 			defineLazy(inst._zod, "optout", () => def.innerType._zod.optout);
 			defineLazy(inst._zod, "values", () => def.innerType._zod.values);
 			inst._zod.parse = (payload, ctx) => {
-				if (ctx.direction === "backward")
-					return def.innerType._zod.run(payload, ctx);
+				if (ctx.direction === "backward") return def.innerType._zod.run(payload, ctx);
 				const result = def.innerType._zod.run(payload, ctx);
-				if (result instanceof Promise)
-					return result.then((result) => {
-						payload.value = result.value;
-						if (result.issues.length) {
-							payload.value = def.catchValue({
-								...payload,
-								error: {
-									issues: result.issues.map((iss) =>
-										finalizeIssue(iss, ctx, config()),
-									),
-								},
-								input: payload.value,
-							});
-							payload.issues = [];
-							payload.fallback = true;
-						}
-						return payload;
-					});
+				if (result instanceof Promise) return result.then((result) => {
+					payload.value = result.value;
+					if (result.issues.length) {
+						payload.value = def.catchValue({
+							...payload,
+							error: { issues: result.issues.map((iss) => finalizeIssue(iss, ctx, config())) },
+							input: payload.value
+						});
+						payload.issues = [];
+						payload.fallback = true;
+					}
+					return payload;
+				});
 				payload.value = result.value;
 				if (result.issues.length) {
 					payload.value = def.catchValue({
 						...payload,
-						error: {
-							issues: result.issues.map((iss) =>
-								finalizeIssue(iss, ctx, config()),
-							),
-						},
-						input: payload.value,
+						error: { issues: result.issues.map((iss) => finalizeIssue(iss, ctx, config())) },
+						input: payload.value
 					});
 					payload.issues = [];
 					payload.fallback = true;
@@ -6579,13 +5333,11 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			inst._zod.parse = (payload, ctx) => {
 				if (ctx.direction === "backward") {
 					const right = def.out._zod.run(payload, ctx);
-					if (right instanceof Promise)
-						return right.then((right) => handlePipeResult(right, def.in, ctx));
+					if (right instanceof Promise) return right.then((right) => handlePipeResult(right, def.in, ctx));
 					return handlePipeResult(right, def.in, ctx);
 				}
 				const left = def.in._zod.run(payload, ctx);
-				if (left instanceof Promise)
-					return left.then((left) => handlePipeResult(left, def.out, ctx));
+				if (left instanceof Promise) return left.then((left) => handlePipeResult(left, def.out, ctx));
 				return handlePipeResult(left, def.out, ctx);
 			};
 		});
@@ -6596,8 +5348,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			defineLazy(inst._zod, "optin", () => def.innerType?._zod?.optin);
 			defineLazy(inst._zod, "optout", () => def.innerType?._zod?.optout);
 			inst._zod.parse = (payload, ctx) => {
-				if (ctx.direction === "backward")
-					return def.innerType._zod.run(payload, ctx);
+				if (ctx.direction === "backward") return def.innerType._zod.run(payload, ctx);
 				const result = def.innerType._zod.run(payload, ctx);
 				if (result instanceof Promise) return result.then(handleReadonlyResult);
 				return handleReadonlyResult(result);
@@ -6612,42 +5363,41 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			inst._zod.check = (payload) => {
 				const input = payload.value;
 				const r = def.fn(input);
-				if (r instanceof Promise)
-					return r.then((r) => handleRefineResult(r, payload, input, inst));
+				if (r instanceof Promise) return r.then((r) => handleRefineResult(r, payload, input, inst));
 				handleRefineResult(r, payload, input, inst);
 			};
 		});
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/locales/en.js
 	function en_default() {
 		return { localeError: error() };
 	}
 	var error;
-	var init_en = __esmMin(() => {
+	var init_en = __esmMin((() => {
 		init_util();
 		error = () => {
 			const Sizable = {
 				string: {
 					unit: "characters",
-					verb: "to have",
+					verb: "to have"
 				},
 				file: {
 					unit: "bytes",
-					verb: "to have",
+					verb: "to have"
 				},
 				array: {
 					unit: "items",
-					verb: "to have",
+					verb: "to have"
 				},
 				set: {
 					unit: "items",
-					verb: "to have",
+					verb: "to have"
 				},
 				map: {
 					unit: "entries",
-					verb: "to have",
-				},
+					verb: "to have"
+				}
 			};
 			function getSizing(origin) {
 				return Sizable[origin] ?? null;
@@ -6681,7 +5431,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				json_string: "JSON string",
 				e164: "E.164 number",
 				jwt: "JWT",
-				template_literal: "input",
+				template_literal: "input"
 			};
 			const TypeDictionary = { nan: "NaN" };
 			return (issue) => {
@@ -6692,64 +5442,47 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 						return `Invalid input: expected ${expected}, received ${TypeDictionary[receivedType] ?? receivedType}`;
 					}
 					case "invalid_value":
-						if (issue.values.length === 1)
-							return `Invalid input: expected ${stringifyPrimitive(issue.values[0])}`;
+						if (issue.values.length === 1) return `Invalid input: expected ${stringifyPrimitive(issue.values[0])}`;
 						return `Invalid option: expected one of ${joinValues(issue.values, "|")}`;
 					case "too_big": {
 						const adj = issue.inclusive ? "<=" : "<";
 						const sizing = getSizing(issue.origin);
-						if (sizing)
-							return `Too big: expected ${issue.origin ?? "value"} to have ${adj}${issue.maximum.toString()} ${sizing.unit ?? "elements"}`;
+						if (sizing) return `Too big: expected ${issue.origin ?? "value"} to have ${adj}${issue.maximum.toString()} ${sizing.unit ?? "elements"}`;
 						return `Too big: expected ${issue.origin ?? "value"} to be ${adj}${issue.maximum.toString()}`;
 					}
 					case "too_small": {
 						const adj = issue.inclusive ? ">=" : ">";
 						const sizing = getSizing(issue.origin);
-						if (sizing)
-							return `Too small: expected ${issue.origin} to have ${adj}${issue.minimum.toString()} ${sizing.unit}`;
+						if (sizing) return `Too small: expected ${issue.origin} to have ${adj}${issue.minimum.toString()} ${sizing.unit}`;
 						return `Too small: expected ${issue.origin} to be ${adj}${issue.minimum.toString()}`;
 					}
 					case "invalid_format": {
 						const _issue = issue;
-						if (_issue.format === "starts_with")
-							return `Invalid string: must start with "${_issue.prefix}"`;
-						if (_issue.format === "ends_with")
-							return `Invalid string: must end with "${_issue.suffix}"`;
-						if (_issue.format === "includes")
-							return `Invalid string: must include "${_issue.includes}"`;
-						if (_issue.format === "regex")
-							return `Invalid string: must match pattern ${_issue.pattern}`;
+						if (_issue.format === "starts_with") return `Invalid string: must start with "${_issue.prefix}"`;
+						if (_issue.format === "ends_with") return `Invalid string: must end with "${_issue.suffix}"`;
+						if (_issue.format === "includes") return `Invalid string: must include "${_issue.includes}"`;
+						if (_issue.format === "regex") return `Invalid string: must match pattern ${_issue.pattern}`;
 						return `Invalid ${FormatDictionary[_issue.format] ?? issue.format}`;
 					}
-					case "not_multiple_of":
-						return `Invalid number: must be a multiple of ${issue.divisor}`;
-					case "unrecognized_keys":
-						return `Unrecognized key${issue.keys.length > 1 ? "s" : ""}: ${joinValues(issue.keys, ", ")}`;
-					case "invalid_key":
-						return `Invalid key in ${issue.origin}`;
+					case "not_multiple_of": return `Invalid number: must be a multiple of ${issue.divisor}`;
+					case "unrecognized_keys": return `Unrecognized key${issue.keys.length > 1 ? "s" : ""}: ${joinValues(issue.keys, ", ")}`;
+					case "invalid_key": return `Invalid key in ${issue.origin}`;
 					case "invalid_union":
-						if (
-							issue.options &&
-							Array.isArray(issue.options) &&
-							issue.options.length > 0
-						)
-							return `Invalid discriminator value. Expected ${issue.options.map((o) => `'${o}'`).join(" | ")}`;
+						if (issue.options && Array.isArray(issue.options) && issue.options.length > 0) return `Invalid discriminator value. Expected ${issue.options.map((o) => `'${o}'`).join(" | ")}`;
 						return "Invalid input";
-					case "invalid_element":
-						return `Invalid value in ${issue.origin}`;
-					default:
-						return `Invalid input`;
+					case "invalid_element": return `Invalid value in ${issue.origin}`;
+					default: return `Invalid input`;
 				}
 			};
 		};
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/core/registries.js
 	function registry() {
 		return new $ZodRegistry();
 	}
 	var _a, $ZodRegistry, globalRegistry;
-	var init_registries = __esmMin(() => {
+	var init_registries = __esmMin((() => {
 		$ZodRegistry = class {
 			constructor() {
 				this._map = /* @__PURE__ */ new WeakMap();
@@ -6758,8 +5491,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			add(schema, ..._meta) {
 				const meta = _meta[0];
 				this._map.set(schema, meta);
-				if (meta && typeof meta === "object" && "id" in meta)
-					this._idmap.set(meta.id, schema);
+				if (meta && typeof meta === "object" && "id" in meta) this._idmap.set(meta.id, schema);
 				return this;
 			}
 			clear() {
@@ -6769,19 +5501,18 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			}
 			remove(schema) {
 				const meta = this._map.get(schema);
-				if (meta && typeof meta === "object" && "id" in meta)
-					this._idmap.delete(meta.id);
+				if (meta && typeof meta === "object" && "id" in meta) this._idmap.delete(meta.id);
 				this._map.delete(schema);
 				return this;
 			}
 			get(schema) {
 				const p = schema._zod.parent;
 				if (p) {
-					const pm = { ...(this.get(p) ?? {}) };
+					const pm = { ...this.get(p) ?? {} };
 					delete pm.id;
 					const f = {
 						...pm,
-						...this._map.get(schema),
+						...this._map.get(schema)
 					};
 					return Object.keys(f).length ? f : void 0;
 				}
@@ -6791,17 +5522,16 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 				return this._map.has(schema);
 			}
 		};
-		(_a = globalThis).__zod_globalRegistry ??
-			(_a.__zod_globalRegistry = registry());
+		(_a = globalThis).__zod_globalRegistry ?? (_a.__zod_globalRegistry = registry());
 		globalRegistry = globalThis.__zod_globalRegistry;
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/core/api.js
 	// @__NO_SIDE_EFFECTS__
 	function _string(Class, params) {
 		return new Class({
 			type: "string",
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6811,7 +5541,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "email",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6821,7 +5551,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "guid",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6831,7 +5561,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "uuid",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6842,7 +5572,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			check: "string_format",
 			abort: false,
 			version: "v4",
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6853,7 +5583,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			check: "string_format",
 			abort: false,
 			version: "v6",
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6864,7 +5594,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			check: "string_format",
 			abort: false,
 			version: "v7",
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6874,7 +5604,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "url",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6884,7 +5614,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "emoji",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6894,14 +5624,14 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "nanoid",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	/**
-	 * @deprecated CUID v1 is deprecated by its authors due to information leakage
-	 * (timestamps embedded in the id). Use {@link _cuid2} instead.
-	 * See https://github.com/paralleldrive/cuid.
-	 */
+	* @deprecated CUID v1 is deprecated by its authors due to information leakage
+	* (timestamps embedded in the id). Use {@link _cuid2} instead.
+	* See https://github.com/paralleldrive/cuid.
+	*/
 	// @__NO_SIDE_EFFECTS__
 	function _cuid(Class, params) {
 		return new Class({
@@ -6909,7 +5639,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "cuid",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6919,7 +5649,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "cuid2",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6929,7 +5659,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "ulid",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6939,7 +5669,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "xid",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6949,7 +5679,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "ksuid",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6959,7 +5689,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "ipv4",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6969,7 +5699,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "ipv6",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6979,7 +5709,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "cidrv4",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6989,7 +5719,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "cidrv6",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -6999,7 +5729,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "base64",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7009,7 +5739,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "base64url",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7019,7 +5749,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "e164",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7029,7 +5759,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "jwt",
 			check: "string_format",
 			abort: false,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7041,7 +5771,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			offset: false,
 			local: false,
 			precision: null,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7050,7 +5780,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			type: "string",
 			format: "date",
 			check: "string_format",
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7060,7 +5790,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			format: "time",
 			check: "string_format",
 			precision: null,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7069,7 +5799,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			type: "string",
 			format: "duration",
 			check: "string_format",
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7077,7 +5807,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		return new Class({
 			type: "number",
 			checks: [],
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7087,14 +5817,14 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			check: "number_format",
 			abort: false,
 			format: "safeint",
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
 	function _boolean(Class, params) {
 		return new Class({
 			type: "boolean",
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7105,7 +5835,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 	function _never(Class, params) {
 		return new Class({
 			type: "never",
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7114,7 +5844,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			check: "less_than",
 			...normalizeParams(params),
 			value,
-			inclusive: false,
+			inclusive: false
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7123,7 +5853,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			check: "less_than",
 			...normalizeParams(params),
 			value,
-			inclusive: true,
+			inclusive: true
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7132,7 +5862,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			check: "greater_than",
 			...normalizeParams(params),
 			value,
-			inclusive: false,
+			inclusive: false
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7141,7 +5871,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			check: "greater_than",
 			...normalizeParams(params),
 			value,
-			inclusive: true,
+			inclusive: true
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7149,7 +5879,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		return new $ZodCheckMultipleOf({
 			check: "multiple_of",
 			...normalizeParams(params),
-			value,
+			value
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7157,7 +5887,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		return new $ZodCheckMaxLength({
 			check: "max_length",
 			...normalizeParams(params),
-			maximum,
+			maximum
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7165,7 +5895,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		return new $ZodCheckMinLength({
 			check: "min_length",
 			...normalizeParams(params),
-			minimum,
+			minimum
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7173,7 +5903,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		return new $ZodCheckLengthEquals({
 			check: "length_equals",
 			...normalizeParams(params),
-			length,
+			length
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7182,7 +5912,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			check: "string_format",
 			format: "regex",
 			...normalizeParams(params),
-			pattern,
+			pattern
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7190,7 +5920,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		return new $ZodCheckLowerCase({
 			check: "string_format",
 			format: "lowercase",
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7198,7 +5928,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		return new $ZodCheckUpperCase({
 			check: "string_format",
 			format: "uppercase",
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7207,7 +5937,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			check: "string_format",
 			format: "includes",
 			...normalizeParams(params),
-			includes,
+			includes
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7216,7 +5946,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			check: "string_format",
 			format: "starts_with",
 			...normalizeParams(params),
-			prefix,
+			prefix
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7225,14 +5955,14 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			check: "string_format",
 			format: "ends_with",
 			...normalizeParams(params),
-			suffix,
+			suffix
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
 	function _overwrite(tx) {
 		return new $ZodCheckOverwrite({
 			check: "overwrite",
-			tx,
+			tx
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7260,7 +5990,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 		return new Class({
 			type: "array",
 			element,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
@@ -7269,15 +5999,14 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			type: "custom",
 			check: "custom",
 			fn,
-			...normalizeParams(_params),
+			...normalizeParams(_params)
 		});
 	}
 	// @__NO_SIDE_EFFECTS__
 	function _superRefine(fn, params) {
 		const ch = /* @__PURE__ */ _check((payload) => {
 			payload.addIssue = (issue$2) => {
-				if (typeof issue$2 === "string")
-					payload.issues.push(issue(issue$2, payload.value, ch._zod.def));
+				if (typeof issue$2 === "string") payload.issues.push(issue(issue$2, payload.value, ch._zod.def));
 				else {
 					const _issue = issue$2;
 					if (_issue.fatal) _issue.continue = false;
@@ -7296,15 +6025,15 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 	function _check(fn, params) {
 		const ch = new $ZodCheck({
 			check: "custom",
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 		ch._zod.check = fn;
 		return ch;
 	}
-	var init_api = __esmMin(() => {
+	var init_api = __esmMin((() => {
 		init_checks$1();
 		init_util();
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/core/to-json-schema.js
 	function initializeContext(params) {
@@ -7322,17 +6051,13 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			seen: /* @__PURE__ */ new Map(),
 			cycles: params?.cycles ?? "ref",
 			reused: params?.reused ?? "inline",
-			external: params?.external ?? void 0,
+			external: params?.external ?? void 0
 		};
 	}
-	function process(
-		schema,
-		ctx,
-		_params = {
-			path: [],
-			schemaPath: [],
-		},
-	) {
+	function process(schema, ctx, _params = {
+		path: [],
+		schemaPath: []
+	}) {
 		var _a;
 		const def = schema._zod.def;
 		const seen = ctx.seen.get(schema);
@@ -7345,7 +6070,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			schema: {},
 			count: 1,
 			cycle: void 0,
-			path: _params.path,
+			path: _params.path
 		};
 		ctx.seen.set(schema, result);
 		const overrideSchema = schema._zod.toJSONSchema?.();
@@ -7354,17 +6079,13 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			const params = {
 				..._params,
 				schemaPath: [..._params.schemaPath, schema],
-				path: _params.path,
+				path: _params.path
 			};
-			if (schema._zod.processJSONSchema)
-				schema._zod.processJSONSchema(ctx, result.schema, params);
+			if (schema._zod.processJSONSchema) schema._zod.processJSONSchema(ctx, result.schema, params);
 			else {
 				const _json = result.schema;
 				const processor = ctx.processors[def.type];
-				if (!processor)
-					throw new Error(
-						`[toJSONSchema]: Non-representable type encountered: ${def.type}`,
-					);
+				if (!processor) throw new Error(`[toJSONSchema]: Non-representable type encountered: ${def.type}`);
 				processor(schema, ctx, _json, params);
 			}
 			const parent = schema._zod.parent;
@@ -7380,8 +6101,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			delete result.schema.examples;
 			delete result.schema.default;
 		}
-		if (ctx.io === "input" && "_prefault" in result.schema)
-			(_a = result.schema).default ?? (_a.default = result.schema._prefault);
+		if (ctx.io === "input" && "_prefault" in result.schema) (_a = result.schema).default ?? (_a.default = result.schema._prefault);
 		delete result.schema._prefault;
 		return ctx.seen.get(schema).schema;
 	}
@@ -7393,26 +6113,21 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			const id = ctx.metadataRegistry.get(entry[0])?.id;
 			if (id) {
 				const existing = idToSchema.get(id);
-				if (existing && existing !== entry[0])
-					throw new Error(
-						`Duplicate schema id "${id}" detected during JSON Schema conversion. Two different schemas cannot share the same id when converted together.`,
-					);
+				if (existing && existing !== entry[0]) throw new Error(`Duplicate schema id "${id}" detected during JSON Schema conversion. Two different schemas cannot share the same id when converted together.`);
 				idToSchema.set(id, entry[0]);
 			}
 		}
 		const makeURI = (entry) => {
-			const defsSegment =
-				ctx.target === "draft-2020-12" ? "$defs" : "definitions";
+			const defsSegment = ctx.target === "draft-2020-12" ? "$defs" : "definitions";
 			if (ctx.external) {
 				const externalId = ctx.external.registry.get(entry[0])?.id;
 				const uriGenerator = ctx.external.uri ?? ((id) => id);
 				if (externalId) return { ref: uriGenerator(externalId) };
-				const id =
-					entry[1].defId ?? entry[1].schema.id ?? `schema${ctx.counter++}`;
+				const id = entry[1].defId ?? entry[1].schema.id ?? `schema${ctx.counter++}`;
 				entry[1].defId = id;
 				return {
 					defId: id,
-					ref: `${uriGenerator("__shared")}#/${defsSegment}/${id}`,
+					ref: `${uriGenerator("__shared")}#/${defsSegment}/${id}`
 				};
 			}
 			if (entry[1] === root) return { ref: "#" };
@@ -7420,7 +6135,7 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			const defId = entry[1].schema.id ?? `__schema${ctx.counter++}`;
 			return {
 				defId,
-				ref: defUriPrefix + defId,
+				ref: defUriPrefix + defId
 			};
 		};
 		const extractToDef = (entry) => {
@@ -7433,14 +6148,12 @@ gl_Position = vec4(aPosition, 0.0, 1.0);
 			for (const key in schema) delete schema[key];
 			schema.$ref = ref;
 		};
-		if (ctx.cycles === "throw")
-			for (const entry of ctx.seen.entries()) {
-				const seen = entry[1];
-				if (seen.cycle)
-					throw new Error(`Cycle detected: #/${seen.cycle?.join("/")}/<root>
+		if (ctx.cycles === "throw") for (const entry of ctx.seen.entries()) {
+			const seen = entry[1];
+			if (seen.cycle) throw new Error(`Cycle detected: #/${seen.cycle?.join("/")}/<root>
 
 Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.`);
-			}
+		}
 		for (const entry of ctx.seen.entries()) {
 			const seen = entry[1];
 			if (schema === entry[0]) {
@@ -7484,30 +6197,19 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				flattenRef(ref);
 				const refSeen = ctx.seen.get(ref);
 				const refSchema = refSeen.schema;
-				if (
-					refSchema.$ref &&
-					(ctx.target === "draft-07" ||
-						ctx.target === "draft-04" ||
-						ctx.target === "openapi-3.0")
-				) {
+				if (refSchema.$ref && (ctx.target === "draft-07" || ctx.target === "draft-04" || ctx.target === "openapi-3.0")) {
 					schema.allOf = schema.allOf ?? [];
 					schema.allOf.push(refSchema);
 				} else Object.assign(schema, refSchema);
 				Object.assign(schema, _cached);
-				if (zodSchema._zod.parent === ref)
-					for (const key in schema) {
-						if (key === "$ref" || key === "allOf") continue;
-						if (!(key in _cached)) delete schema[key];
-					}
-				if (refSchema.$ref && refSeen.def)
-					for (const key in schema) {
-						if (key === "$ref" || key === "allOf") continue;
-						if (
-							key in refSeen.def &&
-							JSON.stringify(schema[key]) === JSON.stringify(refSeen.def[key])
-						)
-							delete schema[key];
-					}
+				if (zodSchema._zod.parent === ref) for (const key in schema) {
+					if (key === "$ref" || key === "allOf") continue;
+					if (!(key in _cached)) delete schema[key];
+				}
+				if (refSchema.$ref && refSeen.def) for (const key in schema) {
+					if (key === "$ref" || key === "allOf") continue;
+					if (key in refSeen.def && JSON.stringify(schema[key]) === JSON.stringify(refSeen.def[key])) delete schema[key];
+				}
 			}
 			const parent = zodSchema._zod.parent;
 			if (parent && parent !== ref) {
@@ -7515,34 +6217,24 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				const parentSeen = ctx.seen.get(parent);
 				if (parentSeen?.schema.$ref) {
 					schema.$ref = parentSeen.schema.$ref;
-					if (parentSeen.def)
-						for (const key in schema) {
-							if (key === "$ref" || key === "allOf") continue;
-							if (
-								key in parentSeen.def &&
-								JSON.stringify(schema[key]) ===
-									JSON.stringify(parentSeen.def[key])
-							)
-								delete schema[key];
-						}
+					if (parentSeen.def) for (const key in schema) {
+						if (key === "$ref" || key === "allOf") continue;
+						if (key in parentSeen.def && JSON.stringify(schema[key]) === JSON.stringify(parentSeen.def[key])) delete schema[key];
+					}
 				}
 			}
 			ctx.override({
 				zodSchema,
 				jsonSchema: schema,
-				path: seen.path ?? [],
+				path: seen.path ?? []
 			});
 		};
 		for (const entry of [...ctx.seen.entries()].reverse()) flattenRef(entry[0]);
 		const result = {};
-		if (ctx.target === "draft-2020-12")
-			result.$schema = "https://json-schema.org/draft/2020-12/schema";
-		else if (ctx.target === "draft-07")
-			result.$schema = "http://json-schema.org/draft-07/schema#";
-		else if (ctx.target === "draft-04")
-			result.$schema = "http://json-schema.org/draft-04/schema#";
-		else if (ctx.target === "openapi-3.0") {
-		}
+		if (ctx.target === "draft-2020-12") result.$schema = "https://json-schema.org/draft/2020-12/schema";
+		else if (ctx.target === "draft-07") result.$schema = "http://json-schema.org/draft-07/schema#";
+		else if (ctx.target === "draft-04") result.$schema = "http://json-schema.org/draft-04/schema#";
+		else if (ctx.target === "openapi-3.0") {}
 		if (ctx.external?.uri) {
 			const id = ctx.external.registry.get(schema)?.id;
 			if (!id) throw new Error("Schema is missing an `id` property");
@@ -7559,30 +6251,20 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				defs[seen.defId] = seen.def;
 			}
 		}
-		if (ctx.external) {
-		} else if (Object.keys(defs).length > 0)
-			if (ctx.target === "draft-2020-12") result.$defs = defs;
-			else result.definitions = defs;
+		if (ctx.external) {} else if (Object.keys(defs).length > 0) if (ctx.target === "draft-2020-12") result.$defs = defs;
+		else result.definitions = defs;
 		try {
 			const finalized = JSON.parse(JSON.stringify(result));
 			Object.defineProperty(finalized, "~standard", {
 				value: {
 					...schema["~standard"],
 					jsonSchema: {
-						input: createStandardJSONSchemaMethod(
-							schema,
-							"input",
-							ctx.processors,
-						),
-						output: createStandardJSONSchemaMethod(
-							schema,
-							"output",
-							ctx.processors,
-						),
-					},
+						input: createStandardJSONSchemaMethod(schema, "input", ctx.processors),
+						output: createStandardJSONSchemaMethod(schema, "output", ctx.processors)
+					}
 				},
 				enumerable: false,
-				writable: false,
+				writable: false
 			});
 			return finalized;
 		} catch (_err) {
@@ -7598,34 +6280,19 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		if (def.type === "array") return isTransforming(def.element, ctx);
 		if (def.type === "set") return isTransforming(def.valueType, ctx);
 		if (def.type === "lazy") return isTransforming(def.getter(), ctx);
-		if (
-			def.type === "promise" ||
-			def.type === "optional" ||
-			def.type === "nonoptional" ||
-			def.type === "nullable" ||
-			def.type === "readonly" ||
-			def.type === "default" ||
-			def.type === "prefault"
-		)
-			return isTransforming(def.innerType, ctx);
-		if (def.type === "intersection")
-			return isTransforming(def.left, ctx) || isTransforming(def.right, ctx);
-		if (def.type === "record" || def.type === "map")
-			return (
-				isTransforming(def.keyType, ctx) || isTransforming(def.valueType, ctx)
-			);
+		if (def.type === "promise" || def.type === "optional" || def.type === "nonoptional" || def.type === "nullable" || def.type === "readonly" || def.type === "default" || def.type === "prefault") return isTransforming(def.innerType, ctx);
+		if (def.type === "intersection") return isTransforming(def.left, ctx) || isTransforming(def.right, ctx);
+		if (def.type === "record" || def.type === "map") return isTransforming(def.keyType, ctx) || isTransforming(def.valueType, ctx);
 		if (def.type === "pipe") {
 			if (_schema._zod.traits.has("$ZodCodec")) return true;
 			return isTransforming(def.in, ctx) || isTransforming(def.out, ctx);
 		}
 		if (def.type === "object") {
-			for (const key in def.shape)
-				if (isTransforming(def.shape[key], ctx)) return true;
+			for (const key in def.shape) if (isTransforming(def.shape[key], ctx)) return true;
 			return false;
 		}
 		if (def.type === "union") {
-			for (const option of def.options)
-				if (isTransforming(option, ctx)) return true;
+			for (const option of def.options) if (isTransforming(option, ctx)) return true;
 			return false;
 		}
 		if (def.type === "tuple") {
@@ -7636,34 +6303,30 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		return false;
 	}
 	var createToJSONSchemaMethod, createStandardJSONSchemaMethod;
-	var init_to_json_schema = __esmMin(() => {
+	var init_to_json_schema = __esmMin((() => {
 		init_registries();
-		createToJSONSchemaMethod =
-			(schema, processors = {}) =>
-			(params) => {
-				const ctx = initializeContext({
-					...params,
-					processors,
-				});
-				process(schema, ctx);
-				extractDefs(ctx, schema);
-				return finalize(ctx, schema);
-			};
-		createStandardJSONSchemaMethod =
-			(schema, io, processors = {}) =>
-			(params) => {
-				const { libraryOptions, target } = params ?? {};
-				const ctx = initializeContext({
-					...(libraryOptions ?? {}),
-					target,
-					io,
-					processors,
-				});
-				process(schema, ctx);
-				extractDefs(ctx, schema);
-				return finalize(ctx, schema);
-			};
-	});
+		createToJSONSchemaMethod = (schema, processors = {}) => (params) => {
+			const ctx = initializeContext({
+				...params,
+				processors
+			});
+			process(schema, ctx);
+			extractDefs(ctx, schema);
+			return finalize(ctx, schema);
+		};
+		createStandardJSONSchemaMethod = (schema, io, processors = {}) => (params) => {
+			const { libraryOptions, target } = params ?? {};
+			const ctx = initializeContext({
+				...libraryOptions ?? {},
+				target,
+				io,
+				processors
+			});
+			process(schema, ctx);
+			extractDefs(ctx, schema);
+			return finalize(ctx, schema);
+		};
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/core/json-schema-processors.js
 	function toJSONSchema(input, params) {
@@ -7671,7 +6334,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			const registry = input;
 			const ctx = initializeContext({
 				...params,
-				processors: allProcessors,
+				processors: allProcessors
 			});
 			const defs = {};
 			for (const entry of registry._idmap.entries()) {
@@ -7682,69 +6345,26 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			ctx.external = {
 				registry,
 				uri: params?.uri,
-				defs,
+				defs
 			};
 			for (const entry of registry._idmap.entries()) {
 				const [key, schema] = entry;
 				extractDefs(ctx, schema);
 				schemas[key] = finalize(ctx, schema);
 			}
-			if (Object.keys(defs).length > 0)
-				schemas.__shared = {
-					[ctx.target === "draft-2020-12" ? "$defs" : "definitions"]: defs,
-				};
+			if (Object.keys(defs).length > 0) schemas.__shared = { [ctx.target === "draft-2020-12" ? "$defs" : "definitions"]: defs };
 			return { schemas };
 		}
 		const ctx = initializeContext({
 			...params,
-			processors: allProcessors,
+			processors: allProcessors
 		});
 		process(input, ctx);
 		extractDefs(ctx, input);
 		return finalize(ctx, input);
 	}
-	var formatMap,
-		stringProcessor,
-		numberProcessor,
-		booleanProcessor,
-		bigintProcessor,
-		symbolProcessor,
-		nullProcessor,
-		undefinedProcessor,
-		voidProcessor,
-		neverProcessor,
-		anyProcessor,
-		unknownProcessor,
-		dateProcessor,
-		enumProcessor,
-		literalProcessor,
-		nanProcessor,
-		templateLiteralProcessor,
-		fileProcessor,
-		successProcessor,
-		customProcessor,
-		functionProcessor,
-		transformProcessor,
-		mapProcessor,
-		setProcessor,
-		arrayProcessor,
-		objectProcessor,
-		unionProcessor,
-		intersectionProcessor,
-		tupleProcessor,
-		recordProcessor,
-		nullableProcessor,
-		nonoptionalProcessor,
-		defaultProcessor,
-		prefaultProcessor,
-		catchProcessor,
-		pipeProcessor,
-		readonlyProcessor,
-		promiseProcessor,
-		optionalProcessor,
-		lazyProcessor,
-		allProcessors;
-	var init_json_schema_processors = __esmMin(() => {
+	var formatMap, stringProcessor, numberProcessor, booleanProcessor, bigintProcessor, symbolProcessor, nullProcessor, undefinedProcessor, voidProcessor, neverProcessor, anyProcessor, unknownProcessor, dateProcessor, enumProcessor, literalProcessor, nanProcessor, templateLiteralProcessor, fileProcessor, successProcessor, customProcessor, functionProcessor, transformProcessor, mapProcessor, setProcessor, arrayProcessor, objectProcessor, unionProcessor, intersectionProcessor, tupleProcessor, recordProcessor, nullableProcessor, nonoptionalProcessor, defaultProcessor, prefaultProcessor, catchProcessor, pipeProcessor, readonlyProcessor, promiseProcessor, optionalProcessor, lazyProcessor, allProcessors;
+	var init_json_schema_processors = __esmMin((() => {
 		init_to_json_schema();
 		init_util();
 		formatMap = {
@@ -7752,13 +6372,12 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			url: "uri",
 			datetime: "date-time",
 			json_string: "json-string",
-			regex: "",
+			regex: ""
 		};
 		stringProcessor = (schema, ctx, _json, _params) => {
 			const json = _json;
 			json.type = "string";
-			const { minimum, maximum, format, patterns, contentEncoding } =
-				schema._zod.bag;
+			const { minimum, maximum, format, patterns, contentEncoding } = schema._zod.bag;
 			if (typeof minimum === "number") json.minLength = minimum;
 			if (typeof maximum === "number") json.maxLength = maximum;
 			if (format) {
@@ -7770,50 +6389,29 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			if (patterns && patterns.size > 0) {
 				const regexes = [...patterns];
 				if (regexes.length === 1) json.pattern = regexes[0].source;
-				else if (regexes.length > 1)
-					json.allOf = [
-						...regexes.map((regex) => ({
-							...(ctx.target === "draft-07" ||
-							ctx.target === "draft-04" ||
-							ctx.target === "openapi-3.0"
-								? { type: "string" }
-								: {}),
-							pattern: regex.source,
-						})),
-					];
+				else if (regexes.length > 1) json.allOf = [...regexes.map((regex) => ({
+					...ctx.target === "draft-07" || ctx.target === "draft-04" || ctx.target === "openapi-3.0" ? { type: "string" } : {},
+					pattern: regex.source
+				}))];
 			}
 		};
 		numberProcessor = (schema, ctx, _json, _params) => {
 			const json = _json;
-			const {
-				minimum,
-				maximum,
-				format,
-				multipleOf,
-				exclusiveMaximum,
-				exclusiveMinimum,
-			} = schema._zod.bag;
-			if (typeof format === "string" && format.includes("int"))
-				json.type = "integer";
+			const { minimum, maximum, format, multipleOf, exclusiveMaximum, exclusiveMinimum } = schema._zod.bag;
+			if (typeof format === "string" && format.includes("int")) json.type = "integer";
 			else json.type = "number";
-			const exMin =
-				typeof exclusiveMinimum === "number" &&
-				exclusiveMinimum >= (minimum ?? Number.NEGATIVE_INFINITY);
-			const exMax =
-				typeof exclusiveMaximum === "number" &&
-				exclusiveMaximum <= (maximum ?? Number.POSITIVE_INFINITY);
+			const exMin = typeof exclusiveMinimum === "number" && exclusiveMinimum >= (minimum ?? Number.NEGATIVE_INFINITY);
+			const exMax = typeof exclusiveMaximum === "number" && exclusiveMaximum <= (maximum ?? Number.POSITIVE_INFINITY);
 			const legacy = ctx.target === "draft-04" || ctx.target === "openapi-3.0";
-			if (exMin)
-				if (legacy) {
-					json.minimum = exclusiveMinimum;
-					json.exclusiveMinimum = true;
-				} else json.exclusiveMinimum = exclusiveMinimum;
+			if (exMin) if (legacy) {
+				json.minimum = exclusiveMinimum;
+				json.exclusiveMinimum = true;
+			} else json.exclusiveMinimum = exclusiveMinimum;
 			else if (typeof minimum === "number") json.minimum = minimum;
-			if (exMax)
-				if (legacy) {
-					json.maximum = exclusiveMaximum;
-					json.exclusiveMaximum = true;
-				} else json.exclusiveMaximum = exclusiveMaximum;
+			if (exMax) if (legacy) {
+				json.maximum = exclusiveMaximum;
+				json.exclusiveMaximum = true;
+			} else json.exclusiveMaximum = exclusiveMaximum;
 			else if (typeof maximum === "number") json.maximum = maximum;
 			if (typeof multipleOf === "number") json.multipleOf = multipleOf;
 		};
@@ -7821,12 +6419,10 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			json.type = "boolean";
 		};
 		bigintProcessor = (_schema, ctx, _json, _params) => {
-			if (ctx.unrepresentable === "throw")
-				throw new Error("BigInt cannot be represented in JSON Schema");
+			if (ctx.unrepresentable === "throw") throw new Error("BigInt cannot be represented in JSON Schema");
 		};
 		symbolProcessor = (_schema, ctx, _json, _params) => {
-			if (ctx.unrepresentable === "throw")
-				throw new Error("Symbols cannot be represented in JSON Schema");
+			if (ctx.unrepresentable === "throw") throw new Error("Symbols cannot be represented in JSON Schema");
 		};
 		nullProcessor = (_schema, ctx, json, _params) => {
 			if (ctx.target === "openapi-3.0") {
@@ -7836,12 +6432,10 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			} else json.type = "null";
 		};
 		undefinedProcessor = (_schema, ctx, _json, _params) => {
-			if (ctx.unrepresentable === "throw")
-				throw new Error("Undefined cannot be represented in JSON Schema");
+			if (ctx.unrepresentable === "throw") throw new Error("Undefined cannot be represented in JSON Schema");
 		};
 		voidProcessor = (_schema, ctx, _json, _params) => {
-			if (ctx.unrepresentable === "throw")
-				throw new Error("Void cannot be represented in JSON Schema");
+			if (ctx.unrepresentable === "throw") throw new Error("Void cannot be represented in JSON Schema");
 		};
 		neverProcessor = (_schema, _ctx, json, _params) => {
 			json.not = {};
@@ -7849,8 +6443,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		anyProcessor = (_schema, _ctx, _json, _params) => {};
 		unknownProcessor = (_schema, _ctx, _json, _params) => {};
 		dateProcessor = (_schema, ctx, _json, _params) => {
-			if (ctx.unrepresentable === "throw")
-				throw new Error("Date cannot be represented in JSON Schema");
+			if (ctx.unrepresentable === "throw") throw new Error("Date cannot be represented in JSON Schema");
 		};
 		enumProcessor = (schema, _ctx, json, _params) => {
 			const def = schema._zod.def;
@@ -7862,25 +6455,15 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		literalProcessor = (schema, ctx, json, _params) => {
 			const def = schema._zod.def;
 			const vals = [];
-			for (const val of def.values)
-				if (val === void 0) {
-					if (ctx.unrepresentable === "throw")
-						throw new Error(
-							"Literal `undefined` cannot be represented in JSON Schema",
-						);
-				} else if (typeof val === "bigint")
-					if (ctx.unrepresentable === "throw")
-						throw new Error(
-							"BigInt literals cannot be represented in JSON Schema",
-						);
-					else vals.push(Number(val));
-				else vals.push(val);
-			if (vals.length === 0) {
-			} else if (vals.length === 1) {
+			for (const val of def.values) if (val === void 0) {
+				if (ctx.unrepresentable === "throw") throw new Error("Literal `undefined` cannot be represented in JSON Schema");
+			} else if (typeof val === "bigint") if (ctx.unrepresentable === "throw") throw new Error("BigInt literals cannot be represented in JSON Schema");
+			else vals.push(Number(val));
+			else vals.push(val);
+			if (vals.length === 0) {} else if (vals.length === 1) {
 				const val = vals[0];
 				json.type = val === null ? "null" : typeof val;
-				if (ctx.target === "draft-04" || ctx.target === "openapi-3.0")
-					json.enum = [val];
+				if (ctx.target === "draft-04" || ctx.target === "openapi-3.0") json.enum = [val];
 				else json.const = val;
 			} else {
 				if (vals.every((v) => typeof v === "number")) json.type = "number";
@@ -7891,8 +6474,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			}
 		};
 		nanProcessor = (_schema, ctx, _json, _params) => {
-			if (ctx.unrepresentable === "throw")
-				throw new Error("NaN cannot be represented in JSON Schema");
+			if (ctx.unrepresentable === "throw") throw new Error("NaN cannot be represented in JSON Schema");
 		};
 		templateLiteralProcessor = (schema, _ctx, json, _params) => {
 			const _json = json;
@@ -7906,43 +6488,37 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			const file = {
 				type: "string",
 				format: "binary",
-				contentEncoding: "binary",
+				contentEncoding: "binary"
 			};
 			const { minimum, maximum, mime } = schema._zod.bag;
 			if (minimum !== void 0) file.minLength = minimum;
 			if (maximum !== void 0) file.maxLength = maximum;
-			if (mime)
-				if (mime.length === 1) {
-					file.contentMediaType = mime[0];
-					Object.assign(_json, file);
-				} else {
-					Object.assign(_json, file);
-					_json.anyOf = mime.map((m) => ({ contentMediaType: m }));
-				}
+			if (mime) if (mime.length === 1) {
+				file.contentMediaType = mime[0];
+				Object.assign(_json, file);
+			} else {
+				Object.assign(_json, file);
+				_json.anyOf = mime.map((m) => ({ contentMediaType: m }));
+			}
 			else Object.assign(_json, file);
 		};
 		successProcessor = (_schema, _ctx, json, _params) => {
 			json.type = "boolean";
 		};
 		customProcessor = (_schema, ctx, _json, _params) => {
-			if (ctx.unrepresentable === "throw")
-				throw new Error("Custom types cannot be represented in JSON Schema");
+			if (ctx.unrepresentable === "throw") throw new Error("Custom types cannot be represented in JSON Schema");
 		};
 		functionProcessor = (_schema, ctx, _json, _params) => {
-			if (ctx.unrepresentable === "throw")
-				throw new Error("Function types cannot be represented in JSON Schema");
+			if (ctx.unrepresentable === "throw") throw new Error("Function types cannot be represented in JSON Schema");
 		};
 		transformProcessor = (_schema, ctx, _json, _params) => {
-			if (ctx.unrepresentable === "throw")
-				throw new Error("Transforms cannot be represented in JSON Schema");
+			if (ctx.unrepresentable === "throw") throw new Error("Transforms cannot be represented in JSON Schema");
 		};
 		mapProcessor = (_schema, ctx, _json, _params) => {
-			if (ctx.unrepresentable === "throw")
-				throw new Error("Map cannot be represented in JSON Schema");
+			if (ctx.unrepresentable === "throw") throw new Error("Map cannot be represented in JSON Schema");
 		};
 		setProcessor = (_schema, ctx, _json, _params) => {
-			if (ctx.unrepresentable === "throw")
-				throw new Error("Set cannot be represented in JSON Schema");
+			if (ctx.unrepresentable === "throw") throw new Error("Set cannot be represented in JSON Schema");
 		};
 		arrayProcessor = (schema, ctx, _json, params) => {
 			const json = _json;
@@ -7953,7 +6529,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			json.type = "array";
 			json.items = process(def.element, ctx, {
 				...params,
-				path: [...params.path, "items"],
+				path: [...params.path, "items"]
 			});
 		};
 		objectProcessor = (schema, ctx, _json, params) => {
@@ -7962,39 +6538,40 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			json.type = "object";
 			json.properties = {};
 			const shape = def.shape;
-			for (const key in shape)
-				json.properties[key] = process(shape[key], ctx, {
-					...params,
-					path: [...params.path, "properties", key],
-				});
+			for (const key in shape) json.properties[key] = process(shape[key], ctx, {
+				...params,
+				path: [
+					...params.path,
+					"properties",
+					key
+				]
+			});
 			const allKeys = new Set(Object.keys(shape));
-			const requiredKeys = new Set(
-				[...allKeys].filter((key) => {
-					const v = def.shape[key]._zod;
-					if (ctx.io === "input") return v.optin === void 0;
-					else return v.optout === void 0;
-				}),
-			);
+			const requiredKeys = new Set([...allKeys].filter((key) => {
+				const v = def.shape[key]._zod;
+				if (ctx.io === "input") return v.optin === void 0;
+				else return v.optout === void 0;
+			}));
 			if (requiredKeys.size > 0) json.required = Array.from(requiredKeys);
-			if (def.catchall?._zod.def.type === "never")
-				json.additionalProperties = false;
+			if (def.catchall?._zod.def.type === "never") json.additionalProperties = false;
 			else if (!def.catchall) {
 				if (ctx.io === "output") json.additionalProperties = false;
-			} else if (def.catchall)
-				json.additionalProperties = process(def.catchall, ctx, {
-					...params,
-					path: [...params.path, "additionalProperties"],
-				});
+			} else if (def.catchall) json.additionalProperties = process(def.catchall, ctx, {
+				...params,
+				path: [...params.path, "additionalProperties"]
+			});
 		};
 		unionProcessor = (schema, ctx, json, params) => {
 			const def = schema._zod.def;
 			const isExclusive = def.inclusive === false;
-			const options = def.options.map((x, i) =>
-				process(x, ctx, {
-					...params,
-					path: [...params.path, isExclusive ? "oneOf" : "anyOf", i],
-				}),
-			);
+			const options = def.options.map((x, i) => process(x, ctx, {
+				...params,
+				path: [
+					...params.path,
+					isExclusive ? "oneOf" : "anyOf",
+					i
+				]
+			}));
 			if (isExclusive) json.oneOf = options;
 			else json.anyOf = options;
 		};
@@ -8002,47 +6579,45 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			const def = schema._zod.def;
 			const a = process(def.left, ctx, {
 				...params,
-				path: [...params.path, "allOf", 0],
+				path: [
+					...params.path,
+					"allOf",
+					0
+				]
 			});
 			const b = process(def.right, ctx, {
 				...params,
-				path: [...params.path, "allOf", 1],
+				path: [
+					...params.path,
+					"allOf",
+					1
+				]
 			});
-			const isSimpleIntersection = (val) =>
-				"allOf" in val && Object.keys(val).length === 1;
-			json.allOf = [
-				...(isSimpleIntersection(a) ? a.allOf : [a]),
-				...(isSimpleIntersection(b) ? b.allOf : [b]),
-			];
+			const isSimpleIntersection = (val) => "allOf" in val && Object.keys(val).length === 1;
+			json.allOf = [...isSimpleIntersection(a) ? a.allOf : [a], ...isSimpleIntersection(b) ? b.allOf : [b]];
 		};
 		tupleProcessor = (schema, ctx, _json, params) => {
 			const json = _json;
 			const def = schema._zod.def;
 			json.type = "array";
-			const prefixPath =
-				ctx.target === "draft-2020-12" ? "prefixItems" : "items";
-			const restPath =
-				ctx.target === "draft-2020-12"
-					? "items"
-					: ctx.target === "openapi-3.0"
-						? "items"
-						: "additionalItems";
-			const prefixItems = def.items.map((x, i) =>
-				process(x, ctx, {
-					...params,
-					path: [...params.path, prefixPath, i],
-				}),
-			);
-			const rest = def.rest
-				? process(def.rest, ctx, {
-						...params,
-						path: [
-							...params.path,
-							restPath,
-							...(ctx.target === "openapi-3.0" ? [def.items.length] : []),
-						],
-					})
-				: null;
+			const prefixPath = ctx.target === "draft-2020-12" ? "prefixItems" : "items";
+			const restPath = ctx.target === "draft-2020-12" ? "items" : ctx.target === "openapi-3.0" ? "items" : "additionalItems";
+			const prefixItems = def.items.map((x, i) => process(x, ctx, {
+				...params,
+				path: [
+					...params.path,
+					prefixPath,
+					i
+				]
+			}));
+			const rest = def.rest ? process(def.rest, ctx, {
+				...params,
+				path: [
+					...params.path,
+					restPath,
+					...ctx.target === "openapi-3.0" ? [def.items.length] : []
+				]
+			}) : null;
 			if (ctx.target === "draft-2020-12") {
 				json.prefixItems = prefixItems;
 				if (rest) json.items = rest;
@@ -8068,27 +6643,27 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			if (def.mode === "loose" && patterns && patterns.size > 0) {
 				const valueSchema = process(def.valueType, ctx, {
 					...params,
-					path: [...params.path, "patternProperties", "*"],
+					path: [
+						...params.path,
+						"patternProperties",
+						"*"
+					]
 				});
 				json.patternProperties = {};
-				for (const pattern of patterns)
-					json.patternProperties[pattern.source] = valueSchema;
+				for (const pattern of patterns) json.patternProperties[pattern.source] = valueSchema;
 			} else {
-				if (ctx.target === "draft-07" || ctx.target === "draft-2020-12")
-					json.propertyNames = process(def.keyType, ctx, {
-						...params,
-						path: [...params.path, "propertyNames"],
-					});
+				if (ctx.target === "draft-07" || ctx.target === "draft-2020-12") json.propertyNames = process(def.keyType, ctx, {
+					...params,
+					path: [...params.path, "propertyNames"]
+				});
 				json.additionalProperties = process(def.valueType, ctx, {
 					...params,
-					path: [...params.path, "additionalProperties"],
+					path: [...params.path, "additionalProperties"]
 				});
 			}
 			const keyValues = keyType._zod.values;
 			if (keyValues) {
-				const validKeyValues = [...keyValues].filter(
-					(v) => typeof v === "string" || typeof v === "number",
-				);
+				const validKeyValues = [...keyValues].filter((v) => typeof v === "string" || typeof v === "number");
 				if (validKeyValues.length > 0) json.required = validKeyValues;
 			}
 		};
@@ -8119,8 +6694,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			process(def.innerType, ctx, params);
 			const seen = ctx.seen.get(schema);
 			seen.ref = def.innerType;
-			if (ctx.io === "input")
-				json._prefault = JSON.parse(JSON.stringify(def.defaultValue));
+			if (ctx.io === "input") json._prefault = JSON.parse(JSON.stringify(def.defaultValue));
 		};
 		catchProcessor = (schema, ctx, json, params) => {
 			const def = schema._zod.def;
@@ -8131,17 +6705,14 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			try {
 				catchValue = def.catchValue(void 0);
 			} catch {
-				throw new Error(
-					"Dynamic catch values are not supported in JSON Schema",
-				);
+				throw new Error("Dynamic catch values are not supported in JSON Schema");
 			}
 			json.default = catchValue;
 		};
 		pipeProcessor = (schema, ctx, _json, params) => {
 			const def = schema._zod.def;
 			const inIsTransform = def.in._zod.traits.has("$ZodTransform");
-			const innerType =
-				ctx.io === "input" ? (inIsTransform ? def.out : def.in) : def.out;
+			const innerType = ctx.io === "input" ? inIsTransform ? def.out : def.in : def.out;
 			process(innerType, ctx, params);
 			const seen = ctx.seen.get(schema);
 			seen.ref = innerType;
@@ -8210,12 +6781,12 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			readonly: readonlyProcessor,
 			promise: promiseProcessor,
 			optional: optionalProcessor,
-			lazy: lazyProcessor,
+			lazy: lazyProcessor
 		};
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/core/index.js
-	var init_core = __esmMin(() => {
+	var init_core = __esmMin((() => {
 		init_core$1();
 		init_parse$1();
 		init_errors$2();
@@ -8231,12 +6802,12 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		init_to_json_schema();
 		init_json_schema_processors();
 		init_to_json_schema();
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/classic/checks.js
-	var init_checks = __esmMin(() => {
+	var init_checks = __esmMin((() => {
 		init_core();
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/classic/iso.js
 	function datetime(params) {
@@ -8252,16 +6823,13 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		return /* @__PURE__ */ _isoDuration(ZodISODuration, params);
 	}
 	var ZodISODateTime, ZodISODate, ZodISOTime, ZodISODuration;
-	var init_iso = __esmMin(() => {
+	var init_iso = __esmMin((() => {
 		init_core();
 		init_schemas();
-		ZodISODateTime = /*@__PURE__*/ $constructor(
-			"ZodISODateTime",
-			(inst, def) => {
-				$ZodISODateTime.init(inst, def);
-				ZodStringFormat.init(inst, def);
-			},
-		);
+		ZodISODateTime = /*@__PURE__*/ $constructor("ZodISODateTime", (inst, def) => {
+			$ZodISODateTime.init(inst, def);
+			ZodStringFormat.init(inst, def);
+		});
 		ZodISODate = /*@__PURE__*/ $constructor("ZodISODate", (inst, def) => {
 			$ZodISODate.init(inst, def);
 			ZodStringFormat.init(inst, def);
@@ -8270,18 +6838,15 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			$ZodISOTime.init(inst, def);
 			ZodStringFormat.init(inst, def);
 		});
-		ZodISODuration = /*@__PURE__*/ $constructor(
-			"ZodISODuration",
-			(inst, def) => {
-				$ZodISODuration.init(inst, def);
-				ZodStringFormat.init(inst, def);
-			},
-		);
-	});
+		ZodISODuration = /*@__PURE__*/ $constructor("ZodISODuration", (inst, def) => {
+			$ZodISODuration.init(inst, def);
+			ZodStringFormat.init(inst, def);
+		});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/classic/errors.js
 	var initializer, ZodRealError;
-	var init_errors$1 = __esmMin(() => {
+	var init_errors$1 = __esmMin((() => {
 		init_core();
 		init_util();
 		initializer = (inst, issues) => {
@@ -8290,52 +6855,25 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			Object.defineProperties(inst, {
 				format: { value: (mapper) => formatError(inst, mapper) },
 				flatten: { value: (mapper) => flattenError(inst, mapper) },
-				addIssue: {
-					value: (issue) => {
-						inst.issues.push(issue);
-						inst.message = JSON.stringify(
-							inst.issues,
-							jsonStringifyReplacer,
-							2,
-						);
-					},
-				},
-				addIssues: {
-					value: (issues) => {
-						inst.issues.push(...issues);
-						inst.message = JSON.stringify(
-							inst.issues,
-							jsonStringifyReplacer,
-							2,
-						);
-					},
-				},
-				isEmpty: {
-					get() {
-						return inst.issues.length === 0;
-					},
-				},
+				addIssue: { value: (issue) => {
+					inst.issues.push(issue);
+					inst.message = JSON.stringify(inst.issues, jsonStringifyReplacer, 2);
+				} },
+				addIssues: { value: (issues) => {
+					inst.issues.push(...issues);
+					inst.message = JSON.stringify(inst.issues, jsonStringifyReplacer, 2);
+				} },
+				isEmpty: { get() {
+					return inst.issues.length === 0;
+				} }
 			});
 		};
-		ZodRealError = /*@__PURE__*/ $constructor("ZodError", initializer, {
-			Parent: Error,
-		});
-	});
+		ZodRealError = /*@__PURE__*/ $constructor("ZodError", initializer, { Parent: Error });
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/classic/parse.js
-	var parse,
-		parseAsync,
-		safeParse,
-		safeParseAsync,
-		encode,
-		decode,
-		encodeAsync,
-		decodeAsync,
-		safeEncode,
-		safeDecode,
-		safeEncodeAsync,
-		safeDecodeAsync;
-	var init_parse = __esmMin(() => {
+	var parse, parseAsync, safeParse, safeParseAsync, encode, decode, encodeAsync, decodeAsync, safeEncode, safeDecode, safeEncodeAsync, safeDecodeAsync;
+	var init_parse = __esmMin((() => {
 		init_core();
 		init_errors$1();
 		parse = /* @__PURE__ */ _parse(ZodRealError);
@@ -8350,7 +6888,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		safeDecode = /* @__PURE__ */ _safeDecode(ZodRealError);
 		safeEncodeAsync = /* @__PURE__ */ _safeEncodeAsync(ZodRealError);
 		safeDecodeAsync = /* @__PURE__ */ _safeDecodeAsync(ZodRealError);
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/classic/schemas.js
 	function _installLazyMethods(inst, group, methods) {
@@ -8373,7 +6911,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 						configurable: true,
 						writable: true,
 						enumerable: true,
-						value: bound,
+						value: bound
 					});
 					return bound;
 				},
@@ -8382,9 +6920,9 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 						configurable: true,
 						writable: true,
 						enumerable: true,
-						value: v,
+						value: v
 					});
-				},
+				}
 			});
 		}
 	}
@@ -8413,54 +6951,52 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		return new ZodObject({
 			type: "object",
 			shape: shape ?? {},
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	function union(options, params) {
 		return new ZodUnion({
 			type: "union",
 			options,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	function intersection(left, right) {
 		return new ZodIntersection({
 			type: "intersection",
 			left,
-			right,
+			right
 		});
 	}
 	function _enum(values, params) {
 		return new ZodEnum({
 			type: "enum",
-			entries: Array.isArray(values)
-				? Object.fromEntries(values.map((v) => [v, v]))
-				: values,
-			...normalizeParams(params),
+			entries: Array.isArray(values) ? Object.fromEntries(values.map((v) => [v, v])) : values,
+			...normalizeParams(params)
 		});
 	}
 	function transform(fn) {
 		return new ZodTransform({
 			type: "transform",
-			transform: fn,
+			transform: fn
 		});
 	}
 	function optional(innerType) {
 		return new ZodOptional({
 			type: "optional",
-			innerType,
+			innerType
 		});
 	}
 	function exactOptional(innerType) {
 		return new ZodExactOptional({
 			type: "optional",
-			innerType,
+			innerType
 		});
 	}
 	function nullable(innerType) {
 		return new ZodNullable({
 			type: "nullable",
-			innerType,
+			innerType
 		});
 	}
 	function _default(innerType, defaultValue) {
@@ -8468,10 +7004,8 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			type: "default",
 			innerType,
 			get defaultValue() {
-				return typeof defaultValue === "function"
-					? defaultValue()
-					: shallowClone(defaultValue);
-			},
+				return typeof defaultValue === "function" ? defaultValue() : shallowClone(defaultValue);
+			}
 		});
 	}
 	function prefault(innerType, defaultValue) {
@@ -8479,38 +7013,35 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			type: "prefault",
 			innerType,
 			get defaultValue() {
-				return typeof defaultValue === "function"
-					? defaultValue()
-					: shallowClone(defaultValue);
-			},
+				return typeof defaultValue === "function" ? defaultValue() : shallowClone(defaultValue);
+			}
 		});
 	}
 	function nonoptional(innerType, params) {
 		return new ZodNonOptional({
 			type: "nonoptional",
 			innerType,
-			...normalizeParams(params),
+			...normalizeParams(params)
 		});
 	}
 	function _catch(innerType, catchValue) {
 		return new ZodCatch({
 			type: "catch",
 			innerType,
-			catchValue:
-				typeof catchValue === "function" ? catchValue : () => catchValue,
+			catchValue: typeof catchValue === "function" ? catchValue : () => catchValue
 		});
 	}
 	function pipe(in_, out) {
 		return new ZodPipe({
 			type: "pipe",
 			in: in_,
-			out,
+			out
 		});
 	}
 	function readonly(innerType) {
 		return new ZodReadonly({
 			type: "readonly",
-			innerType,
+			innerType
 		});
 	}
 	function refine(fn, _params = {}) {
@@ -8519,52 +7050,8 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 	function superRefine(fn, params) {
 		return /* @__PURE__ */ _superRefine(fn, params);
 	}
-	var _installedGroups,
-		ZodType,
-		_ZodString,
-		ZodString,
-		ZodStringFormat,
-		ZodEmail,
-		ZodGUID,
-		ZodUUID,
-		ZodURL,
-		ZodEmoji,
-		ZodNanoID,
-		ZodCUID,
-		ZodCUID2,
-		ZodULID,
-		ZodXID,
-		ZodKSUID,
-		ZodIPv4,
-		ZodIPv6,
-		ZodCIDRv4,
-		ZodCIDRv6,
-		ZodBase64,
-		ZodBase64URL,
-		ZodE164,
-		ZodJWT,
-		ZodNumber,
-		ZodNumberFormat,
-		ZodBoolean,
-		ZodUnknown,
-		ZodNever,
-		ZodArray,
-		ZodObject,
-		ZodUnion,
-		ZodIntersection,
-		ZodEnum,
-		ZodTransform,
-		ZodOptional,
-		ZodExactOptional,
-		ZodNullable,
-		ZodDefault,
-		ZodPrefault,
-		ZodNonOptional,
-		ZodCatch,
-		ZodPipe,
-		ZodReadonly,
-		ZodCustom;
-	var init_schemas = __esmMin(() => {
+	var _installedGroups, ZodType, _ZodString, ZodString, ZodStringFormat, ZodEmail, ZodGUID, ZodUUID, ZodURL, ZodEmoji, ZodNanoID, ZodCUID, ZodCUID2, ZodULID, ZodXID, ZodKSUID, ZodIPv4, ZodIPv6, ZodCIDRv4, ZodCIDRv6, ZodBase64, ZodBase64URL, ZodE164, ZodJWT, ZodNumber, ZodNumberFormat, ZodBoolean, ZodUnknown, ZodNever, ZodArray, ZodObject, ZodUnion, ZodIntersection, ZodEnum, ZodTransform, ZodOptional, ZodExactOptional, ZodNullable, ZodDefault, ZodPrefault, ZodNonOptional, ZodCatch, ZodPipe, ZodReadonly, ZodCustom;
+	var init_schemas = __esmMin((() => {
 		init_core();
 		init_json_schema_processors();
 		init_to_json_schema();
@@ -8574,58 +7061,35 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		_installedGroups = /* @__PURE__ */ new WeakMap();
 		ZodType = /*@__PURE__*/ $constructor("ZodType", (inst, def) => {
 			$ZodType.init(inst, def);
-			Object.assign(inst["~standard"], {
-				jsonSchema: {
-					input: createStandardJSONSchemaMethod(inst, "input"),
-					output: createStandardJSONSchemaMethod(inst, "output"),
-				},
-			});
+			Object.assign(inst["~standard"], { jsonSchema: {
+				input: createStandardJSONSchemaMethod(inst, "input"),
+				output: createStandardJSONSchemaMethod(inst, "output")
+			} });
 			inst.toJSONSchema = createToJSONSchemaMethod(inst, {});
 			inst.def = def;
 			inst.type = def.type;
 			Object.defineProperty(inst, "_def", { value: def });
-			inst.parse = (data, params) =>
-				parse(inst, data, params, { callee: inst.parse });
+			inst.parse = (data, params) => parse(inst, data, params, { callee: inst.parse });
 			inst.safeParse = (data, params) => safeParse(inst, data, params);
-			inst.parseAsync = async (data, params) =>
-				parseAsync(inst, data, params, { callee: inst.parseAsync });
-			inst.safeParseAsync = async (data, params) =>
-				safeParseAsync(inst, data, params);
+			inst.parseAsync = async (data, params) => parseAsync(inst, data, params, { callee: inst.parseAsync });
+			inst.safeParseAsync = async (data, params) => safeParseAsync(inst, data, params);
 			inst.spa = inst.safeParseAsync;
 			inst.encode = (data, params) => encode(inst, data, params);
 			inst.decode = (data, params) => decode(inst, data, params);
-			inst.encodeAsync = async (data, params) =>
-				encodeAsync(inst, data, params);
-			inst.decodeAsync = async (data, params) =>
-				decodeAsync(inst, data, params);
+			inst.encodeAsync = async (data, params) => encodeAsync(inst, data, params);
+			inst.decodeAsync = async (data, params) => decodeAsync(inst, data, params);
 			inst.safeEncode = (data, params) => safeEncode(inst, data, params);
 			inst.safeDecode = (data, params) => safeDecode(inst, data, params);
-			inst.safeEncodeAsync = async (data, params) =>
-				safeEncodeAsync(inst, data, params);
-			inst.safeDecodeAsync = async (data, params) =>
-				safeDecodeAsync(inst, data, params);
+			inst.safeEncodeAsync = async (data, params) => safeEncodeAsync(inst, data, params);
+			inst.safeDecodeAsync = async (data, params) => safeDecodeAsync(inst, data, params);
 			_installLazyMethods(inst, "ZodType", {
 				check(...chks) {
 					const def = this.def;
-					return this.clone(
-						mergeDefs(def, {
-							checks: [
-								...(def.checks ?? []),
-								...chks.map((ch) =>
-									typeof ch === "function"
-										? {
-												_zod: {
-													check: ch,
-													def: { check: "custom" },
-													onattach: [],
-												},
-											}
-										: ch,
-								),
-							],
-						}),
-						{ parent: true },
-					);
+					return this.clone(mergeDefs(def, { checks: [...def.checks ?? [], ...chks.map((ch) => typeof ch === "function" ? { _zod: {
+						check: ch,
+						def: { check: "custom" },
+						onattach: []
+					} } : ch)] }), { parent: true });
 				},
 				with(...chks) {
 					return this.check(...chks);
@@ -8710,21 +7174,20 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				},
 				apply(fn) {
 					return fn(this);
-				},
+				}
 			});
 			Object.defineProperty(inst, "description", {
 				get() {
 					return globalRegistry.get(inst)?.description;
 				},
-				configurable: true,
+				configurable: true
 			});
 			return inst;
 		});
 		_ZodString = /*@__PURE__*/ $constructor("_ZodString", (inst, def) => {
 			$ZodString.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				stringProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => stringProcessor(inst, ctx, json, params);
 			const bag = inst._zod.bag;
 			inst.format = bag.format ?? null;
 			inst.minLength = bag.minimum ?? null;
@@ -8774,67 +7237,44 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				},
 				slugify() {
 					return this.check(/* @__PURE__ */ _slugify());
-				},
+				}
 			});
 		});
 		ZodString = /*@__PURE__*/ $constructor("ZodString", (inst, def) => {
 			$ZodString.init(inst, def);
 			_ZodString.init(inst, def);
-			inst.email = (params) =>
-				inst.check(/* @__PURE__ */ _email(ZodEmail, params));
+			inst.email = (params) => inst.check(/* @__PURE__ */ _email(ZodEmail, params));
 			inst.url = (params) => inst.check(/* @__PURE__ */ _url(ZodURL, params));
 			inst.jwt = (params) => inst.check(/* @__PURE__ */ _jwt(ZodJWT, params));
-			inst.emoji = (params) =>
-				inst.check(/* @__PURE__ */ _emoji(ZodEmoji, params));
-			inst.guid = (params) =>
-				inst.check(/* @__PURE__ */ _guid(ZodGUID, params));
-			inst.uuid = (params) =>
-				inst.check(/* @__PURE__ */ _uuid(ZodUUID, params));
-			inst.uuidv4 = (params) =>
-				inst.check(/* @__PURE__ */ _uuidv4(ZodUUID, params));
-			inst.uuidv6 = (params) =>
-				inst.check(/* @__PURE__ */ _uuidv6(ZodUUID, params));
-			inst.uuidv7 = (params) =>
-				inst.check(/* @__PURE__ */ _uuidv7(ZodUUID, params));
-			inst.nanoid = (params) =>
-				inst.check(/* @__PURE__ */ _nanoid(ZodNanoID, params));
-			inst.guid = (params) =>
-				inst.check(/* @__PURE__ */ _guid(ZodGUID, params));
-			inst.cuid = (params) =>
-				inst.check(/* @__PURE__ */ _cuid(ZodCUID, params));
-			inst.cuid2 = (params) =>
-				inst.check(/* @__PURE__ */ _cuid2(ZodCUID2, params));
-			inst.ulid = (params) =>
-				inst.check(/* @__PURE__ */ _ulid(ZodULID, params));
-			inst.base64 = (params) =>
-				inst.check(/* @__PURE__ */ _base64(ZodBase64, params));
-			inst.base64url = (params) =>
-				inst.check(/* @__PURE__ */ _base64url(ZodBase64URL, params));
+			inst.emoji = (params) => inst.check(/* @__PURE__ */ _emoji(ZodEmoji, params));
+			inst.guid = (params) => inst.check(/* @__PURE__ */ _guid(ZodGUID, params));
+			inst.uuid = (params) => inst.check(/* @__PURE__ */ _uuid(ZodUUID, params));
+			inst.uuidv4 = (params) => inst.check(/* @__PURE__ */ _uuidv4(ZodUUID, params));
+			inst.uuidv6 = (params) => inst.check(/* @__PURE__ */ _uuidv6(ZodUUID, params));
+			inst.uuidv7 = (params) => inst.check(/* @__PURE__ */ _uuidv7(ZodUUID, params));
+			inst.nanoid = (params) => inst.check(/* @__PURE__ */ _nanoid(ZodNanoID, params));
+			inst.guid = (params) => inst.check(/* @__PURE__ */ _guid(ZodGUID, params));
+			inst.cuid = (params) => inst.check(/* @__PURE__ */ _cuid(ZodCUID, params));
+			inst.cuid2 = (params) => inst.check(/* @__PURE__ */ _cuid2(ZodCUID2, params));
+			inst.ulid = (params) => inst.check(/* @__PURE__ */ _ulid(ZodULID, params));
+			inst.base64 = (params) => inst.check(/* @__PURE__ */ _base64(ZodBase64, params));
+			inst.base64url = (params) => inst.check(/* @__PURE__ */ _base64url(ZodBase64URL, params));
 			inst.xid = (params) => inst.check(/* @__PURE__ */ _xid(ZodXID, params));
-			inst.ksuid = (params) =>
-				inst.check(/* @__PURE__ */ _ksuid(ZodKSUID, params));
-			inst.ipv4 = (params) =>
-				inst.check(/* @__PURE__ */ _ipv4(ZodIPv4, params));
-			inst.ipv6 = (params) =>
-				inst.check(/* @__PURE__ */ _ipv6(ZodIPv6, params));
-			inst.cidrv4 = (params) =>
-				inst.check(/* @__PURE__ */ _cidrv4(ZodCIDRv4, params));
-			inst.cidrv6 = (params) =>
-				inst.check(/* @__PURE__ */ _cidrv6(ZodCIDRv6, params));
-			inst.e164 = (params) =>
-				inst.check(/* @__PURE__ */ _e164(ZodE164, params));
+			inst.ksuid = (params) => inst.check(/* @__PURE__ */ _ksuid(ZodKSUID, params));
+			inst.ipv4 = (params) => inst.check(/* @__PURE__ */ _ipv4(ZodIPv4, params));
+			inst.ipv6 = (params) => inst.check(/* @__PURE__ */ _ipv6(ZodIPv6, params));
+			inst.cidrv4 = (params) => inst.check(/* @__PURE__ */ _cidrv4(ZodCIDRv4, params));
+			inst.cidrv6 = (params) => inst.check(/* @__PURE__ */ _cidrv6(ZodCIDRv6, params));
+			inst.e164 = (params) => inst.check(/* @__PURE__ */ _e164(ZodE164, params));
 			inst.datetime = (params) => inst.check(datetime(params));
 			inst.date = (params) => inst.check(date(params));
 			inst.time = (params) => inst.check(time(params));
 			inst.duration = (params) => inst.check(duration(params));
 		});
-		ZodStringFormat = /*@__PURE__*/ $constructor(
-			"ZodStringFormat",
-			(inst, def) => {
-				$ZodStringFormat.init(inst, def);
-				_ZodString.init(inst, def);
-			},
-		);
+		ZodStringFormat = /*@__PURE__*/ $constructor("ZodStringFormat", (inst, def) => {
+			$ZodStringFormat.init(inst, def);
+			_ZodString.init(inst, def);
+		});
 		ZodEmail = /*@__PURE__*/ $constructor("ZodEmail", (inst, def) => {
 			$ZodEmail.init(inst, def);
 			ZodStringFormat.init(inst, def);
@@ -8914,8 +7354,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		ZodNumber = /*@__PURE__*/ $constructor("ZodNumber", (inst, def) => {
 			$ZodNumber.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				numberProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => numberProcessor(inst, ctx, json, params);
 			_installLazyMethods(inst, "ZodNumber", {
 				gt(value, params) {
 					return this.check(/* @__PURE__ */ _gt(value, params));
@@ -8961,55 +7400,38 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				},
 				finite() {
 					return this;
-				},
+				}
 			});
 			const bag = inst._zod.bag;
-			inst.minValue =
-				Math.max(
-					bag.minimum ?? Number.NEGATIVE_INFINITY,
-					bag.exclusiveMinimum ?? Number.NEGATIVE_INFINITY,
-				) ?? null;
-			inst.maxValue =
-				Math.min(
-					bag.maximum ?? Number.POSITIVE_INFINITY,
-					bag.exclusiveMaximum ?? Number.POSITIVE_INFINITY,
-				) ?? null;
-			inst.isInt =
-				(bag.format ?? "").includes("int") ||
-				Number.isSafeInteger(bag.multipleOf ?? 0.5);
+			inst.minValue = Math.max(bag.minimum ?? Number.NEGATIVE_INFINITY, bag.exclusiveMinimum ?? Number.NEGATIVE_INFINITY) ?? null;
+			inst.maxValue = Math.min(bag.maximum ?? Number.POSITIVE_INFINITY, bag.exclusiveMaximum ?? Number.POSITIVE_INFINITY) ?? null;
+			inst.isInt = (bag.format ?? "").includes("int") || Number.isSafeInteger(bag.multipleOf ?? .5);
 			inst.isFinite = true;
 			inst.format = bag.format ?? null;
 		});
-		ZodNumberFormat = /*@__PURE__*/ $constructor(
-			"ZodNumberFormat",
-			(inst, def) => {
-				$ZodNumberFormat.init(inst, def);
-				ZodNumber.init(inst, def);
-			},
-		);
+		ZodNumberFormat = /*@__PURE__*/ $constructor("ZodNumberFormat", (inst, def) => {
+			$ZodNumberFormat.init(inst, def);
+			ZodNumber.init(inst, def);
+		});
 		ZodBoolean = /*@__PURE__*/ $constructor("ZodBoolean", (inst, def) => {
 			$ZodBoolean.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				booleanProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => booleanProcessor(inst, ctx, json, params);
 		});
 		ZodUnknown = /*@__PURE__*/ $constructor("ZodUnknown", (inst, def) => {
 			$ZodUnknown.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				unknownProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => unknownProcessor(inst, ctx, json, params);
 		});
 		ZodNever = /*@__PURE__*/ $constructor("ZodNever", (inst, def) => {
 			$ZodNever.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				neverProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => neverProcessor(inst, ctx, json, params);
 		});
 		ZodArray = /*@__PURE__*/ $constructor("ZodArray", (inst, def) => {
 			$ZodArray.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				arrayProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => arrayProcessor(inst, ctx, json, params);
 			inst.element = def.element;
 			_installLazyMethods(inst, "ZodArray", {
 				min(n, params) {
@@ -9026,14 +7448,13 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				},
 				unwrap() {
 					return this.element;
-				},
+				}
 			});
 		});
 		ZodObject = /*@__PURE__*/ $constructor("ZodObject", (inst, def) => {
 			$ZodObjectJIT.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				objectProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => objectProcessor(inst, ctx, json, params);
 			defineLazy(inst, "shape", () => {
 				return def.shape;
 			});
@@ -9044,31 +7465,31 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				catchall(catchall) {
 					return this.clone({
 						...this._zod.def,
-						catchall,
+						catchall
 					});
 				},
 				passthrough() {
 					return this.clone({
 						...this._zod.def,
-						catchall: unknown(),
+						catchall: unknown()
 					});
 				},
 				loose() {
 					return this.clone({
 						...this._zod.def,
-						catchall: unknown(),
+						catchall: unknown()
 					});
 				},
 				strict() {
 					return this.clone({
 						...this._zod.def,
-						catchall: never(),
+						catchall: never()
 					});
 				},
 				strip() {
 					return this.clone({
 						...this._zod.def,
-						catchall: void 0,
+						catchall: void 0
 					});
 				},
 				extend(incoming) {
@@ -9091,69 +7512,58 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				},
 				required(...args) {
 					return required(ZodNonOptional, this, args[0]);
-				},
+				}
 			});
 		});
 		ZodUnion = /*@__PURE__*/ $constructor("ZodUnion", (inst, def) => {
 			$ZodUnion.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				unionProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => unionProcessor(inst, ctx, json, params);
 			inst.options = def.options;
 		});
-		ZodIntersection = /*@__PURE__*/ $constructor(
-			"ZodIntersection",
-			(inst, def) => {
-				$ZodIntersection.init(inst, def);
-				ZodType.init(inst, def);
-				inst._zod.processJSONSchema = (ctx, json, params) =>
-					intersectionProcessor(inst, ctx, json, params);
-			},
-		);
+		ZodIntersection = /*@__PURE__*/ $constructor("ZodIntersection", (inst, def) => {
+			$ZodIntersection.init(inst, def);
+			ZodType.init(inst, def);
+			inst._zod.processJSONSchema = (ctx, json, params) => intersectionProcessor(inst, ctx, json, params);
+		});
 		ZodEnum = /*@__PURE__*/ $constructor("ZodEnum", (inst, def) => {
 			$ZodEnum.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				enumProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => enumProcessor(inst, ctx, json, params);
 			inst.enum = def.entries;
 			inst.options = Object.values(def.entries);
 			const keys = new Set(Object.keys(def.entries));
 			inst.extract = (values, params) => {
 				const newEntries = {};
-				for (const value of values)
-					if (keys.has(value)) newEntries[value] = def.entries[value];
-					else throw new Error(`Key ${value} not found in enum`);
+				for (const value of values) if (keys.has(value)) newEntries[value] = def.entries[value];
+				else throw new Error(`Key ${value} not found in enum`);
 				return new ZodEnum({
 					...def,
 					checks: [],
 					...normalizeParams(params),
-					entries: newEntries,
+					entries: newEntries
 				});
 			};
 			inst.exclude = (values, params) => {
 				const newEntries = { ...def.entries };
-				for (const value of values)
-					if (keys.has(value)) delete newEntries[value];
-					else throw new Error(`Key ${value} not found in enum`);
+				for (const value of values) if (keys.has(value)) delete newEntries[value];
+				else throw new Error(`Key ${value} not found in enum`);
 				return new ZodEnum({
 					...def,
 					checks: [],
 					...normalizeParams(params),
-					entries: newEntries,
+					entries: newEntries
 				});
 			};
 		});
 		ZodTransform = /*@__PURE__*/ $constructor("ZodTransform", (inst, def) => {
 			$ZodTransform.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				transformProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => transformProcessor(inst, ctx, json, params);
 			inst._zod.parse = (payload, _ctx) => {
-				if (_ctx.direction === "backward")
-					throw new $ZodEncodeError(inst.constructor.name);
+				if (_ctx.direction === "backward") throw new $ZodEncodeError(inst.constructor.name);
 				payload.addIssue = (issue$1) => {
-					if (typeof issue$1 === "string")
-						payload.issues.push(issue(issue$1, payload.value, def));
+					if (typeof issue$1 === "string") payload.issues.push(issue(issue$1, payload.value, def));
 					else {
 						const _issue = issue$1;
 						if (_issue.fatal) _issue.continue = false;
@@ -9164,12 +7574,11 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					}
 				};
 				const output = def.transform(payload.value, payload);
-				if (output instanceof Promise)
-					return output.then((output) => {
-						payload.value = output;
-						payload.fallback = true;
-						return payload;
-					});
+				if (output instanceof Promise) return output.then((output) => {
+					payload.value = output;
+					payload.fallback = true;
+					return payload;
+				});
 				payload.value = output;
 				payload.fallback = true;
 				return payload;
@@ -9178,92 +7587,76 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		ZodOptional = /*@__PURE__*/ $constructor("ZodOptional", (inst, def) => {
 			$ZodOptional.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				optionalProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => optionalProcessor(inst, ctx, json, params);
 			inst.unwrap = () => inst._zod.def.innerType;
 		});
-		ZodExactOptional = /*@__PURE__*/ $constructor(
-			"ZodExactOptional",
-			(inst, def) => {
-				$ZodExactOptional.init(inst, def);
-				ZodType.init(inst, def);
-				inst._zod.processJSONSchema = (ctx, json, params) =>
-					optionalProcessor(inst, ctx, json, params);
-				inst.unwrap = () => inst._zod.def.innerType;
-			},
-		);
+		ZodExactOptional = /*@__PURE__*/ $constructor("ZodExactOptional", (inst, def) => {
+			$ZodExactOptional.init(inst, def);
+			ZodType.init(inst, def);
+			inst._zod.processJSONSchema = (ctx, json, params) => optionalProcessor(inst, ctx, json, params);
+			inst.unwrap = () => inst._zod.def.innerType;
+		});
 		ZodNullable = /*@__PURE__*/ $constructor("ZodNullable", (inst, def) => {
 			$ZodNullable.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				nullableProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => nullableProcessor(inst, ctx, json, params);
 			inst.unwrap = () => inst._zod.def.innerType;
 		});
 		ZodDefault = /*@__PURE__*/ $constructor("ZodDefault", (inst, def) => {
 			$ZodDefault.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				defaultProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => defaultProcessor(inst, ctx, json, params);
 			inst.unwrap = () => inst._zod.def.innerType;
 			inst.removeDefault = inst.unwrap;
 		});
 		ZodPrefault = /*@__PURE__*/ $constructor("ZodPrefault", (inst, def) => {
 			$ZodPrefault.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				prefaultProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => prefaultProcessor(inst, ctx, json, params);
 			inst.unwrap = () => inst._zod.def.innerType;
 		});
-		ZodNonOptional = /*@__PURE__*/ $constructor(
-			"ZodNonOptional",
-			(inst, def) => {
-				$ZodNonOptional.init(inst, def);
-				ZodType.init(inst, def);
-				inst._zod.processJSONSchema = (ctx, json, params) =>
-					nonoptionalProcessor(inst, ctx, json, params);
-				inst.unwrap = () => inst._zod.def.innerType;
-			},
-		);
+		ZodNonOptional = /*@__PURE__*/ $constructor("ZodNonOptional", (inst, def) => {
+			$ZodNonOptional.init(inst, def);
+			ZodType.init(inst, def);
+			inst._zod.processJSONSchema = (ctx, json, params) => nonoptionalProcessor(inst, ctx, json, params);
+			inst.unwrap = () => inst._zod.def.innerType;
+		});
 		ZodCatch = /*@__PURE__*/ $constructor("ZodCatch", (inst, def) => {
 			$ZodCatch.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				catchProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => catchProcessor(inst, ctx, json, params);
 			inst.unwrap = () => inst._zod.def.innerType;
 			inst.removeCatch = inst.unwrap;
 		});
 		ZodPipe = /*@__PURE__*/ $constructor("ZodPipe", (inst, def) => {
 			$ZodPipe.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				pipeProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => pipeProcessor(inst, ctx, json, params);
 			inst.in = def.in;
 			inst.out = def.out;
 		});
 		ZodReadonly = /*@__PURE__*/ $constructor("ZodReadonly", (inst, def) => {
 			$ZodReadonly.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				readonlyProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => readonlyProcessor(inst, ctx, json, params);
 			inst.unwrap = () => inst._zod.def.innerType;
 		});
 		ZodCustom = /*@__PURE__*/ $constructor("ZodCustom", (inst, def) => {
 			$ZodCustom.init(inst, def);
 			ZodType.init(inst, def);
-			inst._zod.processJSONSchema = (ctx, json, params) =>
-				customProcessor(inst, ctx, json, params);
+			inst._zod.processJSONSchema = (ctx, json, params) => customProcessor(inst, ctx, json, params);
 		});
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/classic/compat.js
 	var ZodFirstPartyTypeKind;
-	var init_compat = __esmMin(() => {
+	var init_compat = __esmMin((() => {
 		init_core();
 		ZodFirstPartyTypeKind || (ZodFirstPartyTypeKind = {});
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/classic/external.js
-	var init_external = __esmMin(() => {
+	var init_external = __esmMin((() => {
 		init_core();
 		init_schemas();
 		init_checks();
@@ -9278,21 +7671,21 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		init_schemas();
 		init_util();
 		config(en_default());
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/classic/index.js
-	var init_classic = __esmMin(() => {
+	var init_classic = __esmMin((() => {
 		init_external();
-	});
+	}));
 	//#endregion
 	//#region ../../node_modules/zod/v4/index.js
-	var init_v4 = __esmMin(() => {
+	var init_v4 = __esmMin((() => {
 		init_classic();
-	});
+	}));
 	//#endregion
 	//#region ../llms/src/errors.ts
 	var InvokeErrorTypes, RETRYABLE_TYPES, InvokeError;
-	var init_errors = __esmMin(() => {
+	var init_errors = __esmMin((() => {
 		InvokeErrorTypes = {
 			NETWORK_ERROR: "network_error",
 			RATE_LIMIT: "rate_limit",
@@ -9306,7 +7699,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			CONFIG_ERROR: "config_error",
 			AUTH_ERROR: "auth_error",
 			CONTEXT_LENGTH: "context_length",
-			CONTENT_FILTER: "content_filter",
+			CONTENT_FILTER: "content_filter"
 		};
 		RETRYABLE_TYPES = [
 			InvokeErrorTypes.NETWORK_ERROR,
@@ -9317,7 +7710,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			InvokeErrorTypes.TOOL_EXECUTION_ERROR,
 			InvokeErrorTypes.INVALID_RESPONSE,
 			InvokeErrorTypes.INVALID_SCHEMA,
-			InvokeErrorTypes.UNKNOWN,
+			InvokeErrorTypes.UNKNOWN
 		];
 		InvokeError = class extends Error {
 			type;
@@ -9334,28 +7727,28 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				this.rawResponse = rawResponse;
 			}
 		};
-	});
+	}));
 	//#endregion
-	//#region ../../node_modules/chalk/source/vendor/ansi-styles/index.js
+	//#region ../../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/vendor/ansi-styles/index.js
 	function assembleStyles() {
 		const codes = /* @__PURE__ */ new Map();
 		for (const [groupName, group] of Object.entries(styles$1)) {
 			for (const [styleName, style] of Object.entries(group)) {
 				styles$1[styleName] = {
 					open: `\u001B[${style[0]}m`,
-					close: `\u001B[${style[1]}m`,
+					close: `\u001B[${style[1]}m`
 				};
 				group[styleName] = styles$1[styleName];
 				codes.set(style[0], style[1]);
 			}
 			Object.defineProperty(styles$1, groupName, {
 				value: group,
-				enumerable: false,
+				enumerable: false
 			});
 		}
 		Object.defineProperty(styles$1, "codes", {
 			value: codes,
-			enumerable: false,
+			enumerable: false
 		});
 		styles$1.color.close = "\x1B[39m";
 		styles$1.bgColor.close = "\x1B[49m";
@@ -9371,34 +7764,34 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					if (red === green && green === blue) {
 						if (red < 8) return 16;
 						if (red > 248) return 231;
-						return Math.round(((red - 8) / 247) * 24) + 232;
+						return Math.round((red - 8) / 247 * 24) + 232;
 					}
-					return (
-						16 +
-						36 * Math.round((red / 255) * 5) +
-						6 * Math.round((green / 255) * 5) +
-						Math.round((blue / 255) * 5)
-					);
+					return 16 + 36 * Math.round(red / 255 * 5) + 6 * Math.round(green / 255 * 5) + Math.round(blue / 255 * 5);
 				},
-				enumerable: false,
+				enumerable: false
 			},
 			hexToRgb: {
 				value(hex) {
 					const matches = /[a-f\d]{6}|[a-f\d]{3}/i.exec(hex.toString(16));
-					if (!matches) return [0, 0, 0];
+					if (!matches) return [
+						0,
+						0,
+						0
+					];
 					let [colorString] = matches;
-					if (colorString.length === 3)
-						colorString = [...colorString]
-							.map((character) => character + character)
-							.join("");
+					if (colorString.length === 3) colorString = [...colorString].map((character) => character + character).join("");
 					const integer = Number.parseInt(colorString, 16);
-					return [(integer >> 16) & 255, (integer >> 8) & 255, integer & 255];
+					return [
+						integer >> 16 & 255,
+						integer >> 8 & 255,
+						integer & 255
+					];
 				},
-				enumerable: false,
+				enumerable: false
 			},
 			hexToAnsi256: {
 				value: (hex) => styles$1.rgbToAnsi256(...styles$1.hexToRgb(hex)),
-				enumerable: false,
+				enumerable: false
 			},
 			ansi256ToAnsi: {
 				value(code) {
@@ -9416,56 +7809,33 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 						const remainder = code % 36;
 						red = Math.floor(code / 36) / 5;
 						green = Math.floor(remainder / 6) / 5;
-						blue = (remainder % 6) / 5;
+						blue = remainder % 6 / 5;
 					}
 					const value = Math.max(red, green, blue) * 2;
 					if (value === 0) return 30;
-					let result =
-						30 +
-						((Math.round(blue) << 2) |
-							(Math.round(green) << 1) |
-							Math.round(red));
+					let result = 30 + (Math.round(blue) << 2 | Math.round(green) << 1 | Math.round(red));
 					if (value === 2) result += 60;
 					return result;
 				},
-				enumerable: false,
+				enumerable: false
 			},
 			rgbToAnsi: {
-				value: (red, green, blue) =>
-					styles$1.ansi256ToAnsi(styles$1.rgbToAnsi256(red, green, blue)),
-				enumerable: false,
+				value: (red, green, blue) => styles$1.ansi256ToAnsi(styles$1.rgbToAnsi256(red, green, blue)),
+				enumerable: false
 			},
 			hexToAnsi: {
 				value: (hex) => styles$1.ansi256ToAnsi(styles$1.hexToAnsi256(hex)),
-				enumerable: false,
-			},
+				enumerable: false
+			}
 		});
 		return styles$1;
 	}
-	var ANSI_BACKGROUND_OFFSET,
-		wrapAnsi16,
-		wrapAnsi256,
-		wrapAnsi16m,
-		styles$1,
-		modifierNames,
-		foregroundColorNames,
-		backgroundColorNames,
-		colorNames,
-		ansiStyles;
-	var init_ansi_styles = __esmMin(() => {
+	var ANSI_BACKGROUND_OFFSET, wrapAnsi16, wrapAnsi256, wrapAnsi16m, styles$1, modifierNames, foregroundColorNames, backgroundColorNames, colorNames, ansiStyles;
+	var init_ansi_styles = __esmMin((() => {
 		ANSI_BACKGROUND_OFFSET = 10;
-		wrapAnsi16 =
-			(offset = 0) =>
-			(code) =>
-				`\u001B[${code + offset}m`;
-		wrapAnsi256 =
-			(offset = 0) =>
-			(code) =>
-				`\u001B[${38 + offset};5;${code}m`;
-		wrapAnsi16m =
-			(offset = 0) =>
-			(red, green, blue) =>
-				`\u001B[${38 + offset};2;${red};${green};${blue}m`;
+		wrapAnsi16 = (offset = 0) => (code) => `\u001B[${code + offset}m`;
+		wrapAnsi256 = (offset = 0) => (code) => `\u001B[${38 + offset};5;${code}m`;
+		wrapAnsi16m = (offset = 0) => (red, green, blue) => `\u001B[${38 + offset};2;${red};${green};${blue}m`;
 		styles$1 = {
 			modifier: {
 				reset: [0, 0],
@@ -9476,7 +7846,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				overline: [53, 55],
 				inverse: [7, 27],
 				hidden: [8, 28],
-				strikethrough: [9, 29],
+				strikethrough: [9, 29]
 			},
 			color: {
 				black: [30, 39],
@@ -9496,7 +7866,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				blueBright: [94, 39],
 				magentaBright: [95, 39],
 				cyanBright: [96, 39],
-				whiteBright: [97, 39],
+				whiteBright: [97, 39]
 			},
 			bgColor: {
 				bgBlack: [40, 49],
@@ -9516,44 +7886,41 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				bgBlueBright: [104, 49],
 				bgMagentaBright: [105, 49],
 				bgCyanBright: [106, 49],
-				bgWhiteBright: [107, 49],
-			},
+				bgWhiteBright: [107, 49]
+			}
 		};
 		Object.keys(styles$1.modifier);
 		foregroundColorNames = Object.keys(styles$1.color);
 		backgroundColorNames = Object.keys(styles$1.bgColor);
 		[...foregroundColorNames, ...backgroundColorNames];
 		ansiStyles = assembleStyles();
-	});
+	}));
 	//#endregion
-	//#region ../../node_modules/chalk/source/vendor/supports-color/browser.js
+	//#region ../../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/vendor/supports-color/browser.js
 	var level, colorSupport, supportsColor;
-	var init_browser = __esmMin(() => {
+	var init_browser = __esmMin((() => {
 		level = (() => {
 			if (!("navigator" in globalThis)) return 0;
 			if (globalThis.navigator.userAgentData) {
-				const brand = navigator.userAgentData.brands.find(
-					({ brand }) => brand === "Chromium",
-				);
+				const brand = navigator.userAgentData.brands.find(({ brand }) => brand === "Chromium");
 				if (brand && brand.version > 93) return 3;
 			}
-			if (/\b(Chrome|Chromium)\//.test(globalThis.navigator.userAgent))
-				return 1;
+			if (/\b(Chrome|Chromium)\//.test(globalThis.navigator.userAgent)) return 1;
 			return 0;
 		})();
 		colorSupport = level !== 0 && {
 			level,
 			hasBasic: true,
 			has256: level >= 2,
-			has16m: level >= 3,
+			has16m: level >= 3
 		};
 		supportsColor = {
 			stdout: colorSupport,
-			stderr: colorSupport,
+			stderr: colorSupport
 		};
-	});
+	}));
 	//#endregion
-	//#region ../../node_modules/chalk/source/utilities.js
+	//#region ../../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/utilities.js
 	function stringReplaceAll(string, substring, replacer) {
 		let index = string.indexOf(substring);
 		if (index === -1) return string;
@@ -9573,59 +7940,37 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		let returnValue = "";
 		do {
 			const gotCR = string[index - 1] === "\r";
-			returnValue +=
-				string.slice(endIndex, gotCR ? index - 1 : index) +
-				prefix +
-				(gotCR ? "\r\n" : "\n") +
-				postfix;
+			returnValue += string.slice(endIndex, gotCR ? index - 1 : index) + prefix + (gotCR ? "\r\n" : "\n") + postfix;
 			endIndex = index + 1;
 			index = string.indexOf("\n", endIndex);
 		} while (index !== -1);
 		returnValue += string.slice(endIndex);
 		return returnValue;
 	}
-	var init_utilities = __esmMin(() => {});
+	var init_utilities = __esmMin((() => {}));
 	//#endregion
-	//#region ../../node_modules/chalk/source/index.js
+	//#region ../../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/index.js
 	function createChalk(options) {
 		return chalkFactory(options);
 	}
-	var stdoutColor,
-		stderrColor,
-		GENERATOR,
-		STYLER,
-		IS_EMPTY,
-		levelMapping,
-		styles,
-		applyOptions,
-		chalkFactory,
-		getModelAnsi,
-		proto,
-		createStyler,
-		createBuilder,
-		applyStyle,
-		chalk,
-		chalkStderr;
-	var init_source = __esmMin(() => {
+	var stdoutColor, stderrColor, GENERATOR, STYLER, IS_EMPTY, levelMapping, styles, applyOptions, chalkFactory, getModelAnsi, proto, createStyler, createBuilder, applyStyle, chalk, chalkStderr;
+	var init_source = __esmMin((() => {
 		init_ansi_styles();
 		init_browser();
 		init_utilities();
-		({ stdout: stdoutColor, stderr: stderrColor } = supportsColor);
+		({stdout: stdoutColor, stderr: stderrColor} = supportsColor);
 		GENERATOR = Symbol("GENERATOR");
 		STYLER = Symbol("STYLER");
 		IS_EMPTY = Symbol("IS_EMPTY");
-		levelMapping = ["ansi", "ansi", "ansi256", "ansi16m"];
+		levelMapping = [
+			"ansi",
+			"ansi",
+			"ansi256",
+			"ansi16m"
+		];
 		styles = Object.create(null);
 		applyOptions = (object, options = {}) => {
-			if (
-				options.level &&
-				!(
-					Number.isInteger(options.level) &&
-					options.level >= 0 &&
-					options.level <= 3
-				)
-			)
-				throw new Error("The `level` option should be an integer from 0 to 3");
+			if (options.level && !(Number.isInteger(options.level) && options.level >= 0 && options.level <= 3)) throw new Error("The `level` option should be an integer from 0 to 3");
 			const colorLevel = stdoutColor ? stdoutColor.level : 0;
 			object.level = options.level === void 0 ? colorLevel : options.level;
 		};
@@ -9636,76 +7981,45 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			return chalk;
 		};
 		Object.setPrototypeOf(createChalk.prototype, Function.prototype);
-		for (const [styleName, style] of Object.entries(ansiStyles))
-			styles[styleName] = {
-				get() {
-					const builder = createBuilder(
-						this,
-						createStyler(style.open, style.close, this[STYLER]),
-						this[IS_EMPTY],
-					);
-					Object.defineProperty(this, styleName, { value: builder });
-					return builder;
-				},
-			};
-		styles.visible = {
-			get() {
-				const builder = createBuilder(this, this[STYLER], true);
-				Object.defineProperty(this, "visible", { value: builder });
-				return builder;
-			},
-		};
+		for (const [styleName, style] of Object.entries(ansiStyles)) styles[styleName] = { get() {
+			const builder = createBuilder(this, createStyler(style.open, style.close, this[STYLER]), this[IS_EMPTY]);
+			Object.defineProperty(this, styleName, { value: builder });
+			return builder;
+		} };
+		styles.visible = { get() {
+			const builder = createBuilder(this, this[STYLER], true);
+			Object.defineProperty(this, "visible", { value: builder });
+			return builder;
+		} };
 		getModelAnsi = (model, level, type, ...arguments_) => {
 			if (model === "rgb") {
 				if (level === "ansi16m") return ansiStyles[type].ansi16m(...arguments_);
-				if (level === "ansi256")
-					return ansiStyles[type].ansi256(
-						ansiStyles.rgbToAnsi256(...arguments_),
-					);
+				if (level === "ansi256") return ansiStyles[type].ansi256(ansiStyles.rgbToAnsi256(...arguments_));
 				return ansiStyles[type].ansi(ansiStyles.rgbToAnsi(...arguments_));
 			}
-			if (model === "hex")
-				return getModelAnsi(
-					"rgb",
-					level,
-					type,
-					...ansiStyles.hexToRgb(...arguments_),
-				);
+			if (model === "hex") return getModelAnsi("rgb", level, type, ...ansiStyles.hexToRgb(...arguments_));
 			return ansiStyles[type][model](...arguments_);
 		};
-		for (const model of ["rgb", "hex", "ansi256"]) {
-			styles[model] = {
-				get() {
-					const { level } = this;
-					return function (...arguments_) {
-						const styler = createStyler(
-							getModelAnsi(model, levelMapping[level], "color", ...arguments_),
-							ansiStyles.color.close,
-							this[STYLER],
-						);
-						return createBuilder(this, styler, this[IS_EMPTY]);
-					};
-				},
-			};
+		for (const model of [
+			"rgb",
+			"hex",
+			"ansi256"
+		]) {
+			styles[model] = { get() {
+				const { level } = this;
+				return function(...arguments_) {
+					const styler = createStyler(getModelAnsi(model, levelMapping[level], "color", ...arguments_), ansiStyles.color.close, this[STYLER]);
+					return createBuilder(this, styler, this[IS_EMPTY]);
+				};
+			} };
 			const bgModel = "bg" + model[0].toUpperCase() + model.slice(1);
-			styles[bgModel] = {
-				get() {
-					const { level } = this;
-					return function (...arguments_) {
-						const styler = createStyler(
-							getModelAnsi(
-								model,
-								levelMapping[level],
-								"bgColor",
-								...arguments_,
-							),
-							ansiStyles.bgColor.close,
-							this[STYLER],
-						);
-						return createBuilder(this, styler, this[IS_EMPTY]);
-					};
-				},
-			};
+			styles[bgModel] = { get() {
+				const { level } = this;
+				return function(...arguments_) {
+					const styler = createStyler(getModelAnsi(model, levelMapping[level], "bgColor", ...arguments_), ansiStyles.bgColor.close, this[STYLER]);
+					return createBuilder(this, styler, this[IS_EMPTY]);
+				};
+			} };
 		}
 		proto = Object.defineProperties(() => {}, {
 			...styles,
@@ -9716,8 +8030,8 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				},
 				set(level) {
 					this[GENERATOR].level = level;
-				},
-			},
+				}
+			}
 		});
 		createStyler = (open, close, parent) => {
 			let openAll;
@@ -9734,15 +8048,11 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				close,
 				openAll,
 				closeAll,
-				parent,
+				parent
 			};
 		};
 		createBuilder = (self, _styler, _isEmpty) => {
-			const builder = (...arguments_) =>
-				applyStyle(
-					builder,
-					arguments_.length === 1 ? "" + arguments_[0] : arguments_.join(" "),
-				);
+			const builder = (...arguments_) => applyStyle(builder, arguments_.length === 1 ? "" + arguments_[0] : arguments_.join(" "));
 			Object.setPrototypeOf(builder, proto);
 			builder[GENERATOR] = self;
 			builder[STYLER] = _styler;
@@ -9754,45 +8064,38 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			let styler = self[STYLER];
 			if (styler === void 0) return string;
 			const { openAll, closeAll } = styler;
-			if (string.includes("\x1B"))
-				while (styler !== void 0) {
-					string = stringReplaceAll(string, styler.close, styler.open);
-					styler = styler.parent;
-				}
+			if (string.includes("\x1B")) while (styler !== void 0) {
+				string = stringReplaceAll(string, styler.close, styler.open);
+				styler = styler.parent;
+			}
 			const lfIndex = string.indexOf("\n");
-			if (lfIndex !== -1)
-				string = stringEncaseCRLFWithFirstIndex(
-					string,
-					closeAll,
-					openAll,
-					lfIndex,
-				);
+			if (lfIndex !== -1) string = stringEncaseCRLFWithFirstIndex(string, closeAll, openAll, lfIndex);
 			return openAll + string + closeAll;
 		};
 		Object.defineProperties(createChalk.prototype, styles);
 		chalk = createChalk();
 		createChalk({ level: stderrColor ? stderrColor.level : 0 });
-	});
+	}));
 	//#endregion
 	//#region ../llms/src/utils.ts
 	/**
-	 * Convert Zod schema to OpenAI tool format
-	 * Uses Zod 4 native z.toJSONSchema()
-	 */
+	* Convert Zod schema to OpenAI tool format
+	* Uses Zod 4 native z.toJSONSchema()
+	*/
 	function zodToOpenAITool(name, tool) {
 		return {
 			type: "function",
 			function: {
 				name,
 				description: tool.description,
-				parameters: toJSONSchema(tool.inputSchema, { target: "openapi-3.0" }),
-			},
+				parameters: toJSONSchema(tool.inputSchema, { target: "openapi-3.0" })
+			}
 		};
 	}
 	/**
-	 * Patch model specific parameters
-	 * @note in-place modification
-	 */
+	* Patch model specific parameters
+	* @note in-place modification
+	*/
 	function modelPatch(body) {
 		const model = body.model || "";
 		if (!model) return body;
@@ -9806,23 +8109,16 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			debug$2("Applying Claude patch: disable thinking");
 			body.thinking = { type: "disabled" };
 			if (body.tool_choice === "required") {
-				debug$2(
-					'Applying Claude patch: convert tool_choice "required" to { type: "any" }',
-				);
+				debug$2("Applying Claude patch: convert tool_choice \"required\" to { type: \"any\" }");
 				body.tool_choice = { type: "any" };
 			} else if (body.tool_choice?.function?.name) {
 				debug$2("Applying Claude patch: convert tool_choice format");
 				body.tool_choice = {
 					type: "tool",
-					name: body.tool_choice.function.name,
+					name: body.tool_choice.function.name
 				};
 			}
-			if (
-				modelName.startsWith("claude-opus-4-7") ||
-				modelName.startsWith("claude-opus-47") ||
-				modelName.startsWith("claude-opus-4-8") ||
-				modelName.startsWith("claude-opus-48")
-			) {
+			if (modelName.startsWith("claude-opus-4-7") || modelName.startsWith("claude-opus-47") || modelName.startsWith("claude-opus-4-8") || modelName.startsWith("claude-opus-48")) {
 				debug$2("Applying Claude-4.7/4.8 patch: remove temperature");
 				delete body.temperature;
 			}
@@ -9833,11 +8129,11 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			debug$2("Applying Grok patch: disable reasoning and thinking");
 			body.thinking = {
 				type: "disabled",
-				effort: "minimal",
+				effort: "minimal"
 			};
 			body.reasoning = {
 				enabled: false,
-				effort: "low",
+				effort: "low"
 			};
 		}
 		if (modelName.startsWith("gpt")) {
@@ -9857,15 +8153,11 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				debug$2("Applying GPT-5.4 patch: remove reasoning_effort");
 				delete body.reasoning_effort;
 			} else if (modelName.startsWith("gpt-55")) {
-				debug$2(
-					"Applying GPT-5.4 patch: remove reasoning_effort and temperature",
-				);
+				debug$2("Applying GPT-5.4 patch: remove reasoning_effort and temperature");
 				delete body.reasoning_effort;
 				delete body.temperature;
 			} else if (modelName.startsWith("gpt-5-mini")) {
-				debug$2(
-					"Applying GPT-5-mini patch: set reasoning effort to low, temperature to 1",
-				);
+				debug$2("Applying GPT-5-mini patch: set reasoning effort to low, temperature to 1");
 				body.reasoning_effort = "low";
 				body.temperature = 1;
 			} else if (modelName.startsWith("gpt-5")) {
@@ -9883,45 +8175,44 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		}
 		if (modelName.startsWith("minimax")) {
 			debug$2("Applying MiniMax patch: clamp temperature to (0, 1]");
-			body.temperature = Math.max(body.temperature || 0, 0.01);
+			body.temperature = Math.max(body.temperature || 0, .01);
 			if (body.temperature > 1) body.temperature = 1;
 			delete body.parallel_tool_calls;
 		}
 		return body;
 	}
 	/**
-	 * check if a given model ID fits a specific model name
-	 *
-	 * @note
-	 * Different model providers may use different model IDs for the same model.
-	 * For example, openai's `gpt-5.2` may called:
-	 *
-	 * - `gpt-5.2-version`
-	 * - `gpt-5_2-date`
-	 * - `GPT-52-version-date`
-	 * - `openai/gpt-5.2-chat`
-	 *
-	 * They should be treated as the same model.
-	 * Normalize them to `gpt-52`
-	 */
+	* check if a given model ID fits a specific model name
+	*
+	* @note
+	* Different model providers may use different model IDs for the same model.
+	* For example, openai's `gpt-5.2` may called:
+	*
+	* - `gpt-5.2-version`
+	* - `gpt-5_2-date`
+	* - `GPT-52-version-date`
+	* - `openai/gpt-5.2-chat`
+	*
+	* They should be treated as the same model.
+	* Normalize them to `gpt-52`
+	*/
 	function normalizeModelName(modelName) {
 		let normalizedName = modelName.toLowerCase();
-		if (normalizedName.includes("/"))
-			normalizedName = normalizedName.split("/")[1];
+		if (normalizedName.includes("/")) normalizedName = normalizedName.split("/")[1];
 		normalizedName = normalizedName.replace(/_/g, "");
 		normalizedName = normalizedName.replace(/\./g, "");
 		return normalizedName;
 	}
 	var debug$2;
-	var init_utils$1 = __esmMin(() => {
+	var init_utils$1 = __esmMin((() => {
 		init_source();
 		init_v4();
 		debug$2 = console.debug.bind(console, chalk.gray("[LLM]"));
-	});
+	}));
 	//#endregion
 	//#region ../llms/src/OpenAIClient.ts
 	var OpenAIClient;
-	var init_OpenAIClient = __esmMin(() => {
+	var init_OpenAIClient = __esmMin((() => {
 		init_v4();
 		init_errors();
 		init_utils$1();
@@ -9934,59 +8225,43 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			}
 			async invoke(messages, tools, abortSignal, options) {
 				abortSignal?.throwIfAborted();
-				const openaiTools = Object.entries(tools).map(([name, t]) =>
-					zodToOpenAITool(name, t),
-				);
+				const openaiTools = Object.entries(tools).map(([name, t]) => zodToOpenAITool(name, t));
 				let toolChoice = "required";
-				if (options?.toolChoiceName && !this.config.disableNamedToolChoice)
-					toolChoice = {
-						type: "function",
-						function: { name: options.toolChoiceName },
-					};
+				if (options?.toolChoiceName && !this.config.disableNamedToolChoice) toolChoice = {
+					type: "function",
+					function: { name: options.toolChoiceName }
+				};
 				const requestBody = {
 					model: this.config.model,
 					temperature: this.config.temperature,
 					messages,
 					tools: openaiTools,
 					parallel_tool_calls: false,
-					tool_choice: toolChoice,
+					tool_choice: toolChoice
 				};
 				modelPatch(requestBody);
 				let transformedBody;
 				try {
 					transformedBody = this.config.transformRequestBody(requestBody);
 				} catch (error) {
-					throw new InvokeError(
-						InvokeErrorTypes.CONFIG_ERROR,
-						`transformRequestBody failed: ${error.message}`,
-						error,
-					);
+					throw new InvokeError(InvokeErrorTypes.CONFIG_ERROR, `transformRequestBody failed: ${error.message}`, error);
 				}
 				const finalRequestBody = transformedBody ?? requestBody;
 				let response;
 				try {
-					response = await this.fetch(
-						`${this.config.baseURL}/chat/completions`,
-						{
-							method: "POST",
-							headers: {
-								"Content-Type": "application/json",
-								...(this.config.apiKey && {
-									Authorization: `Bearer ${this.config.apiKey}`,
-								}),
-							},
-							body: JSON.stringify(finalRequestBody),
-							signal: abortSignal,
+					response = await this.fetch(`${this.config.baseURL}/chat/completions`, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							...this.config.apiKey && { Authorization: `Bearer ${this.config.apiKey}` }
 						},
-					);
+						body: JSON.stringify(finalRequestBody),
+						signal: abortSignal
+					});
 				} catch (error) {
 					if (error?.name === "AbortError") throw error;
 					console.error(error);
-					throw new InvokeError(
-						InvokeErrorTypes.NETWORK_ERROR,
-						"Network request failed",
-						error,
-					);
+					throw new InvokeError(InvokeErrorTypes.NETWORK_ERROR, "Network request failed", error);
 				}
 				if (!response.ok) {
 					let errorData;
@@ -9996,124 +8271,45 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 						if (error?.name === "AbortError") throw error;
 					}
 					const errorMessage = errorData?.error?.message || response.statusText;
-					if (response.status === 401 || response.status === 403)
-						throw new InvokeError(
-							InvokeErrorTypes.AUTH_ERROR,
-							`Authentication failed: ${errorMessage}`,
-							errorData,
-						);
-					if (response.status === 429)
-						throw new InvokeError(
-							InvokeErrorTypes.RATE_LIMIT,
-							`Rate limit exceeded: ${errorMessage}`,
-							errorData,
-						);
-					if (response.status >= 500)
-						throw new InvokeError(
-							InvokeErrorTypes.SERVER_ERROR,
-							`Server error: ${errorMessage}`,
-							errorData,
-						);
-					throw new InvokeError(
-						InvokeErrorTypes.UNKNOWN,
-						`HTTP ${response.status}: ${errorMessage}`,
-						errorData,
-					);
+					if (response.status === 401 || response.status === 403) throw new InvokeError(InvokeErrorTypes.AUTH_ERROR, `Authentication failed: ${errorMessage}`, errorData);
+					if (response.status === 429) throw new InvokeError(InvokeErrorTypes.RATE_LIMIT, `Rate limit exceeded: ${errorMessage}`, errorData);
+					if (response.status >= 500) throw new InvokeError(InvokeErrorTypes.SERVER_ERROR, `Server error: ${errorMessage}`, errorData);
+					throw new InvokeError(InvokeErrorTypes.UNKNOWN, `HTTP ${response.status}: ${errorMessage}`, errorData);
 				}
 				let data;
 				try {
 					data = await response.json();
 				} catch (error) {
 					if (error?.name === "AbortError") throw error;
-					throw new InvokeError(
-						InvokeErrorTypes.INVALID_RESPONSE,
-						"Response body is not valid JSON",
-						error,
-					);
+					throw new InvokeError(InvokeErrorTypes.INVALID_RESPONSE, "Response body is not valid JSON", error);
 				}
 				const choice = data.choices?.[0];
-				if (!choice)
-					throw new InvokeError(
-						InvokeErrorTypes.INVALID_SCHEMA,
-						"No choices in response",
-						data,
-					);
+				if (!choice) throw new InvokeError(InvokeErrorTypes.INVALID_SCHEMA, "No choices in response", data);
 				switch (choice.finish_reason) {
 					case "tool_calls":
 					case "function_call":
-					case "stop":
-						break;
-					case "length":
-						throw new InvokeError(
-							InvokeErrorTypes.CONTEXT_LENGTH,
-							"Response truncated: max tokens reached",
-							void 0,
-							data,
-						);
-					case "content_filter":
-						throw new InvokeError(
-							InvokeErrorTypes.CONTENT_FILTER,
-							"Content filtered by safety system",
-							void 0,
-							data,
-						);
-					default:
-						throw new InvokeError(
-							InvokeErrorTypes.INVALID_SCHEMA,
-							`Unexpected finish_reason: ${choice.finish_reason}`,
-							void 0,
-							data,
-						);
+					case "stop": break;
+					case "length": throw new InvokeError(InvokeErrorTypes.CONTEXT_LENGTH, "Response truncated: max tokens reached", void 0, data);
+					case "content_filter": throw new InvokeError(InvokeErrorTypes.CONTENT_FILTER, "Content filtered by safety system", void 0, data);
+					default: throw new InvokeError(InvokeErrorTypes.INVALID_SCHEMA, `Unexpected finish_reason: ${choice.finish_reason}`, void 0, data);
 				}
-				const normalizedChoice = (
-					options?.normalizeResponse ? options.normalizeResponse(data) : data
-				).choices?.[0];
-				const toolCallName =
-					normalizedChoice?.message?.tool_calls?.[0]?.function?.name;
-				if (!toolCallName)
-					throw new InvokeError(
-						InvokeErrorTypes.NO_TOOL_CALL,
-						"No tool call found in response",
-						void 0,
-						data,
-					);
+				const normalizedChoice = (options?.normalizeResponse ? options.normalizeResponse(data) : data).choices?.[0];
+				const toolCallName = normalizedChoice?.message?.tool_calls?.[0]?.function?.name;
+				if (!toolCallName) throw new InvokeError(InvokeErrorTypes.NO_TOOL_CALL, "No tool call found in response", void 0, data);
 				const tool = tools[toolCallName];
-				if (!tool)
-					throw new InvokeError(
-						InvokeErrorTypes.UNKNOWN,
-						`Tool "${toolCallName}" not found in tools`,
-						void 0,
-						data,
-					);
-				const argString =
-					normalizedChoice.message?.tool_calls?.[0]?.function?.arguments;
-				if (!argString)
-					throw new InvokeError(
-						InvokeErrorTypes.INVALID_TOOL_ARGS,
-						"No tool call arguments found",
-						void 0,
-						data,
-					);
+				if (!tool) throw new InvokeError(InvokeErrorTypes.UNKNOWN, `Tool "${toolCallName}" not found in tools`, void 0, data);
+				const argString = normalizedChoice.message?.tool_calls?.[0]?.function?.arguments;
+				if (!argString) throw new InvokeError(InvokeErrorTypes.INVALID_TOOL_ARGS, "No tool call arguments found", void 0, data);
 				let parsedArgs;
 				try {
 					parsedArgs = JSON.parse(argString);
 				} catch (error) {
-					throw new InvokeError(
-						InvokeErrorTypes.INVALID_TOOL_ARGS,
-						"Failed to parse tool arguments as JSON",
-						error,
-						data,
-					);
+					throw new InvokeError(InvokeErrorTypes.INVALID_TOOL_ARGS, "Failed to parse tool arguments as JSON", error, data);
 				}
 				const validation = tool.inputSchema.safeParse(parsedArgs);
 				if (!validation.success) {
 					console.error(prettifyError(validation.error));
-					throw new InvokeError(
-						InvokeErrorTypes.INVALID_TOOL_ARGS,
-						"Tool arguments validation failed",
-						validation.error,
-						data,
-					);
+					throw new InvokeError(InvokeErrorTypes.INVALID_TOOL_ARGS, "Tool arguments validation failed", validation.error, data);
 				}
 				const toolInput = validation.data;
 				let toolResult;
@@ -10121,17 +8317,12 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					toolResult = await tool.execute(toolInput);
 				} catch (error) {
 					if (error?.name === "AbortError") throw error;
-					throw new InvokeError(
-						InvokeErrorTypes.TOOL_EXECUTION_ERROR,
-						`Tool execution failed: ${error?.message}`,
-						error,
-						data,
-					);
+					throw new InvokeError(InvokeErrorTypes.TOOL_EXECUTION_ERROR, `Tool execution failed: ${error?.message}`, error, data);
 				}
 				return {
 					toolCall: {
 						name: toolCallName,
-						args: toolInput,
+						args: toolInput
 					},
 					toolResult,
 					usage: {
@@ -10139,58 +8330,52 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 						completionTokens: data.usage?.completion_tokens ?? 0,
 						totalTokens: data.usage?.total_tokens ?? 0,
 						cachedTokens: data.usage?.prompt_tokens_details?.cached_tokens,
-						reasoningTokens:
-							data.usage?.completion_tokens_details?.reasoning_tokens,
+						reasoningTokens: data.usage?.completion_tokens_details?.reasoning_tokens
 					},
 					rawResponse: data,
-					rawRequest: finalRequestBody,
+					rawRequest: finalRequestBody
 				};
 			}
 		};
-	});
+	}));
 	//#endregion
 	//#region ../llms/src/constants.ts
 	var DEFAULT_TEMPERATURE;
-	var init_constants = __esmMin(() => {});
+	var init_constants = __esmMin((() => {}));
 	//#endregion
 	//#region ../llms/src/index.ts
 	function parseLLMConfig(config) {
-		if (!config.baseURL || !config.model)
-			throw new Error(
-				"[PageAgent] LLM configuration required. Please provide: baseURL, model. See: https://arthrod.github.io/page-agent/docs/features/models",
-			);
+		if (!config.baseURL || !config.model) throw new Error("[PageAgent] LLM configuration required. Please provide: baseURL, model. See: https://arthrod.github.io/page-agent/docs/features/models");
 		return {
 			baseURL: config.baseURL,
 			model: config.model,
 			apiKey: config.apiKey || "",
-			temperature: config.temperature ?? 0.7,
+			temperature: config.temperature ?? .7,
 			maxRetries: config.maxRetries ?? 2,
-			transformRequestBody:
-				config.transformRequestBody ?? ((requestBody) => requestBody),
+			transformRequestBody: config.transformRequestBody ?? ((requestBody) => requestBody),
 			disableNamedToolChoice: config.disableNamedToolChoice ?? false,
-			customFetch: (config.customFetch ?? fetch).bind(globalThis),
+			customFetch: (config.customFetch ?? fetch).bind(globalThis)
 		};
 	}
 	/**
-	 * Retry a function until it succeeds or reaches the maximum number of retries.
-	 */
+	* Retry a function until it succeeds or reaches the maximum number of retries.
+	*/
 	async function withRetry(fn, settings) {
 		let attempt = 0;
-		while (true)
-			try {
-				return await fn();
-			} catch (error) {
-				if (error?.name === "AbortError") throw error;
-				if (error instanceof InvokeError && !error.retryable) throw error;
-				attempt++;
-				if (attempt > settings.maxRetries) throw error;
-				console.debug("[LLM] retryable failure, will retry:", error);
-				settings.onRetry(attempt, error);
-				await new Promise((resolve) => setTimeout(resolve, 100));
-			}
+		while (true) try {
+			return await fn();
+		} catch (error) {
+			if (error?.name === "AbortError") throw error;
+			if (error instanceof InvokeError && !error.retryable) throw error;
+			attempt++;
+			if (attempt > settings.maxRetries) throw error;
+			console.debug("[LLM] retryable failure, will retry:", error);
+			settings.onRetry(attempt, error);
+			await new Promise((resolve) => setTimeout(resolve, 100));
+		}
 	}
 	var LLM;
-	var init_src = __esmMin(() => {
+	var init_src = __esmMin((() => {
 		init_OpenAIClient();
 		init_constants();
 		init_errors();
@@ -10203,52 +8388,44 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				this.client = new OpenAIClient(this.config);
 			}
 			/**
-			 * - call llm api *once*
-			 * - invoke tool call *once*
-			 * - return the result of the tool
-			 */
+			* - call llm api *once*
+			* - invoke tool call *once*
+			* - return the result of the tool
+			*/
 			async invoke(messages, tools, abortSignal, options) {
-				return await withRetry(
-					async () => this.client.invoke(messages, tools, abortSignal, options),
-					{
-						maxRetries: this.config.maxRetries,
-						onRetry: (attempt, lastError) => {
-							this.dispatchEvent(
-								new CustomEvent("retry", {
-									detail: {
-										attempt,
-										maxAttempts: this.config.maxRetries,
-										lastError,
-									},
-								}),
-							);
-						},
-					},
-				);
+				return await withRetry(async () => this.client.invoke(messages, tools, abortSignal, options), {
+					maxRetries: this.config.maxRetries,
+					onRetry: (attempt, lastError) => {
+						this.dispatchEvent(new CustomEvent("retry", { detail: {
+							attempt,
+							maxAttempts: this.config.maxRetries,
+							lastError
+						} }));
+					}
+				});
 			}
 		};
-	});
+	}));
 	//#endregion
 	//#region ../core/src/prompts/system_prompt.md?raw
 	var system_prompt_default$1;
-	var init_system_prompt$1 = __esmMin(() => {
-		system_prompt_default$1 =
-			'You are an AI agent designed to operate in an iterative loop to automate browser tasks. Your ultimate goal is accomplishing the task provided in <user_request>.\n\n<intro>\nYou excel at following tasks:\n1. Navigating complex websites and extracting precise information\n2. Automating form submissions and interactive web actions\n3. Gathering and saving information \n4. Operate effectively in an agent loop\n5. Efficiently performing diverse web tasks\n</intro>\n\n<language_settings>\n- Default working language: **English**\n- Use the language that user is using. Return in user\'s language.\n</language_settings>\n\n<input>\nAt every step, your input will consist of: \n1. <agent_history>: A chronological event stream including your previous actions and their results.\n2. <agent_state>: Current <user_request> and <step_info>.\n3. <browser_state>: Current URL, interactive elements indexed for actions, and visible page content.\n</input>\n\n<agent_history>\nAgent history will be given as a list of step information as follows:\n\n<step_{step_number}>:\nEvaluation of Previous Step: Assessment of last action\nMemory: Your memory of this step\nNext Goal: Your goal for this step\nAction Results: Your actions and their results\n</step_{step_number}>\n\nand system messages wrapped in <sys> tag.\n</agent_history>\n\n<user_request>\nUSER REQUEST: This is your ultimate objective and always remains visible.\n- This has the highest priority. Make the user happy.\n- If the user request is very specific - then carefully follow each step and dont skip or hallucinate steps.\n- If the task is open ended you can plan yourself how to get it done.\n</user_request>\n\n<browser_state>\n1. Browser State will be given as:\n\nCurrent URL: URL of the page you are currently viewing.\nInteractive Elements: All interactive elements will be provided in format as [index]<type>text</type> where\n- index: Numeric identifier for interaction\n- type: HTML element type (button, input, etc.)\n- text: Element description\n\nExamples:\n[33]<div>User form</div>\n\\t*[35]<button aria-label=\'Submit form\'>Submit</button>\n\nNote that:\n- Only elements with numeric indexes in [] are interactive\n- (stacked) indentation (with \\t) is important and means that the element is a (html) child of the element above (with a lower index)\n- Elements tagged with `*[` are the new clickable elements that appeared on the website since the last step - if url has not changed.\n- Pure text elements without [] are not interactive.\n</browser_state>\n\n<browser_rules>\nStrictly follow these rules while using the browser and navigating the web:\n- Only interact with elements that have a numeric [index] assigned.\n- Only use indexes that are explicitly provided.\n- If the page changes after, for example, an input text action, analyze if you need to interact with new elements, e.g. selecting the right option from the list.\n- By default, only elements in the visible viewport are listed. Use scrolling actions if you suspect relevant content is offscreen which you need to interact with. Scroll ONLY if there are more pixels below or above the page.\n- You can scroll by a specific number of pages using the num_pages parameter (e.g., 0.5 for half page, 2.0 for two pages).\n- All the elements that are scrollable are marked with `data-scrollable` attribute. Including the scrollable distance in every directions. You can scroll *the element* in case some area are overflowed.\n- If a captcha appears, tell user you can not solve captcha. Finish the task and ask user to solve it.\n- If the page is not fully loaded, use the `wait` action.\n- Do not repeat one action for more than 3 times unless some conditions changed.\n- If you fill an input field and your action sequence is interrupted, most often something changed e.g. suggestions popped up under the field.\n- If the <user_request> includes specific page information such as product type, rating, price, location, etc., try to apply filters to be more efficient.\n- The <user_request> is the ultimate goal. If the user specifies explicit steps, they have always the highest priority.\n- If you input_text into a field, you might need to press enter, click the search button, or select from dropdown for completion.\n- Don\'t login into a page if you don\'t have to. Don\'t login if you don\'t have the credentials. \n- There are 2 types of tasks always first think which type of request you are dealing with:\n1. Very specific step by step instructions:\n- Follow them as very precise and don\'t skip steps. Try to complete everything as requested.\n2. Open ended tasks. Plan yourself, be creative in achieving them.\n- If you get stuck e.g. with logins or captcha in open-ended tasks you can re-evaluate the task and try alternative ways, e.g. sometimes accidentally login pops up, even though there some part of the page is accessible or you get some information via web search.\n</browser_rules>\n\n<capability>\n- You can only handle single page app. Do not jump out of current page.\n- Do not click on link if it will open in a new page (e.g., <a target="_blank">)\n- It is ok to fail the task.\n	- User can be wrong. If the request of user is not achievable, inappropriate or you do not have enough information or tools to achieve it. Tell user to make a better request.\n	- Webpage can be broken. All webpages or apps have bugs. Some bug will make it hard for your job. It\'s encouraged to tell user the problem of current page. Your feedbacks (including failing) are valuable for user.\n	- Trying too hard can be harmful. Repeating some action back and forth or pushing for a complex procedure with little knowledge can cause unwanted results and harmful side-effects. User would rather you complete the task with a fail.\n- If you do not have knowledge for the current webpage or task. You must require user to give specific instructions and detailed steps.\n</capability>\n\n<task_completion_rules>\nYou must call the `done` action in one of three cases:\n- When you have fully completed the USER REQUEST.\n- When you reach the final allowed step (`max_steps`), even if the task is incomplete.\n- When you feel stuck or unable to solve user request. Or user request is not clear or contains inappropriate content.\n- If it is ABSOLUTELY IMPOSSIBLE to continue.\n\nThe `done` action is your opportunity to terminate and share your findings with the user.\n- Set `success` to `true` only if the full USER REQUEST has been completed with no missing components.\n- If any part of the request is missing, incomplete, or uncertain, set `success` to `false`.\n- You can use the `text` field of the `done` action to communicate your findings and to provide a coherent reply to the user and fulfill the USER REQUEST.\n- You are ONLY ALLOWED to call `done` as a single action. Don\'t call it together with other actions.\n- If the user asks for specified format, such as "return JSON with following structure", "return a list of format...", MAKE sure to use the right format in your answer.\n- If the user asks for a structured output, your `done` action\'s schema may be modified. Take this schema into account when solving the task!\n</task_completion_rules>\n\n<reasoning_rules>\nExhibit the following reasoning patterns to successfully achieve the <user_request>:\n\n- Reason about <agent_history> to track progress and context toward <user_request>.\n- Analyze the most recent "Next Goal" and "Action Result" in <agent_history> and clearly state what you previously tried to achieve.\n- Analyze all relevant items in <agent_history> and <browser_state> to understand your state.\n- Explicitly judge success/failure/uncertainty of the last action. Never assume an action succeeded just because it appears to be executed in your last step in <agent_history>. If the expected change is missing, mark the last action as failed (or uncertain) and plan a recovery.\n- Analyze whether you are stuck, e.g. when you repeat the same actions multiple times without any progress. Then consider alternative approaches e.g. scrolling for more context or ask user for help.\n- Ask user for help if you have any difficulty. Keep user in the loop.\n- If you see information relevant to <user_request>, plan saving the information to memory.\n- Always reason about the <user_request>. Make sure to carefully analyze the specific steps and information required. E.g. specific filters, specific form fields, specific information to search. Make sure to always compare the current trajectory with the user request and think carefully if thats how the user requested it.\n</reasoning_rules>\n\n<examples>\nHere are examples of good output patterns. Use them as reference but never copy them directly.\n\n<evaluation_examples>\n"evaluation_previous_goal": "Successfully navigated to the product page and found the target information. Verdict: Success"\n"evaluation_previous_goal": "Clicked the login button and user authentication form appeared. Verdict: Success"\n</evaluation_examples>\n\n<memory_examples>\n"memory": "Found many pending reports that need to be analyzed in the main page. Successfully processed the first 2 reports on quarterly sales data and moving on to inventory analysis and customer feedback reports."\n</memory_examples>\n\n<next_goal_examples>\n"next_goal": "Click on the \'Add to Cart\' button to proceed with the purchase flow."\n</next_goal_examples>\n</examples>\n\n<output>\n{\n  "evaluation_previous_goal": "Concise one-sentence analysis of your last action. Clearly state success, failure, or uncertain.",\n  "memory": "1-3 concise sentences of specific memory of this step and overall progress. You should put here everything that will help you track progress in future steps. Like counting pages visited, items found, etc.",\n  "next_goal": "State the next immediate goal and action to achieve it, in one clear sentence.",\n  "action":{\n    "Action name": {// Action parameters}\n  }\n}\n</output>\n';
-	});
+	var init_system_prompt$1 = __esmMin((() => {
+		system_prompt_default$1 = "You are an AI agent designed to operate in an iterative loop to automate browser tasks. Your ultimate goal is accomplishing the task provided in <user_request>.\n\n<intro>\nYou excel at following tasks:\n1. Navigating complex websites and extracting precise information\n2. Automating form submissions and interactive web actions\n3. Gathering and saving information \n4. Operate effectively in an agent loop\n5. Efficiently performing diverse web tasks\n</intro>\n\n<language_settings>\n- Default working language: **English**\n- Use the language that user is using. Return in user's language.\n</language_settings>\n\n<input>\nAt every step, your input will consist of: \n1. <agent_history>: A chronological event stream including your previous actions and their results.\n2. <agent_state>: Current <user_request> and <step_info>.\n3. <browser_state>: Current URL, interactive elements indexed for actions, and visible page content.\n</input>\n\n<agent_history>\nAgent history will be given as a list of step information as follows:\n\n<step_{step_number}>:\nEvaluation of Previous Step: Assessment of last action\nMemory: Your memory of this step\nNext Goal: Your goal for this step\nAction Results: Your actions and their results\n</step_{step_number}>\n\nand system messages wrapped in <sys> tag.\n</agent_history>\n\n<user_request>\nUSER REQUEST: This is your ultimate objective and always remains visible.\n- This has the highest priority. Make the user happy.\n- If the user request is very specific - then carefully follow each step and dont skip or hallucinate steps.\n- If the task is open ended you can plan yourself how to get it done.\n</user_request>\n\n<browser_state>\n1. Browser State will be given as:\n\nCurrent URL: URL of the page you are currently viewing.\nInteractive Elements: All interactive elements will be provided in format as [index]<type>text</type> where\n- index: Numeric identifier for interaction\n- type: HTML element type (button, input, etc.)\n- text: Element description\n\nExamples:\n[33]<div>User form</div>\n\\t*[35]<button aria-label='Submit form'>Submit</button>\n\nNote that:\n- Only elements with numeric indexes in [] are interactive\n- (stacked) indentation (with \\t) is important and means that the element is a (html) child of the element above (with a lower index)\n- Elements tagged with `*[` are the new clickable elements that appeared on the website since the last step - if url has not changed.\n- Pure text elements without [] are not interactive.\n</browser_state>\n\n<browser_rules>\nStrictly follow these rules while using the browser and navigating the web:\n- Only interact with elements that have a numeric [index] assigned.\n- Only use indexes that are explicitly provided.\n- If the page changes after, for example, an input text action, analyze if you need to interact with new elements, e.g. selecting the right option from the list.\n- By default, only elements in the visible viewport are listed. Use scrolling actions if you suspect relevant content is offscreen which you need to interact with. Scroll ONLY if there are more pixels below or above the page.\n- You can scroll by a specific number of pages using the num_pages parameter (e.g., 0.5 for half page, 2.0 for two pages).\n- All the elements that are scrollable are marked with `data-scrollable` attribute. Including the scrollable distance in every directions. You can scroll *the element* in case some area are overflowed.\n- If a captcha appears, tell user you can not solve captcha. Finish the task and ask user to solve it.\n- If the page is not fully loaded, use the `wait` action.\n- Do not repeat one action for more than 3 times unless some conditions changed.\n- If you fill an input field and your action sequence is interrupted, most often something changed e.g. suggestions popped up under the field.\n- If the <user_request> includes specific page information such as product type, rating, price, location, etc., try to apply filters to be more efficient.\n- The <user_request> is the ultimate goal. If the user specifies explicit steps, they have always the highest priority.\n- If you input_text into a field, you might need to press enter, click the search button, or select from dropdown for completion.\n- Don't login into a page if you don't have to. Don't login if you don't have the credentials. \n- There are 2 types of tasks always first think which type of request you are dealing with:\n1. Very specific step by step instructions:\n- Follow them as very precise and don't skip steps. Try to complete everything as requested.\n2. Open ended tasks. Plan yourself, be creative in achieving them.\n- If you get stuck e.g. with logins or captcha in open-ended tasks you can re-evaluate the task and try alternative ways, e.g. sometimes accidentally login pops up, even though there some part of the page is accessible or you get some information via web search.\n</browser_rules>\n\n<capability>\n- You can only handle single page app. Do not jump out of current page.\n- Do not click on link if it will open in a new page (e.g., <a target=\"_blank\">)\n- It is ok to fail the task.\n	- User can be wrong. If the request of user is not achievable, inappropriate or you do not have enough information or tools to achieve it. Tell user to make a better request.\n	- Webpage can be broken. All webpages or apps have bugs. Some bug will make it hard for your job. It's encouraged to tell user the problem of current page. Your feedbacks (including failing) are valuable for user.\n	- Trying too hard can be harmful. Repeating some action back and forth or pushing for a complex procedure with little knowledge can cause unwanted results and harmful side-effects. User would rather you complete the task with a fail.\n- If you do not have knowledge for the current webpage or task. You must require user to give specific instructions and detailed steps.\n</capability>\n\n<task_completion_rules>\nYou must call the `done` action in one of three cases:\n- When you have fully completed the USER REQUEST.\n- When you reach the final allowed step (`max_steps`), even if the task is incomplete.\n- When you feel stuck or unable to solve user request. Or user request is not clear or contains inappropriate content.\n- If it is ABSOLUTELY IMPOSSIBLE to continue.\n\nThe `done` action is your opportunity to terminate and share your findings with the user.\n- Set `success` to `true` only if the full USER REQUEST has been completed with no missing components.\n- If any part of the request is missing, incomplete, or uncertain, set `success` to `false`.\n- You can use the `text` field of the `done` action to communicate your findings and to provide a coherent reply to the user and fulfill the USER REQUEST.\n- You are ONLY ALLOWED to call `done` as a single action. Don't call it together with other actions.\n- If the user asks for specified format, such as \"return JSON with following structure\", \"return a list of format...\", MAKE sure to use the right format in your answer.\n- If the user asks for a structured output, your `done` action's schema may be modified. Take this schema into account when solving the task!\n</task_completion_rules>\n\n<reasoning_rules>\nExhibit the following reasoning patterns to successfully achieve the <user_request>:\n\n- Reason about <agent_history> to track progress and context toward <user_request>.\n- Analyze the most recent \"Next Goal\" and \"Action Result\" in <agent_history> and clearly state what you previously tried to achieve.\n- Analyze all relevant items in <agent_history> and <browser_state> to understand your state.\n- Explicitly judge success/failure/uncertainty of the last action. Never assume an action succeeded just because it appears to be executed in your last step in <agent_history>. If the expected change is missing, mark the last action as failed (or uncertain) and plan a recovery.\n- Analyze whether you are stuck, e.g. when you repeat the same actions multiple times without any progress. Then consider alternative approaches e.g. scrolling for more context or ask user for help.\n- Ask user for help if you have any difficulty. Keep user in the loop.\n- If you see information relevant to <user_request>, plan saving the information to memory.\n- Always reason about the <user_request>. Make sure to carefully analyze the specific steps and information required. E.g. specific filters, specific form fields, specific information to search. Make sure to always compare the current trajectory with the user request and think carefully if thats how the user requested it.\n</reasoning_rules>\n\n<examples>\nHere are examples of good output patterns. Use them as reference but never copy them directly.\n\n<evaluation_examples>\n\"evaluation_previous_goal\": \"Successfully navigated to the product page and found the target information. Verdict: Success\"\n\"evaluation_previous_goal\": \"Clicked the login button and user authentication form appeared. Verdict: Success\"\n</evaluation_examples>\n\n<memory_examples>\n\"memory\": \"Found many pending reports that need to be analyzed in the main page. Successfully processed the first 2 reports on quarterly sales data and moving on to inventory analysis and customer feedback reports.\"\n</memory_examples>\n\n<next_goal_examples>\n\"next_goal\": \"Click on the 'Add to Cart' button to proceed with the purchase flow.\"\n</next_goal_examples>\n</examples>\n\n<output>\n{\n  \"evaluation_previous_goal\": \"Concise one-sentence analysis of your last action. Clearly state success, failure, or uncertain.\",\n  \"memory\": \"1-3 concise sentences of specific memory of this step and overall progress. You should put here everything that will help you track progress in future steps. Like counting pages visited, items found, etc.\",\n  \"next_goal\": \"State the next immediate goal and action to achieve it, in one clear sentence.\",\n  \"action\":{\n    \"Action name\": {// Action parameters}\n  }\n}\n</output>\n";
+	}));
 	//#endregion
 	//#region ../core/src/utils/autoFixer.ts
 	/**
-	 * Normalize LLM response and fix common format issues.
-	 *
-	 * Handles:
-	 * - No tool_calls but JSON in message.content (fallback)
-	 * - Model returns action name as tool call instead of AgentOutput
-	 * - Arguments wrapped as double JSON string
-	 * - Nested function call format
-	 * - Missing action field (fallback to wait)
-	 * - Primitive action input for single-field tools (e.g. `{"click_element_by_index": 2}`)
-	 * - etc.
-	 */
+	* Normalize LLM response and fix common format issues.
+	*
+	* Handles:
+	* - No tool_calls but JSON in message.content (fallback)
+	* - Model returns action name as tool call instead of AgentOutput
+	* - Arguments wrapped as double JSON string
+	* - Nested function call format
+	* - Missing action field (fallback to wait)
+	* - Primitive action input for single-field tools (e.g. `{"click_element_by_index": 2}`)
+	* - etc.
+	*/
 	function normalizeResponse(response, tools) {
 		let resolvedArguments;
 		const choice = response.choices?.[0];
@@ -10272,66 +8449,46 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				}
 				if (resolvedArguments?.type === "function") {
 					log(`#3: fixing tool_call`);
-					resolvedArguments = safeJsonParse(
-						resolvedArguments.function.arguments,
-					);
+					resolvedArguments = safeJsonParse(resolvedArguments.function.arguments);
 				}
-				if (
-					!resolvedArguments?.action &&
-					!resolvedArguments?.evaluation_previous_goal &&
-					!resolvedArguments?.memory &&
-					!resolvedArguments?.next_goal &&
-					!resolvedArguments?.thinking
-				) {
+				if (!resolvedArguments?.action && !resolvedArguments?.evaluation_previous_goal && !resolvedArguments?.memory && !resolvedArguments?.next_goal && !resolvedArguments?.thinking) {
 					log(`#4: fixing tool_call`);
 					resolvedArguments = { action: safeJsonParse(resolvedArguments) };
 				}
-			} else
-				throw new Error(
-					"No tool_call and the message content does not contain valid JSON",
-				);
+			} else throw new Error("No tool_call and the message content does not contain valid JSON");
 		} else throw new Error("No tool_call nor message content is present");
 		resolvedArguments = safeJsonParse(resolvedArguments);
-		if (resolvedArguments.action)
-			resolvedArguments.action = safeJsonParse(resolvedArguments.action);
-		if (resolvedArguments.action && tools)
-			resolvedArguments.action = validateAction(
-				resolvedArguments.action,
-				tools,
-			);
+		if (resolvedArguments.action) resolvedArguments.action = safeJsonParse(resolvedArguments.action);
+		if (resolvedArguments.action && tools) resolvedArguments.action = validateAction(resolvedArguments.action, tools);
 		if (!resolvedArguments.action) {
 			log(`#5: fixing tool_call`);
 			resolvedArguments.action = { wait: { seconds: 1 } };
 		}
 		return {
 			...response,
-			choices: [
-				{
-					...choice,
-					message: {
-						...message,
-						tool_calls: [
-							{
-								...(toolCall || {}),
-								function: {
-									...(toolCall?.function || {}),
-									name: "AgentOutput",
-									arguments: JSON.stringify(resolvedArguments),
-								},
-							},
-						],
-					},
-				},
-			],
+			choices: [{
+				...choice,
+				message: {
+					...message,
+					tool_calls: [{
+						...toolCall || {},
+						function: {
+							...toolCall?.function || {},
+							name: "AgentOutput",
+							arguments: JSON.stringify(resolvedArguments)
+						}
+					}]
+				}
+			}]
 		};
 	}
 	/**
-	 * Validate action against tool schemas. Provides clear error messages
-	 * instead of letting the union schema produce unreadable errors.
-	 *
-	 * Also coerces primitive inputs for single-field tools:
-	 * e.g. `{"click_element_by_index": 2}` → `{"click_element_by_index": {"index": 2}}`
-	 */
+	* Validate action against tool schemas. Provides clear error messages
+	* instead of letting the union schema produce unreadable errors.
+	*
+	* Also coerces primitive inputs for single-field tools:
+	* e.g. `{"click_element_by_index": 2}` → `{"click_element_by_index": {"index": 2}}`
+	*/
 	function validateAction(action, tools) {
 		if (typeof action !== "object" || action === null) return action;
 		const toolName = Object.keys(action)[0];
@@ -10339,51 +8496,37 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		const tool = tools.get(toolName);
 		if (!tool) {
 			const available = Array.from(tools.keys()).join(", ");
-			throw new InvokeError(
-				InvokeErrorTypes.INVALID_TOOL_ARGS,
-				`Unknown action "${toolName}". Available: ${available}`,
-			);
+			throw new InvokeError(InvokeErrorTypes.INVALID_TOOL_ARGS, `Unknown action "${toolName}". Available: ${available}`);
 		}
 		let value = action[toolName];
 		const schema = tool.inputSchema;
-		if (
-			schema instanceof ZodObject &&
-			value !== null &&
-			typeof value !== "object"
-		) {
-			const requiredKey = Object.keys(schema.shape).find(
-				(k) => !schema.shape[k].safeParse(void 0).success,
-			);
+		if (schema instanceof ZodObject && value !== null && typeof value !== "object") {
+			const requiredKey = Object.keys(schema.shape).find((k) => !schema.shape[k].safeParse(void 0).success);
 			if (requiredKey) {
 				log(`coercing primitive action input for "${toolName}"`);
 				value = { [requiredKey]: value };
 			}
 		}
 		const result = schema.safeParse(value);
-		if (!result.success)
-			throw new InvokeError(
-				InvokeErrorTypes.INVALID_TOOL_ARGS,
-				`Invalid input for action "${toolName}": ${prettifyError(result.error)}`,
-			);
+		if (!result.success) throw new InvokeError(InvokeErrorTypes.INVALID_TOOL_ARGS, `Invalid input for action "${toolName}": ${prettifyError(result.error)}`);
 		return { [toolName]: result.data };
 	}
 	/**
-	 * Safely parse JSON, return original input if not json.
-	 */
+	* Safely parse JSON, return original input if not json.
+	*/
 	function safeJsonParse(input) {
-		if (typeof input === "string")
-			try {
-				return JSON.parse(input.trim());
-			} catch {
-				return input;
-			}
+		if (typeof input === "string") try {
+			return JSON.parse(input.trim());
+		} catch {
+			return input;
+		}
 		return input;
 	}
 	/**
-	 * Extract and parse JSON from a string.
-	 * - Treat content between the first `{` and the last `}` as JSON.
-	 * - Try to parse that content as JSON and return the parsed value (object/array/primitive) if successful, otherwise return null.
-	 */
+	* Extract and parse JSON from a string.
+	* - Treat content between the first `{` and the last `}` as JSON.
+	* - Try to parse that content as JSON and return the parsed value (object/array/primitive) if successful, otherwise return null.
+	*/
 	function retrieveJsonFromString(str) {
 		try {
 			const json = /({[\s\S]*})/.exec(str) ?? [];
@@ -10394,18 +8537,18 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		}
 	}
 	var log;
-	var init_autoFixer = __esmMin(() => {
+	var init_autoFixer = __esmMin((() => {
 		init_src();
 		init_source();
 		init_v4();
 		log = console.log.bind(console, chalk.yellow("[autoFixer]"));
-	});
+	}));
 	//#endregion
 	//#region ../core/src/utils/index.ts
 	/**
-	 * Wait for `seconds`. If a `signal` is provided, the wait is cancellable:
-	 * aborting rejects with the signal's reason (an `AbortError`).
-	 */
+	* Wait for `seconds`. If a `signal` is provided, the wait is cancellable:
+	* aborting rejects with the signal's reason (an `AbortError`).
+	*/
 	async function waitFor(seconds, signal) {
 		if (!signal) {
 			await new Promise((resolve) => setTimeout(resolve, seconds * 1e3));
@@ -10441,9 +8584,9 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		return id;
 	}
 	/**
-	 * Generate a random ID.
-	 * @note Unique within this window.
-	 */
+	* Generate a random ID.
+	* @note Unique within this window.
+	*/
 	function uid() {
 		const id = randomID(ids);
 		ids.push(id);
@@ -10471,8 +8614,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					console.log(chalk.yellow(`[llms.txt] Truncating to 1000 chars`));
 					result = truncate(result, 1e3);
 				}
-			} else
-				console.debug(chalk.gray(`[llms.txt] ${res.status} for ${endpoint}`));
+			} else console.debug(chalk.gray(`[llms.txt] ${res.status} for ${endpoint}`));
 		} catch (e) {
 			console.debug(chalk.gray(`[llms.txt] not found for ${endpoint}`), e);
 		}
@@ -10480,11 +8622,11 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		return result;
 	}
 	/**
-	 * Simple assertion function that throws an error if the condition is falsy
-	 * @param condition - The condition to assert
-	 * @param message - Optional error message
-	 * @throws Error if condition is falsy
-	 */
+	* Simple assertion function that throws an error if the condition is falsy
+	* @param condition - The condition to assert
+	* @param message - Optional error message
+	* @throws Error if condition is falsy
+	*/
 	function assert(condition, message, silent) {
 		if (!condition) {
 			const errorMessage = message ?? "Assertion failed";
@@ -10493,8 +8635,8 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		}
 	}
 	/**
-	 * Suppress errors from a function.
-	 */
+	* Suppress errors from a function.
+	*/
 	async function suppress(fn) {
 		try {
 			return await fn();
@@ -10504,189 +8646,137 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		}
 	}
 	var _global, ids, llmsTxtCache;
-	var init_utils = __esmMin(() => {
+	var init_utils = __esmMin((() => {
 		init_source();
 		init_autoFixer();
 		_global = globalThis;
 		if (!_global.__PAGE_AGENT_IDS__) _global.__PAGE_AGENT_IDS__ = [];
 		ids = _global.__PAGE_AGENT_IDS__;
 		llmsTxtCache = /* @__PURE__ */ new Map();
-	});
+	}));
 	//#endregion
 	//#region ../core/src/tools/index.ts
 	function tool(options) {
 		return options;
 	}
 	var tools;
-	var init_tools = __esmMin(() => {
+	var init_tools = __esmMin((() => {
 		init_v4();
 		init_utils();
 		tools = /* @__PURE__ */ new Map();
-		tools.set(
-			"done",
-			tool({
-				description:
-					"Complete task. Text is your final response to the user — keep it concise unless the user explicitly asks for detail.",
-				inputSchema: object({
-					text: string(),
-					success: boolean().default(true),
-				}),
-				execute: async function (input) {
-					return Promise.resolve("Task completed");
-				},
+		tools.set("done", tool({
+			description: "Complete task. Text is your final response to the user — keep it concise unless the user explicitly asks for detail.",
+			inputSchema: object({
+				text: string(),
+				success: boolean().default(true)
 			}),
-		);
-		tools.set(
-			"wait",
-			tool({
-				description:
-					"Wait for x seconds. Can be used to wait until the page or data is fully loaded.",
-				inputSchema: object({ seconds: number().min(1).max(10).default(1) }),
-				execute: async function (input, { signal }) {
-					const lastTimeUpdate = await this.pageController.getLastUpdateTime();
-					const secondsSinceLastUpdate = (Date.now() - lastTimeUpdate) / 1e3;
-					const actualWaitTime = Math.max(
-						0,
-						input.seconds - secondsSinceLastUpdate,
-					);
-					console.log(`actualWaitTime: ${actualWaitTime} seconds`);
-					await waitFor(actualWaitTime, signal);
-					return `✅ Waited for ${(secondsSinceLastUpdate + actualWaitTime).toFixed(2)} seconds.`;
-				},
+			execute: async function(input) {
+				return Promise.resolve("Task completed");
+			}
+		}));
+		tools.set("wait", tool({
+			description: "Wait for x seconds. Can be used to wait until the page or data is fully loaded.",
+			inputSchema: object({ seconds: number().min(1).max(10).default(1) }),
+			execute: async function(input, { signal }) {
+				const lastTimeUpdate = await this.pageController.getLastUpdateTime();
+				const secondsSinceLastUpdate = (Date.now() - lastTimeUpdate) / 1e3;
+				const actualWaitTime = Math.max(0, input.seconds - secondsSinceLastUpdate);
+				console.log(`actualWaitTime: ${actualWaitTime} seconds`);
+				await waitFor(actualWaitTime, signal);
+				return `✅ Waited for ${(secondsSinceLastUpdate + actualWaitTime).toFixed(2)} seconds.`;
+			}
+		}));
+		tools.set("ask_user", tool({
+			description: "Ask the user a question and wait for their answer. Use this if you need more information or clarification.",
+			inputSchema: object({ question: string() }),
+			execute: async function(input, { signal }) {
+				if (!this.onAskUser) throw new Error("ask_user tool requires onAskUser callback to be set");
+				return `User answered: ${await this.onAskUser(input.question, { signal })}`;
+			}
+		}));
+		tools.set("click_element_by_index", tool({
+			description: "Click element by index",
+			inputSchema: object({ index: int().min(0) }),
+			execute: async function(input) {
+				return (await this.pageController.clickElement(input.index)).message;
+			}
+		}));
+		tools.set("input_text", tool({
+			description: "Click and type text into an interactive input element",
+			inputSchema: object({
+				index: int().min(0),
+				text: string()
 			}),
-		);
-		tools.set(
-			"ask_user",
-			tool({
-				description:
-					"Ask the user a question and wait for their answer. Use this if you need more information or clarification.",
-				inputSchema: object({ question: string() }),
-				execute: async function (input, { signal }) {
-					if (!this.onAskUser)
-						throw new Error(
-							"ask_user tool requires onAskUser callback to be set",
-						);
-					return `User answered: ${await this.onAskUser(input.question, { signal })}`;
-				},
+			execute: async function(input) {
+				return (await this.pageController.inputText(input.index, input.text)).message;
+			}
+		}));
+		tools.set("select_dropdown_option", tool({
+			description: "Select dropdown option for interactive element index by the text of the option you want to select",
+			inputSchema: object({
+				index: int().min(0),
+				text: string()
 			}),
-		);
-		tools.set(
-			"click_element_by_index",
-			tool({
-				description: "Click element by index",
-				inputSchema: object({ index: int().min(0) }),
-				execute: async function (input) {
-					return (await this.pageController.clickElement(input.index)).message;
-				},
-			}),
-		);
-		tools.set(
-			"input_text",
-			tool({
-				description: "Click and type text into an interactive input element",
-				inputSchema: object({
-					index: int().min(0),
-					text: string(),
-				}),
-				execute: async function (input) {
-					return (await this.pageController.inputText(input.index, input.text))
-						.message;
-				},
-			}),
-		);
-		tools.set(
-			"select_dropdown_option",
-			tool({
-				description:
-					"Select dropdown option for interactive element index by the text of the option you want to select",
-				inputSchema: object({
-					index: int().min(0),
-					text: string(),
-				}),
-				execute: async function (input) {
-					return (
-						await this.pageController.selectOption(input.index, input.text)
-					).message;
-				},
-			}),
-		);
+			execute: async function(input) {
+				return (await this.pageController.selectOption(input.index, input.text)).message;
+			}
+		}));
 		/**
-		 * @note Reference from browser-use
-		 */
-		tools.set(
-			"scroll",
-			tool({
-				description:
-					"Scroll vertically. Without index: scrolls the document. With index: scrolls the container at that index (or its nearest scrollable ancestor). Use index of a data-scrollable element to scroll a specific area.",
-				inputSchema: object({
-					down: boolean().default(true),
-					num_pages: number().min(0).max(10).optional().default(0.1),
-					pixels: number().int().min(0).optional(),
-					index: number().int().min(0).optional(),
-				}),
-				execute: async function (input) {
-					return (
-						await this.pageController.scroll({
-							...input,
-							numPages: input.num_pages,
-						})
-					).message;
-				},
+		* @note Reference from browser-use
+		*/
+		tools.set("scroll", tool({
+			description: "Scroll vertically. Without index: scrolls the document. With index: scrolls the container at that index (or its nearest scrollable ancestor). Use index of a data-scrollable element to scroll a specific area.",
+			inputSchema: object({
+				down: boolean().default(true),
+				num_pages: number().min(0).max(10).optional().default(.1),
+				pixels: number().int().min(0).optional(),
+				index: number().int().min(0).optional()
 			}),
-		);
+			execute: async function(input) {
+				return (await this.pageController.scroll({
+					...input,
+					numPages: input.num_pages
+				})).message;
+			}
+		}));
 		/**
-		 * @todo Tables need a dedicated parser to extract structured data. This tool is useless.
-		 */
-		tools.set(
-			"scroll_horizontally",
-			tool({
-				description:
-					"Scroll horizontally. Without index: scrolls the document. With index: scrolls the container at that index (or its nearest scrollable ancestor). Use index of a data-scrollable element to scroll a specific area.",
-				inputSchema: object({
-					right: boolean().default(true),
-					pixels: number().int().min(0),
-					index: number().int().min(0).optional(),
-				}),
-				execute: async function (input) {
-					return (await this.pageController.scrollHorizontally(input)).message;
-				},
+		* @todo Tables need a dedicated parser to extract structured data. This tool is useless.
+		*/
+		tools.set("scroll_horizontally", tool({
+			description: "Scroll horizontally. Without index: scrolls the document. With index: scrolls the container at that index (or its nearest scrollable ancestor). Use index of a data-scrollable element to scroll a specific area.",
+			inputSchema: object({
+				right: boolean().default(true),
+				pixels: number().int().min(0),
+				index: number().int().min(0).optional()
 			}),
-		);
-		tools.set(
-			"execute_javascript",
-			tool({
-				description:
-					"Execute JavaScript code on the current page. Supports async/await syntax. Use with caution! An `AbortSignal` named `signal` is available in scope: long-running async code MUST honor it (e.g. `await fetch(url, { signal })`, or `signal.throwIfAborted()` in loops)",
-				inputSchema: object({ script: string() }),
-				execute: async function (input, { signal }) {
-					const result = await this.pageController.executeJavascript(
-						input.script,
-						signal,
-					);
-					signal.throwIfAborted();
-					return result.message;
-				},
-			}),
-		);
-		tools.set(
-			"capture_screenshot",
-			tool({
-				description:
-					"Take a screenshot of the current page and look at it. Use when the page is visual, when the simplified text isn't enough, or when you're unsure what happened after an action.",
-				inputSchema: object({}),
-				execute: async function () {
-					const dataUrl = await this.pageController.captureScreenshot?.();
-					if (!dataUrl) return "Screenshot not available on this page.";
-					this.attachImage(dataUrl);
-					return "📸 Screenshot captured — it is attached for you to see.";
-				},
-			}),
-		);
-	});
+			execute: async function(input) {
+				return (await this.pageController.scrollHorizontally(input)).message;
+			}
+		}));
+		tools.set("execute_javascript", tool({
+			description: "Execute JavaScript code on the current page. Supports async/await syntax. Use with caution! An `AbortSignal` named `signal` is available in scope: long-running async code MUST honor it (e.g. `await fetch(url, { signal })`, or `signal.throwIfAborted()` in loops)",
+			inputSchema: object({ script: string() }),
+			execute: async function(input, { signal }) {
+				const result = await this.pageController.executeJavascript(input.script, signal);
+				signal.throwIfAborted();
+				return result.message;
+			}
+		}));
+		tools.set("capture_screenshot", tool({
+			description: "Take a screenshot of the current page and look at it. Use when the page is visual, when the simplified text isn't enough, or when you're unsure what happened after an action.",
+			inputSchema: object({}),
+			execute: async function() {
+				const dataUrl = await this.pageController.captureScreenshot?.();
+				if (!dataUrl) return "Screenshot not available on this page.";
+				this.attachImage(dataUrl);
+				return "📸 Screenshot captured — it is attached for you to see.";
+			}
+		}));
+	}));
 	//#endregion
 	//#region ../core/src/PageAgentCore.ts
 	var PageAgentCore;
-	var init_PageAgentCore = __esmMin(() => {
+	var init_PageAgentCore = __esmMin((() => {
 		init_src();
 		init_source();
 		init_v4();
@@ -10706,26 +8796,26 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			/** Whether this agent has been disposed */
 			disposed = false;
 			/**
-			 * Called when the agent needs to ask the user questions.
-			 * If unset, the `ask_user` tool will be disabled.
-			 * Implementations should reject the promise when `signal` aborts.
-			 * @example onAskUser: (q) => window.prompt(q) || ''
-			 */
+			* Called when the agent needs to ask the user questions.
+			* If unset, the `ask_user` tool will be disabled.
+			* Implementations should reject the promise when `signal` aborts.
+			* @example onAskUser: (q) => window.prompt(q) || ''
+			*/
 			onAskUser;
 			#status = "idle";
 			#llm;
 			/**
-			 * Task cancellation primitive: its signal reaches the LLM fetch, tools
-			 * (via `ctx.signal`) and async callbacks. Aborted only by `stop`/`dispose`
-			 * (during a task) or task setup, always WITHOUT a reason so `signal.reason`
-			 * stays a standard `AbortError`.
-			 */
+			* Task cancellation primitive: its signal reaches the LLM fetch, tools
+			* (via `ctx.signal`) and async callbacks. Aborted only by `stop`/`dispose`
+			* (during a task) or task setup, always WITHOUT a reason so `signal.reason`
+			* stays a standard `AbortError`.
+			*/
 			#abortController = new AbortController();
 			#observations = [];
 			/**
-			 * Images (data URLs) queued to be attached to the NEXT observe step's user
-			 * message, then cleared. Fed by the vision tool and on-error screenshot capture.
-			 */
+			* Images (data URLs) queued to be attached to the NEXT observe step's user
+			* message, then cleared. Fed by the vision tool and on-error screenshot capture.
+			*/
 			#pendingImages = [];
 			/** Consecutive step-error counter for the `errorRecovery` resilience policy. */
 			#consecutiveErrors = 0;
@@ -10739,13 +8829,13 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				/** For detecting navigation */
 				lastURL: "",
 				/** Browser state */
-				browserState: null,
+				browserState: null
 			};
 			constructor(config) {
 				super();
 				this.config = {
 					...config,
-					maxSteps: config.maxSteps ?? 40,
+					maxSteps: config.maxSteps ?? 40
 				};
 				this.#llm = new LLM(this.config);
 				this.tools = new Map(tools);
@@ -10755,33 +8845,30 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					this.#emitActivity({
 						type: "retrying",
 						attempt,
-						maxAttempts,
+						maxAttempts
 					});
 					this.history.push({
 						type: "error",
 						message: String(lastError),
-						rawResponse: lastError.rawResponse,
+						rawResponse: lastError.rawResponse
 					});
 					this.history.push({
 						type: "retry",
 						message: `LLM retry attempt ${attempt} of ${maxAttempts}`,
 						attempt,
-						maxAttempts,
+						maxAttempts
 					});
 					this.#emitHistoryChange();
 				});
-				if (this.config.customTools)
-					for (const [name, tool] of Object.entries(this.config.customTools)) {
-						if (tool === null) {
-							this.tools.delete(name);
-							continue;
-						}
-						this.tools.set(name, tool);
+				if (this.config.customTools) for (const [name, tool] of Object.entries(this.config.customTools)) {
+					if (tool === null) {
+						this.tools.delete(name);
+						continue;
 					}
-				if (!this.config.experimentalScriptExecutionTool)
-					this.tools.delete("execute_javascript");
-				if (!this.config.experimentalVisionTool)
-					this.tools.delete("capture_screenshot");
+					this.tools.set(name, tool);
+				}
+				if (!this.config.experimentalScriptExecutionTool) this.tools.delete("execute_javascript");
+				if (!this.config.experimentalVisionTool) this.tools.delete("capture_screenshot");
 			}
 			/** Get current agent status */
 			get status() {
@@ -10801,9 +8888,9 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				this.dispatchEvent(new Event("historychange"));
 			}
 			/**
-			 * Emit activity event - for transient UI feedback
-			 * @param activity - Current agent activity
-			 */
+			* Emit activity event - for transient UI feedback
+			* @param activity - Current agent activity
+			*/
 			#emitActivity(activity) {
 				this.dispatchEvent(new CustomEvent("activity", { detail: activity }));
 			}
@@ -10815,65 +8902,57 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				}
 			}
 			/**
-			 * Push an observation message to the history event stream.
-			 * This will be visible in <agent_history> and remain persistent in memory across steps.
-			 * @experimental @internal
-			 * @note history change will be emitted before next step starts
-			 */
+			* Push an observation message to the history event stream.
+			* This will be visible in <agent_history> and remain persistent in memory across steps.
+			* @experimental @internal
+			* @note history change will be emitted before next step starts
+			*/
 			pushObservation(content) {
 				this.#observations.push(content);
 			}
 			/**
-			 * Attach an image (data URL) to be sent alongside the NEXT observe step's
-			 * user message, then cleared. Used by the vision tool and on-error capture.
-			 * @experimental @internal
-			 */
+			* Attach an image (data URL) to be sent alongside the NEXT observe step's
+			* user message, then cleared. Used by the vision tool and on-error capture.
+			* @experimental @internal
+			*/
 			attachImage(dataUrl) {
 				this.#pendingImages.push(dataUrl);
 			}
 			/**
-			 * Capture a screenshot via the page controller and queue it for the next step.
-			 * Best-effort and silent: does nothing when capture is unsupported (e.g. the
-			 * in-page controller returns null). Always wrap calls in `suppress`.
-			 * @internal
-			 */
+			* Capture a screenshot via the page controller and queue it for the next step.
+			* Best-effort and silent: does nothing when capture is unsupported (e.g. the
+			* in-page controller returns null). Always wrap calls in `suppress`.
+			* @internal
+			*/
 			async #captureToPending() {
 				const dataUrl = await this.pageController.captureScreenshot?.();
 				if (dataUrl) this.attachImage(dataUrl);
 			}
 			/**
-			 * Whether an error must abort the whole task even under `errorRecovery`.
-			 * Non-retryable configuration / auth failures are pointless to retry — looping
-			 * would just hit the same wall — so they stay fatal (break with error).
-			 */
+			* Whether an error must abort the whole task even under `errorRecovery`.
+			* Non-retryable configuration / auth failures are pointless to retry — looping
+			* would just hit the same wall — so they stay fatal (break with error).
+			*/
 			#isFatalError(error) {
-				if (error instanceof InvokeError && !error.retryable)
-					return (
-						error.type === InvokeErrorTypes.CONFIG_ERROR ||
-						error.type === InvokeErrorTypes.AUTH_ERROR
-					);
+				if (error instanceof InvokeError && !error.retryable) return error.type === InvokeErrorTypes.CONFIG_ERROR || error.type === InvokeErrorTypes.AUTH_ERROR;
 				return false;
 			}
 			/**
-			 * Stop the current task and wait until the run has fully settled (including lifecycle hooks).
-			 * @note never await .stop() in a lifecycle hook.
-			 */
+			* Stop the current task and wait until the run has fully settled (including lifecycle hooks).
+			* @note never await .stop() in a lifecycle hook.
+			*/
 			async stop() {
 				if (this.#status !== "running") return;
 				this.#abortController.abort();
 				await this.#running;
 			}
 			/**
-			 * external errors (pre-checks/config/hooks) will threw;
-			 * agent errors will be caught and added to history, and return a failed result
-			 */
+			* external errors (pre-checks/config/hooks) will threw;
+			* agent errors will be caught and added to history, and return a failed result
+			*/
 			async execute(task) {
-				if (this.disposed)
-					throw new Error(
-						"PageAgent has been disposed. Create a new instance.",
-					);
-				if (this.#status === "running")
-					throw new Error("A task is already running.");
+				if (this.disposed) throw new Error("PageAgent has been disposed. Create a new instance.");
+				if (this.#status === "running") throw new Error("A task is already running.");
 				if (!task) throw new Error("Task is required");
 				this.task = task;
 				this.taskId = uid();
@@ -10884,12 +8963,12 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				this.#states = {
 					totalWaitTime: 0,
 					lastURL: "",
-					browserState: null,
+					browserState: null
 				};
 				this.#abortController = new AbortController();
 				const signal = this.#abortController.signal;
 				let resolveRunning;
-				this.#running = new Promise((r) => (resolveRunning = r));
+				this.#running = new Promise((r) => resolveRunning = r);
 				this.#setStatus("running");
 				this.#emitHistoryChange();
 				if (!this.onAskUser) this.tools.delete("ask_user");
@@ -10897,7 +8976,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				const onAfterStep = this.config.onAfterStep;
 				const onBeforeTask = this.config.onBeforeTask;
 				const onAfterTask = this.config.onAfterTask;
-				const stepDelay = this.config.stepDelay ?? 0.4;
+				const stepDelay = this.config.stepDelay ?? .4;
 				const maxSteps = this.config.maxSteps;
 				let step = 0;
 				let taskResult;
@@ -10912,62 +8991,45 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 							if (step > 0) await waitFor(stepDelay, signal);
 							signal.throwIfAborted();
 							console.log(chalk.blue.bold("👀 Observing..."));
-							this.#states.browserState =
-								await this.pageController.getBrowserState();
+							this.#states.browserState = await this.pageController.getBrowserState();
 							await this.#handleObservations(step);
 							const userPrompt = await this.#assembleUserPrompt();
-							if (this.config.alwaysSendScreenshot)
-								await suppress(() => this.#captureToPending());
-							const userContent =
-								this.#pendingImages.length > 0
-									? [
-											{
-												type: "text",
-												text: userPrompt,
-											},
-											...this.#pendingImages.map((url) => ({
-												type: "image_url",
-												image_url: { url },
-											})),
-										]
-									: userPrompt;
-							const messages = [
-								{
-									role: "system",
-									content: this.#getSystemPrompt(),
-								},
-								{
-									role: "user",
-									content: userContent,
-								},
-							];
+							if (this.config.alwaysSendScreenshot) await suppress(() => this.#captureToPending());
+							const userContent = this.#pendingImages.length > 0 ? [{
+								type: "text",
+								text: userPrompt
+							}, ...this.#pendingImages.map((url) => ({
+								type: "image_url",
+								image_url: { url }
+							}))] : userPrompt;
+							const messages = [{
+								role: "system",
+								content: this.#getSystemPrompt()
+							}, {
+								role: "user",
+								content: userContent
+							}];
 							this.#pendingImages = [];
 							const macroTool = { AgentOutput: this.#packMacroTool() };
 							console.log(chalk.blue.bold("🧠 Thinking..."));
 							this.#emitActivity({ type: "thinking" });
-							const result = await this.#llm.invoke(
-								messages,
-								macroTool,
-								signal,
-								{
-									toolChoiceName: "AgentOutput",
-									normalizeResponse: (res) =>
-										normalizeResponse(res, this.tools),
-								},
-							);
+							const result = await this.#llm.invoke(messages, macroTool, signal, {
+								toolChoiceName: "AgentOutput",
+								normalizeResponse: (res) => normalizeResponse(res, this.tools)
+							});
 							const macroResult = result.toolResult;
 							const input = macroResult.input;
 							const output = macroResult.output;
 							const reflection = {
 								evaluation_previous_goal: input.evaluation_previous_goal,
 								memory: input.memory,
-								next_goal: input.next_goal,
+								next_goal: input.next_goal
 							};
 							const actionName = Object.keys(input.action)[0];
 							const action = {
 								name: actionName,
 								input: input.action[actionName],
-								output,
+								output
 							};
 							this.#emitHistoryChange({
 								type: "step",
@@ -10976,17 +9038,9 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 								action,
 								usage: result.usage,
 								rawResponse: result.rawResponse,
-								rawRequest: result.rawRequest,
+								rawRequest: result.rawRequest
 							});
-							if (
-								this.config.errorRecovery?.captureScreenshotOnError &&
-								actionName !== "done" &&
-								typeof output === "string" &&
-								/^❌|\berro\b|\berror\b|falh|não encontr|não consegui|not allowed|unable to|failed|cannot/i.test(
-									output,
-								)
-							)
-								await suppress(() => this.#captureToPending());
+							if (this.config.errorRecovery?.captureScreenshotOnError && actionName !== "done" && typeof output === "string" && /^❌|\berro\b|\berror\b|falh|não encontr|não consegui|not allowed|unable to|failed|cannot/i.test(output)) await suppress(() => this.#captureToPending());
 							this.#consecutiveErrors = 0;
 							if (actionName === "done") {
 								const success = action.input?.success ?? false;
@@ -10995,7 +9049,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 								taskResult = {
 									success,
 									data,
-									history: this.history,
+									history: this.history
 								};
 								this.#lastResult = taskResult;
 								finalStatus = "completed";
@@ -11007,29 +9061,24 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 							const message = isAbortError ? "Task aborted" : String(error);
 							const recovery = this.config.errorRecovery;
 							if (recovery && !isAbortError && !this.#isFatalError(error)) {
-								if (recovery.captureScreenshotOnError)
-									await suppress(() => this.#captureToPending());
-								this.pushObservation(
-									"⚠️ A ação anterior falhou: " +
-										message +
-										". Veja a captura de tela e tente outra abordagem.",
-								);
+								if (recovery.captureScreenshotOnError) await suppress(() => this.#captureToPending());
+								this.pushObservation("⚠️ A ação anterior falhou: " + message + ". Veja a captura de tela e tente outra abordagem.");
 								this.#consecutiveErrors++;
 								this.#emitActivity({
 									type: "error",
-									message,
+									message
 								});
 								this.#emitHistoryChange({
 									type: "error",
 									message,
-									rawResponse: error,
+									rawResponse: error
 								});
 								const maxConsecutiveErrors = recovery.maxConsecutiveErrors ?? 3;
 								if (this.#consecutiveErrors > maxConsecutiveErrors) {
 									taskResult = {
 										success: false,
 										data: "Não consegui concluir agora após algumas tentativas.",
-										history: this.history,
+										history: this.history
 									};
 									this.#lastResult = taskResult;
 									finalStatus = "error";
@@ -11038,17 +9087,17 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 							} else {
 								this.#emitActivity({
 									type: "error",
-									message,
+									message
 								});
 								this.#emitHistoryChange({
 									type: "error",
 									message,
-									rawResponse: error,
+									rawResponse: error
 								});
 								taskResult = {
 									success: false,
 									data: message,
-									history: this.history,
+									history: this.history
 								};
 								this.#lastResult = taskResult;
 								finalStatus = isAbortError ? "stopped" : "error";
@@ -11064,16 +9113,16 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 							console.error(message);
 							this.#emitActivity({
 								type: "error",
-								message,
+								message
 							});
 							this.#emitHistoryChange({
 								type: "error",
-								message,
+								message
 							});
 							taskResult = {
 								success: false,
 								data: message,
-								history: this.history,
+								history: this.history
 							};
 							this.#lastResult = taskResult;
 							finalStatus = "error";
@@ -11085,7 +9134,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				} catch (error) {
 					this.#emitActivity({
 						type: "error",
-						message: String(error),
+						message: String(error)
 					});
 					finalStatus = "error";
 					throw error;
@@ -11098,30 +9147,26 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				}
 			}
 			/**
-			 * Merge all tools into a single MacroTool with the following input:
-			 * - thinking: string
-			 * - evaluation_previous_goal: string
-			 * - memory: string
-			 * - next_goal: string
-			 * - action: { toolName: toolInput }
-			 * where action must be selected from tools defined in this.tools
-			 */
+			* Merge all tools into a single MacroTool with the following input:
+			* - thinking: string
+			* - evaluation_previous_goal: string
+			* - memory: string
+			* - next_goal: string
+			* - action: { toolName: toolInput }
+			* where action must be selected from tools defined in this.tools
+			*/
 			#packMacroTool() {
 				const tools = this.tools;
-				const actionSchema = union(
-					Array.from(tools.entries()).map(([toolName, tool]) => {
-						return object({ [toolName]: tool.inputSchema }).describe(
-							tool.description,
-						);
-					}),
-				);
+				const actionSchema = union(Array.from(tools.entries()).map(([toolName, tool]) => {
+					return object({ [toolName]: tool.inputSchema }).describe(tool.description);
+				}));
 				return {
 					description: "You MUST call this tool every step!",
 					inputSchema: object({
 						evaluation_previous_goal: string().optional(),
 						memory: string().optional(),
 						next_goal: string().optional(),
-						action: actionSchema,
+						action: actionSchema
 					}),
 					execute: async (input) => {
 						const signal = this.#abortController.signal;
@@ -11131,123 +9176,91 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 						const toolName = Object.keys(action)[0];
 						const toolInput = action[toolName];
 						const reflectionLines = [];
-						if (input.evaluation_previous_goal)
-							reflectionLines.push(`✅: ${input.evaluation_previous_goal}`);
+						if (input.evaluation_previous_goal) reflectionLines.push(`✅: ${input.evaluation_previous_goal}`);
 						if (input.memory) reflectionLines.push(`💾: ${input.memory}`);
 						if (input.next_goal) reflectionLines.push(`🎯: ${input.next_goal}`);
-						const reflectionText =
-							reflectionLines.length > 0 ? reflectionLines.join("\n") : "";
+						const reflectionText = reflectionLines.length > 0 ? reflectionLines.join("\n") : "";
 						if (reflectionText) console.log(reflectionText);
 						const tool = tools.get(toolName);
 						assert(tool, `Tool ${toolName} not found`);
-						console.log(
-							chalk.blue.bold(`Executing tool: ${toolName}`),
-							toolInput,
-						);
+						console.log(chalk.blue.bold(`Executing tool: ${toolName}`), toolInput);
 						this.#emitActivity({
 							type: "executing",
 							tool: toolName,
-							input: toolInput,
+							input: toolInput
 						});
 						const startTime = Date.now();
 						const result = await tool.execute.bind(this)(toolInput, { signal });
 						signal.throwIfAborted();
 						const duration = Date.now() - startTime;
-						console.log(
-							chalk.green.bold(`Tool (${toolName}) executed for ${duration}ms`),
-							result,
-						);
+						console.log(chalk.green.bold(`Tool (${toolName}) executed for ${duration}ms`), result);
 						this.#emitActivity({
 							type: "executed",
 							tool: toolName,
 							input: toolInput,
 							output: result,
-							duration,
+							duration
 						});
-						if (toolName === "wait")
-							this.#states.totalWaitTime += toolInput?.seconds || 0;
+						if (toolName === "wait") this.#states.totalWaitTime += toolInput?.seconds || 0;
 						else this.#states.totalWaitTime = 0;
 						return {
 							input,
-							output: result,
+							output: result
 						};
-					},
+					}
 				};
 			}
 			/**
-			 * Get system prompt, dynamically replace language settings based on configured language
-			 */
+			* Get system prompt, dynamically replace language settings based on configured language
+			*/
 			#getSystemPrompt() {
-				if (this.config.customSystemPrompt)
-					return this.config.customSystemPrompt;
-				const targetLanguage =
-					this.config.language === "zh-CN" ? "中文" : "English";
-				return system_prompt_default$1.replace(
-					/Default working language: \*\*.*?\*\*/,
-					`Default working language: **${targetLanguage}**`,
-				);
+				if (this.config.customSystemPrompt) return this.config.customSystemPrompt;
+				const targetLanguage = this.config.language === "zh-CN" ? "中文" : "English";
+				return system_prompt_default$1.replace(/Default working language: \*\*.*?\*\*/, `Default working language: **${targetLanguage}**`);
 			}
 			/**
-			 * Get instructions from config
-			 */
+			* Get instructions from config
+			*/
 			async #getInstructions() {
 				const { instructions, experimentalLlmsTxt } = this.config;
 				const systemInstructions = instructions?.system?.trim();
 				let pageInstructions;
 				const url = this.#states.browserState?.url || "";
-				if (instructions?.getPageInstructions && url)
-					try {
-						pageInstructions = instructions.getPageInstructions(url)?.trim();
-					} catch (error) {
-						console.error(
-							chalk.red(
-								"[PageAgent] Failed to execute getPageInstructions callback:",
-							),
-							error,
-						);
-					}
-				const llmsTxt =
-					experimentalLlmsTxt && url ? await fetchLlmsTxt(url) : void 0;
+				if (instructions?.getPageInstructions && url) try {
+					pageInstructions = instructions.getPageInstructions(url)?.trim();
+				} catch (error) {
+					console.error(chalk.red("[PageAgent] Failed to execute getPageInstructions callback:"), error);
+				}
+				const llmsTxt = experimentalLlmsTxt && url ? await fetchLlmsTxt(url) : void 0;
 				if (!systemInstructions && !pageInstructions && !llmsTxt) return "";
 				let result = "<instructions>\n";
-				if (systemInstructions)
-					result += `<system_instructions>\n${systemInstructions}\n</system_instructions>\n`;
-				if (pageInstructions)
-					result += `<page_instructions>\n${pageInstructions}\n</page_instructions>\n`;
+				if (systemInstructions) result += `<system_instructions>\n${systemInstructions}\n</system_instructions>\n`;
+				if (pageInstructions) result += `<page_instructions>\n${pageInstructions}\n</page_instructions>\n`;
 				if (llmsTxt) result += `<llms_txt>\n${llmsTxt}\n</llms_txt>\n`;
 				result += "</instructions>\n\n";
 				return result;
 			}
 			/**
-			 * Generate system observations before each step
-			 * @todo loop detection
-			 * @todo console error
-			 */
+			* Generate system observations before each step
+			* @todo loop detection
+			* @todo console error
+			*/
 			async #handleObservations(step) {
-				if (this.#states.totalWaitTime >= 3)
-					this.pushObservation(
-						`You have waited ${this.#states.totalWaitTime} seconds accumulatively. DO NOT wait any longer unless you have a good reason.`,
-					);
+				if (this.#states.totalWaitTime >= 3) this.pushObservation(`You have waited ${this.#states.totalWaitTime} seconds accumulatively. DO NOT wait any longer unless you have a good reason.`);
 				const currentURL = this.#states.browserState?.url || "";
 				if (currentURL !== this.#states.lastURL) {
 					this.pushObservation(`Page navigated to → ${currentURL}`);
 					this.#states.lastURL = currentURL;
-					await waitFor(0.5);
+					await waitFor(.5);
 				}
 				const remaining = this.config.maxSteps - step;
-				if (remaining === 5)
-					this.pushObservation(
-						`⚠️ Only ${remaining} steps remaining. Consider wrapping up or calling done with partial results.`,
-					);
-				else if (remaining === 2)
-					this.pushObservation(
-						`⚠️ Critical: Only ${remaining} steps left! You must finish the task or call done immediately.`,
-					);
+				if (remaining === 5) this.pushObservation(`⚠️ Only ${remaining} steps remaining. Consider wrapping up or calling done with partial results.`);
+				else if (remaining === 2) this.pushObservation(`⚠️ Critical: Only ${remaining} steps left! You must finish the task or call done immediately.`);
 				if (this.#observations.length > 0) {
 					for (const content of this.#observations) {
 						this.history.push({
 							type: "observation",
-							content,
+							content
 						});
 						console.log(chalk.cyan("Observation:"), content);
 					}
@@ -11271,25 +9284,20 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				prompt += "</agent_state>\n\n";
 				prompt += "<agent_history>\n";
 				let stepIndex = 0;
-				for (const event of this.history)
-					if (event.type === "step") {
-						stepIndex++;
-						prompt += `<step_${stepIndex}>\n`;
-						prompt += `Evaluation of Previous Step: ${event.reflection.evaluation_previous_goal}\n`;
-						prompt += `Memory: ${event.reflection.memory}\n`;
-						prompt += `Next Goal: ${event.reflection.next_goal}\n`;
-						prompt += `Action Results: ${event.action.output}\n`;
-						prompt += `</step_${stepIndex}>\n`;
-					} else if (event.type === "observation")
-						prompt += `<sys>${event.content}</sys>\n`;
-					else if (event.type === "user_takeover")
-						prompt += `<sys>User took over control and made changes to the page</sys>\n`;
-					else if (event.type === "error") {
-					}
+				for (const event of this.history) if (event.type === "step") {
+					stepIndex++;
+					prompt += `<step_${stepIndex}>\n`;
+					prompt += `Evaluation of Previous Step: ${event.reflection.evaluation_previous_goal}\n`;
+					prompt += `Memory: ${event.reflection.memory}\n`;
+					prompt += `Next Goal: ${event.reflection.next_goal}\n`;
+					prompt += `Action Results: ${event.action.output}\n`;
+					prompt += `</step_${stepIndex}>\n`;
+				} else if (event.type === "observation") prompt += `<sys>${event.content}</sys>\n`;
+				else if (event.type === "user_takeover") prompt += `<sys>User took over control and made changes to the page</sys>\n`;
+				else if (event.type === "error") {}
 				prompt += "</agent_history>\n\n";
 				let pageContent = browserState.content;
-				if (this.config.transformPageContent)
-					pageContent = await this.config.transformPageContent(pageContent);
+				if (this.config.transformPageContent) pageContent = await this.config.transformPageContent(pageContent);
 				prompt += "<browser_state>\n";
 				prompt += browserState.header + "\n";
 				prompt += pageContent + "\n";
@@ -11306,7 +9314,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				this.config.onDispose?.(this);
 			}
 		};
-	});
+	}));
 	//#endregion
 	//#region src/agent/RemotePageController.ts
 	function sendMessage$1(message) {
@@ -11316,8 +9324,8 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		});
 	}
 	/**
-	 * Check if a URL can run content scripts.
-	 */
+	* Check if a URL can run content scripts.
+	*/
 	function isContentScriptAllowed(url) {
 		if (!url) return false;
 		return ![
@@ -11330,11 +9338,11 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			/^vivaldi:\/\//,
 			/^file:\/\//,
 			/^view-source:/,
-			/^devtools:\/\//,
+			/^devtools:\/\//
 		].some((pattern) => pattern.test(url));
 	}
 	var PREFIX$1, debug$1, RemotePageController;
-	var init_RemotePageController = __esmMin(() => {
+	var init_RemotePageController = __esmMin((() => {
 		PREFIX$1 = "[RemotePageController]";
 		debug$1 = console.debug.bind(console, `\x1b[90m${PREFIX$1}\x1b[0m`);
 		RemotePageController = class {
@@ -11352,18 +9360,15 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			}
 			async getCurrentTitle() {
 				if (!this.currentTabId) return "";
-				const { title } = await this.tabsController.getTabInfo(
-					this.currentTabId,
-				);
+				const { title } = await this.tabsController.getTabInfo(this.currentTabId);
 				return title || "";
 			}
 			async getLastUpdateTime() {
-				if (!this.currentTabId)
-					throw new Error("tabsController not initialized.");
+				if (!this.currentTabId) throw new Error("tabsController not initialized.");
 				return sendMessage$1({
 					type: "PAGE_CONTROL",
 					action: "get_last_update_time",
-					targetTabId: this.currentTabId,
+					targetTabId: this.currentTabId
 				});
 			}
 			async getBrowserState() {
@@ -11371,48 +9376,37 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				debug$1("getBrowserState", this.currentTabId);
 				const currentUrl = await this.getCurrentUrl();
 				const currentTitle = await this.getCurrentTitle();
-				if (!this.currentTabId || !isContentScriptAllowed(currentUrl))
-					browserState = {
-						url: currentUrl,
-						title: currentTitle,
-						header: "",
-						content:
-							"(empty page. either current page is not readable or not loaded yet.)",
-						footer: "",
-					};
-				else
-					browserState = await sendMessage$1({
-						type: "PAGE_CONTROL",
-						action: "get_browser_state",
-						targetTabId: this.currentTabId,
-					});
+				if (!this.currentTabId || !isContentScriptAllowed(currentUrl)) browserState = {
+					url: currentUrl,
+					title: currentTitle,
+					header: "",
+					content: "(empty page. either current page is not readable or not loaded yet.)",
+					footer: ""
+				};
+				else browserState = await sendMessage$1({
+					type: "PAGE_CONTROL",
+					action: "get_browser_state",
+					targetTabId: this.currentTabId
+				});
 				const sum = await this.tabsController.summarizeTabs();
 				browserState.header = sum + "\n\n" + (browserState.header || "");
 				debug$1("getBrowserState: success", this.currentTabId, browserState);
 				return browserState;
 			}
 			async updateTree() {
-				if (
-					!this.currentTabId ||
-					!isContentScriptAllowed(await this.getCurrentUrl())
-				)
-					return;
+				if (!this.currentTabId || !isContentScriptAllowed(await this.getCurrentUrl())) return;
 				await sendMessage$1({
 					type: "PAGE_CONTROL",
 					action: "update_tree",
-					targetTabId: this.currentTabId,
+					targetTabId: this.currentTabId
 				});
 			}
 			async cleanUpHighlights() {
-				if (
-					!this.currentTabId ||
-					!isContentScriptAllowed(await this.getCurrentUrl())
-				)
-					return;
+				if (!this.currentTabId || !isContentScriptAllowed(await this.getCurrentUrl())) return;
 				await sendMessage$1({
 					type: "PAGE_CONTROL",
 					action: "clean_up_highlights",
-					targetTabId: this.currentTabId,
+					targetTabId: this.currentTabId
 				});
 			}
 			async clickElement(...args) {
@@ -11433,34 +9427,30 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				return this.remoteCallDomAction("scroll_horizontally", args);
 			}
 			/**
-			 * Execute JavaScript in the target page (main world) via the content script.
-			 * @note The `AbortSignal` provided by the core `execute_javascript` tool cannot
-			 * cross the messaging boundary (structured clone), so we forward ONLY the
-			 * script. Cancellation of the in-page script is therefore best-effort.
-			 */
+			* Execute JavaScript in the target page (main world) via the content script.
+			* @note The `AbortSignal` provided by the core `execute_javascript` tool cannot
+			* cross the messaging boundary (structured clone), so we forward ONLY the
+			* script. Cancellation of the in-page script is therefore best-effort.
+			*/
 			async executeJavascript(...args) {
 				const [script] = args;
 				return this.remoteCallDomAction("execute_javascript", [script]);
 			}
 			/**
-			 * Capture a screenshot of the target tab's viewport as a `data:` URL.
-			 * @note Handled directly by the background via `chrome.tabs.captureVisibleTab`
-			 * (NOT routed through the content script — capture is a background/extension
-			 * API). Returns null on restricted pages or on failure.
-			 */
+			* Capture a screenshot of the target tab's viewport as a `data:` URL.
+			* @note Handled directly by the background via `chrome.tabs.captureVisibleTab`
+			* (NOT routed through the content script — capture is a background/extension
+			* API). Returns null on restricted pages or on failure.
+			*/
 			async captureScreenshot() {
 				if (!this.currentTabId) return null;
 				if (!isContentScriptAllowed(await this.getCurrentUrl())) return null;
-				return (
-					(
-						await sendMessage$1({
-							type: "PAGE_CONTROL",
-							action: "capture_screenshot",
-							targetTabId: this.currentTabId,
-							payload: [],
-						})
-					)?.dataUrl ?? null
-				);
+				return (await sendMessage$1({
+					type: "PAGE_CONTROL",
+					action: "capture_screenshot",
+					targetTabId: this.currentTabId,
+					payload: []
+				}))?.dataUrl ?? null;
 			}
 			/** @note Managed by content script via storage polling. */
 			async showMask() {}
@@ -11469,26 +9459,23 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			/** @note Managed by content script via storage polling. */
 			dispose() {}
 			async remoteCallDomAction(action, payload) {
-				if (!this.currentTabId)
-					return {
-						success: false,
-						message: "RemotePageController not initialized.",
-					};
-				if (!isContentScriptAllowed(await this.getCurrentUrl()))
-					return {
-						success: false,
-						message:
-							"Operation not allowed on this page. Use open_new_tab to navigate to a web page first.",
-					};
+				if (!this.currentTabId) return {
+					success: false,
+					message: "RemotePageController not initialized."
+				};
+				if (!isContentScriptAllowed(await this.getCurrentUrl())) return {
+					success: false,
+					message: "Operation not allowed on this page. Use open_new_tab to navigate to a web page first."
+				};
 				return sendMessage$1({
 					type: "PAGE_CONTROL",
 					action,
 					targetTabId: this.currentTabId,
-					payload,
+					payload
 				});
 			}
 		};
-	});
+	}));
 	//#endregion
 	//#region src/agent/TabsController.ts
 	function sendMessage(message) {
@@ -11498,32 +9485,29 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		});
 	}
 	function randomColor() {
-		return TAB_GROUP_COLORS[
-			Math.floor(Math.random() * TAB_GROUP_COLORS.length)
-		];
+		return TAB_GROUP_COLORS[Math.floor(Math.random() * TAB_GROUP_COLORS.length)];
 	}
 	/**
-	 * Wait until condition becomes true
-	 * @returns Returns when condition becomes true, throws otherwise
-	 * @param timeoutMS Timeout in milliseconds, default 1 minutes, throws error on timeout
-	 * @param error Error object to reject on timeout. If not provided, will resolve with false
-	 */
+	* Wait until condition becomes true
+	* @returns Returns when condition becomes true, throws otherwise
+	* @param timeoutMS Timeout in milliseconds, default 1 minutes, throws error on timeout
+	* @param error Error object to reject on timeout. If not provided, will resolve with false
+	*/
 	async function waitUntil(check, timeoutMS = 6e4, error) {
 		if (await check()) return true;
 		return new Promise((resolve, reject) => {
 			const start = Date.now();
 			const poll = async () => {
 				if (await check()) return resolve(true);
-				if (Date.now() - start > timeoutMS)
-					if (error) return reject(new Error(error));
-					else return resolve(false);
+				if (Date.now() - start > timeoutMS) if (error) return reject(new Error(error));
+				else return resolve(false);
 				setTimeout(poll, 100);
 			};
 			setTimeout(poll, 100);
 		});
 	}
 	var PREFIX, debug, TabsController, TAB_GROUP_COLORS;
-	var init_TabsController = __esmMin(() => {
+	var init_TabsController = __esmMin((() => {
 		init_RemotePageController();
 		PREFIX = "[TabsController]";
 		debug = console.debug.bind(console, `\x1b[90m${PREFIX}\x1b[0m`);
@@ -11539,8 +9523,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			experimentalIncludeAllTabs = false;
 			task = "";
 			async init(task, options = {}) {
-				const { includeInitialTab = true, experimentalIncludeAllTabs = false } =
-					options;
+				const { includeInitialTab = true, experimentalIncludeAllTabs = false } = options;
 				debug("init", task, options);
 				if (this.disposed) throw new Error("TabsController already disposed");
 				await this.updateCurrentTabId(null);
@@ -11555,29 +9538,26 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				this.task = task;
 				const activeTabResult = await sendMessage({
 					type: "TAB_CONTROL",
-					action: "get_active_tab",
+					action: "get_active_tab"
 				});
 				this.initialTabId = activeTabResult.tab?.id;
 				this.windowId = activeTabResult.tab?.windowId;
-				if (!this.initialTabId || !this.windowId)
-					if (activeTabResult.error) throw new Error(activeTabResult.error);
-					else throw new Error("Failed to get active tab");
+				if (!this.initialTabId || !this.windowId) if (activeTabResult.error) throw new Error(activeTabResult.error);
+				else throw new Error("Failed to get active tab");
 				this.connectTabEvents();
 				if (experimentalIncludeAllTabs) {
 					const allTabs = await sendMessage({
 						type: "TAB_CONTROL",
 						action: "get_window_tabs",
-						payload: { windowId: this.windowId },
+						payload: { windowId: this.windowId }
 					});
-					for (const tab of allTabs.tabs)
-						if (tab.id && !tab.pinned && isContentScriptAllowed(tab.url))
-							this.addTab({
-								id: tab.id,
-								isInitial: tab.id === this.initialTabId,
-								url: tab.url,
-								title: tab.title,
-								status: tab.status,
-							});
+					for (const tab of allTabs.tabs) if (tab.id && !tab.pinned && isContentScriptAllowed(tab.url)) this.addTab({
+						id: tab.id,
+						isInitial: tab.id === this.initialTabId,
+						url: tab.url,
+						title: tab.title,
+						status: tab.status
+					});
 					if (this.tabs.find((t) => t.id === this.initialTabId)) {
 						this.currentTabId = this.initialTabId;
 						await this.createTabGroup([this.initialTabId]);
@@ -11586,7 +9566,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					const info = await sendMessage({
 						type: "TAB_CONTROL",
 						action: "get_tab_info",
-						payload: { tabId: this.initialTabId },
+						payload: { tabId: this.initialTabId }
 					});
 					if (isContentScriptAllowed(info.url) && !info.pinned) {
 						this.currentTabId = this.initialTabId;
@@ -11595,7 +9575,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 							isInitial: true,
 							url: info.url,
 							title: info.title,
-							status: info.status,
+							status: info.status
 						});
 						await this.createTabGroup([this.initialTabId]);
 					}
@@ -11607,47 +9587,47 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				const result = await sendMessage({
 					type: "TAB_CONTROL",
 					action: "open_new_tab",
-					payload: { url },
+					payload: { url }
 				});
-				if (!result.success)
-					throw new Error(`Failed to open new tab: ${result.error}`);
+				if (!result.success) throw new Error(`Failed to open new tab: ${result.error}`);
 				const tabId = result.tabId;
 				this.addTab({
 					id: tabId,
-					isInitial: false,
+					isInitial: false
 				});
 				await this.switchToTab(tabId);
 				if (!this.tabGroupId) await this.createTabGroup([tabId]);
-				else
-					await sendMessage({
-						type: "TAB_CONTROL",
-						action: "add_tab_to_group",
-						payload: {
-							tabId: result.tabId,
-							groupId: this.tabGroupId,
-						},
-					});
+				else await sendMessage({
+					type: "TAB_CONTROL",
+					action: "add_tab_to_group",
+					payload: {
+						tabId: result.tabId,
+						groupId: this.tabGroupId
+					}
+				});
 				await this.waitUntilTabLoaded(tabId);
 				return `✅ Opened new tab ID ${tabId} with URL ${url}`;
 			}
 			async switchToTab(tabId) {
 				debug("switchToTab", tabId);
-				if (!this.tabs.find((t) => t.id === tabId))
-					throw new Error(`Tab ID ${tabId} not found in tab list.`);
+				if (!this.tabs.find((t) => t.id === tabId)) throw new Error(`Tab ID ${tabId} not found in tab list.`);
 				await this.updateCurrentTabId(tabId);
+				await sendMessage({
+					type: "TAB_CONTROL",
+					action: "activate_tab",
+					payload: { tabId }
+				});
 				return `✅ Switched to tab ID ${tabId}.`;
 			}
 			async closeTab(tabId) {
 				debug("closeTab", tabId);
 				const targetTab = this.tabs.find((t) => t.id === tabId);
-				if (!targetTab)
-					throw new Error(`Tab ID ${tabId} not found in tab list.`);
-				if (targetTab.isInitial)
-					throw new Error(`Cannot close the initial tab ID ${tabId}.`);
+				if (!targetTab) throw new Error(`Tab ID ${tabId} not found in tab list.`);
+				if (targetTab.isInitial) throw new Error(`Cannot close the initial tab ID ${tabId}.`);
 				const result = await sendMessage({
 					type: "TAB_CONTROL",
 					action: "close_tab",
-					payload: { tabId },
+					payload: { tabId }
 				});
 				if (result.success) {
 					this.tabs = this.tabs.filter((t) => t.id !== tabId);
@@ -11657,8 +9637,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 						else await this.updateCurrentTabId(null);
 					}
 					return `✅ Closed tab ID ${tabId}.`;
-				} else
-					throw new Error(`Failed to close tab ID ${tabId}: ${result.error}`);
+				} else throw new Error(`Failed to close tab ID ${tabId}: ${result.error}`);
 			}
 			async createTabGroup(tabIds) {
 				const result = await sendMessage({
@@ -11666,11 +9645,10 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					action: "create_tab_group",
 					payload: {
 						tabIds,
-						windowId: this.windowId,
-					},
+						windowId: this.windowId
+					}
 				});
-				if (!result?.success)
-					throw new Error(`Failed to create tab group: ${result?.error}`);
+				if (!result?.success) throw new Error(`Failed to create tab group: ${result?.error}`);
 				this.tabGroupId = result.groupId;
 				await sendMessage({
 					type: "TAB_CONTROL",
@@ -11678,11 +9656,11 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					payload: {
 						groupId: this.tabGroupId,
 						properties: {
-							title: `PageAgent(${this.task})`,
+							title: `Cícero(${this.task})`,
 							color: randomColor(),
-							collapsed: false,
-						},
-					},
+							collapsed: false
+						}
+					}
 				});
 			}
 			addTab(meta) {
@@ -11696,16 +9674,15 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			}
 			async getTabInfo(tabId) {
 				const tabMeta = this.tabs.find((t) => t.id === tabId);
-				if (tabMeta && tabMeta.url && tabMeta.title)
-					return {
-						title: tabMeta.title,
-						url: tabMeta.url,
-					};
+				if (tabMeta && tabMeta.url && tabMeta.title) return {
+					title: tabMeta.title,
+					url: tabMeta.url
+				};
 				debug("getTabInfo: pulling from background script", tabId);
 				const result = await sendMessage({
 					type: "TAB_CONTROL",
 					action: "get_tab_info",
-					payload: { tabId },
+					payload: { tabId }
 				});
 				if (tabMeta) {
 					tabMeta.url = result.url;
@@ -11714,37 +9691,30 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				return result;
 			}
 			async summarizeTabs() {
-				const summaries = [
-					`| Tab ID | URL | Title | Current |`,
-					`|-----|-----|-----|-----|`,
-				];
+				const summaries = [`| Tab ID | URL | Title | Current |`, `|-----|-----|-----|-----|`];
 				for (const tab of this.tabs) {
 					const { title, url } = await this.getTabInfo(tab.id);
-					summaries.push(
-						`| ${tab.id} | ${url} | ${title} | ${this.currentTabId === tab.id ? "✅" : ""} |`,
-					);
+					summaries.push(`| ${tab.id} | ${url} | ${title} | ${this.currentTabId === tab.id ? "✅" : ""} |`);
 				}
-				if (!this.tabs.length)
-					summaries.push("\nNo tabs available. Open a tab if needed.");
+				if (!this.tabs.length) summaries.push("\nNo tabs available. Open a tab if needed.");
 				return summaries.join("\n");
 			}
 			async waitUntilTabLoaded(tabId) {
 				const tab = this.tabs.find((t) => t.id === tabId);
 				if (!tab) throw new Error(`Tab ID ${tabId} not found in tab list.`);
-				if (tab.status === "unloaded")
-					throw new Error(`Tab ID ${tabId} is unloaded.`);
+				if (tab.status === "unloaded") throw new Error(`Tab ID ${tabId} is unloaded.`);
 				if (tab.status === "complete") return;
 				debug("waitUntilTabLoaded", tabId);
 				await waitUntil(() => tab.status === "complete", 4e3);
 			}
 			/**
-			 * Connect to background SW via port to receive tab change events.
-			 *
-			 * @note Port is 1:1 (runtime.connect → background SW has no frames),
-			 * so onDisconnect fires exactly once and we can safely reconnect.
-			 * Reconnection may miss events during the gap.
-			 * TODO: refresh this.tabs from background after reconnect to stay consistent.
-			 */
+			* Connect to background SW via port to receive tab change events.
+			*
+			* @note Port is 1:1 (runtime.connect → background SW has no frames),
+			* so onDisconnect fires exactly once and we can safely reconnect.
+			* Reconnection may miss events during the gap.
+			* TODO: refresh this.tabs from background after reconnect to stay consistent.
+			*/
 			connectTabEvents() {
 				this.port = chrome.runtime.connect({ name: "tab-events" });
 				this.port.onMessage.addListener((message) => {
@@ -11752,14 +9722,10 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					this.portRetries = 0;
 					if (message.action === "created") {
 						const tab = message.payload.tab;
-						if (
-							(this.experimentalIncludeAllTabs ||
-								tab.groupId === this.tabGroupId) &&
-							tab.id != null
-						) {
+						if ((this.experimentalIncludeAllTabs || tab.groupId === this.tabGroupId) && tab.id != null) {
 							this.addTab({
 								id: tab.id,
-								isInitial: false,
+								isInitial: false
 							});
 							this.switchToTab(tab.id);
 						}
@@ -11787,10 +9753,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					this.port = void 0;
 					if (this.disposed) return;
 					if (this.portRetries >= 7) {
-						console.error(
-							PREFIX,
-							"tab events port failed after 7 retries, giving up",
-						);
+						console.error(PREFIX, "tab events port failed after 7 retries, giving up");
 						return;
 					}
 					debug("port disconnected, reconnecting...");
@@ -11812,9 +9775,234 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			"green",
 			"pink",
 			"purple",
-			"cyan",
+			"cyan"
 		];
-	});
+	}));
+	//#endregion
+	//#region src/agent/browserTools.ts
+	/** Normalize any thrown value into a readable string. */
+	function errorMessage$1(error) {
+		return error instanceof Error ? error.message : String(error);
+	}
+	/** The current tab id the agent is operating on, if any. */
+	async function resolveTabId$1(core) {
+		const fromController = core.pageController?.currentTabId;
+		if (typeof fromController === "number") return fromController;
+		const [tab] = await chrome.tabs.query({
+			active: true,
+			lastFocusedWindow: true
+		});
+		return tab?.id ?? null;
+	}
+	/** Resolve the current tab (for defaulting url/title), or null. */
+	async function resolveCurrentTab(core) {
+		try {
+			const tabId = await resolveTabId$1(core);
+			if (tabId == null) return null;
+			return await chrome.tabs.get(tabId);
+		} catch {
+			return null;
+		}
+	}
+	/** Prefix a bare host/path with https:// so chrome APIs accept it. */
+	function normalizeUrl(url) {
+		return /^[a-z]+:\/\//i.test(url) ? url : `https://${url}`;
+	}
+	/**
+	* Create the browser-capability toolbelt. Wired into `PageAgentCore` via
+	* `customTools` alongside the page/tab tools.
+	*/
+	function createBrowserTools() {
+		return {
+			download_file: tool({
+				description: "Download a file from a direct URL to the computer (no dialog — it goes to the Downloads folder). Use for \"baixe este arquivo/foto/PDF\". Example: { \"url\": \"https://site.com/contrato.pdf\" }.",
+				inputSchema: object({
+					url: string().describe("Direct URL of the file to download"),
+					filename: string().optional().describe("Optional name to save the file as, e.g. \"contrato.pdf\"")
+				}),
+				execute: async function(args, ctx) {
+					try {
+						ctx.signal.throwIfAborted();
+						if (typeof chrome === "undefined" || !chrome.downloads) return "O download não está disponível neste contexto.";
+						const url = normalizeUrl(args.url);
+						if (typeof await chrome.downloads.download({
+							url,
+							filename: args.filename,
+							saveAs: false
+						}) !== "number") return `Não consegui iniciar o download de "${url}".`;
+						return `Comecei a baixar ${args.filename ? `"${args.filename}"` : "o arquivo"}. Ele vai para a pasta de Downloads.`;
+					} catch (error) {
+						return `Não consegui baixar o arquivo: ${errorMessage$1(error)}`;
+					}
+				}
+			}),
+			save_bookmark: tool({
+				description: "Save (bookmark) a page so it is easy to find later. If no URL is given, bookmarks the page currently open. Example: { \"title\": \"Folha de S.Paulo\" }.",
+				inputSchema: object({
+					url: string().optional().describe("URL to bookmark; defaults to the current page"),
+					title: string().optional().describe("Name for the bookmark; defaults to the page title")
+				}),
+				execute: async function(args, ctx) {
+					try {
+						ctx.signal.throwIfAborted();
+						if (typeof chrome === "undefined" || !chrome.bookmarks) return "Os favoritos não estão disponíveis neste contexto.";
+						const current = args.url ? null : await resolveCurrentTab(this);
+						const url = args.url ? normalizeUrl(args.url) : current?.url;
+						const title = args.title || current?.title || url;
+						if (!url) return "Não há nenhuma página para salvar nos favoritos.";
+						await chrome.bookmarks.create({
+							title,
+							url
+						});
+						return `Salvei "${title}" nos favoritos.`;
+					} catch (error) {
+						return `Não consegui salvar nos favoritos: ${errorMessage$1(error)}`;
+					}
+				}
+			}),
+			add_to_reading_list: tool({
+				description: "Add a page to the Chrome reading list to read later. If no URL is given, uses the page currently open.",
+				inputSchema: object({
+					url: string().optional().describe("URL to add; defaults to the current page"),
+					title: string().optional().describe("Title; defaults to the page title")
+				}),
+				execute: async function(args, ctx) {
+					try {
+						ctx.signal.throwIfAborted();
+						if (typeof chrome === "undefined" || !chrome.readingList) return "A lista de leitura não está disponível neste contexto.";
+						const current = args.url ? null : await resolveCurrentTab(this);
+						const url = args.url ? normalizeUrl(args.url) : current?.url;
+						const title = args.title || current?.title || url;
+						if (!url) return "Não há nenhuma página para adicionar à lista de leitura.";
+						await chrome.readingList.addEntry({
+							url,
+							title,
+							hasBeenRead: false
+						});
+						return `Adicionei "${title}" à lista de leitura.`;
+					} catch (error) {
+						return `Não consegui adicionar à lista de leitura: ${errorMessage$1(error)}`;
+					}
+				}
+			}),
+			recent_sites: tool({
+				description: "List the sites recently visited (most recent first), as \"Título — url\" lines. Use to answer \"que sites eu vi antes?\" or to find a page to go back to.",
+				inputSchema: object({ query: string().optional().describe("Optional words to filter the history by, e.g. \"folha\"") }),
+				execute: async function(args, ctx) {
+					try {
+						ctx.signal.throwIfAborted();
+						if (typeof chrome === "undefined" || !chrome.history) return "O histórico não está disponível neste contexto.";
+						const items = await chrome.history.search({
+							text: args.query ?? "",
+							maxResults: 15,
+							startTime: 0
+						});
+						if (!items.length) return "Não encontrei sites recentes no histórico.";
+						return `Sites recentes:\n${items.filter((it) => it.url).map((it) => `${(it.title || it.url || "").slice(0, 70)} — ${it.url}`).join("\n")}`;
+					} catch (error) {
+						return `Não consegui ler o histórico: ${errorMessage$1(error)}`;
+					}
+				}
+			}),
+			open_recent: tool({
+				description: "Find a recently visited site by some words and open it in the current tab. Perfect for \"volta pro site de antes\" / \"abre de novo aquele site da folha\". Example: { \"query\": \"folha\" }.",
+				inputSchema: object({ query: string().describe("Words that identify the site, e.g. \"folha\" or \"gmail\"") }),
+				execute: async function(args, ctx) {
+					try {
+						ctx.signal.throwIfAborted();
+						if (typeof chrome === "undefined" || !chrome.history) return "O histórico não está disponível neste contexto.";
+						const target = (await chrome.history.search({
+							text: args.query,
+							maxResults: 1,
+							startTime: 0
+						})).find((it) => it.url);
+						if (!target?.url) return `Não encontrei nenhum site recente com "${args.query}".`;
+						const tabId = await resolveTabId$1(this);
+						if (tabId == null) await chrome.tabs.create({
+							url: target.url,
+							active: true
+						});
+						else await chrome.tabs.update(tabId, {
+							url: target.url,
+							active: true
+						});
+						return `Abrindo "${target.title || target.url}".`;
+					} catch (error) {
+						return `Não consegui abrir o site recente: ${errorMessage$1(error)}`;
+					}
+				}
+			}),
+			top_sites: tool({
+				description: "List the most visited sites (the ones that show on the new-tab page), as \"Título — url\" lines. Use for \"abre um dos meus sites preferidos\".",
+				inputSchema: object({}),
+				execute: async function(_args, ctx) {
+					try {
+						ctx.signal.throwIfAborted();
+						if (typeof chrome === "undefined" || !chrome.topSites) return "Os sites mais visitados não estão disponíveis neste contexto.";
+						const items = await chrome.topSites.get();
+						if (!items.length) return "Não encontrei sites mais visitados.";
+						return `Sites mais visitados:\n${items.slice(0, 12).map((it) => `${(it.title || it.url).slice(0, 70)} — ${it.url}`).join("\n")}`;
+					} catch (error) {
+						return `Não consegui obter os sites mais visitados: ${errorMessage$1(error)}`;
+					}
+				}
+			}),
+			notify: tool({
+				description: "Show a system notification (with the operating system's sound) to get her attention — use it when a task is finished or when you need her to look at the screen to confirm something. Example: { \"message\": \"Terminei de preencher o formulário.\" }.",
+				inputSchema: object({
+					message: string().describe("The message to show"),
+					title: string().optional().describe("Optional title; defaults to \"Cícero\"")
+				}),
+				execute: async function(args, ctx) {
+					try {
+						ctx.signal.throwIfAborted();
+						if (typeof chrome === "undefined" || !chrome.notifications) return "As notificações não estão disponíveis neste contexto.";
+						await chrome.notifications.create({
+							type: "basic",
+							iconUrl: chrome.runtime.getURL("assets/cicero-128.png"),
+							title: args.title || "Cícero",
+							message: args.message,
+							priority: 2
+						});
+						return `Avisei ela: "${args.message}".`;
+					} catch (error) {
+						return `Não consegui mostrar a notificação: ${errorMessage$1(error)}`;
+					}
+				}
+			}),
+			copy_text: tool({
+				description: "Copy some text to the clipboard so she can paste it elsewhere. Example: { \"text\": \"Rua das Flores, 123\" }.",
+				inputSchema: object({ text: string().describe("The text to put on the clipboard") }),
+				execute: async function(args, ctx) {
+					try {
+						ctx.signal.throwIfAborted();
+						await navigator.clipboard.writeText(args.text);
+						return "Copiei o texto para a área de transferência.";
+					} catch (error) {
+						return `Não consegui copiar o texto: ${errorMessage$1(error)}`;
+					}
+				}
+			}),
+			read_clipboard: tool({
+				description: "Read the text currently on the clipboard (what was last copied). Use when she says \"cola o que eu copiei\" / \"usa o que está copiado\".",
+				inputSchema: object({}),
+				execute: async function(_args, ctx) {
+					try {
+						ctx.signal.throwIfAborted();
+						const text = await navigator.clipboard.readText();
+						if (!text) return "A área de transferência está vazia.";
+						return `Texto copiado:\n${text.slice(0, 4e3)}`;
+					} catch (error) {
+						return `Não consegui ler a área de transferência: ${errorMessage$1(error)}`;
+					}
+				}
+			})
+		};
+	}
+	var init_browserTools = __esmMin((() => {
+		init_PageAgentCore();
+		init_v4();
+	}));
 	//#endregion
 	//#region src/agent/helperTools.ts
 	/** Normalize any thrown value into a readable string. */
@@ -11822,59 +10010,47 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		return error instanceof Error ? error.message : String(error);
 	}
 	/**
-	 * Resolve the tab id to operate on. Prefers the controller's `currentTabId`
-	 * (set by the extension), falling back to the active tab of the focused window.
-	 */
+	* Resolve the tab id to operate on. Prefers the controller's `currentTabId`
+	* (set by the extension), falling back to the active tab of the focused window.
+	*/
 	async function resolveTabId(core) {
 		const fromController = core.pageController?.currentTabId;
 		if (typeof fromController === "number") return fromController;
 		const [tab] = await chrome.tabs.query({
 			active: true,
-			lastFocusedWindow: true,
+			lastFocusedWindow: true
 		});
 		return tab?.id ?? null;
 	}
 	/**
-	 * Inject `func` into the target tab's ISOLATED world and return its result.
-	 * The function is serialized, so it cannot capture any outer scope — pass
-	 * everything it needs through `args`.
-	 */
+	* Inject `func` into the target tab's ISOLATED world and return its result.
+	* The function is serialized, so it cannot capture any outer scope — pass
+	* everything it needs through `args`.
+	*/
 	async function runInPage(tabId, func, args) {
-		return (
-			(
-				await chrome.scripting.executeScript({
-					target: { tabId },
-					world: "ISOLATED",
-					func,
-					args,
-				})
-			)?.[0]?.result ?? void 0
-		);
+		return (await chrome.scripting.executeScript({
+			target: { tabId },
+			world: "ISOLATED",
+			func,
+			args
+		}))?.[0]?.result ?? void 0;
 	}
 	/** Find and click the best visible clickable whose label contains `text`. */
 	function pageClickText(text) {
 		const needle = text.trim().toLowerCase();
-		if (!needle)
-			return {
-				ok: false,
-				label: "",
-			};
-		const candidates = Array.from(
-			document.querySelectorAll(
-				'a, button, [role="button"], input[type="submit"], input[type="button"], [onclick]',
-			),
-		);
+		if (!needle) return {
+			ok: false,
+			label: ""
+		};
+		const candidates = Array.from(document.querySelectorAll("a, button, [role=\"button\"], input[type=\"submit\"], input[type=\"button\"], [onclick]"));
 		const labelOf = (el) => {
 			const value = el.value;
 			return [
 				el.textContent || "",
 				el.getAttribute("aria-label") || "",
 				el.getAttribute("title") || "",
-				typeof value === "string" ? value : "",
-			]
-				.join(" ")
-				.replace(/\s+/g, " ")
-				.trim();
+				typeof value === "string" ? value : ""
+			].join(" ").replace(/\s+/g, " ").trim();
 		};
 		let best = null;
 		for (const el of candidates) {
@@ -11885,59 +10061,53 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			let score = 1;
 			if (haystack === needle) score = 3;
 			else if (haystack.startsWith(needle)) score = 2;
-			if (!best || score > best.score)
-				best = {
-					el,
-					label,
-					score,
-				};
+			if (!best || score > best.score) best = {
+				el,
+				label,
+				score
+			};
 			if (score === 3) break;
 		}
-		if (!best)
-			return {
-				ok: false,
-				label: "",
-			};
+		if (!best) return {
+			ok: false,
+			label: ""
+		};
 		best.el.scrollIntoView({ block: "center" });
 		best.el.click();
 		return {
 			ok: true,
-			label: best.label.slice(0, 120),
+			label: best.label.slice(0, 120)
 		};
 	}
 	/** Find an input/textarea by its label-ish text and set its value (React-safe). */
 	function pageFillField(label, value) {
 		const needle = label.trim().toLowerCase();
-		if (!needle)
-			return {
-				ok: false,
-				label: "",
-			};
-		const fields = Array.from(
-			document.querySelectorAll("input, textarea"),
-		).filter((el) => {
-			if (
-				el instanceof HTMLInputElement &&
-				["hidden", "submit", "button", "reset"].includes(el.type)
-			)
-				return false;
+		if (!needle) return {
+			ok: false,
+			label: ""
+		};
+		const fields = Array.from(document.querySelectorAll("input, textarea")).filter((el) => {
+			if (el instanceof HTMLInputElement && [
+				"hidden",
+				"submit",
+				"button",
+				"reset"
+			].includes(el.type)) return false;
 			if (el.disabled) return false;
 			return el.offsetParent !== null;
 		});
 		const labelsOf = (el) => {
 			const out = [];
 			const associated = el.labels;
-			if (associated)
-				for (const l of Array.from(associated)) out.push(l.textContent || "");
+			if (associated) for (const l of Array.from(associated)) out.push(l.textContent || "");
 			const wrapping = el.closest("label");
 			if (wrapping) out.push(wrapping.textContent || "");
 			out.push(el.getAttribute("aria-label") || "");
 			const labelledby = el.getAttribute("aria-labelledby");
-			if (labelledby)
-				for (const id of labelledby.split(/\s+/)) {
-					const ref = document.getElementById(id);
-					if (ref) out.push(ref.textContent || "");
-				}
+			if (labelledby) for (const id of labelledby.split(/\s+/)) {
+				const ref = document.getElementById(id);
+				if (ref) out.push(ref.textContent || "");
+			}
 			out.push(el.getAttribute("placeholder") || "");
 			out.push(el.getAttribute("name") || "");
 			const prev = el.previousElementSibling;
@@ -11952,26 +10122,21 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				let score = 1;
 				if (haystack === needle) score = 3;
 				else if (haystack.startsWith(needle)) score = 2;
-				if (!best || score > best.score)
-					best = {
-						el,
-						label: candidate,
-						score,
-					};
+				if (!best || score > best.score) best = {
+					el,
+					label: candidate,
+					score
+				};
 				break;
 			}
 			if (best && best.score === 3) break;
 		}
-		if (!best)
-			return {
-				ok: false,
-				label: "",
-			};
+		if (!best) return {
+			ok: false,
+			label: ""
+		};
 		const target = best.el;
-		const proto =
-			target instanceof HTMLTextAreaElement
-				? window.HTMLTextAreaElement.prototype
-				: window.HTMLInputElement.prototype;
+		const proto = target instanceof HTMLTextAreaElement ? window.HTMLTextAreaElement.prototype : window.HTMLInputElement.prototype;
 		const descriptor = Object.getOwnPropertyDescriptor(proto, "value");
 		if (descriptor && descriptor.set) descriptor.set.call(target, value);
 		else target.value = value;
@@ -11979,7 +10144,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		target.dispatchEvent(new Event("change", { bubbles: true }));
 		return {
 			ok: true,
-			label: best.label.slice(0, 120),
+			label: best.label.slice(0, 120)
 		};
 	}
 	/** Return the page's visible text. */
@@ -11990,10 +10155,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 	function pageFindText(query, doScroll) {
 		const needle = query.trim().toLowerCase();
 		if (!needle || !document.body) return false;
-		const walker = document.createTreeWalker(
-			document.body,
-			NodeFilter.SHOW_TEXT,
-		);
+		const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
 		let node = walker.nextNode();
 		while (node) {
 			if ((node.nodeValue || "").toLowerCase().includes(needle)) {
@@ -12007,15 +10169,9 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 	}
 	/** Click the first accept/close button inside a cookie/consent banner or modal. */
 	function pageDismissOverlays() {
-		const pattern =
-			/aceitar|accept|concordo|ok|got it|entendi|fechar|close|×|dismiss/i;
+		const pattern = /aceitar|accept|concordo|ok|got it|entendi|fechar|close|×|dismiss/i;
 		const containers = /* @__PURE__ */ new Set();
-		for (const el of Array.from(
-			document.querySelectorAll(
-				'[role="dialog"], [class*="cookie" i], [class*="consent" i], [id*="cookie" i], [class*="overlay" i], [class*="modal" i], [class*="banner" i]',
-			),
-		))
-			containers.add(el);
+		for (const el of Array.from(document.querySelectorAll("[role=\"dialog\"], [class*=\"cookie\" i], [class*=\"consent\" i], [id*=\"cookie\" i], [class*=\"overlay\" i], [class*=\"modal\" i], [class*=\"banner\" i]"))) containers.add(el);
 		for (const el of Array.from(document.querySelectorAll("*"))) {
 			const style = getComputedStyle(el);
 			if (style.position !== "fixed" && style.position !== "sticky") continue;
@@ -12025,56 +10181,39 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		}
 		const isShown = (el) => {
 			const style = getComputedStyle(el);
-			if (style.display === "none" || style.visibility === "hidden")
-				return false;
+			if (style.display === "none" || style.visibility === "hidden") return false;
 			const rect = el.getBoundingClientRect();
 			return rect.width > 0 && rect.height > 0;
 		};
-		const clickableSelector =
-			'button, a, [role="button"], input[type="button"], input[type="submit"]';
-		for (const container of containers)
-			for (const el of Array.from(
-				container.querySelectorAll(clickableSelector),
-			)) {
-				const value = el.value;
-				const text = [
-					el.textContent || "",
-					el.getAttribute("aria-label") || "",
-					typeof value === "string" ? value : "",
-				]
-					.join(" ")
-					.replace(/\s+/g, " ")
-					.trim();
-				if (!text || !pattern.test(text) || !isShown(el)) continue;
-				el.click();
-				return {
-					ok: true,
-					label: text.slice(0, 80),
-				};
-			}
+		const clickableSelector = "button, a, [role=\"button\"], input[type=\"button\"], input[type=\"submit\"]";
+		for (const container of containers) for (const el of Array.from(container.querySelectorAll(clickableSelector))) {
+			const value = el.value;
+			const text = [
+				el.textContent || "",
+				el.getAttribute("aria-label") || "",
+				typeof value === "string" ? value : ""
+			].join(" ").replace(/\s+/g, " ").trim();
+			if (!text || !pattern.test(text) || !isShown(el)) continue;
+			el.click();
+			return {
+				ok: true,
+				label: text.slice(0, 80)
+			};
+		}
 		return {
 			ok: false,
-			label: "",
+			label: ""
 		};
 	}
 	/** Return up to ~40 visible links/buttons as a navigation map. */
 	function pageListActions() {
-		const selector =
-			'a, button, [role="button"], input[type="submit"], input[type="button"]';
+		const selector = "a, button, [role=\"button\"], input[type=\"submit\"], input[type=\"button\"]";
 		const out = [];
 		const seen = /* @__PURE__ */ new Set();
 		for (const el of Array.from(document.querySelectorAll(selector))) {
 			if (el.offsetParent === null) continue;
 			const value = el.value;
-			const text = (
-				el.textContent ||
-				el.getAttribute("aria-label") ||
-				el.getAttribute("title") ||
-				(typeof value === "string" ? value : "") ||
-				""
-			)
-				.replace(/\s+/g, " ")
-				.trim();
+			const text = (el.textContent || el.getAttribute("aria-label") || el.getAttribute("title") || (typeof value === "string" ? value : "") || "").replace(/\s+/g, " ").trim();
 			if (!text) continue;
 			const line = `[${text.slice(0, 60)}] (${el.tagName.toLowerCase()})`;
 			if (seen.has(line)) continue;
@@ -12090,170 +10229,208 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		return {
 			title: document.title || "",
 			url: location.href,
-			heading: heading
-				? (heading.textContent || "").replace(/\s+/g, " ").trim()
-				: "",
+			heading: heading ? (heading.textContent || "").replace(/\s+/g, " ").trim() : ""
 		};
 	}
 	/**
-	 * Create the helper toolbelt. The orchestrator wires the returned record into
-	 * `PageAgentCore` via `customTools`.
-	 */
+	* Scroll the page (or its largest scrollable region) up/down. Returns how far it
+	* actually moved plus whether it reached an edge, so the tool can report honestly
+	* ("já está no fim") instead of silently doing nothing.
+	*/
+	function pageScroll(direction, amount) {
+		const goingDown = direction !== "up";
+		const pickScroller = () => {
+			const doc = document.scrollingElement || document.documentElement;
+			if (doc && doc.scrollHeight > doc.clientHeight + 4) return doc;
+			let best = null;
+			let bestArea = 0;
+			for (const el of Array.from(document.querySelectorAll("*"))) {
+				const overflowY = getComputedStyle(el).overflowY;
+				if (overflowY !== "auto" && overflowY !== "scroll" && overflowY !== "overlay") continue;
+				if (el.scrollHeight <= el.clientHeight + 4) continue;
+				const rect = el.getBoundingClientRect();
+				const area = rect.width * rect.height;
+				if (area > bestArea) {
+					best = el;
+					bestArea = area;
+				}
+			}
+			return best || doc;
+		};
+		const scroller = pickScroller();
+		const viewport = scroller.clientHeight || window.innerHeight || 800;
+		const maxTop = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+		const before = scroller.scrollTop;
+		let target;
+		if (amount === "bottom") target = maxTop;
+		else if (amount === "top") target = 0;
+		else target = before + viewport * (amount === "half" ? .5 : .9) * (goingDown ? 1 : -1);
+		scroller.scrollTop = Math.max(0, Math.min(target, maxTop));
+		const after = scroller.scrollTop;
+		return {
+			moved: Math.round(after - before),
+			atBottom: after >= maxTop - 2,
+			atTop: after <= 2
+		};
+	}
+	/**
+	* Create the helper toolbelt. The orchestrator wires the returned record into
+	* `PageAgentCore` via `customTools`.
+	*/
 	function createHelperTools() {
 		return {
 			click_text: tool({
-				description:
-					'Click the best matching visible link, button, or clickable element whose visible text, aria-label, title, or value contains the given text (case-insensitive; exact match preferred). Prefer this over guessing element indexes. Example: { "text": "Entrar" } clicks the login button.',
-				inputSchema: object({
-					text: string().describe(
-						'Visible text of the element to click, e.g. "Entrar"',
-					),
-				}),
-				execute: async function (args, ctx) {
+				description: "Click the best matching visible link, button, or clickable element whose visible text, aria-label, title, or value contains the given text (case-insensitive; exact match preferred). Prefer this over guessing element indexes. Example: { \"text\": \"Entrar\" } clicks the login button.",
+				inputSchema: object({ text: string().describe("Visible text of the element to click, e.g. \"Entrar\"") }),
+				execute: async function(args, ctx) {
 					try {
 						ctx.signal.throwIfAborted();
 						const tabId = await resolveTabId(this);
 						if (tabId == null) return NO_TAB_MESSAGE;
 						const res = await runInPage(tabId, pageClickText, [args.text]);
-						if (!res || !res.ok)
-							return `Não encontrei nenhum elemento clicável contendo "${args.text}".`;
+						if (!res || !res.ok) return `Não encontrei nenhum elemento clicável contendo "${args.text}".`;
 						return `Cliquei em "${res.label}".`;
 					} catch (error) {
 						return `Erro ao tentar clicar em "${args.text}": ${errorMessage(error)}`;
 					}
-				},
+				}
 			}),
 			fill_field: tool({
-				description:
-					'Fill a form input or textarea identified by its label text (matched against the associated <label>, wrapping label, aria-label, placeholder, name, or nearby text). Sets the value the way a real user would so React/Vue forms update. Example: { "label": "E-mail", "value": "ana@exemplo.com" }.',
+				description: "Fill a form input or textarea identified by its label text (matched against the associated <label>, wrapping label, aria-label, placeholder, name, or nearby text). Sets the value the way a real user would so React/Vue forms update. Example: { \"label\": \"E-mail\", \"value\": \"ana@exemplo.com\" }.",
 				inputSchema: object({
-					label: string().describe(
-						'The field label or placeholder, e.g. "E-mail"',
-					),
-					value: string().describe("The text to type into the field"),
+					label: string().describe("The field label or placeholder, e.g. \"E-mail\""),
+					value: string().describe("The text to type into the field")
 				}),
-				execute: async function (args, ctx) {
+				execute: async function(args, ctx) {
 					try {
 						ctx.signal.throwIfAborted();
 						const tabId = await resolveTabId(this);
 						if (tabId == null) return NO_TAB_MESSAGE;
-						const res = await runInPage(tabId, pageFillField, [
-							args.label,
-							args.value,
-						]);
-						if (!res || !res.ok)
-							return `Não encontrei nenhum campo correspondente a "${args.label}".`;
+						const res = await runInPage(tabId, pageFillField, [args.label, args.value]);
+						if (!res || !res.ok) return `Não encontrei nenhum campo correspondente a "${args.label}".`;
 						return `Preenchi o campo "${res.label}" com "${args.value}".`;
 					} catch (error) {
 						return `Erro ao preencher o campo "${args.label}": ${errorMessage(error)}`;
 					}
-				},
+				}
 			}),
 			read_page_text: tool({
-				description:
-					"Read and return the visible text of the current page (cleaned and truncated to ~6000 characters). Use this to understand what is on the page before deciding what to do.",
+				description: "Read and return the visible text of the current page (cleaned and truncated to ~6000 characters). Use this to understand what is on the page before deciding what to do.",
 				inputSchema: object({}),
-				execute: async function (_args, ctx) {
+				execute: async function(_args, ctx) {
 					try {
 						ctx.signal.throwIfAborted();
 						const tabId = await resolveTabId(this);
 						if (tabId == null) return NO_TAB_MESSAGE;
-						const cleaned = ((await runInPage(tabId, pageReadText, [])) ?? "")
-							.replace(/[ \t]+\n/g, "\n")
-							.replace(/\n{3,}/g, "\n\n")
-							.trim();
+						const cleaned = (await runInPage(tabId, pageReadText, []) ?? "").replace(/[ \t]+\n/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
 						if (!cleaned) return "A página não contém texto legível.";
 						const limit = 6e3;
-						if (cleaned.length > limit)
-							return `${cleaned.slice(0, limit)}\n\n[...texto truncado em ${limit} caracteres]`;
+						if (cleaned.length > limit) return `${cleaned.slice(0, limit)}\n\n[...texto truncado em ${limit} caracteres]`;
 						return cleaned;
 					} catch (error) {
 						return `Erro ao ler a página: ${errorMessage(error)}`;
 					}
-				},
+				}
 			}),
 			find_text: tool({
-				description:
-					"Check whether the given text appears anywhere on the current page. If found, scrolls it into view. Returns found/not-found.",
-				inputSchema: object({
-					query: string().describe("Text to look for on the page"),
-				}),
-				execute: async function (args, ctx) {
+				description: "Check whether the given text appears anywhere on the current page. If found, scrolls it into view. Returns found/not-found.",
+				inputSchema: object({ query: string().describe("Text to look for on the page") }),
+				execute: async function(args, ctx) {
 					try {
 						ctx.signal.throwIfAborted();
 						const tabId = await resolveTabId(this);
 						if (tabId == null) return NO_TAB_MESSAGE;
-						return (await runInPage(tabId, pageFindText, [args.query, true]))
-							? `Encontrei o texto "${args.query}" na página.`
-							: `Não encontrei o texto "${args.query}" na página.`;
+						return await runInPage(tabId, pageFindText, [args.query, true]) ? `Encontrei o texto "${args.query}" na página.` : `Não encontrei o texto "${args.query}" na página.`;
 					} catch (error) {
 						return `Erro ao procurar o texto "${args.query}": ${errorMessage(error)}`;
 					}
-				},
+				}
+			}),
+			scroll_page: tool({
+				description: "Scroll the page to reveal content that is off-screen. Use this whenever the page continues below (or above) what is currently visible — e.g. to read more of an article or see more search results. direction: \"down\" (default) or \"up\". amount: \"page\" (default, ~90% of the screen), \"half\", \"bottom\" (jump to the very end of the page), or \"top\" (jump to the very start).",
+				inputSchema: object({
+					direction: _enum(["down", "up"]).optional().default("down"),
+					amount: _enum([
+						"page",
+						"half",
+						"bottom",
+						"top"
+					]).optional().default("page")
+				}),
+				execute: async function(args, ctx) {
+					try {
+						ctx.signal.throwIfAborted();
+						const tabId = await resolveTabId(this);
+						if (tabId == null) return NO_TAB_MESSAGE;
+						const res = await runInPage(tabId, pageScroll, [args.direction, args.amount]);
+						if (!res) return "Não consegui rolar a página.";
+						if (res.moved === 0) {
+							if (args.direction === "up" || args.amount === "top") return res.atTop ? "A página já está no topo, não dá para rolar mais para cima." : "Não consegui rolar a página para cima.";
+							return res.atBottom ? "A página já está no fim, não dá para rolar mais para baixo." : "Não consegui rolar a página para baixo.";
+						}
+						let message = `Rolei a página ${res.moved > 0 ? "para baixo" : "para cima"} ${Math.abs(res.moved)} pixels.`;
+						if (res.atBottom) message += " Cheguei ao fim da página.";
+						else if (res.atTop) message += " Cheguei ao topo da página.";
+						return message;
+					} catch (error) {
+						return `Erro ao rolar a página: ${errorMessage(error)}`;
+					}
+				}
 			}),
 			dismiss_overlays: tool({
-				description:
-					"Try to close the first visible cookie banner, consent notice, or modal dialog by clicking its accept/close/dismiss button. Conservative: clicks at most one element. Use when a popup is blocking the page.",
+				description: "Try to close the first visible cookie banner, consent notice, or modal dialog by clicking its accept/close/dismiss button. Conservative: clicks at most one element. Use when a popup is blocking the page.",
 				inputSchema: object({}),
-				execute: async function (_args, ctx) {
+				execute: async function(_args, ctx) {
 					try {
 						ctx.signal.throwIfAborted();
 						const tabId = await resolveTabId(this);
 						if (tabId == null) return NO_TAB_MESSAGE;
 						const res = await runInPage(tabId, pageDismissOverlays, []);
-						if (!res || !res.ok)
-							return "Nenhum banner ou pop-up para fechar foi encontrado.";
+						if (!res || !res.ok) return "Nenhum banner ou pop-up para fechar foi encontrado.";
 						return `Fechei um pop-up clicando em "${res.label}".`;
 					} catch (error) {
 						return `Erro ao tentar fechar pop-ups: ${errorMessage(error)}`;
 					}
-				},
+				}
 			}),
 			list_actions: tool({
-				description:
-					'List up to ~40 visible links and buttons on the page as "[text] (tag)" lines — a quick map of what can be clicked. Use this to discover available navigation when unsure what to do next.',
+				description: "List up to ~40 visible links and buttons on the page as \"[text] (tag)\" lines — a quick map of what can be clicked. Use this to discover available navigation when unsure what to do next.",
 				inputSchema: object({}),
-				execute: async function (_args, ctx) {
+				execute: async function(_args, ctx) {
 					try {
 						ctx.signal.throwIfAborted();
 						const tabId = await resolveTabId(this);
 						if (tabId == null) return NO_TAB_MESSAGE;
-						const actions = (await runInPage(tabId, pageListActions, [])) ?? [];
-						if (actions.length === 0)
-							return "Não encontrei links ou botões visíveis na página.";
+						const actions = await runInPage(tabId, pageListActions, []) ?? [];
+						if (actions.length === 0) return "Não encontrei links ou botões visíveis na página.";
 						return `Ações disponíveis na página:\n${actions.join("\n")}`;
 					} catch (error) {
 						return `Erro ao listar as ações da página: ${errorMessage(error)}`;
 					}
-				},
+				}
 			}),
 			page_info: tool({
-				description:
-					"Return the current page title, URL, and first heading (h1/h2). Use this to confirm which page you are on.",
+				description: "Return the current page title, URL, and first heading (h1/h2). Use this to confirm which page you are on.",
 				inputSchema: object({}),
-				execute: async function (_args, ctx) {
+				execute: async function(_args, ctx) {
 					try {
 						ctx.signal.throwIfAborted();
 						const tabId = await resolveTabId(this);
 						if (tabId == null) return NO_TAB_MESSAGE;
 						const info = await runInPage(tabId, pageInfo, []);
 						if (!info) return "Não foi possível obter informações da página.";
-						const lines = [
-							`Título: ${info.title || "(sem título)"}`,
-							`URL: ${info.url}`,
-						];
+						const lines = [`Título: ${info.title || "(sem título)"}`, `URL: ${info.url}`];
 						if (info.heading) lines.push(`Cabeçalho: ${info.heading}`);
 						return lines.join("\n");
 					} catch (error) {
 						return `Erro ao obter informações da página: ${errorMessage(error)}`;
 					}
-				},
+				}
 			}),
 			go_back: tool({
-				description:
-					"Go back to the previous page in this tab's history (the browser Back button). Use THIS to go back — never run JavaScript like history.back(), which is blocked on many sites.",
+				description: "Go back to the previous page in this tab's history (the browser Back button). Use THIS to go back — never run JavaScript like history.back(), which is blocked on many sites.",
 				inputSchema: object({}),
-				execute: async function (_args, ctx) {
+				execute: async function(_args, ctx) {
 					try {
 						ctx.signal.throwIfAborted();
 						const tabId = await resolveTabId(this);
@@ -12263,13 +10440,12 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					} catch (error) {
 						return `Não consegui voltar para a página anterior: ${errorMessage(error)}`;
 					}
-				},
+				}
 			}),
 			go_forward: tool({
-				description:
-					"Go forward to the next page in this tab's history (the browser Forward button).",
+				description: "Go forward to the next page in this tab's history (the browser Forward button).",
 				inputSchema: object({}),
-				execute: async function (_args, ctx) {
+				execute: async function(_args, ctx) {
 					try {
 						ctx.signal.throwIfAborted();
 						const tabId = await resolveTabId(this);
@@ -12279,12 +10455,12 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					} catch (error) {
 						return `Não consegui avançar: ${errorMessage(error)}`;
 					}
-				},
+				}
 			}),
 			reload_page: tool({
 				description: "Reload (refresh) the current page.",
 				inputSchema: object({}),
-				execute: async function (_args, ctx) {
+				execute: async function(_args, ctx) {
 					try {
 						ctx.signal.throwIfAborted();
 						const tabId = await resolveTabId(this);
@@ -12294,46 +10470,31 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					} catch (error) {
 						return `Não consegui recarregar a página: ${errorMessage(error)}`;
 					}
-				},
+				}
 			}),
 			go_to_url: tool({
-				description:
-					'Navigate the current tab to a URL (the address bar). Use THIS to open a website — never run JavaScript to change location. Example: { "url": "google.com" }.',
-				inputSchema: object({
-					url: string().describe(
-						'The address to open, e.g. "google.com" or "https://gmail.com"',
-					),
-				}),
-				execute: async function (args, ctx) {
+				description: "Navigate the current tab to a URL (the address bar). Use THIS to open a website — never run JavaScript to change location. Example: { \"url\": \"google.com\" }.",
+				inputSchema: object({ url: string().describe("The address to open, e.g. \"google.com\" or \"https://gmail.com\"") }),
+				execute: async function(args, ctx) {
 					try {
 						ctx.signal.throwIfAborted();
 						const tabId = await resolveTabId(this);
 						if (tabId == null) return NO_TAB_MESSAGE;
-						const url = /^[a-z]+:\/\//i.test(args.url)
-							? args.url
-							: `https://${args.url}`;
+						const url = /^[a-z]+:\/\//i.test(args.url) ? args.url : `https://${args.url}`;
 						await chrome.tabs.update(tabId, { url });
 						return `Abrindo ${url}.`;
 					} catch (error) {
 						return `Não consegui abrir "${args.url}": ${errorMessage(error)}`;
 					}
-				},
+				}
 			}),
 			wait_for_text: tool({
-				description:
-					"Wait until the given text appears anywhere on the page, polling for up to `seconds` seconds (default 8, max 30). Use after an action that loads content asynchronously. Returns as soon as the text is found, or a timeout message.",
+				description: "Wait until the given text appears anywhere on the page, polling for up to `seconds` seconds (default 8, max 30). Use after an action that loads content asynchronously. Returns as soon as the text is found, or a timeout message.",
 				inputSchema: object({
-					text: string().describe(
-						'Text to wait for, e.g. "Pagamento confirmado"',
-					),
-					seconds: number()
-						.min(1)
-						.max(30)
-						.optional()
-						.default(8)
-						.describe("How many seconds to keep polling (default 8, max 30)"),
+					text: string().describe("Text to wait for, e.g. \"Pagamento confirmado\""),
+					seconds: number().min(1).max(30).optional().default(8).describe("How many seconds to keep polling (default 8, max 30)")
 				}),
-				execute: async function (args, ctx) {
+				execute: async function(args, ctx) {
 					try {
 						const tabId = await resolveTabId(this);
 						if (tabId == null) return NO_TAB_MESSAGE;
@@ -12341,46 +10502,40 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 						const deadline = Date.now() + seconds * 1e3;
 						while (Date.now() < deadline) {
 							ctx.signal.throwIfAborted();
-							if (await runInPage(tabId, pageFindText, [args.text, true]))
-								return `O texto "${args.text}" apareceu na página.`;
+							if (await runInPage(tabId, pageFindText, [args.text, true])) return `O texto "${args.text}" apareceu na página.`;
 							await new Promise((resolve) => setTimeout(resolve, 500));
 						}
 						return `O texto "${args.text}" não apareceu após ${seconds} segundos.`;
 					} catch (error) {
 						return `Erro ao aguardar o texto "${args.text}": ${errorMessage(error)}`;
 					}
-				},
-			}),
+				}
+			})
 		};
 	}
 	var NO_TAB_MESSAGE;
-	var init_helperTools = __esmMin(() => {
+	var init_helperTools = __esmMin((() => {
 		init_PageAgentCore();
 		init_v4();
-		NO_TAB_MESSAGE =
-			"Não há nenhuma aba ativa para executar esta ação. Abra ou selecione uma página primeiro.";
-	});
+		NO_TAB_MESSAGE = "Não há nenhuma aba ativa para executar esta ação. Abra ou selecione uma página primeiro.";
+	}));
 	//#endregion
 	//#region src/agent/system_prompt.md?raw
 	var system_prompt_default;
-	var init_system_prompt = __esmMin(() => {
-		system_prompt_default =
-			'You are an AI agent designed to operate in an iterative loop to automate browser tasks. Your ultimate goal is accomplishing the task provided in <user_request>.\n\n<intro>\nYou excel at following tasks:\n1. Navigating complex websites and extracting precise information\n2. Automating form submissions and interactive web actions\n3. Gathering and saving information \n4. Operate effectively in an agent loop\n5. Efficiently performing diverse web tasks\n</intro>\n\n<language_settings>\n- Default working language: **English**\n- Use the language that user is using. Return in user\'s language.\n</language_settings>\n\n<input>\nAt every step, your input will consist of: \n1. <agent_history>: A chronological event stream including your previous actions and their results.\n2. <agent_state>: Current <user_request> and <step_info>.\n3. <browser_state>: Tabs, Current Tab, Current URL, interactive elements indexed for actions, and visible page content.\n</input>\n\n<agent_history>\nAgent history will be given as a list of step information as follows:\n\n<step_{step_number}>:\nEvaluation of Previous Step: Assessment of last action\nMemory: Your memory of this step\nNext Goal: Your goal for this step\nAction Results: Your actions and their results\n</step_{step_number}>\n\nand system messages wrapped in <sys> tag.\n</agent_history>\n\n<user_request>\nUSER REQUEST: This is your ultimate objective and always remains visible.\n- This has the highest priority. Make the user happy.\n- If the user request is very specific - then carefully follow each step and dont skip or hallucinate steps.\n- If the task is open ended you can plan yourself how to get it done.\n</user_request>\n\n<browser_state>\n1. Browser State will be given as:\n\nOpen Tabs: Open tabs with their ids.\nCurrent Tab: The tab you are currently viewing.\nCurrent URL: URL of the page you are currently viewing.\nInteractive Elements: All interactive elements will be provided in format as [index]<type>text</type> where\n- index: Numeric identifier for interaction\n- type: HTML element type (button, input, etc.)\n- text: Element description\n\nExamples:\n[33]<div>User form</div>\n\\t*[35]<button aria-label=\'Submit form\'>Submit</button>\n\nNote that:\n- Only elements with numeric indexes in [] are interactive\n- (stacked) indentation (with \\t) is important and means that the element is a (html) child of the element above (with a lower index)\n- Elements tagged with `*[` are the new clickable elements that appeared on the website since the last step - if url has not changed.\n- Pure text elements without [] are not interactive.\n</browser_state>\n\n<browser_rules>\nStrictly follow these rules while using the browser and navigating the web:\n- Only interact with elements that have a numeric [index] assigned.\n- Only use indexes that are explicitly provided.\n- If the page changes after, for example, an input text action, analyze if you need to interact with new elements, e.g. selecting the right option from the list.\n- By default, only elements in the visible viewport are listed. Use scrolling actions if you suspect relevant content is offscreen which you need to interact with. Scroll ONLY if there are more pixels below or above the page.\n- You can scroll by a specific number of pages using the num_pages parameter (e.g., 0.5 for half page, 2.0 for two pages).\n- All the elements that are scrollable are marked with `data-scrollable` attribute. Including the scrollable distance in every directions. You can scroll *the element* in case some area are overflowed.\n- If a captcha appears, tell user you can not solve captcha. Finish the task and ask user to solve it.\n- If the page is not fully loaded, use the `wait` action.\n- Do not repeat one action for more than 3 times unless some conditions changed.\n- If you fill an input field and your action sequence is interrupted, most often something changed e.g. suggestions popped up under the field.\n- If the <user_request> includes specific page information such as product type, rating, price, location, etc., try to apply filters to be more efficient.\n- The <user_request> is the ultimate goal. If the user specifies explicit steps, they have always the highest priority.\n- If you input_text into a field, you might need to press enter, click the search button, or select from dropdown for completion.\n- Don\'t login into a page if you don\'t have to. Don\'t login if you don\'t have the credentials. \n- There are 2 types of tasks always first think which type of request you are dealing with:\n1. Very specific step by step instructions:\n- Follow them as very precise and don\'t skip steps. Try to complete everything as requested.\n2. Open ended tasks. Plan yourself, be creative in achieving them.\n- If you get stuck e.g. with logins or captcha in open-ended tasks you can re-evaluate the task and try alternative ways, e.g. sometimes accidentally login pops up, even though there some part of the page is accessible or you get some information via web search.\n</browser_rules>\n\n<task_completion_rules>\nYou must call the `done` action in one of three cases:\n- When you have fully completed the USER REQUEST.\n- When you reach the final allowed step (`max_steps`), even if the task is incomplete.\n- When you feel stuck or unable to solve user request. Or user request is not clear or contains inappropriate content.\n- When it is ABSOLUTELY IMPOSSIBLE to continue.\n\nThe `done` action is your opportunity to terminate and share your findings with the user.\n- Set `success` to `true` only if the full USER REQUEST has been completed with no missing components.\n- If any part of the request is missing, incomplete, or uncertain, set `success` to `false`.\n- You can use the `text` field of the `done` action to communicate your findings and to provide a coherent reply to the user and fulfill the USER REQUEST.\n- You are ONLY ALLOWED to call `done` as a single action. Don\'t call it together with other actions.\n- If the user asks for specified format, such as "return JSON with following structure", "return a list of format...", MAKE sure to use the right format in your answer.\n- If the user asks for a structured output, your `done` action\'s schema may be modified. Take this schema into account when solving the task!\n</task_completion_rules>\n\n<reasoning_rules>\nExhibit the following reasoning patterns to successfully achieve the <user_request>:\n\n- Reason about <agent_history> to track progress and context toward <user_request>.\n- Analyze the most recent "Next Goal" and "Action Result" in <agent_history> and clearly state what you previously tried to achieve.\n- Analyze all relevant items in <agent_history> and <browser_state> to understand your state.\n- Explicitly judge success/failure/uncertainty of the last action. Never assume an action succeeded just because it appears to be executed in your last step in <agent_history>. If the expected change is missing, mark the last action as failed (or uncertain) and plan a recovery.\n- Analyze whether you are stuck, e.g. when you repeat the same actions multiple times without any progress. Then consider alternative approaches e.g. scrolling for more context or ask user for help.\n- Ask user for help if you have any difficulty. Keep user in the loop.\n- If you see information relevant to <user_request>, plan saving the information to memory.\n- Always reason about the <user_request>. Make sure to carefully analyze the specific steps and information required. E.g. specific filters, specific form fields, specific information to search. Make sure to always compare the current trajectory with the user request and think carefully if thats how the user requested it.\n</reasoning_rules>\n\n<examples>\nHere are examples of good output patterns. Use them as reference but never copy them directly.\n\n<evaluation_examples>\n"evaluation_previous_goal": "Successfully navigated to the product page and found the target information. Verdict: Success"\n"evaluation_previous_goal": "Clicked the login button and user authentication form appeared. Verdict: Success"\n</evaluation_examples>\n\n<memory_examples>\n"memory": "Found many pending reports that need to be analyzed in the main page. Successfully processed the first 2 reports on quarterly sales data and moving on to inventory analysis and customer feedback reports."\n</memory_examples>\n\n<next_goal_examples>\n"next_goal": "Click on the \'Add to Cart\' button to proceed with the purchase flow."\n</next_goal_examples>\n</examples>\n\n<output>\n{\n  "evaluation_previous_goal": "Concise one-sentence analysis of your last action. Clearly state success, failure, or uncertain.",\n  "memory": "1-3 concise sentences of specific memory of this step and overall progress. You should put here everything that will help you track progress in future steps. Like counting pages visited, items found, etc.",\n  "next_goal": "State the next immediate goal and action to achieve it, in one clear sentence.",\n  "action":{\n    "Action name": {// Action parameters}\n  }\n}\n</output>\n';
-	});
+	var init_system_prompt = __esmMin((() => {
+		system_prompt_default = "You are an AI agent designed to operate in an iterative loop to automate browser tasks. Your ultimate goal is accomplishing the task provided in <user_request>.\n\n<intro>\nYou excel at following tasks:\n1. Navigating complex websites and extracting precise information\n2. Automating form submissions and interactive web actions\n3. Gathering and saving information \n4. Operate effectively in an agent loop\n5. Efficiently performing diverse web tasks\n</intro>\n\n<language_settings>\n- Default working language: **English**\n- Use the language that user is using. Return in user's language.\n</language_settings>\n\n<input>\nAt every step, your input will consist of: \n1. <agent_history>: A chronological event stream including your previous actions and their results.\n2. <agent_state>: Current <user_request> and <step_info>.\n3. <browser_state>: Tabs, Current Tab, Current URL, interactive elements indexed for actions, and visible page content.\n</input>\n\n<agent_history>\nAgent history will be given as a list of step information as follows:\n\n<step_{step_number}>:\nEvaluation of Previous Step: Assessment of last action\nMemory: Your memory of this step\nNext Goal: Your goal for this step\nAction Results: Your actions and their results\n</step_{step_number}>\n\nand system messages wrapped in <sys> tag.\n</agent_history>\n\n<user_request>\nUSER REQUEST: This is your ultimate objective and always remains visible.\n- This has the highest priority. Make the user happy.\n- If the user request is very specific - then carefully follow each step and dont skip or hallucinate steps.\n- If the task is open ended you can plan yourself how to get it done.\n</user_request>\n\n<browser_state>\n1. Browser State will be given as:\n\nOpen Tabs: Open tabs with their ids.\nCurrent Tab: The tab you are currently viewing.\nCurrent URL: URL of the page you are currently viewing.\nInteractive Elements: All interactive elements will be provided in format as [index]<type>text</type> where\n- index: Numeric identifier for interaction\n- type: HTML element type (button, input, etc.)\n- text: Element description\n\nExamples:\n[33]<div>User form</div>\n\\t*[35]<button aria-label='Submit form'>Submit</button>\n\nNote that:\n- Only elements with numeric indexes in [] are interactive\n- (stacked) indentation (with \\t) is important and means that the element is a (html) child of the element above (with a lower index)\n- Elements tagged with `*[` are the new clickable elements that appeared on the website since the last step - if url has not changed.\n- Pure text elements without [] are not interactive.\n</browser_state>\n\n<browser_rules>\nStrictly follow these rules while using the browser and navigating the web:\n- Only interact with elements that have a numeric [index] assigned.\n- Only use indexes that are explicitly provided.\n- If the page changes after, for example, an input text action, analyze if you need to interact with new elements, e.g. selecting the right option from the list.\n- By default, only elements in the visible viewport are listed. Use scrolling actions if you suspect relevant content is offscreen which you need to interact with. Scroll ONLY if there are more pixels below or above the page.\n- You can scroll by a specific number of pages using the num_pages parameter (e.g., 0.5 for half page, 2.0 for two pages).\n- All the elements that are scrollable are marked with `data-scrollable` attribute. Including the scrollable distance in every directions. You can scroll *the element* in case some area are overflowed.\n- If a captcha appears, tell user you can not solve captcha. Finish the task and ask user to solve it.\n- If the page is not fully loaded, use the `wait` action.\n- Do not repeat one action for more than 3 times unless some conditions changed.\n- If you fill an input field and your action sequence is interrupted, most often something changed e.g. suggestions popped up under the field.\n- If the <user_request> includes specific page information such as product type, rating, price, location, etc., try to apply filters to be more efficient.\n- The <user_request> is the ultimate goal. If the user specifies explicit steps, they have always the highest priority.\n- If you input_text into a field, you might need to press enter, click the search button, or select from dropdown for completion.\n- Don't login into a page if you don't have to. Don't login if you don't have the credentials. \n- There are 2 types of tasks always first think which type of request you are dealing with:\n1. Very specific step by step instructions:\n- Follow them as very precise and don't skip steps. Try to complete everything as requested.\n2. Open ended tasks. Plan yourself, be creative in achieving them.\n- If you get stuck e.g. with logins or captcha in open-ended tasks you can re-evaluate the task and try alternative ways, e.g. sometimes accidentally login pops up, even though there some part of the page is accessible or you get some information via web search.\n</browser_rules>\n\n<task_completion_rules>\nYou must call the `done` action in one of three cases:\n- When you have fully completed the USER REQUEST.\n- When you reach the final allowed step (`max_steps`), even if the task is incomplete.\n- When you feel stuck or unable to solve user request. Or user request is not clear or contains inappropriate content.\n- When it is ABSOLUTELY IMPOSSIBLE to continue.\n\nThe `done` action is your opportunity to terminate and share your findings with the user.\n- Set `success` to `true` only if the full USER REQUEST has been completed with no missing components.\n- If any part of the request is missing, incomplete, or uncertain, set `success` to `false`.\n- You can use the `text` field of the `done` action to communicate your findings and to provide a coherent reply to the user and fulfill the USER REQUEST.\n- You are ONLY ALLOWED to call `done` as a single action. Don't call it together with other actions.\n- If the user asks for specified format, such as \"return JSON with following structure\", \"return a list of format...\", MAKE sure to use the right format in your answer.\n- If the user asks for a structured output, your `done` action's schema may be modified. Take this schema into account when solving the task!\n</task_completion_rules>\n\n<reasoning_rules>\nExhibit the following reasoning patterns to successfully achieve the <user_request>:\n\n- Reason about <agent_history> to track progress and context toward <user_request>.\n- Analyze the most recent \"Next Goal\" and \"Action Result\" in <agent_history> and clearly state what you previously tried to achieve.\n- Analyze all relevant items in <agent_history> and <browser_state> to understand your state.\n- Explicitly judge success/failure/uncertainty of the last action. Never assume an action succeeded just because it appears to be executed in your last step in <agent_history>. If the expected change is missing, mark the last action as failed (or uncertain) and plan a recovery.\n- Analyze whether you are stuck, e.g. when you repeat the same actions multiple times without any progress. Then consider alternative approaches e.g. scrolling for more context or ask user for help.\n- Ask user for help if you have any difficulty. Keep user in the loop.\n- If you see information relevant to <user_request>, plan saving the information to memory.\n- Always reason about the <user_request>. Make sure to carefully analyze the specific steps and information required. E.g. specific filters, specific form fields, specific information to search. Make sure to always compare the current trajectory with the user request and think carefully if thats how the user requested it.\n</reasoning_rules>\n\n<examples>\nHere are examples of good output patterns. Use them as reference but never copy them directly.\n\n<evaluation_examples>\n\"evaluation_previous_goal\": \"Successfully navigated to the product page and found the target information. Verdict: Success\"\n\"evaluation_previous_goal\": \"Clicked the login button and user authentication form appeared. Verdict: Success\"\n</evaluation_examples>\n\n<memory_examples>\n\"memory\": \"Found many pending reports that need to be analyzed in the main page. Successfully processed the first 2 reports on quarterly sales data and moving on to inventory analysis and customer feedback reports.\"\n</memory_examples>\n\n<next_goal_examples>\n\"next_goal\": \"Click on the 'Add to Cart' button to proceed with the purchase flow.\"\n</next_goal_examples>\n</examples>\n\n<output>\n{\n  \"evaluation_previous_goal\": \"Concise one-sentence analysis of your last action. Clearly state success, failure, or uncertain.\",\n  \"memory\": \"1-3 concise sentences of specific memory of this step and overall progress. You should put here everything that will help you track progress in future steps. Like counting pages visited, items found, etc.\",\n  \"next_goal\": \"State the next immediate goal and action to achieve it, in one clear sentence.\",\n  \"action\":{\n    \"Action name\": {// Action parameters}\n  }\n}\n</output>\n";
+	}));
 	//#endregion
 	//#region src/agent/tabTools.ts
 	/**
-	 * Create tab control tools bound to a TabsManager instance.
-	 * These tools are injected into PageAgentCore via customTools config.
-	 */
+	* Create tab control tools bound to a TabsManager instance.
+	* These tools are injected into PageAgentCore via customTools config.
+	*/
 	function createTabTools(tabsController) {
 		return {
 			open_new_tab: {
-				description:
-					"Open a new browser tab with the specified URL. The new tab becomes the current tab for all subsequent page operations.",
-				inputSchema: object({
-					url: string().describe("The URL to open in the new tab"),
-				}),
+				description: "Open a new browser tab with the specified URL. The new tab becomes the current tab for all subsequent page operations.",
+				inputSchema: object({ url: string().describe("The URL to open in the new tab") }),
 				execute: async (input) => {
 					const { url } = input;
 					try {
@@ -12388,14 +10543,11 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					} catch (error) {
 						return `❌ Failed: ${error instanceof Error ? error.message : String(error)}`;
 					}
-				},
+				}
 			},
 			switch_to_tab: {
-				description:
-					"Switch to an existing tab by its ID. After switching, all page operations will target the new current tab. You can only switch to tabs in the tab list shown in browser state.",
-				inputSchema: object({
-					tab_id: number().int().describe("The tab ID to switch to"),
-				}),
+				description: "Switch to an existing tab by its ID. After switching, all page operations will target the new current tab. You can only switch to tabs in the tab list shown in browser state.",
+				inputSchema: object({ tab_id: number().int().describe("The tab ID to switch to") }),
 				execute: async (input) => {
 					const { tab_id } = input;
 					try {
@@ -12403,14 +10555,11 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					} catch (error) {
 						return `❌ Failed: ${error instanceof Error ? error.message : String(error)}`;
 					}
-				},
+				}
 			},
 			close_tab: {
-				description:
-					"Close a tab by its ID. Cannot close the initial tab. Optionally specify which tab to switch to after closing.",
-				inputSchema: object({
-					tab_id: number().int().describe("The tab ID to close"),
-				}),
+				description: "Close a tab by its ID. Cannot close the initial tab. Optionally specify which tab to switch to after closing.",
+				inputSchema: object({ tab_id: number().int().describe("The tab ID to close") }),
 				execute: async (input) => {
 					const { tab_id } = input;
 					try {
@@ -12418,33 +10567,26 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					} catch (error) {
 						return `❌ Failed: ${error instanceof Error ? error.message : String(error)}`;
 					}
-				},
-			},
+				}
+			}
 		};
 	}
-	var init_tabTools = __esmMin(() => {
+	var init_tabTools = __esmMin((() => {
 		init_v4();
-	});
+	}));
 	//#endregion
 	//#region src/agent/MultiPageAgent.ts
-	var MultiPageAgent_exports = /* @__PURE__ */ __exportAll({
-		MultiPageAgent: () => MultiPageAgent,
-	});
+	var MultiPageAgent_exports = /* @__PURE__ */ __exportAll({ MultiPageAgent: () => MultiPageAgent });
 	/** Detect user language from browser settings */
 	function detectLanguage() {
-		return (
-			navigator.language ||
-			navigator.languages?.[0] ||
-			"en-US"
-		).startsWith("zh")
-			? "zh-CN"
-			: "en-US";
+		return (navigator.language || navigator.languages?.[0] || "en-US").startsWith("zh") ? "zh-CN" : "en-US";
 	}
 	var MultiPageAgent;
-	var init_MultiPageAgent = __esmMin(() => {
+	var init_MultiPageAgent = __esmMin((() => {
 		init_PageAgentCore();
 		init_RemotePageController();
 		init_TabsController();
+		init_browserTools();
 		init_helperTools();
 		init_system_prompt();
 		init_tabTools();
@@ -12455,28 +10597,22 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				const customTools = {
 					...createTabTools(tabsController),
 					...createHelperTools(),
+					...createBrowserTools()
 				};
-				const targetLanguage =
-					(config.language ?? detectLanguage()) === "zh-CN"
-						? "中文"
-						: "English";
-				const systemPrompt = system_prompt_default.replace(
-					/Default working language: \*\*.*?\*\*/,
-					`Default working language: **${targetLanguage}**`,
-				);
+				const targetLanguage = (config.language ?? detectLanguage()) === "zh-CN" ? "中文" : "English";
+				const systemPrompt = system_prompt_default.replace(/Default working language: \*\*.*?\*\*/, `Default working language: **${targetLanguage}**`);
 				const includeInitialTab = config.includeInitialTab ?? true;
-				const experimentalIncludeAllTabs =
-					config.experimentalIncludeAllTabs ?? false;
+				const experimentalIncludeAllTabs = config.experimentalIncludeAllTabs ?? false;
 				/**
-				 * Project agent status into chrome.storage. The content script polls
-				 * `isAgentRunning` + `agentHeartbeat` (eventually consistent by design).
-				 *
-				 * When the agent is in side-panel and user closed the side-panel.
-				 * There is no chance for isAgentRunning to be set false.
-				 * (unload event doesn't work well in side panel.)
-				 * (I'm trying not to use long-lived connection because the lifecycle of a sw is hard to predict.)
-				 * This heartbeat mechanism acts as a backup.
-				 */
+				* Project agent status into chrome.storage. The content script polls
+				* `isAgentRunning` + `agentHeartbeat` (eventually consistent by design).
+				*
+				* When the agent is in side-panel and user closed the side-panel.
+				* There is no chance for isAgentRunning to be set false.
+				* (unload event doesn't work well in side panel.)
+				* (I'm trying not to use long-lived connection because the lifecycle of a sw is hard to predict.)
+				* This heartbeat mechanism acts as a backup.
+				*/
 				let heartBeatInterval = null;
 				super({
 					...config,
@@ -12484,7 +10620,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					experimentalVisionTool: true,
 					errorRecovery: {
 						maxConsecutiveErrors: 3,
-						captureScreenshotOnError: true,
+						captureScreenshotOnError: true
 					},
 					pageController,
 					customTools,
@@ -12492,43 +10628,36 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 					onBeforeTask: async (agent) => {
 						await tabsController.init(agent.task, {
 							includeInitialTab,
-							experimentalIncludeAllTabs,
+							experimentalIncludeAllTabs
 						});
 					},
 					onBeforeStep: async (agent) => {
 						if (!tabsController.currentTabId) return;
-						await tabsController.waitUntilTabLoaded(
-							tabsController.currentTabId,
-						);
+						await tabsController.waitUntilTabLoaded(tabsController.currentTabId);
 					},
 					onDispose: () => {
 						if (heartBeatInterval) {
 							clearInterval(heartBeatInterval);
 							heartBeatInterval = null;
 						}
-						chrome.storage.local
-							.set({ isAgentRunning: false })
-							.catch(console.error);
+						chrome.storage.local.set({ isAgentRunning: false }).catch(console.error);
 						tabsController.dispose();
-					},
+					}
 				});
 				this.addEventListener("statuschange", () => {
 					const running = this.status === "running";
-					if (running && !heartBeatInterval)
-						heartBeatInterval = window.setInterval(() => {
-							chrome.storage.local.set({ agentHeartbeat: Date.now() });
-						}, 1e3);
+					if (running && !heartBeatInterval) heartBeatInterval = window.setInterval(() => {
+						chrome.storage.local.set({ agentHeartbeat: Date.now() });
+					}, 1e3);
 					else if (!running && heartBeatInterval) {
 						clearInterval(heartBeatInterval);
 						heartBeatInterval = null;
 					}
-					chrome.storage.local
-						.set({ isAgentRunning: running })
-						.catch(console.error);
+					chrome.storage.local.set({ isAgentRunning: running }).catch(console.error);
 				});
 			}
 		};
-	});
+	}));
 	//#endregion
 	//#region src/entrypoints/content.ts
 	var DEBUG_PREFIX = "[Content]";
@@ -12544,21 +10673,17 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 				const pageToken = localStorage.getItem("PageAgentExtUserAuthToken");
 				if (!pageToken) return;
 				if (pageToken !== extToken) return;
-				console.log(
-					"[PageAgentExt]: Auth tokens match. Exposing agent to page.",
-				);
+				console.log("[PageAgentExt]: Auth tokens match. Exposing agent to page.");
 				exposeAgentToPage().then(() => injectScript("/main-world.js"));
 			});
-		},
+		}
 	});
 	async function exposeAgentToPage() {
-		const { MultiPageAgent } = await Promise.resolve().then(
-			() => (init_MultiPageAgent(), MultiPageAgent_exports),
-		);
+		const { MultiPageAgent } = await Promise.resolve().then(() => (init_MultiPageAgent(), MultiPageAgent_exports));
 		console.log("[PageAgentExt]: MultiPageAgent loaded");
 		/**
-		 * singleton MultiPageAgent to handle requests from the page
-		 */
+		* singleton MultiPageAgent to handle requests from the page
+		*/
 		let multiPageAgent = null;
 		window.addEventListener("message", async (e) => {
 			if (e.source !== window) return;
@@ -12569,16 +10694,12 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			switch (action) {
 				case "execute":
 					if (multiPageAgent && multiPageAgent.status === "running") {
-						window.postMessage(
-							{
-								channel: "PAGE_AGENT_EXT_RESPONSE",
-								id,
-								action: "execute_result",
-								error:
-									"Agent is already running a task. Please wait until it finishes.",
-							},
-							"*",
-						);
+						window.postMessage({
+							channel: "PAGE_AGENT_EXT_RESPONSE",
+							id,
+							action: "execute_result",
+							error: "Agent is already running a task. Please wait until it finishes."
+						}, "*");
 						return;
 					}
 					try {
@@ -12587,66 +10708,49 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 						multiPageAgent?.dispose();
 						multiPageAgent = new MultiPageAgent({
 							...agentConfig,
-							instructions: systemInstruction
-								? { system: systemInstruction }
-								: void 0,
+							instructions: systemInstruction ? { system: systemInstruction } : void 0
 						});
 						multiPageAgent.addEventListener("statuschange", (event) => {
 							if (!multiPageAgent) return;
-							window.postMessage(
-								{
-									channel: "PAGE_AGENT_EXT_RESPONSE",
-									id,
-									action: "status_change_event",
-									payload: multiPageAgent.status,
-								},
-								"*",
-							);
+							window.postMessage({
+								channel: "PAGE_AGENT_EXT_RESPONSE",
+								id,
+								action: "status_change_event",
+								payload: multiPageAgent.status
+							}, "*");
 						});
 						multiPageAgent.addEventListener("activity", (event) => {
 							if (!multiPageAgent) return;
-							window.postMessage(
-								{
-									channel: "PAGE_AGENT_EXT_RESPONSE",
-									id,
-									action: "activity_event",
-									payload: event.detail,
-								},
-								"*",
-							);
+							window.postMessage({
+								channel: "PAGE_AGENT_EXT_RESPONSE",
+								id,
+								action: "activity_event",
+								payload: event.detail
+							}, "*");
 						});
 						multiPageAgent.addEventListener("historychange", (event) => {
 							if (!multiPageAgent) return;
-							window.postMessage(
-								{
-									channel: "PAGE_AGENT_EXT_RESPONSE",
-									id,
-									action: "history_change_event",
-									payload: multiPageAgent.history,
-								},
-								"*",
-							);
+							window.postMessage({
+								channel: "PAGE_AGENT_EXT_RESPONSE",
+								id,
+								action: "history_change_event",
+								payload: multiPageAgent.history
+							}, "*");
 						});
 						const result = await multiPageAgent.execute(task);
-						window.postMessage(
-							{
-								channel: "PAGE_AGENT_EXT_RESPONSE",
-								id,
-								action: "execute_result",
-								payload: result,
-							},
-							"*",
-						);
+						window.postMessage({
+							channel: "PAGE_AGENT_EXT_RESPONSE",
+							id,
+							action: "execute_result",
+							payload: result
+						}, "*");
 					} catch (error) {
-						window.postMessage(
-							{
-								channel: "PAGE_AGENT_EXT_RESPONSE",
-								id,
-								action: "execute_result",
-								error: error.message,
-							},
-							"*",
-						);
+						window.postMessage({
+							channel: "PAGE_AGENT_EXT_RESPONSE",
+							id,
+							action: "execute_result",
+							error: error.message
+						}, "*");
 					}
 					break;
 				case "stop":
@@ -12665,7 +10769,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		debug: (...args) => ([...args], void 0),
 		log: (...args) => ([...args], void 0),
 		warn: (...args) => ([...args], void 0),
-		error: (...args) => ([...args], void 0),
+		error: (...args) => ([...args], void 0)
 	};
 	//#endregion
 	//#region ../../node_modules/wxt/dist/utils/internal/custom-events.mjs
@@ -12678,89 +10782,78 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		}
 	};
 	/**
-	 * Returns an event name unique to the extension and content script that's
-	 * running.
-	 */
+	* Returns an event name unique to the extension and content script that's
+	* running.
+	*/
 	function getUniqueEventName(eventName) {
 		return `${browser?.runtime?.id}:content:${eventName}`;
 	}
 	//#endregion
 	//#region ../../node_modules/wxt/dist/utils/internal/location-watcher.mjs
-	var supportsNavigationApi =
-		typeof globalThis.navigation?.addEventListener === "function";
+	var supportsNavigationApi = typeof globalThis.navigation?.addEventListener === "function";
 	/**
-	 * Create a util that watches for URL changes, dispatching the custom event when
-	 * detected. Stops watching when content script is invalidated. Uses Navigation
-	 * API when available, otherwise falls back to polling.
-	 */
+	* Create a util that watches for URL changes, dispatching the custom event when
+	* detected. Stops watching when content script is invalidated. Uses Navigation
+	* API when available, otherwise falls back to polling.
+	*/
 	function createLocationWatcher(ctx) {
 		let lastUrl;
 		let watching = false;
-		return {
-			run() {
-				if (watching) return;
-				watching = true;
-				lastUrl = new URL(location.href);
-				if (supportsNavigationApi)
-					globalThis.navigation.addEventListener(
-						"navigate",
-						(event) => {
-							const newUrl = new URL(event.destination.url);
-							if (newUrl.href === lastUrl.href) return;
-							window.dispatchEvent(new WxtLocationChangeEvent(newUrl, lastUrl));
-							lastUrl = newUrl;
-						},
-						{ signal: ctx.signal },
-					);
-				else
-					ctx.setInterval(() => {
-						const newUrl = new URL(location.href);
-						if (newUrl.href !== lastUrl.href) {
-							window.dispatchEvent(new WxtLocationChangeEvent(newUrl, lastUrl));
-							lastUrl = newUrl;
-						}
-					}, 1e3);
-			},
-		};
+		return { run() {
+			if (watching) return;
+			watching = true;
+			lastUrl = new URL(location.href);
+			if (supportsNavigationApi) globalThis.navigation.addEventListener("navigate", (event) => {
+				const newUrl = new URL(event.destination.url);
+				if (newUrl.href === lastUrl.href) return;
+				window.dispatchEvent(new WxtLocationChangeEvent(newUrl, lastUrl));
+				lastUrl = newUrl;
+			}, { signal: ctx.signal });
+			else ctx.setInterval(() => {
+				const newUrl = new URL(location.href);
+				if (newUrl.href !== lastUrl.href) {
+					window.dispatchEvent(new WxtLocationChangeEvent(newUrl, lastUrl));
+					lastUrl = newUrl;
+				}
+			}, 1e3);
+		} };
 	}
 	//#endregion
 	//#region ../../node_modules/wxt/dist/utils/content-script-context.mjs
 	/**
-	 * Implements
-	 * [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController).
-	 * Used to detect and stop content script code when the script is invalidated.
-	 *
-	 * It also provides several utilities like `ctx.setTimeout` and
-	 * `ctx.setInterval` that should be used in content scripts instead of
-	 * `window.setTimeout` or `window.setInterval`.
-	 *
-	 * To create context for testing, you can use the class's constructor:
-	 *
-	 * ```ts
-	 * import { ContentScriptContext } from 'wxt/utils/content-scripts-context';
-	 *
-	 * test('storage listener should be removed when context is invalidated', () => {
-	 *   const ctx = new ContentScriptContext('test');
-	 *   const item = storage.defineItem('local:count', { defaultValue: 0 });
-	 *   const watcher = vi.fn();
-	 *
-	 *   const unwatch = item.watch(watcher);
-	 *   ctx.onInvalidated(unwatch); // Listen for invalidate here
-	 *
-	 *   await item.setValue(1);
-	 *   expect(watcher).toBeCalledTimes(1);
-	 *   expect(watcher).toBeCalledWith(1, 0);
-	 *
-	 *   ctx.notifyInvalidated(); // Use this function to invalidate the context
-	 *   await item.setValue(2);
-	 *   expect(watcher).toBeCalledTimes(1);
-	 * });
-	 * ```
-	 */
+	* Implements
+	* [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController).
+	* Used to detect and stop content script code when the script is invalidated.
+	*
+	* It also provides several utilities like `ctx.setTimeout` and
+	* `ctx.setInterval` that should be used in content scripts instead of
+	* `window.setTimeout` or `window.setInterval`.
+	*
+	* To create context for testing, you can use the class's constructor:
+	*
+	* ```ts
+	* import { ContentScriptContext } from 'wxt/utils/content-scripts-context';
+	*
+	* test('storage listener should be removed when context is invalidated', () => {
+	*   const ctx = new ContentScriptContext('test');
+	*   const item = storage.defineItem('local:count', { defaultValue: 0 });
+	*   const watcher = vi.fn();
+	*
+	*   const unwatch = item.watch(watcher);
+	*   ctx.onInvalidated(unwatch); // Listen for invalidate here
+	*
+	*   await item.setValue(1);
+	*   expect(watcher).toBeCalledTimes(1);
+	*   expect(watcher).toBeCalledWith(1, 0);
+	*
+	*   ctx.notifyInvalidated(); // Use this function to invalidate the context
+	*   await item.setValue(2);
+	*   expect(watcher).toBeCalledTimes(1);
+	* });
+	* ```
+	*/
 	var ContentScriptContext = class ContentScriptContext {
-		static SCRIPT_STARTED_MESSAGE_TYPE = getUniqueEventName(
-			"wxt:content-script-started",
-		);
+		static SCRIPT_STARTED_MESSAGE_TYPE = getUniqueEventName("wxt:content-script-started");
 		id;
 		abortController;
 		locationWatcher = createLocationWatcher(this);
@@ -12786,43 +10879,43 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			return !this.isInvalid;
 		}
 		/**
-		 * Add a listener that is called when the content script's context is
-		 * invalidated.
-		 *
-		 * @example
-		 *   browser.runtime.onMessage.addListener(cb);
-		 *   const removeInvalidatedListener = ctx.onInvalidated(() => {
-		 *     browser.runtime.onMessage.removeListener(cb);
-		 *   });
-		 *   // ...
-		 *   removeInvalidatedListener();
-		 *
-		 * @returns A function to remove the listener.
-		 */
+		* Add a listener that is called when the content script's context is
+		* invalidated.
+		*
+		* @example
+		*   browser.runtime.onMessage.addListener(cb);
+		*   const removeInvalidatedListener = ctx.onInvalidated(() => {
+		*     browser.runtime.onMessage.removeListener(cb);
+		*   });
+		*   // ...
+		*   removeInvalidatedListener();
+		*
+		* @returns A function to remove the listener.
+		*/
 		onInvalidated(cb) {
 			this.signal.addEventListener("abort", cb);
 			return () => this.signal.removeEventListener("abort", cb);
 		}
 		/**
-		 * Return a promise that never resolves. Useful if you have an async function
-		 * that shouldn't run after the context is expired.
-		 *
-		 * @example
-		 *   const getValueFromStorage = async () => {
-		 *     if (ctx.isInvalid) return ctx.block();
-		 *
-		 *     // ...
-		 *   };
-		 */
+		* Return a promise that never resolves. Useful if you have an async function
+		* that shouldn't run after the context is expired.
+		*
+		* @example
+		*   const getValueFromStorage = async () => {
+		*     if (ctx.isInvalid) return ctx.block();
+		*
+		*     // ...
+		*   };
+		*/
 		block() {
 			return new Promise(() => {});
 		}
 		/**
-		 * Wrapper around `window.setInterval` that automatically clears the interval
-		 * when invalidated.
-		 *
-		 * Intervals can be cleared by calling the normal `clearInterval` function.
-		 */
+		* Wrapper around `window.setInterval` that automatically clears the interval
+		* when invalidated.
+		*
+		* Intervals can be cleared by calling the normal `clearInterval` function.
+		*/
 		setInterval(handler, timeout) {
 			const id = setInterval(() => {
 				if (this.isValid) handler();
@@ -12831,11 +10924,11 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			return id;
 		}
 		/**
-		 * Wrapper around `window.setTimeout` that automatically clears the interval
-		 * when invalidated.
-		 *
-		 * Timeouts can be cleared by calling the normal `setTimeout` function.
-		 */
+		* Wrapper around `window.setTimeout` that automatically clears the interval
+		* when invalidated.
+		*
+		* Timeouts can be cleared by calling the normal `setTimeout` function.
+		*/
 		setTimeout(handler, timeout) {
 			const id = setTimeout(() => {
 				if (this.isValid) handler();
@@ -12844,12 +10937,12 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			return id;
 		}
 		/**
-		 * Wrapper around `window.requestAnimationFrame` that automatically cancels
-		 * the request when invalidated.
-		 *
-		 * Callbacks can be canceled by calling the normal `cancelAnimationFrame`
-		 * function.
-		 */
+		* Wrapper around `window.requestAnimationFrame` that automatically cancels
+		* the request when invalidated.
+		*
+		* Callbacks can be canceled by calling the normal `cancelAnimationFrame`
+		* function.
+		*/
 		requestAnimationFrame(callback) {
 			const id = requestAnimationFrame((...args) => {
 				if (this.isValid) callback(...args);
@@ -12858,12 +10951,12 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			return id;
 		}
 		/**
-		 * Wrapper around `window.requestIdleCallback` that automatically cancels the
-		 * request when invalidated.
-		 *
-		 * Callbacks can be canceled by calling the normal `cancelIdleCallback`
-		 * function.
-		 */
+		* Wrapper around `window.requestIdleCallback` that automatically cancels the
+		* request when invalidated.
+		*
+		* Callbacks can be canceled by calling the normal `cancelIdleCallback`
+		* function.
+		*/
 		requestIdleCallback(callback, options) {
 			const id = requestIdleCallback((...args) => {
 				if (!this.signal.aborted) callback(...args);
@@ -12875,69 +10968,42 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 			if (type === "wxt:locationchange") {
 				if (this.isValid) this.locationWatcher.run();
 			}
-			target.addEventListener?.(
-				type.startsWith("wxt:") ? getUniqueEventName(type) : type,
-				handler,
-				{
-					...options,
-					signal: this.signal,
-				},
-			);
+			target.addEventListener?.(type.startsWith("wxt:") ? getUniqueEventName(type) : type, handler, {
+				...options,
+				signal: this.signal
+			});
 		}
 		/**
-		 * @internal
-		 * Abort the abort controller and execute all `onInvalidated` listeners.
-		 */
+		* @internal
+		* Abort the abort controller and execute all `onInvalidated` listeners.
+		*/
 		notifyInvalidated() {
 			this.abort("Content script context invalidated");
-			logger$1.debug(
-				`Content script "${this.contentScriptName}" context invalidated`,
-			);
+			logger$1.debug(`Content script "${this.contentScriptName}" context invalidated`);
 		}
 		stopOldScripts() {
-			document.dispatchEvent(
-				new CustomEvent(ContentScriptContext.SCRIPT_STARTED_MESSAGE_TYPE, {
-					detail: {
-						contentScriptName: this.contentScriptName,
-						messageId: this.id,
-					},
-				}),
-			);
-			if (!this.options?.noScriptStartedPostMessage)
-				window.postMessage(
-					{
-						type: ContentScriptContext.SCRIPT_STARTED_MESSAGE_TYPE,
-						contentScriptName: this.contentScriptName,
-						messageId: this.id,
-					},
-					"*",
-				);
+			document.dispatchEvent(new CustomEvent(ContentScriptContext.SCRIPT_STARTED_MESSAGE_TYPE, { detail: {
+				contentScriptName: this.contentScriptName,
+				messageId: this.id
+			} }));
+			if (!this.options?.noScriptStartedPostMessage) window.postMessage({
+				type: ContentScriptContext.SCRIPT_STARTED_MESSAGE_TYPE,
+				contentScriptName: this.contentScriptName,
+				messageId: this.id
+			}, "*");
 		}
 		verifyScriptStartedEvent(event) {
-			const isSameContentScript =
-				event.detail?.contentScriptName === this.contentScriptName;
+			const isSameContentScript = event.detail?.contentScriptName === this.contentScriptName;
 			const isFromSelf = event.detail?.messageId === this.id;
 			return isSameContentScript && !isFromSelf;
 		}
 		listenForNewerScripts() {
 			const cb = (event) => {
-				if (
-					!(event instanceof CustomEvent) ||
-					!this.verifyScriptStartedEvent(event)
-				)
-					return;
+				if (!(event instanceof CustomEvent) || !this.verifyScriptStartedEvent(event)) return;
 				this.notifyInvalidated();
 			};
-			document.addEventListener(
-				ContentScriptContext.SCRIPT_STARTED_MESSAGE_TYPE,
-				cb,
-			);
-			this.onInvalidated(() =>
-				document.removeEventListener(
-					ContentScriptContext.SCRIPT_STARTED_MESSAGE_TYPE,
-					cb,
-				),
-			);
+			document.addEventListener(ContentScriptContext.SCRIPT_STARTED_MESSAGE_TYPE, cb);
+			this.onInvalidated(() => document.removeEventListener(ContentScriptContext.SCRIPT_STARTED_MESSAGE_TYPE, cb));
 		}
 	};
 	//#endregion
@@ -12950,7 +11016,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
 		debug: (...args) => ([...args], void 0),
 		log: (...args) => ([...args], void 0),
 		warn: (...args) => ([...args], void 0),
-		error: (...args) => ([...args], void 0),
+		error: (...args) => ([...args], void 0)
 	};
 	var result = (async () => {
 		try {

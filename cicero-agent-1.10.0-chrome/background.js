@@ -20,21 +20,28 @@ var background = (function() {
 			return;
 		}
 		if (action === "capture_screenshot") {
-			chrome.tabs.get(targetTabId).then((tab) => chrome.tabs.captureVisibleTab(tab.windowId, {
-				format: "jpeg",
-				quality: 60
-			})).then((dataUrl) => {
-				sendResponse({
-					success: true,
-					dataUrl
-				});
-			}).catch((error) => {
-				console.error(PREFIX, "capture_screenshot", error);
-				sendResponse({
-					success: false,
-					dataUrl: null
-				});
-			});
+			(async () => {
+				try {
+					const tab = await chrome.tabs.get(targetTabId);
+					if (!tab.active) {
+						await chrome.tabs.update(targetTabId, { active: true });
+						await new Promise((r) => setTimeout(r, 300));
+					}
+					sendResponse({
+						success: true,
+						dataUrl: await chrome.tabs.captureVisibleTab(tab.windowId, {
+							format: "jpeg",
+							quality: 60
+						})
+					});
+				} catch (error) {
+					console.error(PREFIX, "capture_screenshot", error);
+					sendResponse({
+						success: false,
+						dataUrl: null
+					});
+				}
+			})();
 			return true;
 		}
 		chrome.tabs.sendMessage(targetTabId, {
@@ -84,7 +91,7 @@ var background = (function() {
 				debug("open_new_tab", payload);
 				chrome.tabs.create({
 					url: payload.url,
-					active: false
+					active: true
 				}).then((newTab) => {
 					debug("open_new_tab: success", newTab);
 					sendResponse({
@@ -125,6 +132,14 @@ var background = (function() {
 					tabIds: payload.tabId,
 					groupId: payload.groupId
 				}).then(() => {
+					sendResponse({ success: true });
+				}).catch((error) => {
+					sendResponse({ error: error instanceof Error ? error.message : String(error) });
+				});
+				return true;
+			case "activate_tab":
+				debug("activate_tab", payload);
+				chrome.tabs.update(payload.tabId, { active: true }).then(() => {
 					sendResponse({ success: true });
 				}).catch((error) => {
 					sendResponse({ error: error instanceof Error ? error.message : String(error) });
@@ -199,15 +214,38 @@ var background = (function() {
 		});
 	}
 	//#endregion
+	//#region src/agent/tokens.ts
+	/**
+	* Tokens that gate who may "accept calls" into the extension.
+	*
+	* - `PageAgentExtUserAuthToken` lets a web page call the in-page agent API.
+	* - `PageAgentExtHubToken` lets an external app (via the MCP hub bridge) drive the
+	*   browser without the per-session confirm dialog.
+	*
+	* Both follow the same lifecycle: empty by default, generated randomly on first
+	* use, and never overwritten once present.
+	*/
+	var USER_AUTH_TOKEN_KEY = "PageAgentExtUserAuthToken";
+	var HUB_TOKEN_KEY = "PageAgentExtHubToken";
+	/**
+	* Return the stored token for `key`, generating and persisting a random one on
+	* first use. An existing non-empty string is returned untouched (never
+	* overwritten); an empty/non-string value is treated as "missing" and replaced.
+	*/
+	async function ensureStorageToken(key) {
+		const existing = (await chrome.storage.local.get(key))[key];
+		if (typeof existing === "string" && existing.length > 0) return existing;
+		const token = crypto.randomUUID();
+		await chrome.storage.local.set({ [key]: token });
+		return token;
+	}
+	//#endregion
 	//#region src/entrypoints/background.ts
 	var background_default = defineBackground(() => {
 		console.log("[Background] Service Worker started");
 		setupTabEventsPort();
-		chrome.storage.local.get("PageAgentExtUserAuthToken").then((result) => {
-			if (result.PageAgentExtUserAuthToken) return;
-			const userAuthToken = crypto.randomUUID();
-			chrome.storage.local.set({ PageAgentExtUserAuthToken: userAuthToken });
-		});
+		ensureStorageToken(USER_AUTH_TOKEN_KEY);
+		ensureStorageToken(HUB_TOKEN_KEY);
 		chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 			if (message.type === "TAB_CONTROL") return handleTabControlMessage(message, sender, sendResponse);
 			else if (message.type === "PAGE_CONTROL") return handlePageControlMessage(message, sender, sendResponse);
@@ -215,6 +253,21 @@ var background = (function() {
 				sendResponse({ error: "Unknown message type" });
 				return;
 			}
+		});
+		chrome.commands?.onCommand.addListener((command) => {
+			if (command !== "listen_mic" && command !== "submit_now") return;
+			(async () => {
+				await chrome.storage.local.set({ ciceroPendingCommand: {
+					command,
+					at: Date.now()
+				} });
+				try {
+					const win = await chrome.windows.getLastFocused();
+					if (win?.id != null) await chrome.sidePanel.open({ windowId: win.id });
+				} catch (error) {
+					console.debug("[Background] Could not open side panel for command", command, error);
+				}
+			})();
 		});
 		chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
 			if (message.type === "OPEN_HUB") {

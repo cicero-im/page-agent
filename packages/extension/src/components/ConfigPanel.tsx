@@ -10,109 +10,113 @@ import {
 	Loader2,
 	Scale,
 	UnfoldVertical,
-} from "lucide-react";
-import { useEffect, useState } from "react";
-import { siGithub } from "simple-icons";
+} from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { siGithub } from 'simple-icons'
 
-import {
-	DEMO_BASE_URL,
-	DEMO_MODEL,
-	isTestingEndpoint,
-} from "@/agent/constants";
-import type { ExtConfig, LanguagePreference } from "@/agent/useAgent";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
+import { DEMO_BASE_URL, DEMO_MODEL, isTestingEndpoint } from '@/agent/constants'
+import { HUB_TOKEN_KEY, USER_AUTH_TOKEN_KEY } from '@/agent/tokens'
+import type { ExtConfig, LanguagePreference } from '@/agent/useAgent'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Switch } from '@/components/ui/switch'
 
 interface ConfigPanelProps {
-	config: ExtConfig | null;
-	onSave: (config: ExtConfig) => Promise<void>;
-	onClose: () => void;
+	config: ExtConfig | null
+	onSave: (config: ExtConfig) => Promise<void>
+	onClose: () => void
 }
 
 export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
-	const [baseURL, setBaseURL] = useState(config?.baseURL || DEMO_BASE_URL);
-	const [model, setModel] = useState(config?.model || DEMO_MODEL);
-	const [apiKey, setApiKey] = useState(config?.apiKey);
-	const [language, setLanguage] = useState<LanguagePreference>(
-		config?.language,
-	);
-	const [pingPong, setPingPong] = useState(config?.pingPong ?? false);
+	const [baseURL, setBaseURL] = useState(config?.baseURL || DEMO_BASE_URL)
+	const [model, setModel] = useState(config?.model || DEMO_MODEL)
+	const [apiKey, setApiKey] = useState(config?.apiKey)
+	const [language, setLanguage] = useState<LanguagePreference>(config?.language)
+	const [pingPong, setPingPong] = useState(config?.pingPong ?? false)
 	const [alwaysSendScreenshot, setAlwaysSendScreenshot] = useState(
-		config?.alwaysSendScreenshot ?? false,
-	);
-	const [maxSteps, setMaxSteps] = useState(config?.maxSteps);
-	const [systemInstruction, setSystemInstruction] = useState(
-		config?.systemInstruction ?? "",
-	);
+		config?.alwaysSendScreenshot ?? false
+	)
+	const [maxSteps, setMaxSteps] = useState(config?.maxSteps)
+	const [systemInstruction, setSystemInstruction] = useState(config?.systemInstruction ?? '')
 	const [experimentalLlmsTxt, setExperimentalLlmsTxt] = useState(
-		config?.experimentalLlmsTxt ?? false,
-	);
+		config?.experimentalLlmsTxt ?? false
+	)
 	const [experimentalIncludeAllTabs, setExperimentalIncludeAllTabs] = useState(
-		config?.experimentalIncludeAllTabs ?? false,
-	);
+		config?.experimentalIncludeAllTabs ?? false
+	)
 	const [disableNamedToolChoice, setDisableNamedToolChoice] = useState(
-		config?.disableNamedToolChoice ?? false,
-	);
-	const [advancedOpen, setAdvancedOpen] = useState(false);
-	const [saving, setSaving] = useState(false);
-	const [userAuthToken, setUserAuthToken] = useState("");
-	const [copied, setCopied] = useState(false);
-	const [showToken, setShowToken] = useState(false);
-	const [showApiKey, setShowApiKey] = useState(false);
+		config?.disableNamedToolChoice ?? false
+	)
+	const [advancedOpen, setAdvancedOpen] = useState(false)
+	const [saving, setSaving] = useState(false)
+	const [userAuthToken, setUserAuthToken] = useState('')
+	const [copied, setCopied] = useState(false)
+	const [showToken, setShowToken] = useState(false)
+	const [showApiKey, setShowApiKey] = useState(false)
+	const [hubToken, setHubToken] = useState('')
+	const [hubCopied, setHubCopied] = useState(false)
+	const [showHubToken, setShowHubToken] = useState(false)
 
-	const [prevConfig, setPrevConfig] = useState(config);
+	const [prevConfig, setPrevConfig] = useState(config)
 	if (prevConfig !== config) {
-		setPrevConfig(config);
-		setBaseURL(config?.baseURL || DEMO_BASE_URL);
-		setModel(config?.model || DEMO_MODEL);
-		setApiKey(config?.apiKey);
-		setLanguage(config?.language);
-		setPingPong(config?.pingPong ?? false);
-		setAlwaysSendScreenshot(config?.alwaysSendScreenshot ?? false);
-		setMaxSteps(config?.maxSteps);
-		setSystemInstruction(config?.systemInstruction ?? "");
-		setExperimentalLlmsTxt(config?.experimentalLlmsTxt ?? false);
-		setExperimentalIncludeAllTabs(config?.experimentalIncludeAllTabs ?? false);
-		setDisableNamedToolChoice(config?.disableNamedToolChoice ?? false);
+		setPrevConfig(config)
+		setBaseURL(config?.baseURL || DEMO_BASE_URL)
+		setModel(config?.model || DEMO_MODEL)
+		setApiKey(config?.apiKey)
+		setLanguage(config?.language)
+		setPingPong(config?.pingPong ?? false)
+		setAlwaysSendScreenshot(config?.alwaysSendScreenshot ?? false)
+		setMaxSteps(config?.maxSteps)
+		setSystemInstruction(config?.systemInstruction ?? '')
+		setExperimentalLlmsTxt(config?.experimentalLlmsTxt ?? false)
+		setExperimentalIncludeAllTabs(config?.experimentalIncludeAllTabs ?? false)
+		setDisableNamedToolChoice(config?.disableNamedToolChoice ?? false)
 	}
 
-	// Poll for user auth token every second until found
+	// Poll for the auth tokens every second until both are found. They are
+	// generated by the background script on first run, so they may not exist yet
+	// the first time the panel mounts.
 	useEffect(() => {
-		let interval: NodeJS.Timeout | null = null;
+		let interval: NodeJS.Timeout | null = null
 
-		const fetchToken = async () => {
-			const result = await chrome.storage.local.get(
-				"PageAgentExtUserAuthToken",
-			);
-			const token = result.PageAgentExtUserAuthToken;
-			if (typeof token === "string" && token) {
-				setUserAuthToken(token);
-				if (interval) {
-					clearInterval(interval);
-					interval = null;
-				}
+		const fetchTokens = async () => {
+			const result = await chrome.storage.local.get([USER_AUTH_TOKEN_KEY, HUB_TOKEN_KEY])
+			const user = result[USER_AUTH_TOKEN_KEY]
+			const hub = result[HUB_TOKEN_KEY]
+			if (typeof user === 'string' && user) setUserAuthToken(user)
+			if (typeof hub === 'string' && hub) setHubToken(hub)
+			if (typeof user === 'string' && user && typeof hub === 'string' && hub && interval) {
+				clearInterval(interval)
+				interval = null
 			}
-		};
+		}
 
-		fetchToken();
-		interval = setInterval(fetchToken, 1000);
+		fetchTokens()
+		interval = setInterval(fetchTokens, 1000)
 
 		return () => {
-			if (interval) clearInterval(interval);
-		};
-	}, []);
+			if (interval) clearInterval(interval)
+		}
+	}, [])
 
 	const handleCopyToken = async () => {
 		if (userAuthToken) {
-			await navigator.clipboard.writeText(userAuthToken);
-			setCopied(true);
-			setTimeout(() => setCopied(false), 2000);
+			await navigator.clipboard.writeText(userAuthToken)
+			setCopied(true)
+			setTimeout(() => setCopied(false), 2000)
 		}
-	};
+	}
+
+	const handleCopyHubToken = async () => {
+		if (hubToken) {
+			await navigator.clipboard.writeText(hubToken)
+			setHubCopied(true)
+			setTimeout(() => setHubCopied(false), 2000)
+		}
+	}
 
 	const handleSave = async () => {
-		setSaving(true);
+		setSaving(true)
 		try {
 			await onSave({
 				apiKey,
@@ -126,11 +130,11 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 				experimentalLlmsTxt,
 				experimentalIncludeAllTabs,
 				disableNamedToolChoice,
-			});
+			})
 		} finally {
-			setSaving(false);
+			setSaving(false)
 		}
-	};
+	}
 
 	return (
 		<div className="flex flex-col gap-4 p-4 relative">
@@ -149,10 +153,7 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 
 			{/* User Auth Token Section */}
 			<div className="flex flex-col gap-1.5 p-3 bg-muted/50 rounded-md border">
-				<label
-					htmlFor="user-auth-token"
-					className="text-xs font-medium text-muted-foreground"
-				>
+				<label htmlFor="user-auth-token" className="text-xs font-medium text-muted-foreground">
 					User Auth Token
 				</label>
 				<p className="text-[10px] text-muted-foreground mb-1">
@@ -166,8 +167,8 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 							userAuthToken
 								? showToken
 									? userAuthToken
-									: `${userAuthToken.slice(0, 4)}${"•".repeat(userAuthToken.length - 8)}${userAuthToken.slice(-4)}`
-								: "Loading..."
+									: `${userAuthToken.slice(0, 4)}${'•'.repeat(userAuthToken.length - 8)}${userAuthToken.slice(-4)}`
+								: 'Loading...'
 						}
 						className="text-xs h-8 font-mono bg-background"
 					/>
@@ -177,14 +178,10 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 						className="h-8 w-8 shrink-0 cursor-pointer"
 						onClick={() => setShowToken(!showToken)}
 						disabled={!userAuthToken}
-						aria-label={showToken ? "Hide token" : "Show token"}
+						aria-label={showToken ? 'Hide token' : 'Show token'}
 						aria-pressed={showToken}
 					>
-						{showToken ? (
-							<EyeOff className="size-3" />
-						) : (
-							<Eye className="size-3" />
-						)}
+						{showToken ? <EyeOff className="size-3" /> : <Eye className="size-3" />}
 					</Button>
 					<Button
 						variant="outline"
@@ -196,13 +193,57 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 					>
 						{copied ? <span className="">✓</span> : <Copy className="size-3" />}
 					</Button>
-					<span
-						role="status"
-						aria-live="polite"
-						aria-atomic="true"
-						className="sr-only"
+					<span role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+						{copied ? 'Token copied' : ''}
+					</span>
+				</div>
+			</div>
+
+			{/* Hub Token Section */}
+			<div className="flex flex-col gap-1.5 p-3 bg-muted/50 rounded-md border">
+				<label htmlFor="hub-token" className="text-xs font-medium text-muted-foreground">
+					Hub Token
+				</label>
+				<p className="text-[10px] text-muted-foreground mb-1">
+					Let an external app (MCP) control the browser without the approval prompt. Set it as{' '}
+					<span className="font-mono">HUB_TOKEN</span> in your MCP server.
+				</p>
+				<div className="flex gap-2 items-center">
+					<Input
+						id="hub-token"
+						readOnly
+						value={
+							hubToken
+								? showHubToken
+									? hubToken
+									: `${hubToken.slice(0, 4)}${'•'.repeat(hubToken.length - 8)}${hubToken.slice(-4)}`
+								: 'Loading...'
+						}
+						className="text-xs h-8 font-mono bg-background"
+					/>
+					<Button
+						variant="outline"
+						size="icon"
+						className="h-8 w-8 shrink-0 cursor-pointer"
+						onClick={() => setShowHubToken(!showHubToken)}
+						disabled={!hubToken}
+						aria-label={showHubToken ? 'Hide hub token' : 'Show hub token'}
+						aria-pressed={showHubToken}
 					>
-						{copied ? "Token copied" : ""}
+						{showHubToken ? <EyeOff className="size-3" /> : <Eye className="size-3" />}
+					</Button>
+					<Button
+						variant="outline"
+						size="icon"
+						className="h-8 w-8 shrink-0 cursor-pointer"
+						onClick={handleCopyHubToken}
+						disabled={!hubToken}
+						aria-label="Copy hub token"
+					>
+						{hubCopied ? <span className="">✓</span> : <Copy className="size-3" />}
+					</Button>
+					<span role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+						{hubCopied ? 'Hub token copied' : ''}
 					</span>
 				</div>
 			</div>
@@ -235,9 +276,9 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 			{isTestingEndpoint(baseURL) && (
 				<div className="p-2.5 rounded-md border border-amber-500/30 bg-amber-500/5 text-[11px] text-muted-foreground leading-relaxed">
 					<Scale className="size-3 inline-block mr-1 -mt-0.5 text-amber-600" />
-					You are using our testing API. By using this you agree to the{" "}
+					You are using our testing API. By using this you agree to the{' '}
 					<a
-						href="https://github.com/alibaba/page-agent/blob/main/docs/terms-and-privacy.md"
+						href="https://github.com/arthrod/page-agent/blob/main/docs/terms-and-privacy.md"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="underline hover:text-foreground"
@@ -267,7 +308,7 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 				<div className="flex gap-2 items-center">
 					<Input
 						id="api-key"
-						type={showApiKey ? "text" : "password"}
+						type={showApiKey ? 'text' : 'password'}
 						// placeholder="sk-..."
 						value={apiKey}
 						onChange={(e) => setApiKey(e.target.value)}
@@ -278,26 +319,18 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 						size="icon"
 						className="h-8 w-8 shrink-0 cursor-pointer"
 						onClick={() => setShowApiKey(!showApiKey)}
-						aria-label={showApiKey ? "Hide API key" : "Show API key"}
+						aria-label={showApiKey ? 'Hide API key' : 'Show API key'}
 					>
-						{showApiKey ? (
-							<EyeOff className="size-3" />
-						) : (
-							<Eye className="size-3" />
-						)}
+						{showApiKey ? <EyeOff className="size-3" /> : <Eye className="size-3" />}
 					</Button>
 				</div>
 			</div>
 
 			<div className="flex flex-col gap-1.5">
-				<label className="text-xs text-muted-foreground">
-					Response Language
-				</label>
+				<label className="text-xs text-muted-foreground">Response Language</label>
 				<select
-					value={language ?? ""}
-					onChange={(e) =>
-						setLanguage((e.target.value || undefined) as LanguagePreference)
-					}
+					value={language ?? ''}
+					onChange={(e) => setLanguage((e.target.value || undefined) as LanguagePreference)}
 					className="h-8 text-xs rounded-md border border-input bg-background px-2 cursor-pointer"
 				>
 					<option value="">System</option>
@@ -308,9 +341,7 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 
 			<div className="flex items-center justify-between gap-2">
 				<div className="flex flex-col">
-					<label className="text-xs font-medium">
-						Modo ping-pong (mãos livres)
-					</label>
+					<label className="text-xs font-medium">Modo ping-pong (mãos livres)</label>
 					<span className="text-[10px] text-muted-foreground">
 						Depois de cada tarefa, o microfone volta a ouvir sozinho.
 					</span>
@@ -322,14 +353,11 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 				<div className="flex flex-col">
 					<label className="text-xs font-medium">Ver a tela a cada passo</label>
 					<span className="text-[10px] text-muted-foreground">
-						Envia uma captura de tela em todo passo (mais lento). Em erros, a
-						captura é sempre enviada.
+						Envia uma captura de tela em todo passo (mais lento). Em erros, a captura é sempre
+						enviada.
 					</span>
 				</div>
-				<Switch
-					checked={alwaysSendScreenshot}
-					onCheckedChange={setAlwaysSendScreenshot}
-				/>
+				<Switch checked={alwaysSendScreenshot} onCheckedChange={setAlwaysSendScreenshot} />
 			</div>
 
 			{/* Advanced Config */}
@@ -339,20 +367,13 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 				className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground cursor-pointer mt-1 font-bold"
 			>
 				Advanced
-				{advancedOpen ? (
-					<FoldVertical className="size-3" />
-				) : (
-					<UnfoldVertical className="size-3" />
-				)}
+				{advancedOpen ? <FoldVertical className="size-3" /> : <UnfoldVertical className="size-3" />}
 			</button>
 
 			{advancedOpen && (
 				<>
 					<div className="flex flex-col gap-1.5">
-						<label
-							htmlFor="max-steps"
-							className="text-xs text-muted-foreground"
-						>
+						<label htmlFor="max-steps" className="text-xs text-muted-foreground">
 							Max Steps
 						</label>
 						<Input
@@ -361,18 +382,14 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 							placeholder="40"
 							min={1}
 							max={200}
-							value={maxSteps ?? ""}
-							onChange={(e) =>
-								setMaxSteps(e.target.value ? Number(e.target.value) : undefined)
-							}
+							value={maxSteps ?? ''}
+							onChange={(e) => setMaxSteps(e.target.value ? Number(e.target.value) : undefined)}
 							className="text-xs h-8 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]"
 						/>
 					</div>
 
 					<div className="flex flex-col gap-1.5">
-						<label className="text-xs text-muted-foreground">
-							System Instruction
-						</label>
+						<label className="text-xs text-muted-foreground">System Instruction</label>
 						<textarea
 							placeholder="Additional instructions for the agent..."
 							value={systemInstruction}
@@ -383,29 +400,17 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 					</div>
 
 					<label className="flex items-center justify-between cursor-pointer">
-						<span className="text-xs text-muted-foreground">
-							Disable named tool_choice
-						</span>
-						<Switch
-							checked={disableNamedToolChoice}
-							onCheckedChange={setDisableNamedToolChoice}
-						/>
+						<span className="text-xs text-muted-foreground">Disable named tool_choice</span>
+						<Switch checked={disableNamedToolChoice} onCheckedChange={setDisableNamedToolChoice} />
 					</label>
 
 					<label className="flex items-center justify-between cursor-pointer">
-						<span className="text-xs text-muted-foreground">
-							Experimental llms.txt support
-						</span>
-						<Switch
-							checked={experimentalLlmsTxt}
-							onCheckedChange={setExperimentalLlmsTxt}
-						/>
+						<span className="text-xs text-muted-foreground">Experimental llms.txt support</span>
+						<Switch checked={experimentalLlmsTxt} onCheckedChange={setExperimentalLlmsTxt} />
 					</label>
 
 					<label className="flex items-center justify-between cursor-pointer">
-						<span className="text-xs text-muted-foreground">
-							Experimental include all tabs
-						</span>
+						<span className="text-xs text-muted-foreground">Experimental include all tabs</span>
 						<Switch
 							checked={experimentalIncludeAllTabs}
 							onCheckedChange={setExperimentalIncludeAllTabs}
@@ -415,11 +420,7 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 			)}
 
 			<div className="flex gap-2 mt-2">
-				<Button
-					variant="outline"
-					onClick={onClose}
-					className="flex-1 h-8 text-xs cursor-pointer"
-				>
+				<Button variant="outline" onClick={onClose} className="flex-1 h-8 text-xs cursor-pointer">
 					Cancel
 				</Button>
 				<Button
@@ -427,7 +428,7 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 					disabled={saving}
 					className="flex-1 h-8 text-xs cursor-pointer"
 				>
-					{saving ? <Loader2 className="size-3 animate-spin" /> : "Save"}
+					{saving ? <Loader2 className="size-3 animate-spin" /> : 'Save'}
 				</Button>
 			</div>
 
@@ -439,7 +440,7 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 					</span>
 
 					<a
-						href="https://github.com/alibaba/page-agent"
+						href="https://github.com/arthrod/page-agent"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="flex items-center gap-1 hover:text-foreground"
@@ -463,7 +464,7 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 					</a>
 
 					<a
-						href="https://github.com/alibaba/page-agent/blob/main/docs/terms-and-privacy.md"
+						href="https://github.com/arthrod/page-agent/blob/main/docs/terms-and-privacy.md"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="flex items-center gap-1 hover:text-foreground"
@@ -477,17 +478,17 @@ export function ConfigPanel({ config, onSave, onClose }: ConfigPanelProps) {
 			{/* attribute */}
 			<div className="text-[10px] text-muted-foreground bg-background fixed bottom-0 w-full flex justify-around">
 				<span className="leading-loose">
-					Built with ♥️ by{" "}
+					Built with ♥️ by{' '}
 					<a
-						href="https://github.com/gaomeng1900"
+						href="https://github.com/arthrod"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="underline hover:text-foreground"
 					>
-						@Simon
+						@arthrod
 					</a>
 				</span>
 			</div>
 		</div>
-	);
+	)
 }

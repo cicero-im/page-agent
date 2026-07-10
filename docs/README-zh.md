@@ -1,13 +1,15 @@
-# Page Agent
+# Cicero Agent
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://page-agent.github.io/assets/readme/banner-dark.png">
-  <img alt="Page Agent Banner" src="https://page-agent.github.io/assets/readme/banner-light.png">
+  <img alt="Cicero Agent Banner" src="https://page-agent.github.io/assets/readme/banner-light.png">
 </picture>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-auto.svg)](https://opensource.org/licenses/MIT) [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/) [![Bundle Size](https://img.shields.io/bundlephobia/minzip/page-agent)](https://bundlephobia.com/package/page-agent) [![Downloads](https://img.shields.io/npm/dt/page-agent.svg)](https://www.npmjs.com/package/page-agent) [![GitHub stars](https://img.shields.io/github/stars/alibaba/page-agent.svg)](https://github.com/alibaba/page-agent)
+[![License: MIT](https://img.shields.io/badge/License-MIT-auto.svg)](https://opensource.org/licenses/MIT) [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/) [![Bundle Size](https://img.shields.io/bundlephobia/minzip/page-agent)](https://bundlephobia.com/package/page-agent) [![Downloads](https://img.shields.io/npm/dt/page-agent.svg)](https://www.npmjs.com/package/page-agent) [![GitHub stars](https://img.shields.io/github/stars/alibaba/page-agent.svg)](https://github.com/arthrod/page-agent)
 
 纯 JS 实现的 GUI agent。使用自然语言操作你的 Web 应用。无须后端、客户端、浏览器插件。
+
+> **Cicero Agent** 基于 **[Page Agent](https://github.com/arthrod/page-agent)**（作者 **[Simon (@gaomeng1900)](https://github.com/gaomeng1900)**）构建，并包含面向无法使用键盘鼠标者的语音助手 **Cícero Estagiário**。下方的库 API（npm 包 `page-agent`、`PageAgent` 类）保持不变。
 
 🌐 [English](../README.md) | **中文**
 
@@ -41,13 +43,13 @@ https://github.com/user-attachments/assets/a1f2eae2-13fb-4aae-98cf-a3fc1620a6c2
 
 ### 一行代码集成
 
-通过我们免费的 Demo LLM 快速体验 PageAgent：
+通过我们免费的 Demo LLM 快速体验 Cicero Agent：
 
 ```html
 <script src="{URL}" crossorigin="true"></script>
 ```
 
-> **⚠️ 仅用于技术评估。** 该 Demo CDN 使用了免费的[测试 LLM API](https://arthrod.github.io/page-agent/docs/features/models#free-testing-api)，使用即表示您同意其[条款](https://github.com/alibaba/page-agent/blob/main/docs/terms-and-privacy.md)。
+> **⚠️ 仅用于技术评估。** 该 Demo CDN 使用了免费的[测试 LLM API](https://arthrod.github.io/page-agent/docs/features/models#free-testing-api)，使用即表示您同意其[条款](https://github.com/arthrod/page-agent/blob/main/docs/terms-and-privacy.md)。
 
 | Mirrors | URL                                                                                 |
 | ------- | ----------------------------------------------------------------------------------- |
@@ -81,11 +83,13 @@ await agent.execute('点击登录按钮')
 
 欢迎社区贡献！请参阅 [CONTRIBUTING.md](../CONTRIBUTING.md) 了解安装与贡献指南。
 
-提交 issue 或 PR 之前，请先阅读[作者声明](https://github.com/alibaba/page-agent/issues/349)和[行为准则](CODE_OF_CONDUCT.md)。
+提交 issue 或 PR 之前，请先阅读[作者声明](https://github.com/arthrod/page-agent/issues/349)和[行为准则](CODE_OF_CONDUCT.md)。
 
 我们不接受未经实质性人类参与、完全由 Bot 或 Agent 自动生成的代码。
 
 ## 👏 声明与致谢
+
+**Page Agent 由 [Simon (@gaomeng1900)](https://github.com/gaomeng1900) 创建。** 本仓库中的 **Cícero Estagiário** 辅助扩展（语音优先的浏览器助手，打包为 **Cicero Agent**）完全基于 Simon 的工作构建 —— 衷心感谢他打下的基础。🙏
 
 本项目基于 **[`browser-use`](https://github.com/browser-use/browser-use)** 的优秀工作构建。
 
@@ -109,4 +113,4 @@ this project possible.
 
 ---
 
-**⭐ 如果觉得 PageAgent 有用或有趣，请给项目点个星！**
+**⭐ 如果觉得 Cicero Agent 有用或有趣，请给项目点个星！**

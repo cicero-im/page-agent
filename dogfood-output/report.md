@@ -10,7 +10,7 @@ Gemini request.
 
 | # | What | Result |
 |---|---|---|
-| 1 | Extension **builds** (`wxt build` → `.output/chrome-mv3`) | ✅ PASS |
+| 1 | Extension **builds** (`wxt build` → `.output/cicero-agent`) | ✅ PASS |
 | 2 | Extension **loads** in real Chrome (osascript "Load unpacked") | ✅ PASS — SW `background.js` running, id `akldabonmimlicnjlflnapfeklbfemhj` |
 | 3 | **DEFAULT_CONFIG** live in UI: `gemini-3.5-flash` + OpenAI-compat endpoint, **no embedded key** | ✅ PASS (screenshot `02-settings.png`) |
 | 4 | API key configurable + **persists** to `chrome.storage.local` | ✅ PASS (39-char key stored) |

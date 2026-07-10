@@ -7,6 +7,7 @@ const EXPECTED_KEYS = [
 	'fill_field',
 	'read_page_text',
 	'find_text',
+	'scroll_page',
 	'dismiss_overlays',
 	'list_actions',
 	'page_info',

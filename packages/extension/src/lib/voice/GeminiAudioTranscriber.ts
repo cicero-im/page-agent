@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-deprecated -- ScriptProcessorNode / createScriptProcessor
+ * are deprecated but are still universally supported and rock-solid across every browser today.
+ * Migrating to AudioWorklet means loading a separate worklet module at runtime (extra failure
+ * surface + CSP considerations in an extension) for a microphone this user literally cannot afford
+ * to have break. Keep ScriptProcessorNode for now; AudioWorklet migration is tracked separately. */
 import type { Transcriber, TranscriberConfig } from './Transcriber'
 import { blobToBase64, encodeWav } from './wavEncoder'
 

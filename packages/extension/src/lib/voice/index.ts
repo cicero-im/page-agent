@@ -1,5 +1,5 @@
 /**
- * Voice layer for Cicero Enfermeiro Digital.
+ * Voice layer for Cicero Agent.
  *
  * Two interchangeable speech-to-text engines sit behind {@link Transcriber} and
  * one text-to-speech engine behind {@link Speaker}, so the side panel never

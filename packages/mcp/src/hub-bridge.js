@@ -22,6 +22,15 @@ export class HubBridge {
 	/** @type {number} */
 	port
 
+	/**
+	 * Hub token presented to the extension so it accepts calls without prompting.
+	 * Copied by the user out of the extension's Settings panel and passed via the
+	 * `HUB_TOKEN` env var. Empty string when unset (extension falls back to its
+	 * per-session confirm dialog).
+	 * @type {string}
+	 */
+	#token
+
 	/** @type {http.Server} */
 	#httpServer
 
@@ -34,9 +43,13 @@ export class HubBridge {
 	/** @type {{ resolve: (r: {success: boolean, data: string}) => void, reject: (e: Error) => void } | null} */
 	#pendingTask = null
 
-	/** @param {number} port */
-	constructor(port) {
+	/**
+	 * @param {number} port
+	 * @param {string} [token] Hub token shared with the extension.
+	 */
+	constructor(port, token = '') {
 		this.port = port
+		this.#token = token
 		this.#httpServer = http.createServer((_req, res) => {
 			const html = launcherTemplate
 				.replaceAll('__EXT_ID__', EXT_ID)
@@ -68,6 +81,18 @@ export class HubBridge {
 		})
 	}
 
+	/**
+	 * Close the WS server and HTTP listener, freeing the port. Safe to call more
+	 * than once.
+	 * @returns {Promise<void>}
+	 */
+	async stop() {
+		this.#hub?.close()
+		this.#hub = null
+		await new Promise((resolve) => this.#wss.close(() => resolve(undefined)))
+		await new Promise((resolve) => this.#httpServer.close(() => resolve(undefined)))
+	}
+
 	get connected() {
 		return this.#hub?.readyState === 1
 	}
@@ -87,13 +112,13 @@ export class HubBridge {
 
 		return new Promise((resolve, reject) => {
 			this.#pendingTask = { resolve, reject }
-			this.#hub.send(JSON.stringify({ type: 'execute', task, config }))
+			this.#hub.send(JSON.stringify({ type: 'execute', task, config, token: this.#token }))
 		})
 	}
 
 	stopTask() {
 		if (this.connected) {
-			this.#hub.send(JSON.stringify({ type: 'stop' }))
+			this.#hub.send(JSON.stringify({ type: 'stop', token: this.#token }))
 		}
 	}
 

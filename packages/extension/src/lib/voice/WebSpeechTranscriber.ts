@@ -71,8 +71,8 @@ export class WebSpeechTranscriber implements Transcriber {
 			}
 			recognition.onresult = (event: any) => {
 				let text = ''
-				for (let i = 0; i < event.results.length; i++) {
-					text += event.results[i][0].transcript
+				for (const result of event.results) {
+					text += result[0].transcript
 				}
 				this.#transcript = text.trim()
 				// Continuous mode: don't settle stop() here — stream the running

@@ -2,6 +2,7 @@ import { type AgentConfig, PageAgentCore } from '@page-agent/core'
 
 import { RemotePageController } from './RemotePageController'
 import { TabsController } from './TabsController'
+import { createBrowserTools } from './browserTools'
 import { createHelperTools } from './helperTools'
 import SYSTEM_PROMPT from './system_prompt.md?raw'
 import { createTabTools } from './tabTools'
@@ -28,8 +29,14 @@ export class MultiPageAgent extends PageAgentCore {
 		const tabsController = new TabsController()
 		const pageController = new RemotePageController(tabsController)
 		// Tab tools + the CSP-safe helper toolbelt (click-by-text, fill-by-label,
-		// read-page, etc.) so a small model rarely has to guess indices or write JS.
-		const customTools = { ...createTabTools(tabsController), ...createHelperTools() }
+		// read-page, etc.) + the browser-capability toolbelt (download, bookmark,
+		// history, notify, clipboard, …) so a small model rarely has to guess indices
+		// or write JS, and can do genuinely useful chores hands-free.
+		const customTools = {
+			...createTabTools(tabsController),
+			...createHelperTools(),
+			...createBrowserTools(),
+		}
 
 		// system prompt - auto-detect language if not specified
 		const language = config.language ?? detectLanguage()

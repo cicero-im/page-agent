@@ -1,4 +1,4 @@
-# Como instalar o Cícero Enfermeiro Digital
+# Como instalar o Cícero Estagiário
 
 > Guia passo a passo, devagar e sem pressa. É para quem vai configurar no
 > computador dela **uma única vez**. Vai dar certo. 💙
@@ -12,10 +12,10 @@ formulários). Ela pode parar a qualquer momento apertando o botão grande **Par
 ## Parte 1 — Preparar a pasta (uma vez)
 
 Você recebeu um arquivo **ZIP** parecido com:
-`cicero-enfermeiro-digital-1.10.0-chrome.zip`
+`cicero-agent-1.10.0-chrome.zip`
 
 1. Copie esse arquivo ZIP para um lugar **fixo e fácil** — por exemplo, uma pasta
-   nova chamada **CiceroEnfermeiro** dentro de **Documentos**.
+   nova chamada **CiceroAgent** dentro de **Documentos**.
 2. Clique com o botão direito no ZIP e escolha **“Extrair tudo”** (ou
    “Descompactar”). Vai aparecer uma pasta com os arquivos dentro.
 3. ⚠️ **MUITO IMPORTANTE:** depois de extrair, **não mova e não apague essa
@@ -40,14 +40,14 @@ Você recebeu um arquivo **ZIP** parecido com:
    **“Carregar sem compactação”**.
 5. Vai abrir uma janela para escolher uma pasta. Escolha a pasta que você
    extraiu (entre nela até ver os arquivos do Cícero) e confirme em **Selecionar**.
-6. Pronto! Vai aparecer um cartão escrito **“Cícero Enfermeiro Digital”**. 🎉
+6. Pronto! Vai aparecer um cartão escrito **“Cícero Estagiário”**. 🎉
 
 ---
 
 ## Parte 3 — Deixar fácil de achar e abrir
 
 7. Lá em cima, à direita, clique no ícone de **peça de quebra-cabeça** 🧩.
-8. Ache **“Cícero Enfermeiro Digital”** na lista e clique no **alfinete** 📌 ao
+8. Ache **“Cícero Estagiário”** na lista e clique no **alfinete** 📌 ao
    lado dele. Agora o ícone do Cícero fica sempre visível.
 9. Clique no ícone do Cícero. Vai abrir um **painel do lado direito** da tela.
    É ali que tudo acontece.
@@ -84,7 +84,7 @@ Você recebeu um arquivo **ZIP** parecido com:
 - **O Chrome avisou que “desativou uma extensão” depois de uma atualização:**
   abra de novo `chrome://extensions` e clique em **“Manter”** (ou “Keep”) no aviso
   do Cícero. Ele volta a funcionar. **Não** desinstale.
-- **Sumiu o cartão “Cícero Enfermeiro Digital”:** provavelmente a pasta foi movida
+- **Sumiu o cartão “Cícero Estagiário”:** provavelmente a pasta foi movida
   ou apagada. Volte à **Parte 1** e refaça com a pasta no lugar certo.
 - **O microfone não funciona:** confira se você clicou em **“Permitir”** (passo
   11). Se precisar, em `chrome://settings/content/microphone` deixe o Chrome usar

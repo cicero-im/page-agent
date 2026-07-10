@@ -107,7 +107,7 @@ export default function App() {
 				.then((result) => {
 					// Speak the answer back (only if the speak toggle is on).
 					if (result?.success && result.data) {
-						speak(String(result.data))
+						speak(result.data)
 					} else if (result && !result.success) {
 						speak('Não consegui concluir agora. Podemos tentar de outro jeito?')
 					}
@@ -204,13 +204,16 @@ export default function App() {
 		try {
 			await transcriber.start()
 			setMicState('listening')
+			// Keep focus in the text box while she dictates so a single Enter sends —
+			// she can't type, so the fewer keys the better.
+			focusInput()
 		} catch (error) {
 			console.error('[SidePanel] Mic start failed:', error)
 			transcriberRef.current = null
 			setMicState('idle')
 			speak('Não consegui acessar o microfone. Verifique a permissão e tente de novo.')
 		}
-	}, [config, inputValue, joinBase, speaker, speak])
+	}, [config, inputValue, joinBase, speaker, speak, focusInput])
 
 	// Stop listening and settle the final text into the box. Does NOT submit.
 	const stopListening = useCallback(async (): Promise<string> => {
@@ -274,16 +277,15 @@ export default function App() {
 		focusInput()
 	}, [reset, speaker, focusInput])
 
-	// Keyboard shortcuts (work even when the box isn't focused):
+	// In-panel keys for the main hands-free flow. The mic/send shortcuts themselves
+	// are the GLOBAL chrome.commands (Alt+L / Alt+K — see the storage effect below),
+	// so we don't duplicate them here (that would double-fire when the panel is
+	// focused). Here we only need:
+	// - Enter: send (also handled by the textarea when focused; this covers the case
+	//   where she's dictating and the box isn't focused yet)
 	// - Esc: stop the running task (or cancel listening)
-	// - Ctrl/Cmd+M: start/stop listening
-	// - Ctrl/Cmd+K: send (Enter still sends when the box is focused)
-	// - Ctrl/Cmd+J: new conversation
 	useEffect(() => {
 		const onKey = (e: KeyboardEvent) => {
-			// While recording, Enter stops the mic and sends — even if the box isn't
-			// focused. (When it IS focused, the textarea's own handler does this, so
-			// skip here to avoid sending twice.)
 			if (
 				e.key === 'Enter' &&
 				!e.shiftKey &&
@@ -304,23 +306,50 @@ export default function App() {
 					transcriberRef.current = null
 					setMicState('idle')
 				}
-				return
-			}
-			if (!(e.metaKey || e.ctrlKey)) return
-			if (e.key === 'm' || e.key === 'M') {
-				e.preventDefault()
-				handleMic()
-			} else if (e.key === 'k' || e.key === 'K') {
-				e.preventDefault()
-				void handleSubmit()
-			} else if (e.key === 'j' || e.key === 'J') {
-				e.preventDefault()
-				handleNewChat()
 			}
 		}
 		window.addEventListener('keydown', onKey)
 		return () => window.removeEventListener('keydown', onKey)
-	}, [handleMic, handleSubmit, handleNewChat, handleStop, isRunning, micState])
+	}, [handleSubmit, handleStop, isRunning, micState])
+
+	// Global shortcuts (chrome.commands) are delivered by the background through
+	// chrome.storage (`ciceroPendingCommand`), so they reach the panel even if it
+	// was closed/unfocused when the key was pressed. De-duplicate by timestamp and
+	// ignore stale intents.
+	const lastCommandAtRef = useRef(0)
+	const consumeCommand = useCallback(
+		(payload?: { command?: string; at?: number }) => {
+			if (!payload?.command || typeof payload.at !== 'number') return
+			if (payload.at <= lastCommandAtRef.current) return
+			if (Date.now() - payload.at > 8000) return // ignore stale intents
+			lastCommandAtRef.current = payload.at
+			if (payload.command === 'listen_mic') {
+				handleMic() // toggle: start if idle, stop (keep text) if listening
+			} else if (payload.command === 'submit_now') {
+				void handleSubmit()
+			}
+		},
+		[handleMic, handleSubmit]
+	)
+	// Command issued while the panel was CLOSED: read it once config is ready
+	// (startListening needs config). Re-running on config change is safe — the
+	// timestamp de-dup above drops anything already handled or stale.
+	useEffect(() => {
+		if (!config) return
+		void chrome.storage.local
+			.get('ciceroPendingCommand')
+			.then((r) => consumeCommand(r.ciceroPendingCommand as { command?: string; at?: number }))
+	}, [config, consumeCommand])
+	// Live commands while the panel is open.
+	useEffect(() => {
+		const onChanged = (changes: Record<string, chrome.storage.StorageChange>, area: string) => {
+			if (area === 'local' && changes.ciceroPendingCommand) {
+				consumeCommand(changes.ciceroPendingCommand.newValue as { command?: string; at?: number })
+			}
+		}
+		chrome.storage.onChanged.addListener(onChanged)
+		return () => chrome.storage.onChanged.removeListener(onChanged)
+	}, [consumeCommand])
 
 	// Ping-pong mode: after a task finishes, auto-restart the mic so she can keep
 	// going hands-free. Placed after startListening is defined (avoids TDZ).
@@ -492,8 +521,8 @@ export default function App() {
 						type="button"
 						onClick={handleMic}
 						disabled={isRunning || !config || transcribing}
-						aria-label={listening ? 'Parar de ouvir' : 'Falar (Ctrl/Cmd+M)'}
-						title={listening ? 'Parar de ouvir' : 'Falar (Ctrl/Cmd+M)'}
+						aria-label={listening ? 'Parar de ouvir' : 'Falar (⌥/Alt+L)'}
+						title={listening ? 'Parar de ouvir' : 'Falar (⌥/Alt+L)'}
 						className={`size-12 shrink-0 rounded-full cursor-pointer ${
 							listening ? 'bg-red-500 hover:bg-red-600 animate-pulse' : ''
 						}`}
@@ -543,6 +572,11 @@ export default function App() {
 							)}
 						</InputGroupAddon>
 					</InputGroup>
+				</div>
+				{/* Shortcut legend — discoverable but unobtrusive. The L/K combos are the
+				    global ones (chrome.commands); M/J/Esc work when the panel is focused. */}
+				<div className="text-center text-[10px] text-muted-foreground/70 leading-relaxed">
+					Fale e tecle <b>Enter</b> para enviar · ⌥/Alt+L microfone · ⌥/Alt+K enviar · Esc parar
 				</div>
 			</footer>
 		</div>

@@ -80,7 +80,7 @@ export default function App() {
 						<p>
 							Check out the official{" "}
 							<a
-								href="https://github.com/alibaba/page-agent/tree/main/packages/mcp"
+								href="https://github.com/arthrod/page-agent/tree/main/packages/mcp"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="underline hover:text-foreground"
@@ -101,12 +101,12 @@ export default function App() {
 					<span>
 						Built with ♥️ by{" "}
 						<a
-							href="https://github.com/gaomeng1900"
+							href="https://github.com/arthrod"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="underline hover:text-foreground"
 						>
-							@Simon
+							@arthrod
 						</a>
 					</span>
 				</div>

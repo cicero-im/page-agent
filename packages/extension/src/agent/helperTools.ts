@@ -269,6 +269,60 @@ function pageInfo(): { title: string; url: string; heading: string } {
 	}
 }
 
+/**
+ * Scroll the page (or its largest scrollable region) up/down. Returns how far it
+ * actually moved plus whether it reached an edge, so the tool can report honestly
+ * ("já está no fim") instead of silently doing nothing.
+ */
+function pageScroll(
+	direction: 'down' | 'up',
+	amount: 'page' | 'half' | 'bottom' | 'top'
+): { moved: number; atBottom: boolean; atTop: boolean } {
+	const goingDown = direction !== 'up'
+
+	// Prefer the document scroller; fall back to the largest element that can
+	// actually scroll vertically (single-page apps often scroll an inner panel).
+	const pickScroller = (): HTMLElement => {
+		const doc = (document.scrollingElement || document.documentElement) as HTMLElement
+		if (doc && doc.scrollHeight > doc.clientHeight + 4) return doc
+		let best: HTMLElement | null = null
+		let bestArea = 0
+		for (const el of Array.from(document.querySelectorAll<HTMLElement>('*'))) {
+			const overflowY = getComputedStyle(el).overflowY
+			if (overflowY !== 'auto' && overflowY !== 'scroll' && overflowY !== 'overlay') continue
+			if (el.scrollHeight <= el.clientHeight + 4) continue
+			const rect = el.getBoundingClientRect()
+			const area = rect.width * rect.height
+			if (area > bestArea) {
+				best = el
+				bestArea = area
+			}
+		}
+		return best || doc
+	}
+
+	const scroller = pickScroller()
+	const viewport = scroller.clientHeight || window.innerHeight || 800
+	const maxTop = Math.max(0, scroller.scrollHeight - scroller.clientHeight)
+	const before = scroller.scrollTop
+
+	let target: number
+	if (amount === 'bottom') target = maxTop
+	else if (amount === 'top') target = 0
+	else {
+		const fraction = amount === 'half' ? 0.5 : 0.9
+		target = before + viewport * fraction * (goingDown ? 1 : -1)
+	}
+	scroller.scrollTop = Math.max(0, Math.min(target, maxTop))
+
+	const after = scroller.scrollTop
+	return {
+		moved: Math.round(after - before),
+		atBottom: after >= maxTop - 2,
+		atTop: after <= 2,
+	}
+}
+
 /* -------------------------------------------------------------------------- */
 /* Tool registry                                                              */
 /* -------------------------------------------------------------------------- */
@@ -363,6 +417,40 @@ export function createHelperTools(): Record<string, PageAgentTool> {
 						: `Não encontrei o texto "${args.query}" na página.`
 				} catch (error) {
 					return `Erro ao procurar o texto "${args.query}": ${errorMessage(error)}`
+				}
+			},
+		}),
+
+		scroll_page: tool({
+			description:
+				'Scroll the page to reveal content that is off-screen. Use this whenever the page continues below (or above) what is currently visible — e.g. to read more of an article or see more search results. direction: "down" (default) or "up". amount: "page" (default, ~90% of the screen), "half", "bottom" (jump to the very end of the page), or "top" (jump to the very start).',
+			inputSchema: z.object({
+				direction: z.enum(['down', 'up']).optional().default('down'),
+				amount: z.enum(['page', 'half', 'bottom', 'top']).optional().default('page'),
+			}),
+			execute: async function (this: PageAgentCore, args, ctx) {
+				try {
+					ctx.signal.throwIfAborted()
+					const tabId = await resolveTabId(this)
+					if (tabId == null) return NO_TAB_MESSAGE
+					const res = await runInPage(tabId, pageScroll, [args.direction, args.amount])
+					if (!res) return 'Não consegui rolar a página.'
+					if (res.moved === 0) {
+						if (args.direction === 'up' || args.amount === 'top')
+							return res.atTop
+								? 'A página já está no topo, não dá para rolar mais para cima.'
+								: 'Não consegui rolar a página para cima.'
+						return res.atBottom
+							? 'A página já está no fim, não dá para rolar mais para baixo.'
+							: 'Não consegui rolar a página para baixo.'
+					}
+					const dir = res.moved > 0 ? 'para baixo' : 'para cima'
+					let message = `Rolei a página ${dir} ${Math.abs(res.moved)} pixels.`
+					if (res.atBottom) message += ' Cheguei ao fim da página.'
+					else if (res.atTop) message += ' Cheguei ao topo da página.'
+					return message
+				} catch (error) {
+					return `Erro ao rolar a página: ${errorMessage(error)}`
 				}
 			},
 		}),

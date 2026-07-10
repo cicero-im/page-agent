@@ -19,6 +19,7 @@
  * @edit exclude aria-hidden elements
  * @edit make sure attributes exist for interactive candidates.
  * @edit fix "aria-*" attributes check
+ * @edit quiet cross-origin iframe SecurityError (skip silently, warn on real errors)
  */
 
 export default (
@@ -1685,7 +1686,19 @@ export default (
 						}
 					}
 				} catch (e) {
-					console.warn('Unable to access iframe:', e)
+					/**
+					 * @edit quiet cross-origin iframe SecurityError
+					 * Cross-origin iframes (ads, embeds, social widgets, captchas) are
+					 * sandboxed by the browser's Same-Origin Policy and cannot be read —
+					 * this is EXPECTED, not a bug. Skip them silently; otherwise an
+					 * ad-heavy page (Google results, news sites) floods the console with
+					 * dozens of identical SecurityError stacks. Match by `name` (not
+					 * `instanceof DOMException`) so it holds even across realms. Still
+					 * surface any OTHER, genuinely unexpected failure.
+					 */
+					if (e?.name !== 'SecurityError') {
+						console.warn('Unable to access iframe:', e)
+					}
 				}
 			}
 			// Handle rich text editors and contenteditable elements

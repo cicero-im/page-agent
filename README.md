@@ -1,13 +1,15 @@
-# Page Agent
+# Cicero Agent
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://page-agent.github.io/assets/readme/banner-dark.png">
-  <img alt="Page Agent Banner" src="https://page-agent.github.io/assets/readme/banner-light.png">
+  <img alt="Cicero Agent Banner" src="https://page-agent.github.io/assets/readme/banner-light.png">
 </picture>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-auto.svg)](https://opensource.org/licenses/MIT) [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/) [![Bundle Size](https://img.shields.io/bundlephobia/minzip/page-agent)](https://bundlephobia.com/package/page-agent) [![Downloads](https://img.shields.io/npm/dt/page-agent.svg)](https://www.npmjs.com/package/page-agent) [![GitHub stars](https://img.shields.io/github/stars/alibaba/page-agent.svg)](https://github.com/alibaba/page-agent)
+[![License: MIT](https://img.shields.io/badge/License-MIT-auto.svg)](https://opensource.org/licenses/MIT) [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/) [![Bundle Size](https://img.shields.io/bundlephobia/minzip/page-agent)](https://bundlephobia.com/package/page-agent) [![Downloads](https://img.shields.io/npm/dt/page-agent.svg)](https://www.npmjs.com/package/page-agent) [![GitHub stars](https://img.shields.io/github/stars/alibaba/page-agent.svg)](https://github.com/arthrod/page-agent)
 
 The GUI Agent Living in Your Webpage. Control web interfaces with natural language.
+
+> **Cicero Agent** is built on **[Page Agent](https://github.com/arthrod/page-agent)** by **[Simon (@gaomeng1900)](https://github.com/gaomeng1900)** — including **Cícero Estagiário**, a voice-first browser assistant for someone who can't use a keyboard or mouse. The library API below (`page-agent` on npm, the `PageAgent` class) is unchanged.
 
 🌐 **English** | [中文](./docs/README-zh.md)
 
@@ -42,13 +44,13 @@ https://github.com/user-attachments/assets/a1f2eae2-13fb-4aae-98cf-a3fc1620a6c2
 
 ### One-line integration
 
-Fastest way to try PageAgent with our free Demo LLM:
+Fastest way to try Cicero Agent with our free Demo LLM:
 
 ```html
 <script src="{URL}" crossorigin="true"></script>
 ```
 
-> **⚠️ For technical evaluation only.** This demo CDN uses our free [testing LLM API](https://arthrod.github.io/page-agent/docs/features/models#free-testing-api). By using it, you agree to its [terms](https://github.com/alibaba/page-agent/blob/main/docs/terms-and-privacy.md).
+> **⚠️ For technical evaluation only.** This demo CDN uses our free [testing LLM API](https://arthrod.github.io/page-agent/docs/features/models#free-testing-api). By using it, you agree to its [terms](https://github.com/arthrod/page-agent/blob/main/docs/terms-and-privacy.md).
 
 | Mirrors | URL                                                                                 |
 | ------- | ----------------------------------------------------------------------------------- |
@@ -78,21 +80,21 @@ await agent.execute('Click the login button')
 
 For more programmatic usage, see [📖 Documentations](https://arthrod.github.io/page-agent/docs/introduction/overview).
 
-## 🌟 Awesome Page Agent
+## 🌟 Awesome Cicero Agent
 
-Built something cool with PageAgent? Add it here! Open a PR to share your project.
+Built something cool with Cicero Agent? Add it here! Open a PR to share your project.
 
 > These are community projects — not maintained or endorsed by us. Use at your own discretion.
 
 | Project  | Description                                                 |
 | -------- | ----------------------------------------------------------- |
-| _Yours?_ | [Open a PR](https://github.com/alibaba/page-agent/pulls) 🙌 |
+| _Yours?_ | [Open a PR](https://github.com/arthrod/page-agent/pulls) 🙌 |
 
 ## 🤝 Contributing
 
 We welcome contributions from the community! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines and [docs/developer-guide.md](docs/developer-guide.md) for local development workflows.
 
-Please read the [maintainer's note](https://github.com/alibaba/page-agent/issues/349) on principles and current state.
+Please read the [maintainer's note](https://github.com/arthrod/page-agent/issues/349) on principles and current state.
 
 Contributions generated entirely by **bots or AI** without substantial human involvement will **not be accepted**.
 
@@ -101,6 +103,8 @@ Contributions generated entirely by **bots or AI** without substantial human inv
 [MIT License](LICENSE)
 
 ## 👏 Acknowledgments
+
+**Page Agent was created by [Simon (@gaomeng1900)](https://github.com/gaomeng1900).** The **Cícero Estagiário** assistive extension in this repo (a voice-first browser helper, packaged as **Cicero Agent**) is built entirely on Simon's work — heartfelt thanks to him for the foundation that made it possible. 🙏
 
 This project builds upon the excellent work of **[`browser-use`](https://github.com/browser-use/browser-use)**.
 
@@ -120,4 +124,4 @@ this project possible.
 
 ---
 
-**⭐ Star this repo if you find PageAgent helpful!**
+**⭐ Star this repo if you find Cicero Agent helpful!**

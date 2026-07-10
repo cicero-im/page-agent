@@ -1,6 +1,6 @@
 name: Bug Report
 description: Report a bug
-title: '[Bug] '
+title: "[Bug] "
 type: Bug
 body:
   - type: markdown
@@ -9,8 +9,8 @@ body:
         Thanks for your interest in improving the project! Before submitting, please search for existing issues.
         感谢参与我们的社区！请先搜索现有 Issue，避免重复提交。
 
-        - [Code of Conduct](https://github.com/alibaba/page-agent/blob/main/docs/CODE_OF_CONDUCT.md)
-        - [Contributing Guide](https://github.com/alibaba/page-agent/blob/main/CONTRIBUTING.md)
+        - [Code of Conduct](https://github.com/arthrod/page-agent/blob/main/docs/CODE_OF_CONDUCT.md)
+        - [Contributing Guide](https://github.com/arthrod/page-agent/blob/main/CONTRIBUTING.md)
 
         > 为了让更多人参与讨论，请尽量使用英文提交 Issue，感谢理解 🙏
 
@@ -19,7 +19,7 @@ body:
     attributes:
       label: What happened? / 问题描述
       description: Describe what you expected vs what actually happened.
-      placeholder: 'A clear description of the bug.'
+      placeholder: "A clear description of the bug."
     validations:
       required: true
 
@@ -28,7 +28,7 @@ body:
     attributes:
       label: How to reproduce / 如何复现
       description: Provide steps, URL, config or code snippet to reproduce the bug.
-      placeholder: '1. Open URL: https://...'
+      placeholder: "1. Open URL: https://..."
     validations:
       required: true
 
@@ -36,13 +36,13 @@ body:
     id: version
     attributes:
       label: Version
-      placeholder: '0.0.0'
+      placeholder: "0.0.0"
 
   - type: input
     id: browser
     attributes:
       label: Browser
-      placeholder: 'e.g. Chrome 130'
+      placeholder: "e.g. Chrome 130"
 
   - type: checkboxes
     id: checklist

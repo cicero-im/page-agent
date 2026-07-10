@@ -165,6 +165,14 @@ export class TabsController {
 
 		await this.updateCurrentTabId(tabId)
 
+		// Bring the tab to the front so the (single, hands-free) user actually sees
+		// what the agent is doing — and so capture_screenshot can grab it.
+		await sendMessage({
+			type: 'TAB_CONTROL',
+			action: 'activate_tab',
+			payload: { tabId },
+		})
+
 		return `✅ Switched to tab ID ${tabId}.`
 	}
 
@@ -221,7 +229,7 @@ export class TabsController {
 			payload: {
 				groupId: this.tabGroupId,
 				properties: {
-					title: `PageAgent(${this.task})`,
+					title: `Cícero(${this.task})`,
 					color: randomColor(),
 					collapsed: false,
 				},
@@ -367,6 +375,7 @@ export type TabAction =
 	| 'get_active_tab'
 	| 'get_tab_info'
 	| 'open_new_tab'
+	| 'activate_tab'
 	| 'create_tab_group'
 	| 'update_tab_group'
 	| 'add_tab_to_group'

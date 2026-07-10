@@ -15801,7 +15801,7 @@ var $ZodObjectJIT = /*@__PURE__*/ $constructor("$ZodObjectJIT", (inst, def) => {
             })));
           }
         }
-
+        
         if (${id}.value === undefined) {
           if (${k} in input) {
             newResult[${k}] = undefined;
@@ -15809,7 +15809,7 @@ var $ZodObjectJIT = /*@__PURE__*/ $constructor("$ZodObjectJIT", (inst, def) => {
         } else {
           newResult[${k}] = ${id}.value;
         }
-
+        
       `);
 			else if (!isOptionalIn) doc.write(`
         const ${id}_present = ${k} in input;
@@ -15844,7 +15844,7 @@ var $ZodObjectJIT = /*@__PURE__*/ $constructor("$ZodObjectJIT", (inst, def) => {
             path: iss.path ? [${k}, ...iss.path] : [${k}]
           })));
         }
-
+        
         if (${id}.value === undefined) {
           if (${k} in input) {
             newResult[${k}] = undefined;
@@ -15852,7 +15852,7 @@ var $ZodObjectJIT = /*@__PURE__*/ $constructor("$ZodObjectJIT", (inst, def) => {
         } else {
           newResult[${k}] = ${id}.value;
         }
-
+        
       `);
 		}
 		doc.write(`payload.value = newResult;`);
@@ -18452,7 +18452,7 @@ var InvokeError = class extends Error {
 	}
 };
 //#endregion
-//#region ../../node_modules/chalk/source/vendor/ansi-styles/index.js
+//#region ../../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/vendor/ansi-styles/index.js
 var ANSI_BACKGROUND_OFFSET = 10;
 var wrapAnsi16 = (offset = 0) => (code) => `\u001B[${code + offset}m`;
 var wrapAnsi256 = (offset = 0) => (code) => `\u001B[${38 + offset};5;${code}m`;
@@ -18616,7 +18616,7 @@ function assembleStyles() {
 }
 var ansiStyles = assembleStyles();
 //#endregion
-//#region ../../node_modules/chalk/source/vendor/supports-color/browser.js
+//#region ../../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/vendor/supports-color/browser.js
 var level = (() => {
 	if (!("navigator" in globalThis)) return 0;
 	if (globalThis.navigator.userAgentData) {
@@ -18637,7 +18637,7 @@ var supportsColor = {
 	stderr: colorSupport
 };
 //#endregion
-//#region ../../node_modules/chalk/source/utilities.js
+//#region ../../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/utilities.js
 function stringReplaceAll(string, substring, replacer) {
 	let index = string.indexOf(substring);
 	if (index === -1) return string;
@@ -18665,7 +18665,7 @@ function stringEncaseCRLFWithFirstIndex(string, prefix, postfix, index) {
 	return returnValue;
 }
 //#endregion
-//#region ../../node_modules/chalk/source/index.js
+//#region ../../node_modules/.pnpm/chalk@5.6.2/node_modules/chalk/source/index.js
 var { stdout: stdoutColor, stderr: stderrColor } = supportsColor;
 var GENERATOR = Symbol("GENERATOR");
 var STYLER = Symbol("STYLER");
@@ -20307,6 +20307,11 @@ var TabsController = class {
 		debug("switchToTab", tabId);
 		if (!this.tabs.find((t) => t.id === tabId)) throw new Error(`Tab ID ${tabId} not found in tab list.`);
 		await this.updateCurrentTabId(tabId);
+		await sendMessage({
+			type: "TAB_CONTROL",
+			action: "activate_tab",
+			payload: { tabId }
+		});
 		return `✅ Switched to tab ID ${tabId}.`;
 	}
 	async closeTab(tabId) {
@@ -20346,7 +20351,7 @@ var TabsController = class {
 			payload: {
 				groupId: this.tabGroupId,
 				properties: {
-					title: `PageAgent(${this.task})`,
+					title: `Cícero(${this.task})`,
 					color: randomColor(),
 					collapsed: false
 				}
@@ -20488,6 +20493,244 @@ async function waitUntil(check, timeoutMS = 6e4, error) {
 		};
 		setTimeout(poll, 100);
 	});
+}
+//#endregion
+//#region src/agent/browserTools.ts
+/**
+* Browser-capability toolbelt for the Cícero extension.
+*
+* Unlike `helperTools.ts` (which manipulates the *page* DOM via injected
+* functions), these tools drive Chrome itself through the privileged extension
+* APIs (`chrome.downloads`, `chrome.bookmarks`, `chrome.history`, …). They run in
+* the side-panel context, where those APIs are available.
+*
+* They exist so the small model can do genuinely useful real-life chores for a
+* user who cannot use her hands: download a file, save/return to a site, get an
+* out-loud system notification when something finishes, copy/paste by voice, etc.
+*
+* Every tool:
+*  - returns a short, friendly pt-BR string (never a raw error),
+*  - honors `ctx.signal` (cooperative cancellation),
+*  - degrades gracefully when an API is unavailable instead of throwing.
+*/
+/** Normalize any thrown value into a readable string. */
+function errorMessage$1(error) {
+	return error instanceof Error ? error.message : String(error);
+}
+/** The current tab id the agent is operating on, if any. */
+async function resolveTabId$1(core) {
+	const fromController = core.pageController?.currentTabId;
+	if (typeof fromController === "number") return fromController;
+	const [tab] = await chrome.tabs.query({
+		active: true,
+		lastFocusedWindow: true
+	});
+	return tab?.id ?? null;
+}
+/** Resolve the current tab (for defaulting url/title), or null. */
+async function resolveCurrentTab(core) {
+	try {
+		const tabId = await resolveTabId$1(core);
+		if (tabId == null) return null;
+		return await chrome.tabs.get(tabId);
+	} catch {
+		return null;
+	}
+}
+/** Prefix a bare host/path with https:// so chrome APIs accept it. */
+function normalizeUrl(url) {
+	return /^[a-z]+:\/\//i.test(url) ? url : `https://${url}`;
+}
+/**
+* Create the browser-capability toolbelt. Wired into `PageAgentCore` via
+* `customTools` alongside the page/tab tools.
+*/
+function createBrowserTools() {
+	return {
+		download_file: tool({
+			description: "Download a file from a direct URL to the computer (no dialog — it goes to the Downloads folder). Use for \"baixe este arquivo/foto/PDF\". Example: { \"url\": \"https://site.com/contrato.pdf\" }.",
+			inputSchema: object({
+				url: string().describe("Direct URL of the file to download"),
+				filename: string().optional().describe("Optional name to save the file as, e.g. \"contrato.pdf\"")
+			}),
+			execute: async function(args, ctx) {
+				try {
+					ctx.signal.throwIfAborted();
+					if (typeof chrome === "undefined" || !chrome.downloads) return "O download não está disponível neste contexto.";
+					const url = normalizeUrl(args.url);
+					if (typeof await chrome.downloads.download({
+						url,
+						filename: args.filename,
+						saveAs: false
+					}) !== "number") return `Não consegui iniciar o download de "${url}".`;
+					return `Comecei a baixar ${args.filename ? `"${args.filename}"` : "o arquivo"}. Ele vai para a pasta de Downloads.`;
+				} catch (error) {
+					return `Não consegui baixar o arquivo: ${errorMessage$1(error)}`;
+				}
+			}
+		}),
+		save_bookmark: tool({
+			description: "Save (bookmark) a page so it is easy to find later. If no URL is given, bookmarks the page currently open. Example: { \"title\": \"Folha de S.Paulo\" }.",
+			inputSchema: object({
+				url: string().optional().describe("URL to bookmark; defaults to the current page"),
+				title: string().optional().describe("Name for the bookmark; defaults to the page title")
+			}),
+			execute: async function(args, ctx) {
+				try {
+					ctx.signal.throwIfAborted();
+					if (typeof chrome === "undefined" || !chrome.bookmarks) return "Os favoritos não estão disponíveis neste contexto.";
+					const current = args.url ? null : await resolveCurrentTab(this);
+					const url = args.url ? normalizeUrl(args.url) : current?.url;
+					const title = args.title || current?.title || url;
+					if (!url) return "Não há nenhuma página para salvar nos favoritos.";
+					await chrome.bookmarks.create({
+						title,
+						url
+					});
+					return `Salvei "${title}" nos favoritos.`;
+				} catch (error) {
+					return `Não consegui salvar nos favoritos: ${errorMessage$1(error)}`;
+				}
+			}
+		}),
+		add_to_reading_list: tool({
+			description: "Add a page to the Chrome reading list to read later. If no URL is given, uses the page currently open.",
+			inputSchema: object({
+				url: string().optional().describe("URL to add; defaults to the current page"),
+				title: string().optional().describe("Title; defaults to the page title")
+			}),
+			execute: async function(args, ctx) {
+				try {
+					ctx.signal.throwIfAborted();
+					if (typeof chrome === "undefined" || !chrome.readingList) return "A lista de leitura não está disponível neste contexto.";
+					const current = args.url ? null : await resolveCurrentTab(this);
+					const url = args.url ? normalizeUrl(args.url) : current?.url;
+					const title = args.title || current?.title || url;
+					if (!url) return "Não há nenhuma página para adicionar à lista de leitura.";
+					await chrome.readingList.addEntry({
+						url,
+						title,
+						hasBeenRead: false
+					});
+					return `Adicionei "${title}" à lista de leitura.`;
+				} catch (error) {
+					return `Não consegui adicionar à lista de leitura: ${errorMessage$1(error)}`;
+				}
+			}
+		}),
+		recent_sites: tool({
+			description: "List the sites recently visited (most recent first), as \"Título — url\" lines. Use to answer \"que sites eu vi antes?\" or to find a page to go back to.",
+			inputSchema: object({ query: string().optional().describe("Optional words to filter the history by, e.g. \"folha\"") }),
+			execute: async function(args, ctx) {
+				try {
+					ctx.signal.throwIfAborted();
+					if (typeof chrome === "undefined" || !chrome.history) return "O histórico não está disponível neste contexto.";
+					const items = await chrome.history.search({
+						text: args.query ?? "",
+						maxResults: 15,
+						startTime: 0
+					});
+					if (!items.length) return "Não encontrei sites recentes no histórico.";
+					return `Sites recentes:\n${items.filter((it) => it.url).map((it) => `${(it.title || it.url || "").slice(0, 70)} — ${it.url}`).join("\n")}`;
+				} catch (error) {
+					return `Não consegui ler o histórico: ${errorMessage$1(error)}`;
+				}
+			}
+		}),
+		open_recent: tool({
+			description: "Find a recently visited site by some words and open it in the current tab. Perfect for \"volta pro site de antes\" / \"abre de novo aquele site da folha\". Example: { \"query\": \"folha\" }.",
+			inputSchema: object({ query: string().describe("Words that identify the site, e.g. \"folha\" or \"gmail\"") }),
+			execute: async function(args, ctx) {
+				try {
+					ctx.signal.throwIfAborted();
+					if (typeof chrome === "undefined" || !chrome.history) return "O histórico não está disponível neste contexto.";
+					const target = (await chrome.history.search({
+						text: args.query,
+						maxResults: 1,
+						startTime: 0
+					})).find((it) => it.url);
+					if (!target?.url) return `Não encontrei nenhum site recente com "${args.query}".`;
+					const tabId = await resolveTabId$1(this);
+					if (tabId == null) await chrome.tabs.create({
+						url: target.url,
+						active: true
+					});
+					else await chrome.tabs.update(tabId, {
+						url: target.url,
+						active: true
+					});
+					return `Abrindo "${target.title || target.url}".`;
+				} catch (error) {
+					return `Não consegui abrir o site recente: ${errorMessage$1(error)}`;
+				}
+			}
+		}),
+		top_sites: tool({
+			description: "List the most visited sites (the ones that show on the new-tab page), as \"Título — url\" lines. Use for \"abre um dos meus sites preferidos\".",
+			inputSchema: object({}),
+			execute: async function(_args, ctx) {
+				try {
+					ctx.signal.throwIfAborted();
+					if (typeof chrome === "undefined" || !chrome.topSites) return "Os sites mais visitados não estão disponíveis neste contexto.";
+					const items = await chrome.topSites.get();
+					if (!items.length) return "Não encontrei sites mais visitados.";
+					return `Sites mais visitados:\n${items.slice(0, 12).map((it) => `${(it.title || it.url).slice(0, 70)} — ${it.url}`).join("\n")}`;
+				} catch (error) {
+					return `Não consegui obter os sites mais visitados: ${errorMessage$1(error)}`;
+				}
+			}
+		}),
+		notify: tool({
+			description: "Show a system notification (with the operating system's sound) to get her attention — use it when a task is finished or when you need her to look at the screen to confirm something. Example: { \"message\": \"Terminei de preencher o formulário.\" }.",
+			inputSchema: object({
+				message: string().describe("The message to show"),
+				title: string().optional().describe("Optional title; defaults to \"Cícero\"")
+			}),
+			execute: async function(args, ctx) {
+				try {
+					ctx.signal.throwIfAborted();
+					if (typeof chrome === "undefined" || !chrome.notifications) return "As notificações não estão disponíveis neste contexto.";
+					await chrome.notifications.create({
+						type: "basic",
+						iconUrl: chrome.runtime.getURL("assets/cicero-128.png"),
+						title: args.title || "Cícero",
+						message: args.message,
+						priority: 2
+					});
+					return `Avisei ela: "${args.message}".`;
+				} catch (error) {
+					return `Não consegui mostrar a notificação: ${errorMessage$1(error)}`;
+				}
+			}
+		}),
+		copy_text: tool({
+			description: "Copy some text to the clipboard so she can paste it elsewhere. Example: { \"text\": \"Rua das Flores, 123\" }.",
+			inputSchema: object({ text: string().describe("The text to put on the clipboard") }),
+			execute: async function(args, ctx) {
+				try {
+					ctx.signal.throwIfAborted();
+					await navigator.clipboard.writeText(args.text);
+					return "Copiei o texto para a área de transferência.";
+				} catch (error) {
+					return `Não consegui copiar o texto: ${errorMessage$1(error)}`;
+				}
+			}
+		}),
+		read_clipboard: tool({
+			description: "Read the text currently on the clipboard (what was last copied). Use when she says \"cola o que eu copiei\" / \"usa o que está copiado\".",
+			inputSchema: object({}),
+			execute: async function(_args, ctx) {
+				try {
+					ctx.signal.throwIfAborted();
+					const text = await navigator.clipboard.readText();
+					if (!text) return "A área de transferência está vazia.";
+					return `Texto copiado:\n${text.slice(0, 4e3)}`;
+				} catch (error) {
+					return `Não consegui ler a área de transferência: ${errorMessage$1(error)}`;
+				}
+			}
+		})
+	};
 }
 //#endregion
 //#region src/agent/helperTools.ts
@@ -20737,6 +20980,47 @@ function pageInfo() {
 	};
 }
 /**
+* Scroll the page (or its largest scrollable region) up/down. Returns how far it
+* actually moved plus whether it reached an edge, so the tool can report honestly
+* ("já está no fim") instead of silently doing nothing.
+*/
+function pageScroll(direction, amount) {
+	const goingDown = direction !== "up";
+	const pickScroller = () => {
+		const doc = document.scrollingElement || document.documentElement;
+		if (doc && doc.scrollHeight > doc.clientHeight + 4) return doc;
+		let best = null;
+		let bestArea = 0;
+		for (const el of Array.from(document.querySelectorAll("*"))) {
+			const overflowY = getComputedStyle(el).overflowY;
+			if (overflowY !== "auto" && overflowY !== "scroll" && overflowY !== "overlay") continue;
+			if (el.scrollHeight <= el.clientHeight + 4) continue;
+			const rect = el.getBoundingClientRect();
+			const area = rect.width * rect.height;
+			if (area > bestArea) {
+				best = el;
+				bestArea = area;
+			}
+		}
+		return best || doc;
+	};
+	const scroller = pickScroller();
+	const viewport = scroller.clientHeight || window.innerHeight || 800;
+	const maxTop = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+	const before = scroller.scrollTop;
+	let target;
+	if (amount === "bottom") target = maxTop;
+	else if (amount === "top") target = 0;
+	else target = before + viewport * (amount === "half" ? .5 : .9) * (goingDown ? 1 : -1);
+	scroller.scrollTop = Math.max(0, Math.min(target, maxTop));
+	const after = scroller.scrollTop;
+	return {
+		moved: Math.round(after - before),
+		atBottom: after >= maxTop - 2,
+		atTop: after <= 2
+	};
+}
+/**
 * Create the helper toolbelt. The orchestrator wires the returned record into
 * `PageAgentCore` via `customTools`.
 */
@@ -20806,6 +21090,37 @@ function createHelperTools() {
 					return await runInPage(tabId, pageFindText, [args.query, true]) ? `Encontrei o texto "${args.query}" na página.` : `Não encontrei o texto "${args.query}" na página.`;
 				} catch (error) {
 					return `Erro ao procurar o texto "${args.query}": ${errorMessage(error)}`;
+				}
+			}
+		}),
+		scroll_page: tool({
+			description: "Scroll the page to reveal content that is off-screen. Use this whenever the page continues below (or above) what is currently visible — e.g. to read more of an article or see more search results. direction: \"down\" (default) or \"up\". amount: \"page\" (default, ~90% of the screen), \"half\", \"bottom\" (jump to the very end of the page), or \"top\" (jump to the very start).",
+			inputSchema: object({
+				direction: _enum(["down", "up"]).optional().default("down"),
+				amount: _enum([
+					"page",
+					"half",
+					"bottom",
+					"top"
+				]).optional().default("page")
+			}),
+			execute: async function(args, ctx) {
+				try {
+					ctx.signal.throwIfAborted();
+					const tabId = await resolveTabId(this);
+					if (tabId == null) return NO_TAB_MESSAGE;
+					const res = await runInPage(tabId, pageScroll, [args.direction, args.amount]);
+					if (!res) return "Não consegui rolar a página.";
+					if (res.moved === 0) {
+						if (args.direction === "up" || args.amount === "top") return res.atTop ? "A página já está no topo, não dá para rolar mais para cima." : "Não consegui rolar a página para cima.";
+						return res.atBottom ? "A página já está no fim, não dá para rolar mais para baixo." : "Não consegui rolar a página para baixo.";
+					}
+					let message = `Rolei a página ${res.moved > 0 ? "para baixo" : "para cima"} ${Math.abs(res.moved)} pixels.`;
+					if (res.atBottom) message += " Cheguei ao fim da página.";
+					else if (res.atTop) message += " Cheguei ao topo da página.";
+					return message;
+				} catch (error) {
+					return `Erro ao rolar a página: ${errorMessage(error)}`;
 				}
 			}
 		}),
@@ -21019,7 +21334,8 @@ var MultiPageAgent = class extends PageAgentCore {
 		const pageController = new RemotePageController(tabsController);
 		const customTools = {
 			...createTabTools(tabsController),
-			...createHelperTools()
+			...createHelperTools(),
+			...createBrowserTools()
 		};
 		const targetLanguage = (config.language ?? detectLanguage()) === "zh-CN" ? "中文" : "English";
 		const systemPrompt = system_prompt_default.replace(/Default working language: \*\*.*?\*\*/, `Default working language: **${targetLanguage}**`);
@@ -21098,9 +21414,17 @@ A pessoa que você ajuda quebrou as duas mãos e não consegue usar teclado nem 
 Como agir:
 - Diga em poucas palavras o que você vai fazer e, no fim, o que conseguiu.
 - Prefira as ferramentas de alto nível (clicar por texto, preencher por rótulo, ler o texto da página, listar ações) em vez de adivinhar índices ou escrever código.
-- NUNCA use execute_javascript para navegar, voltar, recarregar ou ler a página — em muitos sites isso é bloqueado e falha. Em vez disso use: go_back (voltar), go_forward (avançar), reload_page (recarregar), go_to_url (abrir um site), read_page_text (ler), click_text (clicar), fill_field (preencher). Use execute_javascript só em último caso.
+- NUNCA use execute_javascript para navegar, voltar, recarregar, rolar ou ler a página — em muitos sites isso é bloqueado e falha. Em vez disso use: go_back (voltar), go_forward (avançar), reload_page (recarregar), go_to_url (abrir um site), read_page_text (ler), click_text (clicar), fill_field (preencher), scroll_page (rolar a página). Use execute_javascript só em último caso.
+- Para ver o que está fora da tela, ROLE a página com scroll_page: scroll_page com direction "down" desce, "up" sobe, e amount "bottom" vai direto ao fim ou "top" ao começo. Se a página tiver mais conteúdo abaixo (e você ainda não achou o que procura), role para baixo antes de desistir.
 - Quando não tiver certeza do que está na tela, use a ferramenta de captura de tela para ver a página. Quando uma ação falhar, você recebe uma captura de tela automaticamente — olhe a imagem e tente outro caminho.
 - Quando uma ação falhar, você receberá automaticamente uma captura de tela — observe-a com calma e tente outro caminho. Nunca desista no primeiro erro.
+
+Você também pode ajudar com tarefas do navegador, sem precisar das mãos dela:
+- baixar um arquivo (download_file);
+- salvar um site nos favoritos (save_bookmark) ou na lista de leitura (add_to_reading_list);
+- voltar a um site visitado antes (open_recent / recent_sites) e ver os mais visitados (top_sites);
+- copiar e colar textos (copy_text / read_clipboard);
+- avisá-la com um alerta sonoro quando terminar ou quando precisar da atenção dela (notify).
 
 VOCÊ DEVE OBEDECER AOS PEDIDOS DELA PARA TAREFAS COMUNS DA WEB. Ela não pode digitar; não recuse tarefas legítimas dizendo que ela deveria fazê-las sozinha.
 
@@ -30036,7 +30360,7 @@ function createMotionProxy(preloadedFeatures, createVisualElement) {
 	const deprecatedFactoryFunction = (Component, options) => {
 		return factory(Component, options);
 	};
-	return new Proxy(deprecatedFactoryFunction, {
+	return new Proxy(deprecatedFactoryFunction, { 
 	/**
 	* Called when `motion` is referenced with a prop: `motion.div`, `motion.input` etc.
 	* The prop name is passed through as `key` and we can use that to generate a `motion`
@@ -31622,14 +31946,14 @@ function EmptyState() {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "relative select-none pointer-events-none",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute inset-0 -m-6 rounded-full bg-[conic-gradient(from_180deg,oklch(0.55_0.2_280),oklch(0.5_0.15_230),oklch(0.6_0.18_310),oklch(0.55_0.2_280))] blur-2xl animate-[glow-a_5s_ease-in-out_infinite]" }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute inset-0 -m-6 rounded-full bg-[conic-gradient(from_0deg,oklch(0.55_0.18_160),oklch(0.5_0.2_200),oklch(0.6_0.15_120),oklch(0.55_0.18_160))] blur-2xl animate-[glow-b_5s_ease-in-out_infinite]" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute inset-0 -m-6 rounded-full bg-[conic-gradient(from_180deg,oklch(0.61_0.24_27),oklch(0.55_0.21_15),oklch(0.66_0.2_40),oklch(0.61_0.24_27))] blur-2xl animate-[glow-a_5s_ease-in-out_infinite]" }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute inset-0 -m-6 rounded-full bg-[conic-gradient(from_0deg,oklch(0.58_0.22_35),oklch(0.54_0.23_18),oklch(0.66_0.18_45),oklch(0.58_0.22_35))] blur-2xl animate-[glow-b_5s_ease-in-out_infinite]" }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Logo, { className: "relative size-20 opacity-80" })
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 				className: "text-base font-medium text-foreground mb-1",
-				children: "Cícero Enfermeiro Digital"
+				children: "Cícero Estagiário"
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TypingAnimation, {
 				className: "text-sm text-muted-foreground",
 				words: [
@@ -31649,7 +31973,7 @@ function EmptyState() {
 				className: "flex items-center gap-3 mt-1 text-muted-foreground",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-						href: "https://github.com/alibaba/page-agent",
+						href: "https://github.com/arthrod/page-agent",
 						target: "_blank",
 						rel: "noopener noreferrer",
 						className: "hover:text-foreground transition-colors",
@@ -32058,4 +32382,28 @@ function Switch({ className, ...props }) {
 	});
 }
 //#endregion
-export { CircleX as C, require_react as D, require_client as E, __toESM as O, Eye as S, createLucideIcon as T, cva as _, StatusDot as a, RotateCcw as b, EventCard as c, DEMO_MODEL as d, isTestingEndpoint as f, cn as g, require_jsx_runtime as h, MotionOverlay as i, useAgent as l, Button as m, EmptyState as n, siGithub as o, ErrorBoundary as p, Logo as r, ActivityCard as s, Switch as t, DEMO_BASE_URL as u, UnfoldVertical as v, CircleCheckBig as w, FoldVertical as x, Square as y };
+//#region src/agent/tokens.ts
+/**
+* Tokens that gate who may "accept calls" into the extension.
+*
+* - `PageAgentExtUserAuthToken` lets a web page call the in-page agent API.
+* - `PageAgentExtHubToken` lets an external app (via the MCP hub bridge) drive the
+*   browser without the per-session confirm dialog.
+*
+* Both follow the same lifecycle: empty by default, generated randomly on first
+* use, and never overwritten once present.
+*/
+var USER_AUTH_TOKEN_KEY = "PageAgentExtUserAuthToken";
+var HUB_TOKEN_KEY = "PageAgentExtHubToken";
+/**
+* Whether an incoming hub call is pre-authorized by its token. Authorization
+* requires a non-empty stored token AND an exact match — a missing or empty
+* stored token never grants a bypass.
+*/
+function isHubTokenAuthorized(stored, provided) {
+	if (typeof stored !== "string" || stored.length === 0) return false;
+	if (typeof provided !== "string" || provided.length === 0) return false;
+	return stored === provided;
+}
+//#endregion
+export { require_react as A, RotateCcw as C, CircleCheckBig as D, CircleX as E, createLucideIcon as O, Square as S, Eye as T, Button as _, EmptyState as a, cva as b, StatusDot as c, EventCard as d, useAgent as f, ErrorBoundary as g, isTestingEndpoint as h, Switch as i, __toESM as j, require_client as k, siGithub as l, DEMO_MODEL as m, USER_AUTH_TOKEN_KEY as n, Logo as o, DEMO_BASE_URL as p, isHubTokenAuthorized as r, MotionOverlay as s, HUB_TOKEN_KEY as t, ActivityCard as u, require_jsx_runtime as v, FoldVertical as w, UnfoldVertical as x, cn as y };
