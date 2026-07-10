@@ -53,7 +53,6 @@ export default defineConfig([
 			'@typescript-eslint/use-unknown-in-catch-callback-variable': 'off',
 			'@typescript-eslint/no-unnecessary-type-parameters': 'off',
 			'@typescript-eslint/require-await': 'off',
-			'@typescript-eslint/no-deprecated': 'off',
 			'@eslint-react/dom-no-missing-button-type': 'off',
 			'@eslint-react/no-nested-component-definitions': 'off',
 			'@eslint-react/no-array-index-key': 'off',

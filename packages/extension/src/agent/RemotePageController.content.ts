@@ -27,33 +27,53 @@ export function initPageController() {
 		return pageController
 	}
 
+	const stopPolling = () => {
+		if (intervalID !== null) window.clearInterval(intervalID)
+		intervalID = null
+	}
+
 	intervalID = window.setInterval(async () => {
-		const agentHeartbeat = (await chrome.storage.local.get('agentHeartbeat')).agentHeartbeat
-		const now = Date.now()
-		const agentInTouch = typeof agentHeartbeat === 'number' && now - agentHeartbeat < 2_000
-
-		const isAgentRunning = (await chrome.storage.local.get('isAgentRunning')).isAgentRunning
-		const currentTabId = (await chrome.storage.local.get('currentTabId')).currentTabId
-
-		const shouldShowMask = isAgentRunning && agentInTouch && currentTabId === (await myTabIdPromise)
-
-		if (shouldShowMask) {
-			const pc = getPC()
-			pc.initMask()
-			await pc.showMask()
-		} else {
-			// await getPC().hideMask()
-			if (pageController) {
-				pageController.hideMask()
-				pageController.cleanUpHighlights()
-			}
+		// The extension may have been reloaded/updated while this old content script
+		// keeps running in an already-open tab. Its context is then invalidated and
+		// every `chrome.*` call throws "Extension context invalidated". Detect that,
+		// stop polling, and exit quietly so we never spam her console.
+		if (!chrome.runtime?.id) {
+			stopPolling()
+			return
 		}
 
-		if (!isAgentRunning && agentInTouch) {
-			if (pageController) {
-				pageController.dispose()
-				pageController = null
+		try {
+			const agentHeartbeat = (await chrome.storage.local.get('agentHeartbeat')).agentHeartbeat
+			const now = Date.now()
+			const agentInTouch = typeof agentHeartbeat === 'number' && now - agentHeartbeat < 2_000
+
+			const isAgentRunning = (await chrome.storage.local.get('isAgentRunning')).isAgentRunning
+			const currentTabId = (await chrome.storage.local.get('currentTabId')).currentTabId
+
+			const shouldShowMask =
+				isAgentRunning && agentInTouch && currentTabId === (await myTabIdPromise)
+
+			if (shouldShowMask) {
+				const pc = getPC()
+				pc.initMask()
+				await pc.showMask()
+			} else {
+				// await getPC().hideMask()
+				if (pageController) {
+					pageController.hideMask()
+					pageController.cleanUpHighlights()
+				}
 			}
+
+			if (!isAgentRunning && agentInTouch) {
+				if (pageController) {
+					pageController.dispose()
+					pageController = null
+				}
+			}
+		} catch {
+			// Almost always "Extension context invalidated" after a reload — stop quietly.
+			stopPolling()
 		}
 	}, 500)
 

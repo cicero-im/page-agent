@@ -24,167 +24,106 @@ export function zodToOpenAITool(name: string, tool: Tool) {
 }
 
 /**
- * Patch model specific parameters. Only patches known models.
- *
- * @purpose
- * - Reconcile the differences in the parameter schema each model accepts.
- * - Disable thinking/reasoning, or lower it to the minimum where a full disable is impossible.
- * - Minimize returned tokens.
- * - Raise temperature for known smaller models to improve auto-recovery odds.
- * @note Honor temperature if explicitly set by the user
- *
- * @todo Need vendor-specific patches.
- * Local and 3rd-party hosted models may have different schema.
+ * Patch model specific parameters
+ * @note in-place modification
  */
-export function modelPatch(body: Record<string, any>, baseURL?: string) {
+export function modelPatch(body: Record<string, any>) {
 	const model: string = body.model || ''
 	if (!model) return body
-
-	const provider = getProvider(baseURL)
 
 	const modelName = normalizeModelName(model)
 
 	if (modelName.startsWith('qwen')) {
-		debug('Patch Qwen: disable thinking')
+		debug('Applying Qwen patch: use higher temperature for auto fixing')
+		body.temperature = Math.max(body.temperature || 0, 1.0)
 		body.enable_thinking = false
-		if (body.temperature === undefined && !/max|plus/.test(modelName)) {
-			debug('Patch Qwen: raise temperature to 1.0')
-			body.temperature = 1.0
-		}
-	}
-
-	if (modelName.startsWith('deepseek')) {
-		debug('Patch DeepSeek: disable thinking, remove tool_choice')
-		body.thinking = { type: 'disabled' }
-		delete body.tool_choice
-	}
-
-	if (modelName.startsWith('gpt')) {
-		if (modelName.startsWith('gpt-5')) {
-			body.verbosity = 'low'
-		}
-
-		// Since gpt-5.4, /chat/completions rejects any explicit reasoning_effort
-		// when function tools are present. Newer models are expected to follow.
-		// - gpt-5.1 / gpt-5.2 can fully disable reasoning
-		// - gpt-5 / -mini / -nano bottom out at "minimal"
-		// - everything else (gpt-4.x, chat-latest, gpt-5.4+) must not receive it
-		if (modelName.includes('chat-latest')) {
-			debug('Patch chat-latest: omit reasoning_effort and temperature')
-			delete body.reasoning_effort
-			delete body.temperature
-		} else if (/^gpt-5[12](-|$)/.test(modelName)) {
-			debug('Patch GPT-5.1/5.2: reasoning_effort=none')
-			body.reasoning_effort = 'none'
-		} else if (/^gpt-5(-|$)/.test(modelName)) {
-			debug('Patch GPT-5: reasoning_effort=minimal')
-			body.reasoning_effort = 'minimal'
-		} else {
-			debug('Patch GPT: omit reasoning_effort')
-			delete body.reasoning_effort
-		}
 	}
 
 	if (modelName.startsWith('claude')) {
-		if (/opus|sonnet|haiku/.test(modelName)) {
-			debug('Patch Claude: disable thinking')
-			body.thinking = { type: 'disabled' }
+		debug('Applying Claude patch: disable thinking')
+		body.thinking = { type: 'disabled' }
 
-			if (provider !== 'openrouter') {
-				// Convert tool_choice to Claude format
-				if (body.tool_choice === 'required') {
-					// 'required' -> { type: 'any' } (must call some tool)
-					debug('Applying Claude patch: convert tool_choice "required" to { type: "any" }')
-					body.tool_choice = { type: 'any' }
-				} else if (body.tool_choice?.function?.name) {
-					// { type: 'function', function: { name: '...' } } -> { type: 'tool', name: '...' }
-					debug('Applying Claude patch: convert tool_choice format')
-					body.tool_choice = { type: 'tool', name: body.tool_choice.function.name }
-				}
-			}
-		} else {
-			debug('Patch Claude: reasoning_effort=low')
+		// Convert tool_choice to Claude format
+		if (body.tool_choice === 'required') {
+			// 'required' -> { type: 'any' } (must call some tool)
+			debug('Applying Claude patch: convert tool_choice "required" to { type: "any" }')
+			body.tool_choice = { type: 'any' }
+		} else if (body.tool_choice?.function?.name) {
+			// { type: 'function', function: { name: '...' } } -> { type: 'tool', name: '...' }
+			debug('Applying Claude patch: convert tool_choice format')
+			body.tool_choice = { type: 'tool', name: body.tool_choice.function.name }
+		}
+
+		// TODO: Claude naming pattern has changed
+		// needs proper handling
+		if (
+			modelName.startsWith('claude-opus-4-7') ||
+			modelName.startsWith('claude-opus-47') ||
+			modelName.startsWith('claude-opus-4-8') ||
+			modelName.startsWith('claude-opus-48')
+		) {
+			debug('Applying Claude-4.7/4.8 patch: remove temperature')
+			delete body.temperature
+		}
+	}
+
+	if (modelName.startsWith('grok')) {
+		debug('Applying Grok patch: removing tool_choice')
+		delete body.tool_choice
+		debug('Applying Grok patch: disable reasoning and thinking')
+		body.thinking = { type: 'disabled', effort: 'minimal' }
+		body.reasoning = { enabled: false, effort: 'low' }
+	}
+
+	if (modelName.startsWith('gpt')) {
+		debug('Applying GPT patch: set verbosity to low')
+		body.verbosity = 'low'
+
+		// *-chat-latest models don't support reasoning_effort — skip patches that set it
+		if (modelName.includes('chat-latest')) {
+			debug('Omitting reasoning_effort and temperature for chat-latest')
+			delete body.reasoning_effort
+			delete body.temperature
+		} else if (modelName.startsWith('gpt-52')) {
+			debug('Applying GPT-52 patch: disable reasoning')
+			body.reasoning_effort = 'none'
+		} else if (modelName.startsWith('gpt-51')) {
+			debug('Applying GPT-51 patch: disable reasoning')
+			body.reasoning_effort = 'none'
+		} else if (modelName.startsWith('gpt-54')) {
+			debug('Applying GPT-5.4 patch: remove reasoning_effort')
+			delete body.reasoning_effort
+		} else if (modelName.startsWith('gpt-55')) {
+			debug('Applying GPT-5.4 patch: remove reasoning_effort and temperature')
+			delete body.reasoning_effort
+			delete body.temperature
+		} else if (modelName.startsWith('gpt-5-mini')) {
+			debug('Applying GPT-5-mini patch: set reasoning effort to low, temperature to 1')
 			body.reasoning_effort = 'low'
-
-			// Fable and mythos can not disable adaptive thinking.
-			// Claude does not support tool_choice with extended thinking.
-			// These 2 concepts are blurred. Basically no tool_choice with thinking.
-			delete body.tool_choice
+			body.temperature = 1
+		} else if (modelName.startsWith('gpt-5')) {
+			debug('Applying GPT-5 patch: set reasoning effort to low')
+			body.reasoning_effort = 'low'
 		}
 	}
 
 	if (modelName.startsWith('gemini')) {
-		debug('Patch Gemini: reasoning_effort=low')
-		body.reasoning_effort = 'low'
-		if (/^gemini-25(?!.*pro)/.test(modelName)) {
-			debug('Patch Gemini 2.5 non-Pro: reasoning_effort=none')
-			body.reasoning_effort = 'none'
-		} else if (
-			modelName.startsWith('gemini-35-flash') ||
-			modelName.startsWith('gemini-31-flash-lite') ||
-			modelName.startsWith('gemini-3-flash')
-		) {
-			debug('Patch Gemini 3.x Flash/Lite: reasoning_effort=minimal')
-			body.reasoning_effort = 'minimal'
-		}
+		debug('Applying Gemini patch: set reasoning effort to minimal')
+		body.reasoning_effort = 'minimal'
 	}
 
-	if (modelName.startsWith('glm')) {
-		debug('Patch GLM: disable thinking')
-		body.thinking = { type: 'disabled' }
-	}
-
-	if (modelName.startsWith('hy')) {
-		debug('Patch Hunyuan: disable thinking, reasoning_effort=low')
-		body.thinking = { type: 'disabled' }
-		body.reasoning_effort = 'low'
-	}
-
-	if (modelName.startsWith('grok')) {
-		if (/^grok-4-?3/.test(modelName)) {
-			debug('Patch Grok 4.3: reasoning_effort=none')
-			body.reasoning_effort = 'none'
-		} else if (modelName.startsWith('grok-3-mini') || modelName.startsWith('grok-code-fast')) {
-			debug('Patch Grok mini/code: reasoning_effort=low')
-			body.reasoning_effort = 'low'
-		}
-	}
-
-	if (modelName.startsWith('kimi')) {
-		if (!modelName.includes('code')) {
-			// kimi-k2.7-code cannot disable thinking
-			debug('Patch Kimi: disable thinking')
-			body.thinking = { type: 'disabled' }
-		}
+	if (modelName.startsWith('deepseek')) {
+		debug('Applying DeepSeek patch: remove tool_choice')
+		delete body.tool_choice
 	}
 
 	if (modelName.startsWith('minimax')) {
-		debug('Patch MiniMax: remove parallel_tool_calls')
+		debug('Applying MiniMax patch: clamp temperature to (0, 1]')
+		// MiniMax API rejects temperature = 0; clamp to a small positive value
+		body.temperature = Math.max(body.temperature || 0, 0.01)
+		if (body.temperature > 1) body.temperature = 1
+		// MiniMax does not support parallel_tool_calls
 		delete body.parallel_tool_calls
-
-		if (modelName.includes('m3')) {
-			// Only M3 can disable thinking
-			debug('Patch MiniMax: disable thinking')
-			body.thinking = { type: 'disabled' }
-		}
-	}
-
-	// provider patches
-
-	if (provider === 'openrouter') {
-		// openrouter use reasoning object instead of reasoning_effort
-
-		const reasoningEffort = body.reasoning_effort
-		const reasoningDisabled =
-			body.thinking?.type === 'disabled' ||
-			body.enable_thinking === false ||
-			reasoningEffort === 'none'
-
-		if (reasoningDisabled) {
-			body.reasoning = { enabled: false }
-		} else if (reasoningEffort) {
-			body.reasoning = { enabled: true, effort: reasoningEffort }
-		}
 	}
 
 	return body
@@ -205,7 +144,7 @@ export function modelPatch(body: Record<string, any>, baseURL?: string) {
  * They should be treated as the same model.
  * Normalize them to `gpt-52`
  */
-export function normalizeModelName(modelName: string): string {
+function normalizeModelName(modelName: string): string {
 	let normalizedName = modelName.toLowerCase()
 
 	// remove prefix before '/'
@@ -220,16 +159,4 @@ export function normalizeModelName(modelName: string): string {
 	normalizedName = normalizedName.replace(/\./g, '')
 
 	return normalizedName
-}
-
-export function getProvider(baseURL?: string): 'openrouter' | undefined {
-	if (!baseURL) return undefined
-	try {
-		const url = new URL(baseURL)
-		const hostname = url.hostname
-		if (hostname === 'openrouter.ai') return 'openrouter'
-		return undefined
-	} catch (e) {
-		return undefined
-	}
 }

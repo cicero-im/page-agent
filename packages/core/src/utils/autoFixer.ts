@@ -41,7 +41,9 @@ export function normalizeResponse(response: any, tools?: Map<string, PageAgentTo
 		}
 	} else {
 		// case: sometimes the model returns json in content instead of tool_calls
-		if (message.content) {
+		// (assistant responses are always string content; the array form is only
+		// ever sent by us as input, so guard the type for the widened Message.content)
+		if (typeof message.content === 'string') {
 			const content = message.content.trim()
 			const jsonInContent = retrieveJsonFromString(content)
 			if (jsonInContent) {

@@ -1,7 +1,7 @@
 {
     "name": "@page-agent/mcp",
     "private": false,
-    "version": "1.12.1",
+    "version": "1.10.0",
     "type": "module",
     "bin": {
         "page-agent-mcp": "src/index.js"
@@ -16,16 +16,19 @@
         "browser-automation",
         "chrome-extension"
     ],
-    "author": "Simon<gaomeng1900>",
+    "author": "Arthur Souza Rodrigues <arthrod@umich.edu>",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/alibaba/page-agent.git",
+        "url": "https://github.com/arthrod/page-agent.git",
         "directory": "packages/mcp"
     },
-    "homepage": "https://alibaba.github.io/page-agent/",
+    "homepage": "https://arthrod.github.io/page-agent/",
     "engines": {
         "node": ">=20"
+    },
+    "scripts": {
+        "test": "vitest run"
     },
     "dependencies": {
         "@modelcontextprotocol/sdk": "^1.29.0",

@@ -16,33 +16,18 @@ function sendMessage(message: {
 }
 
 /**
- * Resolve the window hosting this script's own context, when knowable.
- *
- * Extension pages (side panel, hub tab) have `chrome.windows` access and can
- * identify their own window directly via `getCurrent()`.
- * Content scripts have no `chrome.windows` access; they resolve `undefined`
- * here and the background script falls back to `sender.tab` instead.
- */
-async function getOwnWindowId(): Promise<number | undefined> {
-	if (typeof chrome.windows === 'undefined') return undefined
-	const win = await chrome.windows.getCurrent()
-	return win.id
-}
-
-/**
  * Controller for managing browser tabs.
  * - live in the agent env (extension page or content script)
  * - no chrome apis. call sw for tab operations
- * - store tabs states, pull tabs info and detect changes
  */
 export class TabsController {
 	currentTabId: number | null = null
 
 	private disposed = false
+	private port?: chrome.runtime.Port
+	private portRetries = 0
 
-	/* tracked window */
 	private windowId: number | null = null
-	/* tracked tabs */
 	private tabs: TabMeta[] = []
 	private initialTabId: number | null = null
 	private tabGroupId: number | null = null
@@ -58,6 +43,9 @@ export class TabsController {
 		}
 
 		await this.updateCurrentTabId(null)
+		this.disposed = false
+		this.port = undefined
+		this.portRetries = 0
 
 		this.windowId = null
 		this.tabs = []
@@ -69,7 +57,6 @@ export class TabsController {
 		const activeTabResult = await sendMessage({
 			type: 'TAB_CONTROL',
 			action: 'get_active_tab',
-			payload: { windowId: await getOwnWindowId() },
 		})
 
 		this.initialTabId = activeTabResult.tab?.id
@@ -82,6 +69,8 @@ export class TabsController {
 				throw new Error('Failed to get active tab')
 			}
 		}
+
+		this.connectTabEvents()
 
 		if (experimentalIncludeAllTabs) {
 			const allTabs = await sendMessage({
@@ -135,7 +124,7 @@ export class TabsController {
 		const result = await sendMessage({
 			type: 'TAB_CONTROL',
 			action: 'open_new_tab',
-			payload: { url, windowId: this.windowId },
+			payload: { url },
 		})
 
 		if (!result.success) {
@@ -175,6 +164,14 @@ export class TabsController {
 		}
 
 		await this.updateCurrentTabId(tabId)
+
+		// Bring the tab to the front so the (single, hands-free) user actually sees
+		// what the agent is doing — and so capture_screenshot can grab it.
+		await sendMessage({
+			type: 'TAB_CONTROL',
+			action: 'activate_tab',
+			payload: { tabId },
+		})
 
 		return `✅ Switched to tab ID ${tabId}.`
 	}
@@ -232,7 +229,7 @@ export class TabsController {
 			payload: {
 				groupId: this.tabGroupId,
 				properties: {
-					title: `PageAgent(${this.task})`,
+					title: `Cícero(${this.task})`,
 					color: randomColor(),
 					collapsed: false,
 				},
@@ -276,14 +273,11 @@ export class TabsController {
 	}
 
 	async summarizeTabs(): Promise<string> {
-		const summaries = [
-			`| Tab ID | URL | Title | Status | Current |`,
-			`|-----|-----|-----|-----|-----|`,
-		]
+		const summaries = [`| Tab ID | URL | Title | Current |`, `|-----|-----|-----|-----|`]
 		for (const tab of this.tabs) {
 			const { title, url } = await this.getTabInfo(tab.id)
 			summaries.push(
-				`| ${tab.id} | ${url} | ${title} | ${tab.status ?? '-'} | ${this.currentTabId === tab.id ? '✅' : ''} |`
+				`| ${tab.id} | ${url} | ${title} | ${this.currentTabId === tab.id ? '✅' : ''} |`
 			)
 		}
 		if (!this.tabs.length) {
@@ -296,96 +290,79 @@ export class TabsController {
 	async waitUntilTabLoaded(tabId: number): Promise<void> {
 		const tab = this.tabs.find((t) => t.id === tabId)
 		if (!tab) throw new Error(`Tab ID ${tabId} not found in tab list.`)
+
+		if (tab.status === 'unloaded') throw new Error(`Tab ID ${tabId} is unloaded.`)
 		if (tab.status === 'complete') return
 
-		// When a tracked tab is closed or untracked.
-		// The tab object will be removed from the tab list.
-		// Finding the latest tab object is the only way to know if it's closed.
-
 		debug('waitUntilTabLoaded', tabId)
-		await waitUntil(async () => {
-			await this.syncTabs()
-			const latest = this.tabs.find((t) => t.id === tabId)
-			return !latest || latest.status !== 'loading'
-		}, 4_000)
-
-		const latest = this.tabs.find((t) => t.id === tabId)
-		if (latest?.status === 'unloaded') throw new Error(`Tab ID ${tabId} is unloaded.`)
+		await waitUntil(() => tab.status === 'complete', 4_000)
 	}
 
 	/**
-	 * Pull the window's tabs from the background.
-	 * Pulling is better than pushing. Long-lived ports are stateful troublemakers.
+	 * Connect to background SW via port to receive tab change events.
+	 *
+	 * @note Port is 1:1 (runtime.connect → background SW has no frames),
+	 * so onDisconnect fires exactly once and we can safely reconnect.
+	 * Reconnection may miss events during the gap.
+	 * TODO: refresh this.tabs from background after reconnect to stay consistent.
 	 */
-	async syncTabs(): Promise<void> {
-		if (this.disposed || this.windowId == null) return
+	private connectTabEvents() {
+		this.port = chrome.runtime.connect({ name: 'tab-events' })
 
-		const result = await sendMessage({
-			type: 'TAB_CONTROL',
-			action: 'get_window_tabs',
-			payload: { windowId: this.windowId },
-		})
-		// sendMessage already logged the failure; keep the stale mirror
-		if (!result?.success) return
+		this.port.onMessage.addListener((message: any) => {
+			if (this.disposed) return
+			this.portRetries = 0
 
-		const liveTabs = (result.tabs as chrome.tabs.Tab[]).filter((t) => t.id != null)
-		const liveIds = new Set(liveTabs.map((t) => t.id!))
-
-		const closedIds = this.tabs.filter((t) => !liveIds.has(t.id)).map((t) => t.id)
-		if (closedIds.length) {
-			debug('syncTabs: tabs closed', closedIds)
-			this.tabs = this.tabs.filter((t) => liveIds.has(t.id))
-		}
-
-		const newTabs: TabMeta[] = []
-		for (const live of liveTabs) {
-			const tracked = this.tabs.find((t) => t.id === live.id)
-			if (tracked) {
-				tracked.url = live.url
-				tracked.title = live.title
-				tracked.status = live.status as TabMeta['status']
-			} else if (this.shouldTrack(live)) {
-				debug('syncTabs: new tab', live.id, live.url)
-				const meta: TabMeta = {
-					id: live.id!,
-					isInitial: false,
-					url: live.url,
-					title: live.title,
-					status: live.status,
+			if (message.action === 'created') {
+				const tab = message.payload.tab as chrome.tabs.Tab
+				const shouldTrack = this.experimentalIncludeAllTabs || tab.groupId === this.tabGroupId
+				if (shouldTrack && tab.id != null) {
+					this.addTab({ id: tab.id, isInitial: false })
+					this.switchToTab(tab.id)
 				}
-				this.addTab(meta)
-				newTabs.push(meta)
+			} else if (message.action === 'removed') {
+				const { tabId } = message.payload as { tabId: number }
+				const targetTab = this.tabs.find((t) => t.id === tabId)
+				if (targetTab) {
+					this.tabs = this.tabs.filter((t) => t.id !== tabId)
+					if (this.currentTabId === tabId) {
+						const newCurrentTab = this.tabs[this.tabs.length - 1] || null
+						if (newCurrentTab) {
+							this.switchToTab(newCurrentTab.id)
+						} else {
+							this.updateCurrentTabId(null)
+						}
+					}
+				}
+			} else if (message.action === 'updated') {
+				const { tabId, tab } = message.payload as { tabId: number; tab: chrome.tabs.Tab }
+				const targetTab = this.tabs.find((t) => t.id === tabId)
+				if (targetTab) {
+					targetTab.url = tab.url
+					targetTab.title = tab.title
+					targetTab.status = tab.status
+				}
 			}
-		}
+		})
 
-		// Follow the page like a user would: focus the newest tab it opened.
-		// If the current tab is gone, fall back to the last tracked one.
-		if (newTabs.length) {
-			await this.switchToTab(newTabs[newTabs.length - 1].id)
-		} else if (this.currentTabId != null && !this.tabs.find((t) => t.id === this.currentTabId)) {
-			const fallback = this.tabs[this.tabs.length - 1]
-			if (fallback) {
-				await this.switchToTab(fallback.id)
-			} else {
-				debug('syncTabs: no fallback tab found, updating current tab to null')
-				await this.updateCurrentTabId(null)
+		this.port.onDisconnect.addListener(() => {
+			this.port = undefined
+			if (this.disposed) return
+			if (this.portRetries >= 7) {
+				console.error(PREFIX, 'tab events port failed after 7 retries, giving up')
+				return
 			}
-		}
-	}
-
-	private shouldTrack(tab: chrome.tabs.Tab): boolean {
-		if (this.tabGroupId != null && tab.groupId === this.tabGroupId) return true
-		return (
-			this.experimentalIncludeAllTabs &&
-			tab.windowId === this.windowId &&
-			!tab.pinned &&
-			isContentScriptAllowed(tab.url)
-		)
+			debug('port disconnected, reconnecting...')
+			this.portRetries++
+			this.connectTabEvents()
+		})
 	}
 
 	dispose() {
 		debug('dispose')
 		this.disposed = true
+		this.port?.disconnect()
+		this.port = undefined
 	}
 }
 
@@ -398,6 +375,7 @@ export type TabAction =
 	| 'get_active_tab'
 	| 'get_tab_info'
 	| 'open_new_tab'
+	| 'activate_tab'
 	| 'create_tab_group'
 	| 'update_tab_group'
 	| 'add_tab_to_group'
@@ -423,33 +401,29 @@ function randomColor(): TabGroupColor {
 
 /**
  * Wait until condition becomes true
- * @returns Returns when condition becomes true, false if timeout
- * @param timeoutMS Timeout in milliseconds, default 1 minutes
- * @param throwIfTimeout Reject on timeout instead of resolving with `false`
+ * @returns Returns when condition becomes true, throws otherwise
+ * @param timeoutMS Timeout in milliseconds, default 1 minutes, throws error on timeout
+ * @param error Error object to reject on timeout. If not provided, will resolve with false
  */
-async function waitUntil(
+export async function waitUntil(
 	check: () => boolean | Promise<boolean>,
 	timeoutMS = 60_000,
-	throwIfTimeout = false
+	error?: string
 ): Promise<boolean> {
 	if (await check()) return true
 
 	return new Promise((resolve, reject) => {
 		const start = Date.now()
 		const poll = async () => {
-			try {
-				if (await check()) return resolve(true)
-				if (Date.now() - start > timeoutMS) {
-					if (throwIfTimeout) {
-						return reject(new Error(`waitUntil timed out after ${timeoutMS}ms`))
-					} else {
-						return resolve(false)
-					}
+			if (await check()) return resolve(true)
+			if (Date.now() - start > timeoutMS) {
+				if (error) {
+					return reject(new Error(error))
+				} else {
+					return resolve(false)
 				}
-				setTimeout(poll, 100)
-			} catch (err) {
-				reject(err instanceof Error ? err : new Error(String(err)))
 			}
+			setTimeout(poll, 100)
 		}
 		setTimeout(poll, 100)
 	})
