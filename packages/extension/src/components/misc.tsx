@@ -7,12 +7,24 @@ import { siGithub } from 'simple-icons'
 import { TypingAnimation } from '@/components/ui/typing-animation'
 import { cn } from '@/lib/utils'
 
+/** Resolve a public asset URL in the extension (and fall back for non-chrome). */
+function assetUrl(path: string): string {
+	try {
+		if (typeof chrome !== 'undefined' && chrome.runtime?.getURL) {
+			return chrome.runtime.getURL(path)
+		}
+	} catch {
+		// ignore
+	}
+	return `/${path.replace(/^\//, '')}`
+}
+
 // Status dot indicator
 export function StatusDot({ status }: { status: AgentStatus }) {
 	const colorClass = {
 		idle: 'bg-muted-foreground',
-		running: 'bg-blue-500',
-		completed: 'bg-green-500',
+		running: 'bg-primary',
+		completed: 'bg-primary/80',
 		error: 'bg-destructive',
 		stopped: 'bg-muted-foreground',
 	}[status]
@@ -36,7 +48,13 @@ export function StatusDot({ status }: { status: AgentStatus }) {
 }
 
 export function Logo({ className }: { className?: string }) {
-	return <img src="/assets/cicero-256.png" alt="Cícero" className={cn('', className)} />
+	return (
+		<img
+			src={assetUrl('assets/cicero-256.png')}
+			alt="Cícero"
+			className={cn('object-contain', className)}
+		/>
+	)
 }
 
 // Full-screen ai-motion glow overlay, shown only while running
@@ -92,14 +110,14 @@ export function MotionOverlay({ active }: { active: boolean }) {
 	)
 }
 
-// Empty state with logo and breathing glow
+// Empty state with logo and breathing glow (brand-red only — one-red rule)
 export function EmptyState() {
 	return (
 		<div className="flex flex-col items-center justify-center h-full gap-4 text-center px-6">
 			<div className="relative select-none pointer-events-none">
-				<div className="absolute inset-0 -m-6 rounded-full bg-[conic-gradient(from_180deg,oklch(0.61_0.24_27),oklch(0.55_0.21_15),oklch(0.66_0.2_40),oklch(0.61_0.24_27))] blur-2xl animate-[glow-a_5s_ease-in-out_infinite]" />
-				<div className="absolute inset-0 -m-6 rounded-full bg-[conic-gradient(from_0deg,oklch(0.58_0.22_35),oklch(0.54_0.23_18),oklch(0.66_0.18_45),oklch(0.58_0.22_35))] blur-2xl animate-[glow-b_5s_ease-in-out_infinite]" />
-				<Logo className="relative size-20 opacity-80" />
+				<div className="absolute inset-0 -m-6 rounded-full bg-[radial-gradient(circle,oklch(0.443_0.221_25.5_/_0.35),transparent_70%)] blur-xl animate-[glow-a_5s_ease-in-out_infinite]" />
+				<div className="absolute inset-0 -m-4 rounded-full bg-[radial-gradient(circle,oklch(0.671_0.219_25.5_/_0.25),transparent_65%)] blur-lg animate-[glow-b_5s_ease-in-out_infinite]" />
+				<Logo className="relative size-20" />
 			</div>
 			<div>
 				<h2 className="text-base font-medium text-foreground mb-1">Cícero Estagiário</h2>
@@ -121,10 +139,10 @@ export function EmptyState() {
 			</div>
 			<div className="flex items-center gap-3 mt-1 text-muted-foreground">
 				<a
-					href="https://github.com/arthrod/page-agent"
+					href="https://github.com/cicero-im/page-agent"
 					target="_blank"
 					rel="noopener noreferrer"
-					className="hover:text-foreground transition-colors"
+					className="hover:text-primary transition-colors"
 					title="GitHub"
 				>
 					<svg role="img" viewBox="0 0 24 24" className="size-4 fill-current">
@@ -132,22 +150,22 @@ export function EmptyState() {
 					</svg>
 				</a>
 				<a
-					href="https://arthrod.github.io/page-agent/docs/features/chrome-extension"
+					href="https://cicero.im"
 					target="_blank"
 					rel="noopener noreferrer"
-					className="hover:text-foreground transition-colors"
-					title="Documentation"
-				>
-					<BookOpen className="size-4" />
-				</a>
-				<a
-					href="https://alibaba.github.io/page-agent"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="hover:text-foreground transition-colors"
+					className="hover:text-primary transition-colors"
 					title="Website"
 				>
 					<Globe className="size-4" />
+				</a>
+				<a
+					href="https://arthrod.github.io/page-agent/docs/features/chrome-extension"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="hover:text-primary transition-colors"
+					title="Documentation"
+				>
+					<BookOpen className="size-4" />
 				</a>
 			</div>
 		</div>

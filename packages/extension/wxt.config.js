@@ -10,6 +10,9 @@ const pkg = JSON.parse(readFileSync('./package.json', 'utf-8'))
 // See https://wxt.dev/api/config.html
 export default defineConfig({
 	srcDir: 'src',
+	// Build into .output/cicero-mv3 (not chrome-mv3) so the unpacked folder is
+	// unmistakably the Cicero extension.
+	outDirTemplate: 'cicero-mv{{manifestVersion}}{{modeSuffix}}',
 	modules: ['@wxt-dev/module-react'],
 	webExt: {
 		chromiumProfile: chromeProfile,
