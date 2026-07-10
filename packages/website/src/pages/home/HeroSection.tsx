@@ -17,17 +17,11 @@ import { useLanguage } from '../../i18n/context'
 
 let pageAgentModule: Promise<typeof import('page-agent')> | null = null
 
-/**
- * Get the bookmarklet injection script
- * @param cdnSource Which CDN mirror to use
- * @param isZh Whether to use Chinese language
- */
-function getInjection(cdnSource: 'china' | 'international', isZh?: boolean) {
-	const cdn = cdnSource === 'china' ? CDN_DEMO_CN_URL : CDN_DEMO_URL
-	const locale = isZh ? 'zh-CN' : 'en-US'
+function getInjection(useCN?: boolean) {
+	const cdn = useCN ? CDN_DEMO_CN_URL : CDN_DEMO_URL
 
 	const injection = encodeURI(
-		`javascript:(function(){var s=document.createElement('script');s.src=\`${cdn}?lang=${locale}&t=\${Math.random()}\`;s.setAttribute('crossorigin', true);s.type="text/javascript";s.onload=()=>console.log('PageAgent script loaded!');document.body.appendChild(s);})();`
+		`javascript:(function(){var s=document.createElement('script');s.src=\`${cdn}?t=\${Math.random()}\`;s.setAttribute('crossorigin', true);s.type="text/javascript";s.onload=()=>console.log('PageAgent script loaded!');document.body.appendChild(s);})();`
 	)
 
 	return `
@@ -239,7 +233,7 @@ export default function HeroSection() {
 													<>
 														使用免费测试 LLM API，点击执行即表示您同意
 														<a
-															href="https://github.com/alibaba/page-agent/blob/main/docs/terms-and-privacy.md#2-testing-api-and-demo-disclaimer--terms-of-use"
+															href="https://github.com/arthrod/page-agent/blob/main/docs/terms-and-privacy.md#2-testing-api-and-demo-disclaimer--terms-of-use"
 															target="_blank"
 															rel="noopener noreferrer"
 															className="underline"
@@ -251,7 +245,7 @@ export default function HeroSection() {
 													<>
 														Powered by free testing LLM API. By clicking Run you agree to the{' '}
 														<a
-															href="https://github.com/alibaba/page-agent/blob/main/docs/terms-and-privacy.md#2-testing-api-and-demo-disclaimer--terms-of-use"
+															href="https://github.com/arthrod/page-agent/blob/main/docs/terms-and-privacy.md#2-testing-api-and-demo-disclaimer--terms-of-use"
 															target="_blank"
 															rel="noopener noreferrer"
 															className="underline"
@@ -304,7 +298,7 @@ export default function HeroSection() {
 														</select>
 														<div
 															dangerouslySetInnerHTML={{
-																__html: getInjection(cdnSource, isZh),
+																__html: getInjection(cdnSource === 'china'),
 															}}
 														></div>
 													</div>
@@ -332,7 +326,7 @@ export default function HeroSection() {
 															<span>
 																使用免费测试 LLM API，使用即表示同意
 																<a
-																	href="https://github.com/alibaba/page-agent/blob/main/docs/terms-and-privacy.md#2-testing-api-and-demo-disclaimer--terms-of-use"
+																	href="https://github.com/arthrod/page-agent/blob/main/docs/terms-and-privacy.md#2-testing-api-and-demo-disclaimer--terms-of-use"
 																	target="_blank"
 																	rel="noopener noreferrer"
 																	className="text-yellow-700 dark:text-yellow-300 underline"
@@ -344,7 +338,7 @@ export default function HeroSection() {
 															<span>
 																Uses free testing LLM API. By using you agree to the{' '}
 																<a
-																	href="https://github.com/alibaba/page-agent/blob/main/docs/terms-and-privacy.md#2-testing-api-and-demo-disclaimer--terms-of-use"
+																	href="https://github.com/arthrod/page-agent/blob/main/docs/terms-and-privacy.md#2-testing-api-and-demo-disclaimer--terms-of-use"
 																	target="_blank"
 																	rel="noopener noreferrer"
 																	className="text-yellow-700 dark:text-yellow-300 underline"

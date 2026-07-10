@@ -21,19 +21,21 @@
 
 ## Progress
 
-| Unit                                                                      | Status  | Commit    |
-| ------------------------------------------------------------------------- | ------- | --------- |
-| Inventory written                                                         | done    | `55ac8c5` |
-| A1–A5 core vision + error recovery                                        | done    | `55ac8c5` |
-| B1 PageController screenshot stub                                         | done    | `55ac8c5` |
-| Multimodal `ContentPart` types (minimal llms)                             | done    | `55ac8c5` |
-| C1–C4 remote screenshot + executeJavascript + context-invalidated + tests | done    | `65c1ab6` |
-| C6–C7 tokens + chrome.commands (no port TabsController)                   | done    | `32e9523` |
-| D helperTools + browserTools + constants + MultiPageAgent/useAgent wire   | done    | `32e9523` |
-| E voice stack (STT/TTS, wavEncoder)                                       | done    | `f7a19b5` |
-| F sidepanel / ConfigPanel / brand / locales / icons                       | done    | `f7a19b5` |
-| G MCP hub token + stop() + tests                                          | done    | `f7a19b5` |
-| Remaining groups (H bulk llms, I motion-css, J website, K root meta)      | pending | —         |
+| Unit                                                                      | Status  | Commit      |
+| ------------------------------------------------------------------------- | ------- | ----------- |
+| Inventory written                                                         | done    | `55ac8c5`   |
+| A1–A5 core vision + error recovery                                        | done    | `55ac8c5`   |
+| B1 PageController screenshot stub                                         | done    | `55ac8c5`   |
+| Multimodal `ContentPart` types (minimal llms)                             | done    | `55ac8c5`   |
+| C1–C4 remote screenshot + executeJavascript + context-invalidated + tests | done    | `65c1ab6`   |
+| C6–C7 tokens + chrome.commands (no port TabsController)                   | done    | `32e9523`   |
+| D helperTools + browserTools + constants + MultiPageAgent/useAgent wire   | done    | `32e9523`   |
+| E voice stack (STT/TTS, wavEncoder)                                       | done    | `f7a19b5`   |
+| F sidepanel / ConfigPanel / brand / locales / icons                       | done    | `f7a19b5`   |
+| G MCP hub token + stop() + tests                                          | done    | `f7a19b5`   |
+| J website rebrand + docs pages (CDN stays 1.12.1)                         | done    | (this push) |
+| K selective root/docs rebrand (no CHANGELOG wipe, no dep rollback)        | done    | (this push) |
+| H bulk llms / I motion-css / C5 ports / gemini-docs / lockfiles           | skipped | —           |
 
 ---
 

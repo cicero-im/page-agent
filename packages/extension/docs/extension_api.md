@@ -1,6 +1,6 @@
-# Page Agent Extension API
+# Cicero Agent Extension API
 
-Integrate the Page Agent extension into your web app and trigger multi-page browser tasks from page JavaScript.
+Integrate the Cicero Agent extension into your web app and trigger multi-page browser tasks from page JavaScript.
 
 ## Installation
 
@@ -12,7 +12,7 @@ Primary channel:
 
 Latest updates are often published earlier on:
 
-- GitHub Releases: https://github.com/alibaba/page-agent/releases
+- GitHub Releases: https://github.com/arthrod/page-agent/releases
 
 ### 2. Install type definitions (recommended)
 
@@ -95,10 +95,6 @@ Returns: `Promise<ExecutionResult>`
 #### `PAGE_AGENT_EXT.stop()`
 
 Stop the current task.
-
-## Limitations
-
-- **Normal browser windows only.** This extension relies on tab group API which does not work for pop-up window or PWA App window.
 
 ## Types
 

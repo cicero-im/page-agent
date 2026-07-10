@@ -18,7 +18,7 @@ Please do not report security vulnerabilities through public GitHub issues, disc
 
 Use GitHub's private vulnerability reporting flow:
 
-- Open https://github.com/alibaba/page-agent/security/policy
+- Open https://github.com/arthrod/page-agent/security/policy
 - Click `Report a vulnerability`
 
 If private reporting is unavailable, open a minimal public issue only to request a private contact channel. Do not include exploit details.
