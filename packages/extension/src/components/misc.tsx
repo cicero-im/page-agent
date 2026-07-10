@@ -36,7 +36,7 @@ export function StatusDot({ status }: { status: AgentStatus }) {
 }
 
 export function Logo({ className }: { className?: string }) {
-	return <img src="/assets/page-agent-256.webp" alt="Page Agent" className={cn('', className)} />
+	return <img src="/assets/cicero-256.png" alt="Cícero" className={cn('', className)} />
 }
 
 // Full-screen ai-motion glow overlay, shown only while running
@@ -97,19 +97,19 @@ export function EmptyState() {
 	return (
 		<div className="flex flex-col items-center justify-center h-full gap-4 text-center px-6">
 			<div className="relative select-none pointer-events-none">
-				<div className="absolute inset-0 -m-6 rounded-full bg-[conic-gradient(from_180deg,oklch(0.55_0.2_280),oklch(0.5_0.15_230),oklch(0.6_0.18_310),oklch(0.55_0.2_280))] blur-2xl animate-[glow-a_5s_ease-in-out_infinite]" />
-				<div className="absolute inset-0 -m-6 rounded-full bg-[conic-gradient(from_0deg,oklch(0.55_0.18_160),oklch(0.5_0.2_200),oklch(0.6_0.15_120),oklch(0.55_0.18_160))] blur-2xl animate-[glow-b_5s_ease-in-out_infinite]" />
+				<div className="absolute inset-0 -m-6 rounded-full bg-[conic-gradient(from_180deg,oklch(0.61_0.24_27),oklch(0.55_0.21_15),oklch(0.66_0.2_40),oklch(0.61_0.24_27))] blur-2xl animate-[glow-a_5s_ease-in-out_infinite]" />
+				<div className="absolute inset-0 -m-6 rounded-full bg-[conic-gradient(from_0deg,oklch(0.58_0.22_35),oklch(0.54_0.23_18),oklch(0.66_0.18_45),oklch(0.58_0.22_35))] blur-2xl animate-[glow-b_5s_ease-in-out_infinite]" />
 				<Logo className="relative size-20 opacity-80" />
 			</div>
 			<div>
-				<h2 className="text-base font-medium text-foreground mb-1">Page Agent Ext</h2>
+				<h2 className="text-base font-medium text-foreground mb-1">Cícero Estagiário</h2>
 				<TypingAnimation
 					className="text-sm text-muted-foreground"
 					words={[
-						'Enter a task to automate this page',
-						'Execute multi-page tasks',
-						'Call this extension from your web page',
-						'Use this extension in your own agents',
+						'Aperte o microfone e fale comigo',
+						'Eu faço as coisas por você na internet',
+						'Abrir e-mail, pesquisar, preencher…',
+						'Estou aqui para ajudar 💙',
 					]}
 					cursorStyle="underscore"
 					loop
@@ -121,7 +121,7 @@ export function EmptyState() {
 			</div>
 			<div className="flex items-center gap-3 mt-1 text-muted-foreground">
 				<a
-					href="https://github.com/alibaba/page-agent"
+					href="https://github.com/arthrod/page-agent"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="hover:text-foreground transition-colors"
@@ -132,7 +132,7 @@ export function EmptyState() {
 					</svg>
 				</a>
 				<a
-					href="https://alibaba.github.io/page-agent/docs/features/chrome-extension"
+					href="https://arthrod.github.io/page-agent/docs/features/chrome-extension"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="hover:text-foreground transition-colors"

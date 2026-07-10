@@ -233,8 +233,7 @@ export function createBrowserTools(): Record<string, PageAgentTool> {
 					}
 					await chrome.notifications.create({
 						type: 'basic',
-						// Uses the shipped icon until the Cicero brand assets land (F5).
-						iconUrl: chrome.runtime.getURL('assets/page-agent-64.png'),
+						iconUrl: chrome.runtime.getURL('assets/cicero-128.png'),
 						title: args.title || 'Cícero',
 						message: args.message,
 						priority: 2,

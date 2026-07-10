@@ -37,16 +37,16 @@ export default defineConfig({
 		},
 	}),
 	zip: {
-		artifactTemplate: 'page-agent-ext-{{version}}-{{browser}}.zip',
+		artifactTemplate: 'cicero-agent-{{version}}-{{browser}}.zip',
 	},
 	manifest: {
 		key: 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqbzT0iTYeYlnCvDJIGDnGU8oarJgZILDzSfLi/ufuSxXEPDKuMyD892GhvrMCZNVHS11Sh6NYUOc/PcUOhtaR2urHtcNkrpSJNV10zUamY7fxBdVEkOucfyLu8INVy+teis62MoRWYPaUPkfZUjrLGW8MsZ9aFzARfu9GGDEp2EAYsWDN6w6vyz9LJ82pm542EWnVT4MjmDPgvYFCWGBtaU/dfHD+GAX6URJFapsCvryVURKJ+76c/GO9/I3EX1IBfbY6dec78bLCMvVxiTmiv36KyGPwX1OpakW8IiCpXWdbAxjm+plbYlp5t5zTyyoE3sOSFeXsBH0Kg27o8GcvQIDAQAB',
-		default_locale: 'en',
+		default_locale: 'pt_BR',
 		name: '__MSG_extName__',
 		description: '__MSG_extDescription__',
-		homepage_url: 'https://alibaba.github.io/page-agent/',
+		homepage_url: 'https://cicero.im',
 		// Core + permissions required by helperTools / browserTools / screenshots.
-		// Broader kitchen-sink permissions from PR11 deferred until brand packaging (F7).
+		// Kitchen-sink permissions (debugger, desktopCapture, …) still deferred.
 		permissions: [
 			'tabs',
 			'tabGroups',
@@ -66,7 +66,7 @@ export default defineConfig({
 		],
 		host_permissions: ['<all_urls>'],
 		// Global keyboard shortcuts for hands-free mic / submit (C7).
-		// Side panel consumes `ciceroPendingCommand` from storage (wired in E/F).
+		// Side panel reads `ciceroPendingCommand` from storage.
 		commands: {
 			listen_mic: {
 				suggested_key: { default: 'Alt+L', mac: 'Alt+L' },
@@ -78,10 +78,19 @@ export default defineConfig({
 			},
 		},
 		icons: {
-			64: 'assets/page-agent-64.png',
+			16: 'assets/cicero-16.png',
+			32: 'assets/cicero-32.png',
+			48: 'assets/cicero-48.png',
+			128: 'assets/cicero-128.png',
 		},
 		action: {
 			default_title: '__MSG_extActionTitle__',
+			default_icon: {
+				16: 'assets/cicero-16.png',
+				32: 'assets/cicero-32.png',
+				48: 'assets/cicero-48.png',
+				128: 'assets/cicero-128.png',
+			},
 		},
 		web_accessible_resources: [
 			{

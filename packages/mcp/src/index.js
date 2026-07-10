@@ -10,6 +10,9 @@ import { HubBridge } from './hub-bridge.js'
 
 const env = process.env
 const port = parseInt(env.PORT || '38401')
+// Hub token: copy it from the extension's Settings panel and set HUB_TOKEN so the
+// extension accepts our calls without the per-session confirm dialog.
+const hubToken = env.HUB_TOKEN || ''
 const { version } = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
 
 /** @type {Record<string, string>} */
@@ -20,7 +23,7 @@ if (env.LLM_API_KEY) llmConfig.apiKey = env.LLM_API_KEY
 
 // --- Hub bridge (HTTP + WebSocket) ---
 
-const hub = new HubBridge(port)
+const hub = new HubBridge(port, hubToken)
 await hub.start()
 
 // Open launcher in default browser
