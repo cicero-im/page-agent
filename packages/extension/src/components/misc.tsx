@@ -48,9 +48,11 @@ export function StatusDot({ status }: { status: AgentStatus }) {
 }
 
 export function Logo({ className }: { className?: string }) {
+	// Brand mark from potion_deploy/public/logo (red C). Transparent version
+	// reads cleanly on paper-cream UI; toolbar icons use the opaque set.
 	return (
 		<img
-			src={assetUrl('assets/cicero-256.png')}
+			src={assetUrl('assets/cicero-mark-transparent.png')}
 			alt="Cícero"
 			className={cn('object-contain', className)}
 		/>
