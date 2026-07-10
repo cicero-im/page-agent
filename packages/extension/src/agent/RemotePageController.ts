@@ -133,7 +133,36 @@ export class RemotePageController {
 		return this.remoteCallDomAction('scroll_horizontally', args)
 	}
 
-	// `execute_javascript` is intentionally not implemented: AbortSignal cannot cross context
+	/**
+	 * Execute JavaScript in the target page (main world) via the content script.
+	 * @note The `AbortSignal` provided by the core `execute_javascript` tool cannot
+	 * cross the messaging boundary (structured clone), so we forward ONLY the
+	 * script. Cancellation of the in-page script is therefore best-effort.
+	 */
+	async executeJavascript(...args: any[]): Promise<DomActionReturn> {
+		const [script] = args
+		return this.remoteCallDomAction('execute_javascript', [script])
+	}
+
+	/**
+	 * Capture a screenshot of the target tab's viewport as a `data:` URL.
+	 * @note Handled directly by the background via `chrome.tabs.captureVisibleTab`
+	 * (NOT routed through the content script — capture is a background/extension
+	 * API). Returns null on restricted pages or on failure.
+	 */
+	async captureScreenshot(): Promise<string | null> {
+		if (!this.currentTabId) return null
+		if (!isContentScriptAllowed(await this.getCurrentUrl())) return null
+
+		const res = await sendMessage({
+			type: 'PAGE_CONTROL',
+			action: 'capture_screenshot',
+			targetTabId: this.currentTabId,
+			payload: [],
+		})
+
+		return (res as { success?: boolean; dataUrl?: string | null } | null)?.dataUrl ?? null
+	}
 
 	/** @note Managed by content script via storage polling. */
 	async showMask(): Promise<void> {}
