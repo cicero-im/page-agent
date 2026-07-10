@@ -125,6 +125,52 @@ export interface AgentConfig extends LLMConfig {
 
 	/**
 	 * @experimental
+	 * Enable the experimental vision tool (`capture_screenshot`) that lets the agent
+	 * take a screenshot of the current page and look at it as an image.
+	 * @note Requires a screenshot-capable PageController. The in-page controller
+	 * cannot capture the viewport and returns null; capture works through the
+	 * extension's RemotePageController (`chrome.tabs.captureVisibleTab`).
+	 * @default false
+	 */
+	experimentalVisionTool?: boolean
+
+	/**
+	 * @experimental
+	 * Attach a fresh screenshot of the page to EVERY observation so a small model
+	 * always "sees" the screen, instead of relying on it to call `capture_screenshot`
+	 * itself (which it often won't). Requires a screenshot-capable PageController
+	 * (the extension's RemotePageController). Costs extra tokens/latency per step.
+	 * @default false
+	 */
+	alwaysSendScreenshot?: boolean
+
+	/**
+	 * @experimental
+	 * Make a single step error non-fatal so the task keeps going ("never feels broken").
+	 * When set, a failing step is recorded as an observation (and optionally an
+	 * on-error screenshot) and the loop continues instead of failing the whole task.
+	 * `AbortError` (stop/dispose) and non-retryable config/auth errors stay fatal.
+	 * @note When `undefined` (the default), the current fatal-on-error behavior is
+	 * preserved exactly.
+	 */
+	errorRecovery?: {
+		/**
+		 * Maximum number of consecutive step errors tolerated before giving up with
+		 * a calm, handled failure result.
+		 * @default 3
+		 */
+		maxConsecutiveErrors?: number
+		/**
+		 * Capture a screenshot into the pending-images channel when a step errors,
+		 * so the next LLM call can see what went wrong.
+		 * @note Requires a screenshot-capable PageController (see `experimentalVisionTool`).
+		 * @default false
+		 */
+		captureScreenshotOnError?: boolean
+	}
+
+	/**
+	 * @experimental
 	 * Fetch /llms.txt from current site origin and include as context.
 	 * Only fetched once per origin per task.
 	 * @default false

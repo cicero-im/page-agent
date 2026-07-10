@@ -197,6 +197,22 @@ tools.set(
 	})
 )
 
+tools.set(
+	'capture_screenshot',
+	tool({
+		description:
+			'Take a screenshot of the current page and look at it. Use when the page is visual, ' +
+			"when the simplified text isn't enough, or when you're unsure what happened after an action.",
+		inputSchema: z.object({}),
+		execute: async function (this: PageAgentCore) {
+			const dataUrl = await this.pageController.captureScreenshot?.()
+			if (!dataUrl) return 'Screenshot not available on this page.'
+			this.attachImage(dataUrl)
+			return '📸 Screenshot captured — it is attached for you to see.'
+		},
+	})
+)
+
 // @todo send_keys
 // @todo upload_file
 // @todo extract_structured_data

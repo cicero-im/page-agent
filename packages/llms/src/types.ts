@@ -4,11 +4,19 @@
 import type * as z from 'zod/v4'
 
 /**
+ * A part of a multimodal message content, following the OpenAI Chat Completions
+ * shape. Lets the agent attach images (e.g. page screenshots for vision) next to
+ * text. Gemini's OpenAI-compatible endpoint accepts `image_url` with a data URL.
+ */
+export type ContentPart =
+	{ type: 'text'; text: string } | { type: 'image_url'; image_url: { url: string } }
+
+/**
  * Message format - OpenAI standard (industry standard)
  */
 export interface Message {
 	role: 'system' | 'user' | 'assistant' | 'tool'
-	content?: string | null
+	content?: string | ContentPart[] | null
 	tool_calls?: {
 		id: string
 		type: 'function'
