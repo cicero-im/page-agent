@@ -4,9 +4,7 @@ import type { TabsController } from './TabsController'
 
 const PREFIX = '[RemotePageController]'
 
-function debug(...messages: any[]) {
-	console.debug(`\x1b[90m${PREFIX}\x1b[0m`, ...messages)
-}
+const debug = console.debug.bind(console, `\x1b[90m${PREFIX}\x1b[0m`)
 
 function sendMessage(message: {
 	type: 'PAGE_CONTROL'
@@ -58,9 +56,7 @@ export class RemotePageController {
 	}
 
 	async getBrowserState(): Promise<BrowserState> {
-		if (!this.currentTabId) throw new Error('tabsController not initialized.')
-
-		let browserState = {} as BrowserState
+		let browserState: BrowserState
 		debug('getBrowserState', this.currentTabId)
 
 		const currentUrl = await this.getCurrentUrl()
@@ -137,8 +133,35 @@ export class RemotePageController {
 		return this.remoteCallDomAction('scroll_horizontally', args)
 	}
 
+	/**
+	 * Execute JavaScript in the target page (main world) via the content script.
+	 * @note The `AbortSignal` provided by the core `execute_javascript` tool cannot
+	 * cross the messaging boundary (structured clone), so we forward ONLY the
+	 * script. Cancellation of the in-page script is therefore best-effort.
+	 */
 	async executeJavascript(...args: any[]): Promise<DomActionReturn> {
-		return this.remoteCallDomAction('execute_javascript', args)
+		const [script] = args
+		return this.remoteCallDomAction('execute_javascript', [script])
+	}
+
+	/**
+	 * Capture a screenshot of the target tab's viewport as a `data:` URL.
+	 * @note Handled directly by the background via `chrome.tabs.captureVisibleTab`
+	 * (NOT routed through the content script — capture is a background/extension
+	 * API). Returns null on restricted pages or on failure.
+	 */
+	async captureScreenshot(): Promise<string | null> {
+		if (!this.currentTabId) return null
+		if (!isContentScriptAllowed(await this.getCurrentUrl())) return null
+
+		const res = await sendMessage({
+			type: 'PAGE_CONTROL',
+			action: 'capture_screenshot',
+			targetTabId: this.currentTabId,
+			payload: [],
+		})
+
+		return (res as { success?: boolean; dataUrl?: string | null } | null)?.dataUrl ?? null
 	}
 
 	/** @note Managed by content script via storage polling. */
@@ -178,7 +201,7 @@ interface DomActionReturn {
 /**
  * Check if a URL can run content scripts.
  */
-function isContentScriptAllowed(url: string | undefined): boolean {
+export function isContentScriptAllowed(url: string | undefined): boolean {
 	if (!url) return false
 
 	const restrictedPatterns = [

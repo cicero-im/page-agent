@@ -4,11 +4,20 @@
 import type * as z from 'zod/v4'
 
 /**
+ * A part of a multimodal message content, following the OpenAI Chat Completions
+ * shape. Lets the agent attach images (e.g. page screenshots for vision) next to
+ * text. Gemini's OpenAI-compatible endpoint accepts `image_url` with a data URL.
+ */
+export type ContentPart =
+	| { type: 'text'; text: string }
+	| { type: 'image_url'; image_url: { url: string } }
+
+/**
  * Message format - OpenAI standard (industry standard)
  */
 export interface Message {
 	role: 'system' | 'user' | 'assistant' | 'tool'
-	content?: string | null
+	content?: string | ContentPart[] | null
 	tool_calls?: {
 		id: string
 		type: 'function'
@@ -89,11 +98,27 @@ export interface InvokeResult<TResult = unknown> {
  */
 export interface LLMConfig {
 	baseURL: string
-	apiKey: string
 	model: string
+	apiKey?: string
 
 	temperature?: number
 	maxRetries?: number
+
+	/**
+	 * Transform the final request body before sending it to the provider.
+	 * Use this to implement provider-specific request tweaks such as caching hints or custom flags.
+	 *
+	 * Return a new object, or mutate the input object and return undefined.
+	 */
+	transformRequestBody?: (
+		requestBody: Record<string, unknown>
+	) => Record<string, unknown> | undefined
+
+	/**
+	 * remove the tool_choice field from the request.
+	 * @note fix "Invalid tool_choice type: 'object'" for some LLMs.
+	 */
+	disableNamedToolChoice?: boolean
 
 	/**
 	 * Custom fetch function for LLM API requests.

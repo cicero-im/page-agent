@@ -130,18 +130,18 @@ const result = await agent.execute('Fill in the form with test data')`}
 								: 'Base URL of the LLM API (e.g., https://api.openai.com/v1)',
 						},
 						{
-							name: 'apiKey',
-							type: 'string',
-							required: true,
-							description: isZh ? 'API 密钥' : 'API key for authentication',
-						},
-						{
 							name: 'model',
 							type: 'string',
 							required: true,
 							description: isZh
 								? '模型名称（如 gpt-5.2, anthropic/claude-4.5-haiku）'
 								: 'Model name (e.g., gpt-5.2, anthropic/claude-4.5-haiku)',
+						},
+						{
+							name: 'apiKey',
+							type: 'string',
+							required: false,
+							description: 'LLM AK',
 						},
 						{
 							name: 'temperature',
@@ -155,6 +155,42 @@ const result = await agent.execute('Fill in the form with test data')`}
 							type: 'number',
 							defaultValue: '3',
 							description: isZh ? 'API 调用失败时的最大重试次数' : 'Maximum retries on API failure',
+						},
+						{
+							name: 'transformRequestBody',
+							type: '(requestBody) => Record<string, unknown> | undefined',
+							description: isZh ? (
+								<>
+									在请求发送前转换最终 request body。可用于处理供应商特定的缓存提示或私有参数。查看{' '}
+									<Link
+										href="/features/models#prompt-caching"
+										className="text-blue-600 dark:text-blue-400 hover:underline"
+									>
+										主动缓存示例
+									</Link>
+									。
+								</>
+							) : (
+								<>
+									Transform the final request body before sending it. Useful for provider-specific
+									cache hints or private request parameters. See{' '}
+									<Link
+										href="/features/models#prompt-caching"
+										className="text-blue-600 dark:text-blue-400 hover:underline"
+									>
+										prompt caching examples
+									</Link>
+									.
+								</>
+							),
+						},
+						{
+							name: 'disableNamedToolChoice',
+							type: 'boolean',
+							defaultValue: 'false',
+							description: isZh
+								? '禁用命名 tool_choice，始终使用 "required" 字符串。适用于不支持 tool_choice 对象格式的 LLM 服务。'
+								: 'Disable named tool_choice, always use "required" string. For LLM services that don\'t support the object format of tool_choice.',
 						},
 						{
 							name: 'customFetch',
@@ -245,8 +281,8 @@ const result = await agent.execute('Fill in the form with test data')`}
 				<div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4 mb-4">
 					<p className="text-amber-800 dark:text-amber-200 text-sm">
 						{isZh
-							? '这些接口高度实验性，可能在未来版本中发生变化。'
-							: 'These APIs are highly experimental and may change in future versions. '}
+							? '这些接口高度实验性，可能在未来版本中发生变化。钩子中抛出的错误会使任务失败并从 execute() 抛出；如不希望影响任务，请在钩子内部自行捕获。'
+							: 'These APIs are highly experimental and may change in future versions. Errors thrown from hooks fail the run and propagate from execute(); catch errors inside the hook if the task should not be affected.'}
 					</p>
 				</div>
 				<APIReference
@@ -289,7 +325,7 @@ const result = await agent.execute('Fill in the form with test data')`}
 					properties={[
 						{
 							name: 'status',
-							type: "'idle' | 'running' | 'completed' | 'error'",
+							type: "'idle' | 'running' | 'completed' | 'error' | 'stopped'",
 							description: isZh ? '当前 Agent 执行状态' : 'Current agent execution status',
 						},
 						{
@@ -318,10 +354,10 @@ const result = await agent.execute('Fill in the form with test data')`}
 						},
 						{
 							name: 'onAskUser',
-							type: '(question: string) => Promise<string>',
+							type: '(question: string, options?: { signal: AbortSignal }) => Promise<string>',
 							description: isZh
-								? 'Agent 需要用户输入时的回调。未设置则禁用 ask_user 工具。'
-								: 'Callback when agent needs user input. If not set, ask_user tool is disabled.',
+								? '当 agent 需要向用户提问时调用。未设置则禁用 `ask_user` 工具。实现应在 options.signal 触发 abort 时 reject promise。'
+								: 'Called when the agent needs to ask the user questions. If unset, the `ask_user` tool will be disabled. Implementations should reject the promise when options.signal aborts.',
 						},
 					]}
 				/>
@@ -337,15 +373,15 @@ const result = await agent.execute('Fill in the form with test data')`}
 							name: 'execute(task)',
 							type: 'Promise<ExecutionResult>',
 							description: isZh
-								? '执行任务并返回结果。包含 success、data 和 history 字段。'
-								: 'Execute a task and return result. Contains success, data, and history fields.',
+								? '执行任务并返回结果（包含 success、data 和 history 字段）。若已有任务在运行则抛出错误——不支持并发执行。'
+								: 'Execute a task and return result (contains success, data, and history fields). Throws if a task is already running — concurrent execution is not supported.',
 						},
 						{
 							name: 'stop()',
-							type: 'void',
+							type: 'Promise<void>',
 							description: isZh
-								? '停止当前任务。Agent 仍可复用。'
-								: 'Stop the current task. Agent remains reusable.',
+								? '停止当前任务，并在任务完全结束后 resolve。Agent 仍可复用。'
+								: 'Stop the current task; resolves once the run has fully settled. Agent remains reusable.',
 						},
 						{
 							name: 'dispose()',
@@ -379,8 +415,8 @@ const result = await agent.execute('Fill in the form with test data')`}
 							name: 'statuschange',
 							type: 'Event',
 							description: isZh
-								? 'Agent 状态变化时触发 (idle → running → completed/error)'
-								: 'Fired when agent status changes (idle → running → completed/error)',
+								? 'Agent 状态变化时触发 (idle → running → completed/error/stopped)'
+								: 'Fired when agent status changes (idle → running → completed/error/stopped)',
 						},
 						{
 							name: 'historychange',

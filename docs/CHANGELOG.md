@@ -5,6 +5,174 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.10.0] - 2026-06-15
+
+### Breaking Changes
+
+- **Agent run lifecycle rework** - `stop()` is now async and resolves only after the run fully settles. Run status is decoupled from task outcome: a new `stopped` state was added, and LLM self-reported failures now end as `completed`. Lifecycle hooks re-throw instead of folding errors into the result, agent errors are recorded in history, and `agent.lastResult` was added.
+
+### Features
+
+- **Abortable JavaScript execution** - `execute_javascript` now honors the `AbortSignal`.
+- **Leaner agent prompts** - Simplified the waiting-response flow and removed navigation-back instructions to reduce LLM cognitive load.
+- **MultiPageAgent safety** - Disabled `ScriptExecutionTool` for `MultiPageAgent`.
+
+### Improvements
+
+- **Dark mode detection** - Refined detection heuristics and made `isMainContentDark` less aggressive by checking `html` and `body` data attributes independently.
+- **Extension lifecycle robustness** - Drove heartbeat and running state from status changes, cleared stale activity on any non-running status, handled the stopped lifecycle state, and cleared `currentTabId` on `TabsController.init`.
+
+### Bug Fixes
+
+- **Accurate wait reporting** - Wait steps now report the actual wait duration.
+- **Scroll predicates** - Scroll predicates now return booleans.
+- **Docs** - Fixed the broken demo video on GitHub.
+
+## [1.9.0] - 2026-06-08
+
+### Features
+
+- **Robust abort handling** - Rewrote the aborting system; sync tools, loop execution, and LLM clients now correctly respect task abort signals (`ctx.signal`). Also decoupled `AbortError` from `InvokeError` in `@page-agent/llms`.
+- **Claude Opus 4.8 support** - Added support for Claude Opus 4.8 model.
+
+### Improvements
+
+- **Concurrency guard** - Prevented concurrent `execute()` calls on a single PageAgent/Core instance to avoid race conditions.
+- **Model recommendations refresh** - Updated default and tested model list recommendations.
+- **Test coverage** - Added comprehensive Vitest unit tests for the `@page-agent/llms` package.
+- **Improved documentation** - Added website documentation for the `ctx.signal` abort contract and `execute()` concurrency rules.
+
+### Bug Fixes
+
+- **DTS bundle fix** - Fixed a packaging bug where global type declarations were incorrectly bundled into `.d.ts` outputs.
+- **Website sidebar fix** - Normalized trailing slashes in the website's sidebar location comparison.
+
+## [1.8.2] - 2026-05-11
+
+### Features
+
+- **IIFE demo control** - Added `showPanel` and `autoInit` switches to the IIFE CDN script to control whether the UI panel automatically displays or initializes on load.
+
+### Improvements
+
+- **Build toolchain modernization** - Upgraded build infrastructure to Vite 8.
+
+### Bug Fixes
+
+- **TypeScript `InvokeErrorType` fix** - Separated the value and type space for `InvokeErrorType` to resolve TypeScript compilation issues.
+- **Website chunking fix** - Restored working code-splitting with `manualChunks` for the documentation website.
+
+## [1.8.1] - 2026-04-27
+
+### Features
+
+- **GPT-5.4 & Qwen 3.6 support** - Added support for `gpt-5.4` and `qwen3.6-max/flash` in the recommended LLM list.
+- **Custom LLM request hook** - Added a `transformRequestBody` hook to allow custom modification of payloads before sending requests to LLM providers.
+
+### Improvements
+
+- **Accessibility (a11y) enhancements** - Added descriptive accessible labels to `ConfigPanel` input fields and icon buttons in compliance with WCAG 4.1.2.
+- **UI polish** - Improved `HistoryList` loading and empty states, and added helpful tooltips for actions.
+- **Prompt caching guidance** - Added website documentation for prompt caching optimization.
+- **Build speedups** - Added parallel build scripts to accelerate local development compilation.
+
+### Bug Fixes
+
+- **DeepSeek tool choice fix** - Disabled explicit `tool_choice` for DeepSeek models to avoid API compatibility errors.
+- **MCP version advertising** - MCP server now correctly advertises its package version.
+
+## [1.8.0] - 2026-04-15
+
+### Breaking Changes
+
+- **TypeScript 6 & ESLint 10 upgrade** - Major toolchain modernization. Upgraded the entire monorepo to TypeScript 6 and ESLint 10 with source-first monorepo resolution (library exports resolve to source files directly during local development).
+
+### Improvements
+
+- **MCP security hardening** - Bound the MCP HTTP + WebSocket server to `localhost` only.
+- **Extension UI refinement** - Made the history panel height responsive to the viewport and improved the result card readability by increasing font size.
+
+### Bug Fixes
+
+- **SimulatorMask memory leak** - Fixed a memory leak by ensuring the `requestAnimationFrame` loop is cancelled when disposing the SimulatorMask.
+- **Autofixer format fix** - Corrected the fallback action format for `autoFixer` when waiting.
+- **IIFE scope protection** - Fixed a name collision in IIFE builds by preventing global helper function re-declarations.
+
+## [1.7.1] - 2026-04-04
+
+### Features
+
+- **Optional `keepSemanticTags`** - Added an experimental `keepSemanticTags` config to preserve semantic structure in PageController output
+- **Per-task extension system instructions** - Extension `ExecuteConfig` now supports `systemInstruction`
+
+### Improvements
+
+- **Smarter scroll handling** - Scroll container detection and scroll direction handling are more reliable
+- **Better accessibility-aware element detection** - Interactive candidates with supported ARIA attributes and `role="listitem"` are recognized more accurately
+
+### Bug Fixes
+
+- Fixed iframe-origin filtering for extension `postMessage` listeners
+- Avoided a `currentScript` null pointer during deferred initialization
+
+## [1.7.0] - 2026-03-31
+
+- **More reliable click actions** - Click handling now reuses pointer coordinates, verifies targets with `elementFromPoint`, and behaves better on layered layouts
+- **Better mask event handling** - `SimulatorMask` now supports passthrough events when automation should not fully swallow input
+- Fixed a `SimulatorMask` memory leak
+
+## [1.6.3] - 2026-03-30
+
+### Features
+
+- **Experimental all-tabs control** - Extension can include and control all browser tabs via `experimentalIncludeAllTabs`
+
+### Improvements
+
+- **Calmer empty state motion** - Disabled the EmptyState auto-start animation in the extension UI
+- **Cleaner extension docs** - Simplified setup and tab-control documentation across the README and developer guide
+
+### Bug Fixes
+
+- Fixed new-tab detection from content scripts
+- Fixed tab deduplication and multi-window handling in the extension
+
+## [1.6.2] - 2026-03-25
+
+- **Longer task input** - The UI task input now accepts up to 1000 characters
+- **Contributor docs refresh** - Added a maintainer note and refreshed contributor-facing documentation
+- Fixed lint issues in the release pipeline
+
+## [1.6.1] - 2026-03-22
+
+- **Internal PageController action exports** - PageController actions are now exposed as internal methods for easier reuse across packages
+- **Expanded docs** - Added MCP docs and clarified project limitations and homepage details
+
+## [1.6.0] - 2026-03-21
+
+### Features
+
+- **Beta MCP support** - New `@page-agent/mcp` package lets MCP clients such as Claude Desktop and Copilot control the browser through the Page Agent extension
+- **Better iframe handling** - Same-origin iframe elements are handled more reliably during DOM extraction and actions
+- **Extension history workflows** - Users can rerun past tasks, export history sessions as JSON, and approve MCP-triggered tasks before execution
+
+### Improvements
+
+- **Unified versioning across packages** - The extension now follows the root workspace version. Changelog entries are no longer split into a separate extension version section
+- **Configurable `stepDelay`** - Agent pacing between steps is now configurable via `stepDelay`
+- **Optional API key** - `apiKey` can now be omitted for compatible deployments that do not require one
+- **Optional named tool choice** - Tool invocation can disable named tool choice for providers that behave better without it
+- **Better rich-text input support** - Improved `contenteditable` handling with better event dispatching and `execCommand` fallback for more editors
+- **More flexible DOM extraction** - `includeAttributes` now supports wildcards, `contenteditable` is included by default, and heuristically interactive elements expose more useful attributes
+- **MiniMax model support** - Added MiniMax compatibility, with the default recommendation updated to `MiniMax-M2.7`
+
+### Bug Fixes
+
+- Fixed Safari issues when `requestIdleCallback` is unavailable
+- Avoid throwing when `webgl2` initialization fails
+- Improved OpenAI-compatible request patches for GPT-5.4 chat tools and MiniMax temperature/tool-call compatibility
+- Fixed several UI polish issues in the extension and website, including cursor and layout regressions
+
 ## [1.5.1] - 2026-03-05
 
 ### Breaking Changes
@@ -153,42 +321,6 @@ PageAgent is now ready for production use. The API is stable and breaking change
 - **Ask User Tool** - Agent can ask users for clarification
 - **i18n Support** - English and Chinese localization
 
-### Configuration 
-
-```typescript
-// Version 1.0.0
-interface PageAgentConfig {
-    // LLM Configuration (required)
-    baseURL: string
-    apiKey: string
-    model: string
-    temperature?: number
-    maxRetries?: number
-    customFetch?: typeof fetch
-
-    // Agent Configuration
-    language?: 'en-US' | 'zh-CN'
-    maxSteps?: number // default: 20
-    customTools?: Record<string, PageAgentTool> // experimental
-    instructions?: InstructionsConfig
-    transformPageContent?: (content: string) => string | Promise<string>
-    experimentalScriptExecutionTool?: boolean // default: false
-
-    // Lifecycle Hooks (experimental)
-    onBeforeTask?: (agent, result) => void
-    onAfterTask?: (agent, result) => void
-    onBeforeStep?: (agent, stepCount) => void
-    onAfterStep?: (agent, history) => void
-    onDispose?: (agent, reason?) => void
-
-    // Page Controller Configuration
-    enableMask?: boolean // default: true
-    viewportExpansion?: number
-    interactiveBlacklist?: Element[]
-    interactiveWhitelist?: Element[]
-}
-```
-
 ### Packages
 
 | Package                       | Description                        |
@@ -204,7 +336,7 @@ interface PageAgentConfig {
 - Single-page application only (cannot navigate across pages)
 - No visual recognition (relies on DOM structure)
 - Limited interaction support (no hover, drag-drop, canvas operations)
-- See [Limitations](https://alibaba.github.io/page-agent/docs/introduction/limitations) for details
+- See [Limitations](https://arthrod.github.io/page-agent/docs/introduction/limitations) for details
 
 ### Acknowledgments
 

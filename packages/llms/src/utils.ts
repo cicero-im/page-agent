@@ -53,6 +53,18 @@ export function modelPatch(body: Record<string, any>) {
 			debug('Applying Claude patch: convert tool_choice format')
 			body.tool_choice = { type: 'tool', name: body.tool_choice.function.name }
 		}
+
+		// TODO: Claude naming pattern has changed
+		// needs proper handling
+		if (
+			modelName.startsWith('claude-opus-4-7') ||
+			modelName.startsWith('claude-opus-47') ||
+			modelName.startsWith('claude-opus-4-8') ||
+			modelName.startsWith('claude-opus-48')
+		) {
+			debug('Applying Claude-4.7/4.8 patch: remove temperature')
+			delete body.temperature
+		}
 	}
 
 	if (modelName.startsWith('grok')) {
@@ -67,12 +79,24 @@ export function modelPatch(body: Record<string, any>) {
 		debug('Applying GPT patch: set verbosity to low')
 		body.verbosity = 'low'
 
-		if (modelName.startsWith('gpt-52')) {
+		// *-chat-latest models don't support reasoning_effort — skip patches that set it
+		if (modelName.includes('chat-latest')) {
+			debug('Omitting reasoning_effort and temperature for chat-latest')
+			delete body.reasoning_effort
+			delete body.temperature
+		} else if (modelName.startsWith('gpt-52')) {
 			debug('Applying GPT-52 patch: disable reasoning')
 			body.reasoning_effort = 'none'
 		} else if (modelName.startsWith('gpt-51')) {
 			debug('Applying GPT-51 patch: disable reasoning')
 			body.reasoning_effort = 'none'
+		} else if (modelName.startsWith('gpt-54')) {
+			debug('Applying GPT-5.4 patch: remove reasoning_effort')
+			delete body.reasoning_effort
+		} else if (modelName.startsWith('gpt-55')) {
+			debug('Applying GPT-5.4 patch: remove reasoning_effort and temperature')
+			delete body.reasoning_effort
+			delete body.temperature
 		} else if (modelName.startsWith('gpt-5-mini')) {
 			debug('Applying GPT-5-mini patch: set reasoning effort to low, temperature to 1')
 			body.reasoning_effort = 'low'
@@ -86,6 +110,20 @@ export function modelPatch(body: Record<string, any>) {
 	if (modelName.startsWith('gemini')) {
 		debug('Applying Gemini patch: set reasoning effort to minimal')
 		body.reasoning_effort = 'minimal'
+	}
+
+	if (modelName.startsWith('deepseek')) {
+		debug('Applying DeepSeek patch: remove tool_choice')
+		delete body.tool_choice
+	}
+
+	if (modelName.startsWith('minimax')) {
+		debug('Applying MiniMax patch: clamp temperature to (0, 1]')
+		// MiniMax API rejects temperature = 0; clamp to a small positive value
+		body.temperature = Math.max(body.temperature || 0, 0.01)
+		if (body.temperature > 1) body.temperature = 1
+		// MiniMax does not support parallel_tool_calls
+		delete body.parallel_tool_calls
 	}
 
 	return body

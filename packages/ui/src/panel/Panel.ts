@@ -68,7 +68,7 @@ export class Panel {
 		this.#i18n = new I18n(config.language ?? 'en-US')
 
 		// Set up askUser callback on agent
-		this.#agent.onAskUser = (question) => this.#askUser(question)
+		this.#agent.onAskUser = (question, options) => this.#askUser(question, options?.signal)
 
 		// Create UI elements
 		this.#wrapper = this.#createWrapper()
@@ -100,10 +100,10 @@ export class Panel {
 	#handleStatusChange(): void {
 		const status = this.#agent.status
 
-		// Map agent status to UI indicator type
-		const indicatorType =
-			status === 'running' ? 'thinking' : status === 'idle' ? 'thinking' : status
-		this.#updateStatusIndicator(indicatorType)
+		// Map agent status to UI indicator. A `completed` run whose result reports
+		// failure shows as error; other statuses map to their own indicator.
+		const failed = status === 'completed' && this.#agent.lastResult?.success === false
+		this.#updateStatusIndicator(failed ? 'error' : status)
 
 		// Morph action button: running = stop (■), not running = close (X)
 		if (status === 'running') {
@@ -121,7 +121,7 @@ export class Panel {
 		}
 
 		// Handle completion
-		if (status === 'completed' || status === 'error') {
+		if (status === 'completed' || status === 'error' || status === 'stopped') {
 			if (!this.#isExpanded) {
 				this.#expand()
 			}
@@ -169,10 +169,12 @@ export class Panel {
 	}
 
 	/**
-	 * Ask for user input (internal, called by agent via onAskUser)
+	 * Ask for user input (internal, called by agent via onAskUser).
+	 * Rejects when `signal` aborts (task stopped or disposed), cleaning up the
+	 * question card and pending state so the agent loop can settle.
 	 */
-	#askUser(question: string): Promise<string> {
-		return new Promise((resolve) => {
+	#askUser(question: string, signal?: AbortSignal): Promise<string> {
+		return new Promise((resolve, reject) => {
 			// Set `waiting for user answer` state
 			this.#isWaitingForUserAnswer = true
 			this.#userAnswerResolver = resolve
@@ -195,6 +197,27 @@ export class Panel {
 			this.#scrollToBottom()
 
 			this.#showInputArea(this.#i18n.t('ui.panel.userAnswerPrompt'))
+
+			signal?.addEventListener(
+				'abort',
+				() => {
+					this.#removeTempCards()
+					this.#isWaitingForUserAnswer = false
+					this.#userAnswerResolver = null
+					// reason is a DOMException AbortError (abort() takes no args).
+					reject(signal.reason as DOMException)
+				},
+				{ once: true }
+			)
+		})
+	}
+
+	/** Remove temporary question cards (only direct children for safety) */
+	#removeTempCards(): void {
+		Array.from(this.#historySection.children).forEach((child) => {
+			if (child.getAttribute('data-temp-card') === 'true') {
+				child.remove()
+			}
 		})
 	}
 
@@ -307,12 +330,7 @@ export class Panel {
 	 * Handle user answer
 	 */
 	#handleUserAnswer(input: string): void {
-		// Remove temporary question cards (only direct children for safety)
-		Array.from(this.#historySection.children).forEach((child) => {
-			if (child.getAttribute('data-temp-card') === 'true') {
-				child.remove()
-			}
-		})
+		this.#removeTempCards()
 
 		// Reset state
 		this.#isWaitingForUserAnswer = false
@@ -358,7 +376,7 @@ export class Panel {
 		}
 
 		const status = this.#agent.status
-		const isTaskEnded = status === 'completed' || status === 'error'
+		const isTaskEnded = status === 'completed' || status === 'error' || status === 'stopped'
 
 		// Only show input area after task completion if configured to do so
 		if (isTaskEnded) {
@@ -369,6 +387,7 @@ export class Panel {
 	}
 
 	#createWrapper(): HTMLElement {
+		const taskInputMaxLength = 1000
 		const wrapper = document.createElement('div')
 		wrapper.id = 'page-agent-runtime_agent-panel'
 		wrapper.className = styles.wrapper
@@ -406,7 +425,7 @@ export class Panel {
 					<input 
 						type="text" 
 						class="${styles.taskInput}" 
-						maxlength="200"
+						maxlength="${taskInputMaxLength}"
 					/>
 				</div>
 			</div>
@@ -540,13 +559,23 @@ export class Panel {
 	}
 
 	#updateStatusIndicator(
-		type: 'thinking' | 'executing' | 'executed' | 'retrying' | 'completed' | 'error'
+		type:
+			| 'idle'
+			| 'running'
+			| 'thinking'
+			| 'executing'
+			| 'executed'
+			| 'retrying'
+			| 'completed'
+			| 'error'
+			| 'stopped'
 	): void {
-		// Clear all status classes
+		// `running` animates like thinking; `idle`/`stopped` use the neutral base.
+		const variant = type === 'running' ? 'thinking' : type
 		this.#indicator.className = styles.indicator
-
-		// Add corresponding status class
-		this.#indicator.classList.add(styles[type])
+		if (variant !== 'idle' && variant !== 'stopped') {
+			this.#indicator.classList.add(styles[variant])
+		}
 	}
 
 	#scrollToBottom(): void {

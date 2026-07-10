@@ -1,0 +1,13 @@
+CÍCERO ENFERMEIRO DIGITAL
+=========================
+
+Para instalar, abra o arquivo INSTALACAO.md (passo a passo em português).
+
+Resumo rapidinho:
+1. Chrome -> digite na barra de endereco:  chrome://extensions
+2. Ligue "Modo do desenvolvedor" (canto superior direito).
+3. Clique "Carregar sem compactacao" e escolha esta pasta.
+4. Fixe o icone (alfinete) e clique para abrir o painel.
+5. Aperte o microfone e fale. Para parar, aperte Parar.
+
+Feito com carinho. <3

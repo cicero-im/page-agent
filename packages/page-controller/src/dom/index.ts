@@ -1,4 +1,3 @@
-import { VIEWPORT_EXPANSION } from '../constants'
 import domTree from './dom_tree/index.js'
 import {
 	ElementDomNode,
@@ -7,13 +6,48 @@ import {
 	TextDomNode,
 } from './dom_tree/type'
 
+/**
+ * Viewport expansion for DOM tree extraction.
+ * -1 means full page (no viewport restriction)
+ * 0 means viewport only
+ * positive values expand the viewport by that many pixels
+ *
+ * @note Since isTopElement depends on elementFromPoint,
+ * it returns null when out of viewport, this feature has no practical use, only differ between -1 and 0
+ */
+const DEFAULT_VIEWPORT_EXPANSION = -1
+
+export function resolveViewportExpansion(viewportExpansion?: number): number {
+	return viewportExpansion ?? DEFAULT_VIEWPORT_EXPANSION
+}
+
 export interface DomConfig {
+	viewportExpansion?: number
 	interactiveBlacklist?: (Element | (() => Element))[]
 	interactiveWhitelist?: (Element | (() => Element))[]
 	includeAttributes?: string[]
 	highlightOpacity?: number
 	highlightLabelOpacity?: number
+
+	/**
+	 * Preserve semantic landmark tags in dehydrated output even if not interactive
+	 * @note maybe confusing for LLM combining with page scrolling, use with caution
+	 **/
+	keepSemanticTags?: boolean
 }
+
+// TODO: corresponding roles
+const SEMANTIC_TAGS = new Set([
+	'nav',
+	'menu',
+	// 'main',
+	'header',
+	'footer',
+	'aside',
+	// 'article',
+	// 'form',
+	'dialog',
+])
 
 /**
  * 用于检测可交互元素是否是新出现的。
@@ -21,6 +55,8 @@ export interface DomConfig {
 const newElementsCache = new WeakMap<HTMLElement, string>()
 
 export function getFlatTree(config: DomConfig): FlatDomTree {
+	const viewportExpansion = resolveViewportExpansion(config.viewportExpansion)
+
 	const interactiveBlacklist = [] as Element[]
 	for (const item of config.interactiveBlacklist || []) {
 		if (typeof item === 'function') {
@@ -43,7 +79,7 @@ export function getFlatTree(config: DomConfig): FlatDomTree {
 		doHighlightElements: true,
 		debugMode: true,
 		focusHighlightIndex: -1,
-		viewportExpansion: VIEWPORT_EXPANSION,
+		viewportExpansion,
 		interactiveBlacklist,
 		interactiveWhitelist,
 		highlightOpacity: config.highlightOpacity ?? 0.0,
@@ -72,6 +108,43 @@ export function getFlatTree(config: DomConfig): FlatDomTree {
 	}
 
 	return elements
+}
+
+const globRegexCache = new Map<string, RegExp>()
+
+function globToRegex(pattern: string): RegExp {
+	let regex = globRegexCache.get(pattern)
+	if (!regex) {
+		const escaped = pattern.replace(/[.+^${}()|[\]\\]/g, '\\$&')
+		regex = new RegExp(`^${escaped.replace(/\*/g, '.*')}$`)
+		globRegexCache.set(pattern, regex)
+	}
+	return regex
+}
+
+function matchAttributes(
+	attrs: Record<string, string>,
+	patterns: string[]
+): Record<string, string> {
+	const result: Record<string, string> = {}
+
+	for (const pattern of patterns) {
+		if (pattern.includes('*')) {
+			const regex = globToRegex(pattern)
+			for (const key of Object.keys(attrs)) {
+				if (regex.test(key) && attrs[key].trim()) {
+					result[key] = attrs[key].trim()
+				}
+			}
+		} else {
+			const value = attrs[pattern]
+			if (value && value.trim()) {
+				result[pattern] = value.trim()
+			}
+		}
+	}
+
+	return result
 }
 
 /**
@@ -117,7 +190,11 @@ interface TreeNode {
  *
  * @todo 数据脱敏过滤器
  */
-export function flatTreeToString(flatTree: FlatDomTree, includeAttributes?: string[]): string {
+export function flatTreeToString(
+	flatTree: FlatDomTree,
+	includeAttributes: string[] = [],
+	keepSemanticTags = false
+): string {
 	const DEFAULT_INCLUDE_ATTRIBUTES = [
 		'title',
 		'type',
@@ -140,13 +217,16 @@ export function flatTreeToString(flatTree: FlatDomTree, includeAttributes?: stri
 		// for jump check
 		'target',
 
-		// absolute 定位的下拉菜单
+		// absolute position dropdown menu
 		'aria-haspopup',
 		'aria-controls',
 		'aria-owns',
+
+		// content editable
+		'contenteditable',
 	]
 
-	const includeAttrs = [...(includeAttributes || []), ...DEFAULT_INCLUDE_ATTRIBUTES]
+	const includeAttrs = [...includeAttributes, ...DEFAULT_INCLUDE_ATTRIBUTES]
 
 	// Helper function to cap text length
 	const capTextLength = (text: string, maxLength: number): string => {
@@ -237,6 +317,8 @@ export function flatTreeToString(flatTree: FlatDomTree, includeAttributes?: stri
 		const depthStr = '\t'.repeat(depth)
 
 		if (node.type === 'element') {
+			const isSemantic = keepSemanticTags && node.tagName && SEMANTIC_TAGS.has(node.tagName)
+
 			// Add element with highlight_index
 			if (node.highlightIndex !== undefined) {
 				nextDepth += 1
@@ -245,23 +327,15 @@ export function flatTreeToString(flatTree: FlatDomTree, includeAttributes?: stri
 				let attributesHtmlStr = ''
 
 				if (includeAttrs.length > 0 && node.attributes) {
-					const attributesToInclude: Record<string, string> = {}
-
-					// Filter attributes
-					for (const key of includeAttrs) {
-						const value = node.attributes[key]
-						if (value && value.trim() !== '') {
-							attributesToInclude[key] = value.trim()
-						}
-					}
+					const attributesToInclude = matchAttributes(node.attributes, includeAttrs)
 
 					// Remove duplicate values (for attributes longer than 5 chars)
-					const orderedKeys = includeAttrs.filter((key) => key in attributesToInclude)
-					if (orderedKeys.length > 1) {
+					const keys = Object.keys(attributesToInclude)
+					if (keys.length > 1) {
 						const keysToRemove = new Set<string>()
 						const seenValues: Record<string, string> = {}
 
-						for (const key of orderedKeys) {
+						for (const key of keys) {
 							const value = attributesToInclude[key]
 							if (value.length > 5) {
 								if (value in seenValues) {
@@ -342,9 +416,29 @@ export function flatTreeToString(flatTree: FlatDomTree, includeAttributes?: stri
 				result.push(line)
 			}
 
-			// Process children regardless
+			// special treatment for semantic tags
+			// even if they are not interactive, we can keep them for clear context
+
+			const emitSemantic = isSemantic && node.highlightIndex === undefined
+			// to check if this tag is empty
+			const mark = emitSemantic ? result.length : -1
+
+			if (emitSemantic) {
+				result.push(`${depthStr}<${node.tagName}>`)
+				nextDepth += 1
+			}
+
 			for (const child of node.children) {
 				processNode(child, nextDepth, result)
+			}
+
+			if (emitSemantic) {
+				// empty tag should be removed
+				if (result.length === mark + 1) {
+					result.pop()
+				} else {
+					result.push(`${depthStr}</${node.tagName}>`)
+				}
 			}
 		} else if (node.type === 'text') {
 			// Add text only if it doesn't have a highlighted parent

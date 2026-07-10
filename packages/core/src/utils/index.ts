@@ -2,8 +2,28 @@ import chalk from 'chalk'
 
 export * from './autoFixer'
 
-export async function waitFor(seconds: number): Promise<void> {
-	await new Promise((resolve) => setTimeout(resolve, seconds * 1000))
+/**
+ * Wait for `seconds`. If a `signal` is provided, the wait is cancellable:
+ * aborting rejects with the signal's reason (an `AbortError`).
+ */
+export async function waitFor(seconds: number, signal?: AbortSignal): Promise<void> {
+	if (!signal) {
+		await new Promise((resolve) => setTimeout(resolve, seconds * 1000))
+		return
+	}
+	signal.throwIfAborted()
+	await new Promise<void>((resolve, reject) => {
+		const timer = setTimeout(() => {
+			signal.removeEventListener('abort', onAbort)
+			resolve()
+		}, seconds * 1000)
+		const onAbort = () => {
+			clearTimeout(timer)
+			// reason is a DOMException AbortError.
+			reject(signal.reason as DOMException)
+		}
+		signal.addEventListener('abort', onAbort, { once: true })
+	})
 }
 
 //
@@ -31,7 +51,7 @@ export function randomID(existingIDs?: string[]): string {
 		id = Math.random().toString(36).substring(2, 11)
 		tryCount++
 		if (tryCount > MAX_TRY) {
-			throw new Error('randomID: too many try')
+			throw new Error('randomID: too many tries')
 		}
 	}
 
@@ -61,7 +81,15 @@ const llmsTxtCache = new Map<string, string | null>()
 
 /** Fetch /llms.txt for a URL's origin. Cached per origin, `null` = tried and not found. */
 export async function fetchLlmsTxt(url: string): Promise<string | null> {
-	const origin = new URL(url).origin
+	let origin: string
+	try {
+		origin = new URL(url).origin
+	} catch {
+		return null // Invalid URL
+	}
+	// about:blank, data:, file:
+	if (origin === 'null') return null
+
 	if (llmsTxtCache.has(origin)) return llmsTxtCache.get(origin)!
 
 	const endpoint = `${origin}/llms.txt`
@@ -99,5 +127,17 @@ export function assert(condition: unknown, message?: string, silent?: boolean): 
 		if (!silent) console.error(chalk.red(`❌ assert: ${errorMessage}`))
 
 		throw new Error(errorMessage)
+	}
+}
+
+/**
+ * Suppress errors from a function.
+ */
+export async function suppress<T>(fn: () => T | Promise<T>): Promise<Awaited<T> | undefined> {
+	try {
+		return await fn()
+	} catch (error) {
+		console.error(error)
+		return undefined
 	}
 }

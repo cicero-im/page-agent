@@ -8,13 +8,21 @@ import type { PageAgentCore } from '../PageAgentCore'
 import { waitFor } from '../utils'
 
 /**
+ * Per-invocation context passed to every tool execution.
+ * Tools MUST honor `signal` to support cooperative cancellation.
+ */
+export interface ToolContext {
+	signal: AbortSignal
+}
+
+/**
  * Internal tool definition that has access to PageAgent `this` context
  */
 export interface PageAgentTool<TParams = any> {
 	// name: string
 	description: string
 	inputSchema: z.ZodType<TParams>
-	execute: (this: PageAgentCore, args: TParams) => Promise<string>
+	execute: (this: PageAgentCore, args: TParams, ctx: ToolContext) => Promise<string>
 }
 
 export function tool<TParams>(options: PageAgentTool<TParams>): PageAgentTool<TParams> {
@@ -50,14 +58,16 @@ tools.set(
 		inputSchema: z.object({
 			seconds: z.number().min(1).max(10).default(1),
 		}),
-		execute: async function (this: PageAgentCore, input) {
+		execute: async function (this: PageAgentCore, input, { signal }) {
 			// try to subtract LLM calling time from the actual wait time
 			const lastTimeUpdate = await this.pageController.getLastUpdateTime()
-			const actualWaitTime = Math.max(0, input.seconds - (Date.now() - lastTimeUpdate) / 1000)
+			const secondsSinceLastUpdate = (Date.now() - lastTimeUpdate) / 1000
+			const actualWaitTime = Math.max(0, input.seconds - secondsSinceLastUpdate)
 			console.log(`actualWaitTime: ${actualWaitTime} seconds`)
-			await waitFor(actualWaitTime)
+			await waitFor(actualWaitTime, signal)
 
-			return `✅ Waited for ${input.seconds} seconds.`
+			const waitedSeconds = (secondsSinceLastUpdate + actualWaitTime).toFixed(2)
+			return `✅ Waited for ${waitedSeconds} seconds.`
 		},
 	})
 )
@@ -70,11 +80,11 @@ tools.set(
 		inputSchema: z.object({
 			question: z.string(),
 		}),
-		execute: async function (this: PageAgentCore, input) {
+		execute: async function (this: PageAgentCore, input, { signal }) {
 			if (!this.onAskUser) {
 				throw new Error('ask_user tool requires onAskUser callback to be set')
 			}
-			const answer = await this.onAskUser(input.question)
+			const answer = await this.onAskUser(input.question, { signal })
 			return `User answered: ${answer}`
 		},
 	})
@@ -131,7 +141,8 @@ tools.set(
 tools.set(
 	'scroll',
 	tool({
-		description: 'Scroll the page vertically. Use index for scroll elements (dropdowns/custom UI).',
+		description:
+			'Scroll vertically. Without index: scrolls the document. With index: scrolls the container at that index (or its nearest scrollable ancestor). Use index of a data-scrollable element to scroll a specific area.',
 		inputSchema: z.object({
 			down: z.boolean().default(true),
 			num_pages: z.number().min(0).max(10).optional().default(0.1),
@@ -155,7 +166,7 @@ tools.set(
 	'scroll_horizontally',
 	tool({
 		description:
-			'Scroll the page horizontally, or within a specific element by index. Useful for wide tables.',
+			'Scroll horizontally. Without index: scrolls the document. With index: scrolls the container at that index (or its nearest scrollable ancestor). Use index of a data-scrollable element to scroll a specific area.',
 		inputSchema: z.object({
 			right: z.boolean().default(true),
 			pixels: z.number().int().min(0),
@@ -172,18 +183,36 @@ tools.set(
 	'execute_javascript',
 	tool({
 		description:
-			'Execute JavaScript code on the current page. Supports async/await syntax. Use with caution!',
+			'Execute JavaScript code on the current page. Supports async/await syntax. Use with caution! ' +
+			'An `AbortSignal` named `signal` is available in scope: long-running async code MUST honor it ' +
+			'(e.g. `await fetch(url, { signal })`, or `signal.throwIfAborted()` in loops)',
 		inputSchema: z.object({
 			script: z.string(),
 		}),
-		execute: async function (this: PageAgentCore, input) {
-			const result = await this.pageController.executeJavascript(input.script)
+		execute: async function (this: PageAgentCore, input, { signal }) {
+			const result = await this.pageController.executeJavascript(input.script, signal)
+			signal.throwIfAborted()
 			return result.message
+		},
+	})
+)
+
+tools.set(
+	'capture_screenshot',
+	tool({
+		description:
+			'Take a screenshot of the current page and look at it. Use when the page is visual, ' +
+			"when the simplified text isn't enough, or when you're unsure what happened after an action.",
+		inputSchema: z.object({}),
+		execute: async function (this: PageAgentCore) {
+			const dataUrl = await this.pageController.captureScreenshot?.()
+			if (!dataUrl) return 'Screenshot not available on this page.'
+			this.attachImage(dataUrl)
+			return '📸 Screenshot captured — it is attached for you to see.'
 		},
 	})
 )
 
 // @todo send_keys
 // @todo upload_file
-// @todo go_back
 // @todo extract_structured_data

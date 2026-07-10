@@ -13,13 +13,20 @@ console.log(chalk.cyan(`📦 Building @page-agent/page-controller`))
 export default defineConfig({
 	clearScreen: false,
 	plugins: [
-		dts({ tsconfigPath: './tsconfig.dts.json', bundleTypes: true }),
+		dts({
+			include: ['src/**/*.ts'],
+			exclude: ['src/**/*.test.ts'],
+			bundleTypes: true,
+			compilerOptions: {
+				composite: true,
+				noEmit: false,
+				emitDeclarationOnly: true,
+				declaration: true,
+			},
+		}),
 		cssInjectedByJsPlugin({ relativeCSSInjection: true }),
 	],
 	publicDir: false,
-	esbuild: {
-		keepNames: true,
-	},
 	build: {
 		lib: {
 			entry: resolve(__dirname, 'src/PageController.ts'),

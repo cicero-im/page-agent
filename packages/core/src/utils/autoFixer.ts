@@ -1,4 +1,4 @@
-import { InvokeError, InvokeErrorType } from '@page-agent/llms'
+import { InvokeError, InvokeErrorTypes } from '@page-agent/llms'
 import chalk from 'chalk'
 import * as z from 'zod/v4'
 
@@ -19,7 +19,7 @@ const log = console.log.bind(console, chalk.yellow('[autoFixer]'))
  * - etc.
  */
 export function normalizeResponse(response: any, tools?: Map<string, PageAgentTool>): any {
-	let resolvedArguments = null as any
+	let resolvedArguments: any
 
 	const choice = (response as { choices?: Choice[] }).choices?.[0]
 	if (!choice) throw new Error('No choices in response')
@@ -41,7 +41,9 @@ export function normalizeResponse(response: any, tools?: Map<string, PageAgentTo
 		}
 	} else {
 		// case: sometimes the model returns json in content instead of tool_calls
-		if (message.content) {
+		// (assistant responses are always string content; the array form is only
+		// ever sent by us as input, so guard the type for the widened Message.content)
+		if (typeof message.content === 'string') {
 			const content = message.content.trim()
 			const jsonInContent = retrieveJsonFromString(content)
 			if (jsonInContent) {
@@ -93,7 +95,7 @@ export function normalizeResponse(response: any, tools?: Map<string, PageAgentTo
 	// fix incomplete formats
 	if (!resolvedArguments.action) {
 		log(`#5: fixing tool_call`)
-		resolvedArguments.action = { name: 'wait', input: { seconds: 1 } }
+		resolvedArguments.action = { wait: { seconds: 1 } }
 	}
 
 	// pack back to standard format
@@ -137,7 +139,7 @@ function validateAction(action: any, tools: Map<string, PageAgentTool>): any {
 	if (!tool) {
 		const available = Array.from(tools.keys()).join(', ')
 		throw new InvokeError(
-			InvokeErrorType.INVALID_TOOL_ARGS,
+			InvokeErrorTypes.INVALID_TOOL_ARGS,
 			`Unknown action "${toolName}". Available: ${available}`
 		)
 	}
@@ -159,7 +161,7 @@ function validateAction(action: any, tools: Map<string, PageAgentTool>): any {
 	const result = schema.safeParse(value)
 	if (!result.success) {
 		throw new InvokeError(
-			InvokeErrorType.INVALID_TOOL_ARGS,
+			InvokeErrorTypes.INVALID_TOOL_ARGS,
 			`Invalid input for action "${toolName}": ${z.prettifyError(result.error)}`
 		)
 	}

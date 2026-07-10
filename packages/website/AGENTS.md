@@ -80,12 +80,12 @@ src/
 
 ## Routing
 
-Uses wouter browser routing with base path for GitHub Pages deployment at `https://alibaba.github.io/page-agent/`.
+Uses wouter browser routing with base path for GitHub Pages deployment at `https://arthrod.github.io/page-agent/`.
 
 ```tsx
 // main.tsx
 <Router base="/page-agent">
-  <PagesRouter />
+    <PagesRouter />
 </Router>
 ```
 
@@ -109,6 +109,7 @@ Instead of `404.html` redirects, the build copies `index.html` into every route 
 2. Add route in `src/pages/docs/index.tsx`
 3. Add navigation item in `src/pages/docs/Layout.tsx`
 4. Add path to `SPA_ROUTES` in `vite.config.js`
+5. Keep `<slug>` consistent across the folder name, import path, route path, sidebar link, and any related cross-links. If the public route changes, rename the folder too.
 
 ## Configuration Files
 

@@ -2,6 +2,8 @@ import { type AgentConfig, PageAgentCore } from '@page-agent/core'
 
 import { RemotePageController } from './RemotePageController'
 import { TabsController } from './TabsController'
+import { createBrowserTools } from './browserTools'
+import { createHelperTools } from './helperTools'
 import SYSTEM_PROMPT from './system_prompt.md?raw'
 import { createTabTools } from './tabTools'
 
@@ -11,17 +13,30 @@ function detectLanguage(): 'en-US' | 'zh-CN' {
 	return lang.startsWith('zh') ? 'zh-CN' : 'en-US'
 }
 
+interface MultiPageAgentConfig extends AgentConfig {
+	includeInitialTab?: boolean
+	experimentalIncludeAllTabs?: boolean
+}
+
 /**
  * MultiPageAgent
  * - use with extension
  * - can be used from a side panel or a content script
  */
 export class MultiPageAgent extends PageAgentCore {
-	constructor(config: AgentConfig & { includeInitialTab?: boolean }) {
+	constructor(config: MultiPageAgentConfig) {
 		// multi page controller
 		const tabsController = new TabsController()
 		const pageController = new RemotePageController(tabsController)
-		const customTools = createTabTools(tabsController)
+		// Tab tools + the CSP-safe helper toolbelt (click-by-text, fill-by-label,
+		// read-page, etc.) + the browser-capability toolbelt (download, bookmark,
+		// history, notify, clipboard, …) so a small model rarely has to guess indices
+		// or write JS, and can do genuinely useful chores hands-free.
+		const customTools = {
+			...createTabTools(tabsController),
+			...createHelperTools(),
+			...createBrowserTools(),
+		}
 
 		// system prompt - auto-detect language if not specified
 		const language = config.language ?? detectLanguage()
@@ -31,66 +46,72 @@ export class MultiPageAgent extends PageAgentCore {
 			`Default working language: **${targetLanguage}**`
 		)
 
-		// include initial tab for controlling
 		const includeInitialTab = config.includeInitialTab ?? true
+		const experimentalIncludeAllTabs = config.experimentalIncludeAllTabs ?? false
 
 		/**
+		 * Project agent status into chrome.storage. The content script polls
+		 * `isAgentRunning` + `agentHeartbeat` (eventually consistent by design).
+		 *
 		 * When the agent is in side-panel and user closed the side-panel.
 		 * There is no chance for isAgentRunning to be set false.
 		 * (unload event doesn't work well in side panel.)
 		 * (I'm trying not to use long-lived connection because the lifecycle of a sw is hard to predict.)
 		 * This heartbeat mechanism acts as a backup.
 		 */
-		let heartBeatInterval: null | number = null
+		let heartBeatInterval: number | null = null
 
 		super({
 			...config,
+			// Enabled for Cicero. AbortSignal cannot cross contexts, so in-page JS
+			// cancellation is best-effort (the script is forwarded without the signal).
+			experimentalScriptExecutionTool: true,
+			// Let the model SEE the page on demand (capture_screenshot) and get an
+			// automatic screenshot on every error so it can recover visually.
+			// (`alwaysSendScreenshot` — capture on EVERY step — is opt-in via Settings
+			// and flows in from `...config`; it is OFF by default.)
+			experimentalVisionTool: true,
+			// Never feel broken: a failed step becomes an observation (with a
+			// screenshot) and the agent tries again, up to a few times.
+			errorRecovery: { maxConsecutiveErrors: 3, captureScreenshotOnError: true },
 			pageController: pageController as any,
 			customTools: customTools,
 			customSystemPrompt: systemPrompt,
 
 			onBeforeTask: async (agent) => {
-				await tabsController.init(agent.task, includeInitialTab)
-
-				heartBeatInterval = window.setInterval(() => {
-					chrome.storage.local.set({
-						agentHeartbeat: Date.now(),
-					})
-				}, 1_000)
-
-				await chrome.storage.local.set({
-					isAgentRunning: true,
-				})
-			},
-
-			onAfterTask: async () => {
-				if (heartBeatInterval) {
-					window.clearInterval(heartBeatInterval)
-					heartBeatInterval = null
-				}
-
-				await chrome.storage.local.set({
-					isAgentRunning: false,
-				})
+				await tabsController.init(agent.task, { includeInitialTab, experimentalIncludeAllTabs })
 			},
 
 			onBeforeStep: async (agent) => {
+				if (!tabsController.currentTabId) return
 				// make sure the current tab is loaded before the step starts
 				await tabsController.waitUntilTabLoaded(tabsController.currentTabId!)
 			},
 
 			onDispose: () => {
 				if (heartBeatInterval) {
-					window.clearInterval(heartBeatInterval)
+					clearInterval(heartBeatInterval)
 					heartBeatInterval = null
 				}
-
-				chrome.storage.local.set({
-					isAgentRunning: false,
-				})
+				chrome.storage.local.set({ isAgentRunning: false }).catch(console.error)
 
 				tabsController.dispose()
 			},
+		})
+
+		this.addEventListener('statuschange', () => {
+			const running = this.status === 'running'
+
+			if (running && !heartBeatInterval) {
+				heartBeatInterval = window.setInterval(() => {
+					void chrome.storage.local.set({ agentHeartbeat: Date.now() })
+				}, 1_000)
+			} else if (!running && heartBeatInterval) {
+				clearInterval(heartBeatInterval)
+				heartBeatInterval = null
+			}
+
+			chrome.storage.local.set({ isAgentRunning: running }).catch(console.error)
 		})
 	}
 }

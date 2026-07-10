@@ -3,7 +3,7 @@
  */
 import * as z from 'zod/v4'
 
-import { InvokeError, InvokeErrorType } from './errors'
+import { InvokeError, InvokeErrorTypes } from './errors'
 import type { InvokeOptions, InvokeResult, LLMClient, LLMConfig, Message, Tool } from './types'
 import { modelPatch, zodToOpenAITool } from './utils'
 
@@ -25,23 +25,39 @@ export class OpenAIClient implements LLMClient {
 		abortSignal?: AbortSignal,
 		options?: InvokeOptions
 	): Promise<InvokeResult> {
+		abortSignal?.throwIfAborted()
+
 		// 1. Convert tools to OpenAI format
 		const openaiTools = Object.entries(tools).map(([name, t]) => zodToOpenAITool(name, t))
 
 		// Build request body
+
+		let toolChoice: unknown = 'required'
+		if (options?.toolChoiceName && !this.config.disableNamedToolChoice) {
+			toolChoice = { type: 'function', function: { name: options.toolChoiceName } }
+		}
+
 		const requestBody: Record<string, unknown> = {
 			model: this.config.model,
 			temperature: this.config.temperature,
 			messages,
 			tools: openaiTools,
 			parallel_tool_calls: false,
-			// Require tool call: specific tool if provided, otherwise any tool
-			tool_choice: options?.toolChoiceName
-				? { type: 'function', function: { name: options.toolChoiceName } }
-				: 'required',
+			tool_choice: toolChoice,
 		}
 
 		modelPatch(requestBody)
+		let transformedBody: Record<string, unknown> | undefined
+		try {
+			transformedBody = this.config.transformRequestBody(requestBody)
+		} catch (error) {
+			throw new InvokeError(
+				InvokeErrorTypes.CONFIG_ERROR,
+				`transformRequestBody failed: ${(error as Error).message}`,
+				error
+			)
+		}
+		const finalRequestBody = transformedBody ?? requestBody
 
 		// 2. Call API
 		let response: Response
@@ -50,58 +66,71 @@ export class OpenAIClient implements LLMClient {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					Authorization: `Bearer ${this.config.apiKey}`,
+					...(this.config.apiKey && { Authorization: `Bearer ${this.config.apiKey}` }),
 				},
-				body: JSON.stringify(requestBody),
+				body: JSON.stringify(finalRequestBody),
 				signal: abortSignal,
 			})
 		} catch (error: unknown) {
-			const isAbortError = (error as any)?.name === 'AbortError'
-			const errorMessage = isAbortError ? 'Network request aborted' : 'Network request failed'
-			if (!isAbortError) console.error(error)
-			throw new InvokeError(InvokeErrorType.NETWORK_ERROR, errorMessage, error)
+			if ((error as any)?.name === 'AbortError') throw error
+			console.error(error)
+			throw new InvokeError(InvokeErrorTypes.NETWORK_ERROR, 'Network request failed', error)
 		}
 
 		// 3. Handle HTTP errors
 		if (!response.ok) {
-			const errorData = await response.json().catch()
-			const errorMessage =
-				(errorData as { error?: { message?: string } }).error?.message || response.statusText
+			let errorData: any
+			try {
+				errorData = await response.json()
+			} catch (error) {
+				if ((error as any)?.name === 'AbortError') throw error
+			}
+			const errorMessage = errorData?.error?.message || response.statusText
 
 			if (response.status === 401 || response.status === 403) {
 				throw new InvokeError(
-					InvokeErrorType.AUTH_ERROR,
+					InvokeErrorTypes.AUTH_ERROR,
 					`Authentication failed: ${errorMessage}`,
 					errorData
 				)
 			}
 			if (response.status === 429) {
 				throw new InvokeError(
-					InvokeErrorType.RATE_LIMIT,
+					InvokeErrorTypes.RATE_LIMIT,
 					`Rate limit exceeded: ${errorMessage}`,
 					errorData
 				)
 			}
 			if (response.status >= 500) {
 				throw new InvokeError(
-					InvokeErrorType.SERVER_ERROR,
+					InvokeErrorTypes.SERVER_ERROR,
 					`Server error: ${errorMessage}`,
 					errorData
 				)
 			}
 			throw new InvokeError(
-				InvokeErrorType.UNKNOWN,
+				InvokeErrorTypes.UNKNOWN,
 				`HTTP ${response.status}: ${errorMessage}`,
 				errorData
 			)
 		}
 
 		// 4. Parse and validate response
-		const data = await response.json()
+		let data: any
+		try {
+			data = await response.json()
+		} catch (error) {
+			if ((error as any)?.name === 'AbortError') throw error
+			throw new InvokeError(
+				InvokeErrorTypes.INVALID_RESPONSE,
+				'Response body is not valid JSON',
+				error
+			)
+		}
 
 		const choice = data.choices?.[0]
 		if (!choice) {
-			throw new InvokeError(InvokeErrorType.UNKNOWN, 'No choices in response', data)
+			throw new InvokeError(InvokeErrorTypes.INVALID_SCHEMA, 'No choices in response', data)
 		}
 
 		// Check finish_reason
@@ -112,21 +141,21 @@ export class OpenAIClient implements LLMClient {
 				break
 			case 'length':
 				throw new InvokeError(
-					InvokeErrorType.CONTEXT_LENGTH,
+					InvokeErrorTypes.CONTEXT_LENGTH,
 					'Response truncated: max tokens reached',
 					undefined,
 					data
 				)
 			case 'content_filter':
 				throw new InvokeError(
-					InvokeErrorType.CONTENT_FILTER,
+					InvokeErrorTypes.CONTENT_FILTER,
 					'Content filtered by safety system',
 					undefined,
 					data
 				)
 			default:
 				throw new InvokeError(
-					InvokeErrorType.UNKNOWN,
+					InvokeErrorTypes.INVALID_SCHEMA,
 					`Unexpected finish_reason: ${choice.finish_reason}`,
 					undefined,
 					data
@@ -141,7 +170,7 @@ export class OpenAIClient implements LLMClient {
 		const toolCallName = normalizedChoice?.message?.tool_calls?.[0]?.function?.name
 		if (!toolCallName) {
 			throw new InvokeError(
-				InvokeErrorType.NO_TOOL_CALL,
+				InvokeErrorTypes.NO_TOOL_CALL,
 				'No tool call found in response',
 				undefined,
 				data
@@ -151,7 +180,7 @@ export class OpenAIClient implements LLMClient {
 		const tool = tools[toolCallName]
 		if (!tool) {
 			throw new InvokeError(
-				InvokeErrorType.UNKNOWN,
+				InvokeErrorTypes.UNKNOWN,
 				`Tool "${toolCallName}" not found in tools`,
 				undefined,
 				data
@@ -162,7 +191,7 @@ export class OpenAIClient implements LLMClient {
 		const argString = normalizedChoice.message?.tool_calls?.[0]?.function?.arguments
 		if (!argString) {
 			throw new InvokeError(
-				InvokeErrorType.INVALID_TOOL_ARGS,
+				InvokeErrorTypes.INVALID_TOOL_ARGS,
 				'No tool call arguments found',
 				undefined,
 				data
@@ -174,7 +203,7 @@ export class OpenAIClient implements LLMClient {
 			parsedArgs = JSON.parse(argString)
 		} catch (error) {
 			throw new InvokeError(
-				InvokeErrorType.INVALID_TOOL_ARGS,
+				InvokeErrorTypes.INVALID_TOOL_ARGS,
 				'Failed to parse tool arguments as JSON',
 				error,
 				data
@@ -186,7 +215,7 @@ export class OpenAIClient implements LLMClient {
 		if (!validation.success) {
 			console.error(z.prettifyError(validation.error))
 			throw new InvokeError(
-				InvokeErrorType.INVALID_TOOL_ARGS,
+				InvokeErrorTypes.INVALID_TOOL_ARGS,
 				'Tool arguments validation failed',
 				validation.error,
 				data
@@ -198,11 +227,12 @@ export class OpenAIClient implements LLMClient {
 		let toolResult: unknown
 		try {
 			toolResult = await tool.execute(toolInput)
-		} catch (e) {
+		} catch (error: unknown) {
+			if ((error as any)?.name === 'AbortError') throw error
 			throw new InvokeError(
-				InvokeErrorType.TOOL_EXECUTION_ERROR,
-				`Tool execution failed: ${(e as Error).message}`,
-				e,
+				InvokeErrorTypes.TOOL_EXECUTION_ERROR,
+				`Tool execution failed: ${(error as Error)?.message}`,
+				error,
 				data
 			)
 		}
@@ -222,7 +252,7 @@ export class OpenAIClient implements LLMClient {
 				reasoningTokens: data.usage?.completion_tokens_details?.reasoning_tokens,
 			},
 			rawResponse: data,
-			rawRequest: requestBody,
+			rawRequest: finalRequestBody,
 		}
 	}
 }

@@ -128,8 +128,8 @@ export default function CustomUIDocs() {
 							name: 'statuschange',
 							type: 'Event',
 							description: isZh
-								? 'Agent 状态变化 (idle → running → completed/error)'
-								: 'Agent status changes (idle → running → completed/error)',
+								? 'Agent 状态变化 (idle → running → completed/error/stopped)'
+								: 'Agent status changes (idle → running → completed/error/stopped)',
 						},
 						{
 							name: 'historychange',
@@ -257,7 +257,8 @@ const root = createRoot(document.getElementById('my-ui')!)
 root.render(<MyAgentUI agent={agent} />)
 
 // 4. Handle user input (optional)
-agent.onAskUser = async (question) => window.prompt(question) || ''
+//    options.signal aborts when the task is stopped or disposed
+agent.onAskUser = async (question, options) => window.prompt(question) || ''
 
 // 5. Execute task
 await agent.execute('Fill the form with test data')

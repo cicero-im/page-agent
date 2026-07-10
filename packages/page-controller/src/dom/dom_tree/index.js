@@ -17,6 +17,9 @@
  * @edit add `data-browser-use-ignore` attribute
  * @edit improve `sampleRect`, filter out rects with 0 area
  * @edit exclude aria-hidden elements
+ * @edit make sure attributes exist for interactive candidates.
+ * @edit fix "aria-*" attributes check
+ * @edit quiet cross-origin iframe SecurityError (skip silently, warn on real errors)
  */
 
 export default (
@@ -501,11 +504,16 @@ export default (
 		const overflowX = style.overflowX
 		const overflowY = style.overflowY
 
-		// Check scrollable distances
+		// scrollbar-width/scrollbar-gutter are only set on elements designed to scroll;
+		// their presence signals scroll intent even when overflow is hidden (e.g. overflow: auto on :hover)
+		const hasScrollbarSignal =
+			(style.scrollbarWidth && style.scrollbarWidth !== 'auto') ||
+			(style.scrollbarGutter && style.scrollbarGutter !== 'auto')
+
 		const scrollableX = overflowX === 'auto' || overflowX === 'scroll'
 		const scrollableY = overflowY === 'auto' || overflowY === 'scroll'
 
-		if (!scrollableX && !scrollableY) {
+		if (!scrollableX && !scrollableY && !hasScrollbarSignal) {
 			return null // Not scrollable in any direction
 		}
 
@@ -519,11 +527,11 @@ export default (
 			return null // Not scrollable
 		}
 
-		if (!scrollableY && scrollWidth < threshold) {
+		if (!scrollableY && !hasScrollbarSignal && scrollWidth < threshold) {
 			return null // Not scrollable horizontally
 		}
 
-		if (!scrollableX && scrollHeight < threshold) {
+		if (!scrollableX && !hasScrollbarSignal && scrollHeight < threshold) {
 			return null // Not scrollable vertically
 		}
 
@@ -1142,6 +1150,31 @@ export default (
 	 * @param {HTMLElement} element - The element to check.
 	 * @returns {boolean} Whether the element is an interactive candidate.
 	 */
+
+	// @edit fix "aria-*" attributes check
+	const INTERACTIVE_ARIA_ATTRS = [
+		'aria-expanded',
+		'aria-checked',
+		'aria-selected',
+		'aria-pressed',
+		'aria-haspopup',
+		'aria-controls',
+		'aria-owns',
+		'aria-activedescendant',
+		'aria-valuenow',
+		'aria-valuetext',
+		'aria-valuemax',
+		'aria-valuemin',
+		'aria-autocomplete',
+	]
+
+	function hasInteractiveAria(el) {
+		for (let i = 0; i < INTERACTIVE_ARIA_ATTRS.length; i++) {
+			if (el.hasAttribute(INTERACTIVE_ARIA_ATTRS[i])) return true
+		}
+		return false
+	}
+
 	function isInteractiveCandidate(element) {
 		if (!element || element.nodeType !== Node.ELEMENT_NODE) return false
 
@@ -1166,7 +1199,7 @@ export default (
 			element.hasAttribute('onclick') ||
 			element.hasAttribute('role') ||
 			element.hasAttribute('tabindex') ||
-			element.hasAttribute('aria-') ||
+			hasInteractiveAria(element) ||
 			element.hasAttribute('data-action') ||
 			element.getAttribute('contenteditable') === 'true'
 
@@ -1184,8 +1217,9 @@ export default (
 		'details',
 		'label',
 		'option',
+		'li',
 	])
-	const INTERACTIVE_ROLES = new Set([
+	const DISTINCT_INTERACTIVE_ROLES = new Set([
 		'button',
 		'link',
 		'menuitem',
@@ -1201,6 +1235,9 @@ export default (
 		'searchbox',
 		'textbox',
 		'listbox',
+		'listitem',
+		'treeitem',
+		'row',
 		'option',
 		'scrollbar',
 	])
@@ -1277,7 +1314,7 @@ export default (
 			return true
 		}
 		// Check interactive roles
-		if (role && INTERACTIVE_ROLES.has(role)) {
+		if (role && DISTINCT_INTERACTIVE_ROLES.has(role)) {
 			return true
 		}
 		// Check contenteditable
@@ -1294,6 +1331,10 @@ export default (
 		}
 		// Check for explicit onclick handler (attribute or property)
 		if (element.hasAttribute('onclick') || typeof element.onclick === 'function') {
+			return true
+		}
+		// ARIA state attributes imply the element manages its own interaction state
+		if (hasInteractiveAria(element)) {
 			return true
 		}
 
@@ -1348,6 +1389,12 @@ export default (
 
 		// if the element is not strictly interactive but appears clickable based on heuristic signals
 		if (isHeuristicallyInteractive(element)) {
+			return true
+		}
+
+		// Scrollable containers are always distinct — the LLM needs their index for targeted scrolling.
+		// Check extraData (already set by isScrollableElement in isInteractiveElement) to avoid redundant layout reads.
+		if (extraData.get(element)?.scrollable) {
 			return true
 		}
 
@@ -1608,6 +1655,18 @@ export default (
 					 * @edit direct dom ref
 					 */
 					nodeData.ref = node
+
+					/**
+					 * @edit make sure attributes exist for interactive candidates.
+					 * @note if the element failed the isInteractiveCandidate, attributes would be empty.
+					 */
+					if (nodeData.isInteractive && Object.keys(nodeData.attributes).length === 0) {
+						const attributeNames = node.getAttributeNames?.() || []
+						for (const name of attributeNames) {
+							const value = node.getAttribute(name)
+							nodeData.attributes[name] = value
+						}
+					}
 				}
 			}
 		}
@@ -1627,7 +1686,19 @@ export default (
 						}
 					}
 				} catch (e) {
-					console.warn('Unable to access iframe:', e)
+					/**
+					 * @edit quiet cross-origin iframe SecurityError
+					 * Cross-origin iframes (ads, embeds, social widgets, captchas) are
+					 * sandboxed by the browser's Same-Origin Policy and cannot be read —
+					 * this is EXPECTED, not a bug. Skip them silently; otherwise an
+					 * ad-heavy page (Google results, news sites) floods the console with
+					 * dozens of identical SecurityError stacks. Match by `name` (not
+					 * `instanceof DOMException`) so it holds even across realms. Still
+					 * surface any OTHER, genuinely unexpected failure.
+					 */
+					if (e?.name !== 'SecurityError') {
+						console.warn('Unable to access iframe:', e)
+					}
 				}
 			}
 			// Handle rich text editors and contenteditable elements

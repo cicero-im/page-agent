@@ -4,6 +4,7 @@
 import type {
 	AgentActivity,
 	AgentStatus,
+	ExecutionResult,
 	HistoricalEvent,
 	SupportedLanguage,
 } from '@page-agent/core'
@@ -11,7 +12,7 @@ import type { LLMConfig } from '@page-agent/llms'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { MultiPageAgent } from './MultiPageAgent'
-import { DEMO_CONFIG, migrateLegacyEndpoint } from './constants'
+import { DEFAULT_CONFIG, DEFAULT_SYSTEM_INSTRUCTION, migrateLegacyEndpoint } from './constants'
 
 /** Language preference: undefined means follow system */
 export type LanguagePreference = SupportedLanguage | undefined
@@ -20,6 +21,12 @@ export interface AdvancedConfig {
 	maxSteps?: number
 	systemInstruction?: string
 	experimentalLlmsTxt?: boolean
+	experimentalIncludeAllTabs?: boolean
+	disableNamedToolChoice?: boolean
+	/** Ping-pong mode: after a task finishes, auto-restart the mic (hands-free loop). */
+	pingPong?: boolean
+	/** Attach a screenshot to EVERY step (optional; on-error screenshot is always on). */
+	alwaysSendScreenshot?: boolean
 }
 
 export interface ExtConfig extends LLMConfig, AdvancedConfig {
@@ -32,8 +39,9 @@ export interface UseAgentResult {
 	activity: AgentActivity | null
 	currentTask: string
 	config: ExtConfig | null
-	execute: (task: string) => Promise<void>
+	execute: (task: string) => Promise<ExecutionResult>
 	stop: () => void
+	reset: () => void
 	configure: (config: ExtConfig) => Promise<void>
 }
 
@@ -47,7 +55,7 @@ export function useAgent(): UseAgentResult {
 
 	useEffect(() => {
 		chrome.storage.local.get(['llmConfig', 'language', 'advancedConfig']).then((result) => {
-			let llmConfig = (result.llmConfig as LLMConfig) ?? DEMO_CONFIG
+			let llmConfig = (result.llmConfig as LLMConfig) ?? DEFAULT_CONFIG
 			const language = (result.language as SupportedLanguage) || undefined
 			const advancedConfig = (result.advancedConfig as AdvancedConfig) ?? {}
 
@@ -57,7 +65,7 @@ export function useAgent(): UseAgentResult {
 				llmConfig = migrated
 				chrome.storage.local.set({ llmConfig: migrated })
 			} else if (!result.llmConfig) {
-				chrome.storage.local.set({ llmConfig: DEMO_CONFIG })
+				chrome.storage.local.set({ llmConfig: DEFAULT_CONFIG })
 			}
 
 			setConfig({ ...llmConfig, ...advancedConfig, language })
@@ -70,14 +78,15 @@ export function useAgent(): UseAgentResult {
 		const { systemInstruction, ...agentConfig } = config
 		const agent = new MultiPageAgent({
 			...agentConfig,
-			instructions: systemInstruction ? { system: systemInstruction } : undefined,
+			// Default to the Cícero pt-BR assistive persona unless the user customized it.
+			instructions: { system: systemInstruction || DEFAULT_SYSTEM_INSTRUCTION },
 		})
 		agentRef.current = agent
 
 		const handleStatusChange = (e: Event) => {
 			const newStatus = agent.status as AgentStatus
 			setStatus(newStatus)
-			if (newStatus === 'idle' || newStatus === 'completed' || newStatus === 'error') {
+			if (newStatus !== 'running') {
 				setActivity(null)
 			}
 		}
@@ -105,16 +114,24 @@ export function useAgent(): UseAgentResult {
 
 	const execute = useCallback(async (task: string) => {
 		const agent = agentRef.current
-		console.log('🚀 [useAgent] start executing task:', task)
 		if (!agent) throw new Error('Agent not initialized')
 
 		setCurrentTask(task)
 		setHistory([])
-		await agent.execute(task)
+		return agent.execute(task)
 	}, [])
 
 	const stop = useCallback(() => {
 		agentRef.current?.stop()
+	}, [])
+
+	/** Start a fresh conversation: stop any run and clear the visible history. */
+	const reset = useCallback(() => {
+		agentRef.current?.stop()
+		setCurrentTask('')
+		setHistory([])
+		setActivity(null)
+		setStatus('idle')
 	}, [])
 
 	const configure = useCallback(
@@ -123,6 +140,10 @@ export function useAgent(): UseAgentResult {
 			maxSteps,
 			systemInstruction,
 			experimentalLlmsTxt,
+			experimentalIncludeAllTabs,
+			disableNamedToolChoice,
+			pingPong,
+			alwaysSendScreenshot,
 			...llmConfig
 		}: ExtConfig) => {
 			await chrome.storage.local.set({ llmConfig })
@@ -131,7 +152,15 @@ export function useAgent(): UseAgentResult {
 			} else {
 				await chrome.storage.local.remove('language')
 			}
-			const advancedConfig: AdvancedConfig = { maxSteps, systemInstruction, experimentalLlmsTxt }
+			const advancedConfig: AdvancedConfig = {
+				maxSteps,
+				systemInstruction,
+				experimentalLlmsTxt,
+				experimentalIncludeAllTabs,
+				disableNamedToolChoice,
+				pingPong,
+				alwaysSendScreenshot,
+			}
 			await chrome.storage.local.set({ advancedConfig })
 			setConfig({ ...llmConfig, ...advancedConfig, language })
 		},
@@ -146,6 +175,7 @@ export function useAgent(): UseAgentResult {
 		config,
 		execute,
 		stop,
+		reset,
 		configure,
 	}
 }
