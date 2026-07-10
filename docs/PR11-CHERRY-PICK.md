@@ -21,13 +21,14 @@
 
 ## Progress
 
-| Unit                                          | Status                | Commit      |
-| --------------------------------------------- | --------------------- | ----------- |
-| Inventory written                             | done                  | (this file) |
-| A1–A5 core vision + error recovery            | applied (uncommitted) | —           |
-| B1 PageController screenshot stub             | applied with A        | —           |
-| Multimodal `ContentPart` types (minimal llms) | applied with A        | —           |
-| Remaining groups                              | pending               | —           |
+| Unit                                                                      | Status  | Commit    |
+| ------------------------------------------------------------------------- | ------- | --------- |
+| Inventory written                                                         | done    | `55ac8c5` |
+| A1–A5 core vision + error recovery                                        | done    | `55ac8c5` |
+| B1 PageController screenshot stub                                         | done    | `55ac8c5` |
+| Multimodal `ContentPart` types (minimal llms)                             | done    | `55ac8c5` |
+| C1–C4 remote screenshot + executeJavascript + context-invalidated + tests | done    | `65c1ab6` |
+| Remaining groups                                                          | pending | —         |
 
 ---
 
