@@ -4,11 +4,20 @@
 import type * as z from 'zod/v4'
 
 /**
+ * A part of a multimodal message content, following the OpenAI Chat Completions
+ * shape. Lets the agent attach images (e.g. page screenshots for vision) next to
+ * text. Gemini's OpenAI-compatible endpoint accepts `image_url` with a data URL.
+ */
+export type ContentPart =
+	| { type: 'text'; text: string }
+	| { type: 'image_url'; image_url: { url: string } }
+
+/**
  * Message format - OpenAI standard (industry standard)
  */
 export interface Message {
 	role: 'system' | 'user' | 'assistant' | 'tool'
-	content?: string | null
+	content?: string | ContentPart[] | null
 	tool_calls?: {
 		id: string
 		type: 'function'
@@ -92,12 +101,7 @@ export interface LLMConfig {
 	model: string
 	apiKey?: string
 
-	/**
-	 * @deprecated No longer a standard parameter; many models reject it outright.
-	 * Use `transformRequestBody` to set it only for models you've verified.
-	 */
 	temperature?: number
-
 	maxRetries?: number
 
 	/**
@@ -123,5 +127,3 @@ export interface LLMConfig {
 	 */
 	customFetch?: typeof globalThis.fetch
 }
-
-export type ResolvedLLMConfig = Required<Omit<LLMConfig, 'temperature'>> & { temperature?: number }

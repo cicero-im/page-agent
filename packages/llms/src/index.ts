@@ -1,31 +1,59 @@
-import { OpenAIClient } from './OpenAIClient'
-import { InvokeError, InvokeErrorTypes } from './errors'
+import { OpenAIClient } from "./OpenAIClient";
+import { DEFAULT_TEMPERATURE, LLM_MAX_RETRIES } from "./constants";
+import { InvokeError, InvokeErrorTypes } from "./errors";
 import type {
+	ContentPart,
 	InvokeOptions,
 	InvokeResult,
 	LLMClient,
 	LLMConfig,
 	Message,
-	ResolvedLLMConfig,
 	Tool,
-} from './types'
+} from "./types";
 
-export { InvokeError, InvokeErrorTypes }
-export type { InvokeOptions, InvokeResult, LLMClient, LLMConfig, Message, Tool }
+export { InvokeError, InvokeErrorTypes };
+export type {
+	ContentPart,
+	InvokeOptions,
+	InvokeResult,
+	LLMClient,
+	LLMConfig,
+	Message,
+	Tool,
+};
 
-/**
- * LLM module
- */
+export function parseLLMConfig(config: LLMConfig): Required<LLMConfig> {
+	// Runtime validation as defensive programming (types already guarantee these)
+	if (!config.baseURL || !config.model) {
+		throw new Error(
+			"[PageAgent] LLM configuration required. Please provide: baseURL, model. " +
+				"See: https://arthrod.github.io/page-agent/docs/features/models",
+		);
+	}
+
+	return {
+		baseURL: config.baseURL,
+		model: config.model,
+		apiKey: config.apiKey || "",
+		temperature: config.temperature ?? DEFAULT_TEMPERATURE,
+		maxRetries: config.maxRetries ?? LLM_MAX_RETRIES,
+		transformRequestBody:
+			config.transformRequestBody ?? ((requestBody) => requestBody),
+		disableNamedToolChoice: config.disableNamedToolChoice ?? false,
+		customFetch: (config.customFetch ?? fetch).bind(globalThis), // fetch will be illegal unless bound
+	};
+}
+
 export class LLM extends EventTarget {
-	config: ResolvedLLMConfig
-	client: LLMClient
+	config: Required<LLMConfig>;
+	client: LLMClient;
 
 	constructor(config: LLMConfig) {
-		super()
-		this.config = parseLLMConfig(config)
+		super();
+		this.config = parseLLMConfig(config);
 
 		// Default to OpenAI client
-		this.client = new OpenAIClient(this.config)
+		this.client = new OpenAIClient(this.config);
 	}
 
 	/**
@@ -37,18 +65,25 @@ export class LLM extends EventTarget {
 		messages: Message[],
 		tools: Record<string, Tool>,
 		abortSignal: AbortSignal,
-		options?: InvokeOptions
+		options?: InvokeOptions,
 	): Promise<InvokeResult> {
-		return await withRetry(async () => this.client.invoke(messages, tools, abortSignal, options), {
-			maxRetries: this.config.maxRetries,
-			onRetry: (attempt, lastError) => {
-				this.dispatchEvent(
-					new CustomEvent('retry', {
-						detail: { attempt, maxAttempts: this.config.maxRetries, lastError },
-					})
-				)
+		return await withRetry(
+			async () => this.client.invoke(messages, tools, abortSignal, options),
+			{
+				maxRetries: this.config.maxRetries,
+				onRetry: (attempt, lastError) => {
+					this.dispatchEvent(
+						new CustomEvent("retry", {
+							detail: {
+								attempt,
+								maxAttempts: this.config.maxRetries,
+								lastError,
+							},
+						}),
+					);
+				},
 			},
-		})
+		);
 	}
 }
 
@@ -58,52 +93,24 @@ export class LLM extends EventTarget {
 async function withRetry<T>(
 	fn: () => Promise<T>,
 	settings: {
-		maxRetries: number
-		onRetry: (attempt: number, lastError: Error) => void
-	}
+		maxRetries: number;
+		onRetry: (attempt: number, lastError: Error) => void;
+	},
 ): Promise<T> {
-	let attempt = 0
+	let attempt = 0;
 	while (true) {
 		try {
-			return await fn()
+			return await fn();
 		} catch (error: unknown) {
-			if ((error as any)?.name === 'AbortError') throw error
-			if (error instanceof InvokeError && !error.retryable) throw error
-			attempt++
-			if (attempt > settings.maxRetries) throw error
+			if ((error as any)?.name === "AbortError") throw error;
+			if (error instanceof InvokeError && !error.retryable) throw error;
+			attempt++;
+			if (attempt > settings.maxRetries) throw error;
 
-			console.debug('[LLM] retryable failure, will retry:', error)
-			settings.onRetry(attempt, error as Error)
+			console.debug("[LLM] retryable failure, will retry:", error);
+			settings.onRetry(attempt, error as Error);
 
-			await new Promise((resolve) => setTimeout(resolve, 100))
+			await new Promise((resolve) => setTimeout(resolve, 100));
 		}
-	}
-}
-
-export function parseLLMConfig(config: LLMConfig): ResolvedLLMConfig {
-	// Runtime validation as defensive programming (types already guarantee these)
-	if (!config.baseURL || !config.model) {
-		throw new Error(
-			'[PageAgent] LLM configuration required. Please provide: baseURL, model. ' +
-				'See: https://alibaba.github.io/page-agent/docs/features/models'
-		)
-	}
-
-	if (config.temperature !== undefined) {
-		console.warn(
-			'[PageAgent] LLMConfig.temperature is deprecated and will be removed in a future version. ' +
-				'Use transformRequestBody to set it only for models you have verified accept it.'
-		)
-	}
-
-	return {
-		baseURL: config.baseURL,
-		model: config.model,
-		apiKey: config.apiKey || '',
-		temperature: config.temperature,
-		maxRetries: config.maxRetries ?? 2,
-		transformRequestBody: config.transformRequestBody ?? ((requestBody) => requestBody),
-		disableNamedToolChoice: config.disableNamedToolChoice ?? false,
-		customFetch: (config.customFetch ?? fetch).bind(globalThis), // fetch will be illegal unless bound
 	}
 }

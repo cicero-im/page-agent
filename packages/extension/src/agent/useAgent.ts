@@ -12,7 +12,7 @@ import type { LLMConfig } from '@page-agent/llms'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { MultiPageAgent } from './MultiPageAgent'
-import { DEMO_CONFIG, migrateLegacyEndpoint } from './constants'
+import { DEFAULT_CONFIG, DEFAULT_SYSTEM_INSTRUCTION, migrateLegacyEndpoint } from './constants'
 
 /** Language preference: undefined means follow system */
 export type LanguagePreference = SupportedLanguage | undefined
@@ -23,6 +23,10 @@ export interface AdvancedConfig {
 	experimentalLlmsTxt?: boolean
 	experimentalIncludeAllTabs?: boolean
 	disableNamedToolChoice?: boolean
+	/** Ping-pong mode: after a task finishes, auto-restart the mic (hands-free loop). */
+	pingPong?: boolean
+	/** Attach a screenshot to EVERY step (optional; on-error screenshot is always on). */
+	alwaysSendScreenshot?: boolean
 }
 
 export interface ExtConfig extends LLMConfig, AdvancedConfig {
@@ -37,6 +41,7 @@ export interface UseAgentResult {
 	config: ExtConfig | null
 	execute: (task: string) => Promise<ExecutionResult>
 	stop: () => void
+	reset: () => void
 	configure: (config: ExtConfig) => Promise<void>
 }
 
@@ -50,7 +55,7 @@ export function useAgent(): UseAgentResult {
 
 	useEffect(() => {
 		chrome.storage.local.get(['llmConfig', 'language', 'advancedConfig']).then((result) => {
-			let llmConfig = (result.llmConfig as LLMConfig) ?? DEMO_CONFIG
+			let llmConfig = (result.llmConfig as LLMConfig) ?? DEFAULT_CONFIG
 			const language = (result.language as SupportedLanguage) || undefined
 			const advancedConfig = (result.advancedConfig as AdvancedConfig) ?? {}
 
@@ -60,7 +65,7 @@ export function useAgent(): UseAgentResult {
 				llmConfig = migrated
 				chrome.storage.local.set({ llmConfig: migrated })
 			} else if (!result.llmConfig) {
-				chrome.storage.local.set({ llmConfig: DEMO_CONFIG })
+				chrome.storage.local.set({ llmConfig: DEFAULT_CONFIG })
 			}
 
 			setConfig({ ...llmConfig, ...advancedConfig, language })
@@ -73,7 +78,8 @@ export function useAgent(): UseAgentResult {
 		const { systemInstruction, ...agentConfig } = config
 		const agent = new MultiPageAgent({
 			...agentConfig,
-			instructions: systemInstruction ? { system: systemInstruction } : undefined,
+			// Default to the Cícero pt-BR assistive persona unless the user customized it.
+			instructions: { system: systemInstruction || DEFAULT_SYSTEM_INSTRUCTION },
 		})
 		agentRef.current = agent
 
@@ -119,6 +125,15 @@ export function useAgent(): UseAgentResult {
 		agentRef.current?.stop()
 	}, [])
 
+	/** Start a fresh conversation: stop any run and clear the visible history. */
+	const reset = useCallback(() => {
+		agentRef.current?.stop()
+		setCurrentTask('')
+		setHistory([])
+		setActivity(null)
+		setStatus('idle')
+	}, [])
+
 	const configure = useCallback(
 		async ({
 			language,
@@ -127,6 +142,8 @@ export function useAgent(): UseAgentResult {
 			experimentalLlmsTxt,
 			experimentalIncludeAllTabs,
 			disableNamedToolChoice,
+			pingPong,
+			alwaysSendScreenshot,
 			...llmConfig
 		}: ExtConfig) => {
 			await chrome.storage.local.set({ llmConfig })
@@ -141,6 +158,8 @@ export function useAgent(): UseAgentResult {
 				experimentalLlmsTxt,
 				experimentalIncludeAllTabs,
 				disableNamedToolChoice,
+				pingPong,
+				alwaysSendScreenshot,
 			}
 			await chrome.storage.local.set({ advancedConfig })
 			setConfig({ ...llmConfig, ...advancedConfig, language })
@@ -156,6 +175,7 @@ export function useAgent(): UseAgentResult {
 		config,
 		execute,
 		stop,
+		reset,
 		configure,
 	}
 }

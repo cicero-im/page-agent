@@ -123,6 +123,21 @@ export class PageController extends EventTarget {
 	}
 
 	/**
+	 * Capture a screenshot of the current viewport as a `data:` URL.
+	 *
+	 * @remarks
+	 * The in-page controller cannot capture the rendered viewport (no extension
+	 * API is available in page context), so this always resolves to `null`.
+	 * Screenshots require the extension's `RemotePageController`, which forwards
+	 * the request to the background and uses `chrome.tabs.captureVisibleTab`.
+	 *
+	 * @returns A screenshot `data:` URL, or `null` when capture is unsupported.
+	 */
+	async captureScreenshot(): Promise<string | null> {
+		return null
+	}
+
+	/**
 	 * Get structured browser state for LLM consumption.
 	 * Automatically calls updateTree() to refresh the DOM state.
 	 */

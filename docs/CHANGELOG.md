@@ -5,29 +5,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.12.0] - 2026-07-09
-
-- **Stateless extension tab sync** - TabsController pulls tab state on demand instead of long-lived ports, so the MV3 service worker stays stateless and survives idle kills without stalling the side panel.
-- **Tab status in agent context** - Tab summaries now include each tab's loading status for the LLM.
-
-## [1.11.0] - 2026-07-03
-
-### Features
-
-- **LLM model patching rework** - Rewrote per-model request patching for GPT, Claude, Qwen, Gemini, and DeepSeek, and refreshed the recommended model list.
-
-### Improvements
-
-- **Deprecate `LLMConfig.temperature`** - Warn when set; use `transformRequestBody` for models that still accept it.
-- **Extension limitations docs** - Added a limitations section to extension documentation.
-
-### Bug Fixes
-
-- **Multi-window extension tabs** - Resolved the active tab/window from the caller's window context instead of the global active tab.
-- **chat-latest model compatibility** - Skip `reasoning_effort` and `temperature` patches for `*-chat-latest` models.
-- **OpenRouter defaults** - Do not enable reasoning by default on OpenRouter.
-- **Asset URLs** - Migrated `img.alicdn.com` links to `page-agent.github.io`.
-
 ## [1.10.0] - 2026-06-15
 
 ### Breaking Changes
@@ -359,7 +336,7 @@ PageAgent is now ready for production use. The API is stable and breaking change
 - Single-page application only (cannot navigate across pages)
 - No visual recognition (relies on DOM structure)
 - Limited interaction support (no hover, drag-drop, canvas operations)
-- See [Limitations](https://alibaba.github.io/page-agent/docs/introduction/limitations) for details
+- See [Limitations](https://arthrod.github.io/page-agent/docs/introduction/limitations) for details
 
 ### Acknowledgments
 

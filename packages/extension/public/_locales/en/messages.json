@@ -1,11 +1,11 @@
 {
     "extName": {
-        "message": "Page Agent Ext"
+        "message": "Cicero Agent"
     },
     "extDescription": {
-        "message": "AI-powered browser automation assistant. Control web pages with natural language."
+        "message": "Voice-first browser assistant. Speak, and the AI does it for you on the web."
     },
     "extActionTitle": {
-        "message": "Open Page Agent"
+        "message": "Open Cicero"
     }
 }

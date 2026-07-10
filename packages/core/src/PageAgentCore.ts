@@ -3,7 +3,14 @@
  * Copyright (C) 2026 SimonLuvRamen
  * All rights reserved.
  */
-import { InvokeError, LLM, type Tool } from '@page-agent/llms'
+import {
+	type ContentPart,
+	InvokeError,
+	InvokeErrorTypes,
+	LLM,
+	type Message,
+	type Tool,
+} from '@page-agent/llms'
 import type { BrowserState, PageController } from '@page-agent/page-controller'
 import chalk from 'chalk'
 import * as z from 'zod/v4'
@@ -90,6 +97,13 @@ export class PageAgentCore extends EventTarget {
 	 */
 	#abortController = new AbortController()
 	#observations: string[] = []
+	/**
+	 * Images (data URLs) queued to be attached to the NEXT observe step's user
+	 * message, then cleared. Fed by the vision tool and on-error screenshot capture.
+	 */
+	#pendingImages: string[] = []
+	/** Consecutive step-error counter for the `errorRecovery` resilience policy. */
+	#consecutiveErrors = 0
 
 	/** Resolves when the current run has fully settled. Awaited by `stop()`. */
 	#running: Promise<void> = Promise.resolve()
@@ -144,6 +158,10 @@ export class PageAgentCore extends EventTarget {
 		if (!this.config.experimentalScriptExecutionTool) {
 			this.tools.delete('execute_javascript')
 		}
+
+		if (!this.config.experimentalVisionTool) {
+			this.tools.delete('capture_screenshot')
+		}
 	}
 
 	/** Get current agent status */
@@ -194,6 +212,40 @@ export class PageAgentCore extends EventTarget {
 	}
 
 	/**
+	 * Attach an image (data URL) to be sent alongside the NEXT observe step's
+	 * user message, then cleared. Used by the vision tool and on-error capture.
+	 * @experimental @internal
+	 */
+	attachImage(dataUrl: string): void {
+		this.#pendingImages.push(dataUrl)
+	}
+
+	/**
+	 * Capture a screenshot via the page controller and queue it for the next step.
+	 * Best-effort and silent: does nothing when capture is unsupported (e.g. the
+	 * in-page controller returns null). Always wrap calls in `suppress`.
+	 * @internal
+	 */
+	async #captureToPending(): Promise<void> {
+		const dataUrl = await this.pageController.captureScreenshot?.()
+		if (dataUrl) this.attachImage(dataUrl)
+	}
+
+	/**
+	 * Whether an error must abort the whole task even under `errorRecovery`.
+	 * Non-retryable configuration / auth failures are pointless to retry — looping
+	 * would just hit the same wall — so they stay fatal (break with error).
+	 */
+	#isFatalError(error: unknown): boolean {
+		if (error instanceof InvokeError && !error.retryable) {
+			return (
+				error.type === InvokeErrorTypes.CONFIG_ERROR || error.type === InvokeErrorTypes.AUTH_ERROR
+			)
+		}
+		return false
+	}
+
+	/**
 	 * Stop the current task and wait until the run has fully settled (including lifecycle hooks).
 	 * @note never await .stop() in a lifecycle hook.
 	 */
@@ -218,6 +270,8 @@ export class PageAgentCore extends EventTarget {
 
 		this.history = []
 		this.#observations = []
+		this.#pendingImages = []
+		this.#consecutiveErrors = 0
 		this.#states = { totalWaitTime: 0, lastURL: '', browserState: null }
 		this.#abortController = new AbortController()
 		const signal = this.#abortController.signal
@@ -270,10 +324,33 @@ export class PageAgentCore extends EventTarget {
 
 					// assemble prompts
 
-					const messages = [
-						{ role: 'system' as const, content: this.#getSystemPrompt() },
-						{ role: 'user' as const, content: await this.#assembleUserPrompt() },
+					const userPrompt = await this.#assembleUserPrompt()
+
+					// Always-on vision: capture a fresh screenshot every step so a small
+					// model literally sees the page (it won't reliably call the tool itself).
+					if (this.config.alwaysSendScreenshot) {
+						await suppress(() => this.#captureToPending())
+					}
+
+					// Attach any pending images (vision tool / on-error capture) to the
+					// user turn, with text FIRST per provider guidance. One-shot per step.
+					const userContent: string | ContentPart[] =
+						this.#pendingImages.length > 0
+							? [
+									{ type: 'text', text: userPrompt },
+									...this.#pendingImages.map(
+										(url): ContentPart => ({ type: 'image_url', image_url: { url } })
+									),
+								]
+							: userPrompt
+
+					const messages: Message[] = [
+						{ role: 'system', content: this.#getSystemPrompt() },
+						{ role: 'user', content: userContent },
 					]
+
+					// images are consumed once; clear after the request is assembled
+					this.#pendingImages = []
 
 					const macroTool = { AgentOutput: this.#packMacroTool() }
 
@@ -314,6 +391,23 @@ export class PageAgentCore extends EventTarget {
 						rawRequest: result.rawRequest,
 					})
 
+					// On a tool-level FAILURE (returned as a string, not thrown — e.g. a
+					// CSP-blocked execute_javascript, or "element not found"), attach a
+					// screenshot too so the model can SEE what went wrong on the next step.
+					if (
+						this.config.errorRecovery?.captureScreenshotOnError &&
+						actionName !== 'done' &&
+						typeof output === 'string' &&
+						/^❌|\berro\b|\berror\b|falh|não encontr|não consegui|not allowed|unable to|failed|cannot/i.test(
+							output
+						)
+					) {
+						await suppress(() => this.#captureToPending())
+					}
+
+					// step succeeded without throwing → reset the resilience counter
+					this.#consecutiveErrors = 0
+
 					if (actionName === 'done') {
 						const success = action.input?.success ?? false
 						const data = action.input?.text || 'no text provided'
@@ -329,12 +423,45 @@ export class PageAgentCore extends EventTarget {
 					const isAbortError = (error as any)?.name === 'AbortError'
 					if (!isAbortError) console.error('Task failed', error)
 					const message = isAbortError ? 'Task aborted' : String(error)
-					this.#emitActivity({ type: 'error', message: message })
-					this.#emitHistoryChange({ type: 'error', message: message, rawResponse: error })
-					taskResult = { success: false, data: message, history: this.history }
-					this.#lastResult = taskResult
-					finalStatus = isAbortError ? 'stopped' : 'error'
-					break
+
+					const recovery = this.config.errorRecovery
+
+					// RESILIENCE: a single step error must not kill the task.
+					// Recoverable only when opted in AND the error is neither a cancellation
+					// nor a non-retryable config/auth failure (retrying those would just loop).
+					if (recovery && !isAbortError && !this.#isFatalError(error)) {
+						if (recovery.captureScreenshotOnError) {
+							await suppress(() => this.#captureToPending())
+						}
+						this.pushObservation(
+							'⚠️ A ação anterior falhou: ' +
+								message +
+								'. Veja a captura de tela e tente outra abordagem.'
+						)
+						this.#consecutiveErrors++
+
+						// still emit for traceability (panel + history), as in the default path
+						this.#emitActivity({ type: 'error', message: message })
+						this.#emitHistoryChange({ type: 'error', message: message, rawResponse: error })
+
+						const maxConsecutiveErrors = recovery.maxConsecutiveErrors ?? 3
+						if (this.#consecutiveErrors > maxConsecutiveErrors) {
+							const calm = 'Não consegui concluir agora após algumas tentativas.'
+							taskResult = { success: false, data: calm, history: this.history }
+							this.#lastResult = taskResult
+							finalStatus = 'error'
+							break
+						}
+
+						// do NOT break: fall through to step++ and try another approach
+					} else {
+						this.#emitActivity({ type: 'error', message: message })
+						this.#emitHistoryChange({ type: 'error', message: message, rawResponse: error })
+						taskResult = { success: false, data: message, history: this.history }
+						this.#lastResult = taskResult
+						finalStatus = isAbortError ? 'stopped' : 'error'
+						break
+					}
 				} finally {
 					// finally block runs before the break above.
 
