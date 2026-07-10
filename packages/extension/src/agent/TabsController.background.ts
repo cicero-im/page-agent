@@ -81,8 +81,11 @@ export function handleTabControlMessage(
 
 		case 'open_new_tab': {
 			debug('open_new_tab', payload)
+			// active: true — hands-free assistant watches the agent work, so the
+			// tab it opens should be visible. Also keeps capture_screenshot honest
+			// (it can only grab the visible tab of a window).
 			chrome.tabs
-				.create({ url: payload.url, windowId: payload.windowId, active: false })
+				.create({ url: payload.url, windowId: payload.windowId, active: true })
 				.then((newTab) => {
 					debug('open_new_tab: success', newTab)
 					sendResponse({ success: true, tabId: newTab.id })

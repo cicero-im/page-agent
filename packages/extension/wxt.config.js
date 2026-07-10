@@ -45,8 +45,38 @@ export default defineConfig({
 		name: '__MSG_extName__',
 		description: '__MSG_extDescription__',
 		homepage_url: 'https://alibaba.github.io/page-agent/',
-		permissions: ['tabs', 'tabGroups', 'sidePanel', 'storage'],
+		// Core + permissions required by helperTools / browserTools / screenshots.
+		// Broader kitchen-sink permissions from PR11 deferred until brand packaging (F7).
+		permissions: [
+			'tabs',
+			'tabGroups',
+			'sidePanel',
+			'storage',
+			'scripting',
+			'downloads',
+			'downloads.open',
+			'bookmarks',
+			'readingList',
+			'history',
+			'topSites',
+			'notifications',
+			'clipboardRead',
+			'clipboardWrite',
+			'activeTab',
+		],
 		host_permissions: ['<all_urls>'],
+		// Global keyboard shortcuts for hands-free mic / submit (C7).
+		// Side panel consumes `ciceroPendingCommand` from storage (wired in E/F).
+		commands: {
+			listen_mic: {
+				suggested_key: { default: 'Alt+L', mac: 'Alt+L' },
+				description: 'Cícero: ouvir / parar o microfone',
+			},
+			submit_now: {
+				suggested_key: { default: 'Alt+K', mac: 'Alt+K' },
+				description: 'Cícero: enviar o que foi falado ou digitado',
+			},
+		},
 		icons: {
 			64: 'assets/page-agent-64.png',
 		},
