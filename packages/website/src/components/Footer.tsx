@@ -3,7 +3,7 @@ import { siGithub, siX } from 'simple-icons'
 import { useLanguage } from '@/i18n/context'
 
 export default function Footer() {
-	const { isZh } = useLanguage()
+	const { t } = useLanguage()
 
 	return (
 		<footer
@@ -24,7 +24,7 @@ export default function Footer() {
 							</a>
 						</p>
 						<p className="text-gray-600 dark:text-gray-300 text-xs mt-0.5">
-							© 2026 page-agent. All rights reserved.
+							© 2026 Cícero. {t('All rights reserved.', '保留所有权利。', 'Todos os direitos reservados.')}
 						</p>
 					</div>
 
@@ -35,7 +35,7 @@ export default function Footer() {
 							rel="noopener noreferrer"
 							className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm mr-4"
 						>
-							{isZh ? '使用条款与隐私' : 'Terms & Privacy'}
+							{t('Terms & Privacy', '使用条款与隐私', 'Termos e Privacidade')}
 						</a>
 						<a
 							href="https://arthur.law"
@@ -58,7 +58,11 @@ export default function Footer() {
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
-							aria-label={isZh ? '访问 GitHub 仓库' : 'Visit GitHub repository'}
+							aria-label={t(
+								'Visit GitHub repository',
+								'访问 GitHub 仓库',
+								'Visitar repositório no GitHub'
+							)}
 						>
 							<svg
 								role="img"

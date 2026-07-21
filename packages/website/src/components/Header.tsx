@@ -8,10 +8,11 @@ import { useLanguage } from '@/i18n/context'
 
 import LanguageSwitcher from './LanguageSwitcher'
 import ThemeSwitcher from './ThemeSwitcher'
+import { AdaptiveLogo } from './icons/AdaptiveLogo'
 import { HyperText } from './ui/hyper-text'
 
 export default function Header() {
-	const { isZh } = useLanguage()
+	const { t } = useLanguage()
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 	const stars = useGitHubStars()
 
@@ -27,17 +28,13 @@ export default function Header() {
 						<Link
 							href="/"
 							className="flex items-center gap-2 sm:gap-3 group shrink-0"
-							aria-label={isZh ? 'page-agent 首页' : 'page-agent home'}
+							aria-label={t('Cícero home', 'Cícero 首页', 'Início Cícero')}
 							onClick={() => setMobileMenuOpen(false)}
 						>
-							<img
-								src="https://page-agent.github.io/assets/brand/page-agent-color-128.webp"
-								alt="PageAgent Logo"
-								className="w-10 h-10 rounded-xl group-hover:scale-110 transition-transform duration-200"
-							/>
+							<AdaptiveLogo className="w-10 h-10 group-hover:scale-110 transition-transform duration-200" />
 							<div>
 								<span className="text-base sm:text-xl font-bold text-gray-900 dark:text-white leading-tight flex items-baseline gap-1.5">
-									page-agent
+									Cícero
 									<span className="hidden sm:inline text-[10px] font-mono font-normal text-gray-400 dark:text-gray-500 tabular-nums before:content-['v']">
 										{import.meta.env.VERSION}
 									</span>
@@ -49,7 +46,11 @@ export default function Header() {
 									animateOnHover={true}
 									aria-hidden="true"
 								>
-									AI Agent In Your Webpage
+									{t(
+										'AI Agent In Your Webpage',
+										'网页里的 AI Agent',
+										'Agente de IA na sua página'
+									)}
 								</HyperText>
 							</div>
 						</Link>
@@ -63,7 +64,7 @@ export default function Header() {
 							<Link
 								href="/docs/introduction/overview"
 								className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 shrink-0"
-								aria-label={isZh ? '文档' : 'Docs'}
+								aria-label={t('Docs', '文档', 'Docs')}
 							>
 								<BookOpen className="w-5 h-5" />
 							</Link>
@@ -92,14 +93,14 @@ export default function Header() {
 						<nav
 							className="hidden md:flex items-center space-x-6"
 							role="navigation"
-							aria-label={isZh ? '文档' : 'Docs'}
+							aria-label={t('Docs', '文档', 'Docs')}
 						>
 							<Link
 								href="/docs/introduction/overview"
 								className="flex items-center gap-1.5 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
 							>
 								<BookOpen className="w-4 h-4" />
-								{isZh ? '文档' : 'Docs'}
+								{t('Docs', '文档', 'Docs')}
 							</Link>
 							<a
 								href="https://github.com/arthrod/page-agent"
@@ -129,7 +130,7 @@ export default function Header() {
 						<button
 							type="button"
 							className="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 shrink-0"
-							aria-label={isZh ? '打开导航栏' : 'Open navigation'}
+							aria-label={t('Open navigation', '打开导航栏', 'Abrir navegação')}
 							aria-expanded={mobileMenuOpen}
 							aria-controls="mobile-menu"
 							onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -151,7 +152,7 @@ export default function Header() {
 								onClick={() => setMobileMenuOpen(false)}
 							>
 								<BookOpen className="w-5 h-5" />
-								{isZh ? '文档' : 'Docs'}
+								{t('Docs', '文档', 'Docs')}
 							</Link>
 							<a
 								href="https://github.com/arthrod/page-agent"

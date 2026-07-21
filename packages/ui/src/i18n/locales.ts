@@ -94,6 +94,54 @@ const zhCN = {
 	},
 } as const
 
+// Brazilian Portuguese translations (must match the structure of enUS)
+const ptBR = {
+	ui: {
+		panel: {
+			ready: 'Pronto',
+			thinking: 'Pensando...',
+			taskInput: 'Digite a nova tarefa, descreva os passos em detalhe, Enter para enviar',
+			userAnswerPrompt: 'Responda a pergunta acima e pressione Enter para enviar',
+			taskTerminated: 'Tarefa interrompida',
+			taskCompleted: 'Tarefa concluída',
+			userAnswer: 'Resposta do usuário: {{input}}',
+			question: 'Pergunta: {{question}}',
+			waitingPlaceholder: 'Aguardando o início da tarefa...',
+			stop: 'Parar',
+			close: 'Fechar',
+			expand: 'Expandir histórico',
+			collapse: 'Recolher histórico',
+			step: 'Passo {{number}}',
+		},
+		tools: {
+			clicking: 'Clicando no elemento [{{index}}]...',
+			inputting: 'Digitando texto no elemento [{{index}}]...',
+			selecting: 'Selecionando a opção "{{text}}"...',
+			scrolling: 'Rolando a página...',
+			waiting: 'Aguardando {{seconds}} segundos...',
+			askingUser: 'Perguntando ao usuário...',
+			done: 'Tarefa concluída',
+			clicked: '🖱️ Clicou no elemento [{{index}}]',
+			inputted: '⌨️ Digitou o texto "{{text}}"',
+			selected: '☑️ Selecionou a opção "{{text}}"',
+			scrolled: '🛞 Página rolada',
+			waited: '⌛️ Espera concluída',
+			executing: 'Executando {{toolName}}...',
+			resultSuccess: 'sucesso',
+			resultFailure: 'falhou',
+			resultError: 'erro',
+		},
+		errors: {
+			elementNotFound: 'Nenhum elemento interativo encontrado no índice {{index}}',
+			taskRequired: 'A descrição da tarefa é obrigatória',
+			executionFailed: 'Falha na execução da tarefa',
+			notInputElement: 'O elemento não é um input ou textarea',
+			notSelectElement: 'O elemento não é um select',
+			optionNotFound: 'Opção "{{text}}" não encontrada',
+		},
+	},
+} as const
+
 // Type definitions generated from English base structure (but with string values)
 type DeepStringify<T> = {
 	[K in keyof T]: T[K] extends string ? string : T[K] extends object ? DeepStringify<T[K]> : T[K]
@@ -117,6 +165,7 @@ export type TranslationParams = Record<string, string | number>
 export const locales = {
 	'en-US': enUS,
 	'zh-CN': zhCN,
+	'pt-BR': ptBR,
 } as const
 
 export type SupportedLanguage = keyof typeof locales

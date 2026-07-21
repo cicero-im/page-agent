@@ -8,9 +8,11 @@ import SYSTEM_PROMPT from './system_prompt.md?raw'
 import { createTabTools } from './tabTools'
 
 /** Detect user language from browser settings */
-function detectLanguage(): 'en-US' | 'zh-CN' {
+function detectLanguage(): 'en-US' | 'zh-CN' | 'pt-BR' {
 	const lang = navigator.language || navigator.languages?.[0] || 'en-US'
-	return lang.startsWith('zh') ? 'zh-CN' : 'en-US'
+	if (lang.startsWith('zh')) return 'zh-CN'
+	if (lang.startsWith('pt')) return 'pt-BR'
+	return 'en-US'
 }
 
 interface MultiPageAgentConfig extends AgentConfig {
@@ -40,7 +42,12 @@ export class MultiPageAgent extends PageAgentCore {
 
 		// system prompt - auto-detect language if not specified
 		const language = config.language ?? detectLanguage()
-		const targetLanguage = language === 'zh-CN' ? '中文' : 'English'
+		const targetLanguage =
+			language === 'zh-CN'
+				? '中文'
+				: language === 'pt-BR'
+					? 'Português (Brasil)'
+					: 'English'
 		const systemPrompt = SYSTEM_PROMPT.replace(
 			/Default working language: \*\*.*?\*\*/,
 			`Default working language: **${targetLanguage}**`

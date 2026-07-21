@@ -7,17 +7,7 @@ import { siGithub } from 'simple-icons'
 import { TypingAnimation } from '@/components/ui/typing-animation'
 import { cn } from '@/lib/utils'
 
-/** Resolve a public asset URL in the extension (and fall back for non-chrome). */
-function assetUrl(path: string): string {
-	try {
-		if (typeof chrome !== 'undefined' && chrome.runtime?.getURL) {
-			return chrome.runtime.getURL(path)
-		}
-	} catch {
-		// ignore
-	}
-	return `/${path.replace(/^\//, '')}`
-}
+import { AdaptiveLogo } from './icons/AdaptiveLogo'
 
 // Status dot indicator
 export function StatusDot({ status }: { status: AgentStatus }) {
@@ -48,15 +38,9 @@ export function StatusDot({ status }: { status: AgentStatus }) {
 }
 
 export function Logo({ className }: { className?: string }) {
-	// Brand mark from potion_deploy/public/logo (red C). Transparent version
-	// reads cleanly on paper-cream UI; toolbar icons use the opaque set.
-	return (
-		<img
-			src={assetUrl('assets/cicero-mark-transparent.png')}
-			alt="Cícero"
-			className={cn('object-contain', className)}
-		/>
-	)
+	// Full SVG mark from marketing icons (red C + adaptive brackets).
+	// Brackets are black on light / white on dark via useContrastColor.
+	return <AdaptiveLogo className={cn('object-contain', className)} aria-label="Cícero" />
 }
 
 // Full-screen ai-motion glow overlay, shown only while running

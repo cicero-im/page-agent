@@ -1,20 +1,21 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { useLanguage } from '@/i18n/context'
+import { type Lang, useLanguage } from '@/i18n/context'
 
 export default function LanguageSwitcher() {
-	const { language, isZh, setLanguage } = useLanguage()
+	const { language, t, setLanguage } = useLanguage()
 	const [isOpen, setIsOpen] = useState(false)
 	const dropdownRef = useRef<HTMLDivElement>(null)
 
-	const languages = [
-		{ code: 'en-US' as const, label: 'English' },
-		{ code: 'zh-CN' as const, label: '中文' },
+	const languages: { code: Lang; label: string }[] = [
+		{ code: 'en-US', label: 'English' },
+		{ code: 'pt-BR', label: 'Português' },
+		{ code: 'zh-CN', label: '中文' },
 	]
 
 	const currentLanguage = languages.find((lang) => lang.code === language) || languages[0]
 
-	const handleLanguageChange = (langCode: 'zh-CN' | 'en-US') => {
+	const handleLanguageChange = (langCode: Lang) => {
 		setLanguage(langCode)
 		setIsOpen(false)
 	}
@@ -41,7 +42,7 @@ export default function LanguageSwitcher() {
 			<button
 				onClick={() => setIsOpen(!isOpen)}
 				className="flex cursor-pointer items-center gap-2 rounded-lg border border-gray-200 bg-gray-100 px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
-				aria-label={isZh ? '切换语言' : 'Switch language'}
+				aria-label={t('Switch language', '切换语言', 'Trocar idioma')}
 				aria-expanded={isOpen}
 				aria-haspopup="true"
 			>

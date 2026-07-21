@@ -38,11 +38,13 @@ function getInjection(useCN?: boolean) {
 }
 
 export default function HeroSection() {
-	const { language, isZh } = useLanguage()
+	const { language, isZh, t } = useLanguage()
 
-	const defaultTask = isZh
-		? '从导航栏中进入文档页，打开"快速开始"相关的文档，帮我总结成 markdown'
-		: 'Goto docs in navigation bar, find Quick-Start section, and summarize in markdown'
+	const defaultTask = t(
+		'Goto docs in navigation bar, find Quick-Start section, and summarize in markdown',
+		'从导航栏中进入文档页，打开"快速开始"相关的文档，帮我总结成 markdown',
+		'Vá à documentação na barra de navegação, abra a seção Início Rápido e resuma em markdown'
+	)
 
 	const [task, setTask] = useState(() => defaultTask)
 	const [prevDefaultTask, setPrevDefaultTask] = useState(defaultTask)
